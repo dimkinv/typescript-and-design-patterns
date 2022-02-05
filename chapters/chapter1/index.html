@@ -1,40 +1,582 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="stylesheet" href="../../dist/zenburn.css" />
 
-		<title>reveal.js</title>
+    <title>reveal.js</title>
 
-		<link rel="stylesheet" href="../../dist/reset.css">
-		<link rel="stylesheet" href="../../dist/reveal.css">
-		<link rel="stylesheet" href="../../dist/theme/black.css">
+    <link rel="stylesheet" href="../../dist/reset.css" />
+    <link rel="stylesheet" href="../../dist/reveal.css" />
+    <link rel="stylesheet" href="../../dist/theme/black.css" />
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="../../plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../../plugin/highlight/monokai.css" />
+  </head>
+  
 
-		<script src="../../dist/reveal.js"></script>
-		<script src="../../plugin/notes/notes.js"></script>
-		<script src="../../plugin/markdown/markdown.js"></script>
-		<script src="../../plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h4>
+            First Module - Things you should have known in TypeScript but you
+            probably don't
+          </h4>
+        </section>
+        <section>
+          <section>string, number or boolean literal as a type</section>
+          <section>
+            A literal is a more concrete sub-type of a collective type. What
+            this means is that "Hello World" is a string, but a string is not
+            "Hello World" inside the type system.
+          </section>
+          <section>
+            There are three sets of literal types available in TypeScript today:
+            strings, numbers, and booleans; by using literal types you can allow
+            an exact value which a string, number, or boolean
+          </section>
+          <section>
+            for instance if a create a variable
+            <pre><code data-trim data-noescape>
+				const number = 23 
+			</code></pre>
+            TypeScript will infer the type of this const as 23 (and not a number
+            in general) since it is a const and it will never change!
+          </section>
+          <section>
+            For example:
+            <pre><code class="typescript-language" data-trim data-noescape>
+				type Asaf = 'Asaf';
+				
+				// no error
+				const name: Asaf = 'Asaf'
+				const age: 32 = 32
+		
+				// error
+				
+				// Type '"Niv"' is not assignable to type '"Asaf"'
+				const name: Asaf = 'Niv'
+				
+				// Type '40' is not assignable to type '32'
+				const age: 32 = 40
+			</code></pre>
+          </section>
+          <section>
+            For example: consider the next function:
+            <pre><code data-trim data-noescape>
+			const combine = (
+				input1: number , 
+				input2: number, 
+				resultConversion: string
+			) => {
+				if(resultConversion === "as-number"){
+					return input1 + input2;
+				}
+				else{
+					const res = input1 + input2;
+					return res.toString();
+				}
+			}
+			</code></pre>
+          </section>
+          <section>
+            <pre><code data-trim data-noescape data-line-numbers="4">
+			const combine = (
+				input1: number , 
+				input2: number, 
+				resultConversion: 'as-string' | 'as-number'
+			) => {
+				if(resultConversion === as-number){
+					return input1 + input2;
+				}
+				else{
+					const res = input1 + input2;
+					return res.toString();
+				}
+			}
+			</code></pre>
+          </section>
+          <section>
+            For example:
+            <pre><code data-trim data-noescape data-line-numbers="1,5, 15, 17">
+			type ResultConversion =  'as-string' | 'as-number'
+			const combine = (
+				input1: number , 
+				input2: number, 
+				resultConversion: ResultConversion
+			) => {
+				if(resultConversion === "as-number"){
+					return input1 + input2;
+				}
+				else{
+					const res = input1 + input2;
+					return res.toString();
+				}
+			}
+			</code></pre>
+          </section>
+          <section>
+            <p>
+              in this way we can both prevent other people from sending
+              unrealted strings to this function and prevent typos like
+              "as-strnig".
+            </p>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+            <p>any other string will not be alowed.</p>
+
+            <p>most of the time it will be used in a Union type</p>
+
+            <pre><code data-trim data-noescape>
+				combine(1, 2, 'as-string') // 3 
+				combine(1, 2, 'as-strnig')
+			 // Argument of type '"as-strnig"' is not assignable to parameter oftype 'ResultConversion'.(2345)
+			</code></pre>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h4>Rest params in function parameters and Tuples</h4>
+          </section>
+          <section>
+            <p>
+              A rest parameter allows you a function to accept zero or more
+              arguments of the specified type. In TypeScript, rest parameters
+              follow these rules:
+            </p>
+
+            <p>1. A function has only one rest parameter.</p>
+            <p>2. The rest parameter appears last in the parameter list.</p>
+            <p>3. The type of the rest parameter is an array type.</p>
+
+            <pre><code data-trim data-noescape>
+				function fn(...rest: type[]) {
+					//...
+				 }
+			</code></pre>
+          </section>
+          <section>
+            <pre><code data-trim data-noescape>
+				function getTotal(...numbers: number[]): number {
+					let total = 0;
+					numbers.forEach((num) => total += num);
+					return total;
+				}
+			</code></pre>
+          </section>
+          <section>
+            <pre><code data-trim data-noescape>
+				console.log(getTotal()); // 0
+				console.log(getTotal(10, 20)); // 30
+				console.log(getTotal(10, 20, 30)); // 60
+			</code></pre>
+          </section>
+          <section>
+            <p>Rest params can be used an Tuples as well</p>
+            <p>
+              Tuple types allow you to express an array with a fixed number of
+              elements whose types are known, but need not be the same.
+            </p>
+
+            <pre><code data-trim data-noescape>
+				// Declare a tuple type
+				let x: [string, number];
+				// Initialize it
+				x = ["hello", 10]; // OK
+				// Initialize it incorrectly
+				x = [10, "hello"]; // Error
+			</code></pre>
+          </section>
+          <section>
+            <p>
+              In TypeScript 4.2, rest elements specifically been expanded in how
+              they can be used. In prior versions, TypeScript only allowed
+              ...rest elements at the very last position of a tuple type.
+            </p>
+            <p>
+              However, now rest elements can occur anywhere within a tuple -
+              with only a few restrictions.
+            </p>
+          </section>
+          <section>
+            <pre><code data-trim data-noescape>			
+				let foo: [...string[], number];
+		
+				foo = [123];
+				foo = ["hello", 123];
+				foo = ["hello!", "hello!", "hello!", 123];
+		
+				let bar: [boolean, ...string[], boolean];
+		
+				bar = [true, false];
+				bar = [true, "some text", false];
+				bar = [true, "some", "separated", "text", false];
+				</code></pre>
+          </section>
+          <section>
+            <p>
+              The only restriction is that a rest element can be placed anywhere
+              in a tuple, so long as it’s not followed by another optional
+              element or rest element.
+            </p>
+            <p>
+              In other words, only one rest element per tuple, and no optional
+              elements after rest elements.
+            </p>
+
+            <pre><code data-trim data-noescape>		
+				interface Clown {
+					/*...*/
+				  }
+				  interface Joker {
+					/*...*/
+				  }
+				   
+				  let StealersWheel: [...Clown[], "me", ...Joker[]];
+				  // A rest element cannot follow another rest element.
+				   
+				  let StringsAndMaybeBoolean: [...string[], boolean?];
+				  // An optional element cannot follow a rest element.	
+			</code></pre>
+          </section>
+          <section>
+            <p>
+              These non-trailing rest elements can be used to model functions
+              that take any number of leading arguments, followed by a few fixed
+              ones.
+            </p>
+            <pre><code data-trim data-noescape>		
+				const doStuff = (
+					...args: [...names: string[], 
+					shouldCapitalize: boolean]
+				) void => {
+					// do stuff...
+				}
+ 
+				doStuff(false)
+				doStuff("fee", "fi", "fo", "fum",true);
+			</code></pre>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h4>Union types</h4>
+            <p>
+              A union type describes a value that can be one of several types.
+              We use the vertical bar (|) to separate each type, so number |
+              string | boolean is the type of a value that can be a number, a
+              string, or a boolean.
+            </p>
+          </section>
+          <section>
+            <pre><code data-trim data-noescape>		
+					interface Bird {
+						fly(): void;
+						layEggs(): void;
+					  }
+					   
+					  interface Fish {
+						swim(): void;
+						layEggs(): void;
+					  }
+					   
+					  declare function getSmallPet(): Fish | Bird;
+					   
+					  let pet = getSmallPet();
+					  pet.layEggs();
+					   
+					  // Only available in one of the two possible types
+					  pet.swim();
+					  /* Property 'swim' does not exist on type 'Bird | Fish'.
+						roperty 'swim' does not exist on type 'Bird'.*/
+				</code></pre>
+          </section>
+          <section>
+            <p>
+              Union types can be a bit tricky here, but it just takes a bit of
+              intuition to get used to. If a value has the type A | B, we only
+              know for certain that it has members that both A and B have. In
+              this example, Bird has a member named fly. We can’t be sure
+              whether a variable typed as Bird | Fish has a fly method. If the
+              variable is really a Fish at runtime, then calling pet.fly() will
+              fail.
+            </p>
+          </section>
+          <section>
+            <h4>Discriminating Unions</h4>
+            <p>
+              A common technique for working with unions is to have a single
+              field which uses literal types which you can use to let TypeScript
+              narrow down the possible current type. For example, we’re going to
+              create a union of three types which have a single shared field.
+            </p>
+          </section>
+          <section>
+            <pre><code data-trim data-noescape>		
+				type NetworkLoadingState = {
+					state: "loading";
+				  };
+				  type NetworkFailedState = {
+					state: "failed";
+					code: number;
+				  };
+				  type NetworkSuccessState = {
+					state: "success";
+					response: {
+					  title: string;
+					  duration: number;
+					  summary: string;
+					};
+				  };
+				  // Create a type which represents only one of the above types
+				  // but you aren't sure which it is yet.
+				  type NetworkState =
+					| NetworkLoadingState
+					| NetworkFailedState
+					| NetworkSuccessState;
+				</code></pre>
+          </section>
+          <section>
+            <p>
+              In this case, you can use a switch statement to narrow down which
+              type is represented at runtime:
+            </p>
+            <pre><code data-trim data-noescape>		
+				type NetworkState =
+					| NetworkLoadingState
+					| NetworkFailedState
+					| NetworkSuccessState;
+
+					function logger(state: NetworkState): string {
+					// Right now TypeScript does not know which of the three
+					// potential types state could be.
+
+					// Trying to access a property which isn't shared
+					// across all types will raise an error
+					state.code;
+					Property 'code' does not exist on type 'NetworkState'.
+					Property 'code' does not exist on type 'NetworkLoadingState'.
+
+					// By switching on state, TypeScript can narrow the union
+					// down in code flow analysis
+					switch (state.state) {
+					case "loading":
+						return "Downloading...";
+					case "failed":
+						// The type must be NetworkFailedState here,
+						// so accessing the `code` field is safe
+						return `Error ${state.code} downloading`;
+					case "success":
+						return `Downloaded ${state.response.title} - ${state.response.summary}`;
+						}
+					}
+				</code></pre>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h4>Type vs Interface</h4>
+          </section>
+          <section>
+            <p>Interface</p>
+            <p>
+              One of TypeScript’s core principles is that type checking focuses
+              on the shape that values have. This is sometimes called “duck
+              typing” or “structural subtyping”. In TypeScript, interfaces fill
+              the role of naming these types, and are a powerful way of defining
+              contracts within your code as well as contracts with code outside
+              of your project.
+            </p>
+          </section>
+          <section>
+            <p>1. Interfaces can be extended</p>
+            <pre><code data-trim data-noescape>		
+					interface Person {
+						name: string,
+						age: number
+					}
+					
+					interface Developer extends Person{
+						typescriptMaster: boolean
+					}
+					const me: Developer = {
+						name: 'Asaf',
+						age: 32,
+						typescriptMaster: true
+					}
+				</code></pre>
+          </section>
+          <section>
+            <p>2. Declaration merging</p>
+            <p>
+              “declaration merging” means that the compiler merges two separate
+              declarations declared with the same name into a single definition.
+              This merged definition has the features of both of the original
+              declarations. Any number of declarations can be merged; it’s not
+              limited to just two declarations.
+            </p>
+          </section>
+          <section>
+            <pre><code data-trim data-noescape>		
+					interface Box {
+						height: number;
+						width: number;
+					  }
+
+					  interface Box {
+						scale: number;
+					  }
+
+					  let box: Box = { height: 5, width: 6, scale: 10 };
+				</code></pre>
+          </section>
+          <section>
+            <p>Type alias</p>
+            <p>
+              it’s common to want to use the same type more than once and refer
+              to it by a single name. A type alias is exactly that - a name for
+              any type. The syntax for a type alias is:
+            </p>
+          </section>
+          <section>
+            <p>1. types can not be extended - types intersection</p>
+            <p></p>
+            <pre><code data-trim data-noescape>		
+					type Person = {
+						name: string,
+						age: number
+					} &  { typescriptMaster: boolean }
+					
+					const me: Person = {
+						name: 'Asaf',
+						age: 32,
+						typescriptMaster: true
+					}
+				</code></pre>
+          </section>
+          <section>
+            <p>2. Union types</p>
+            <p></p>
+            <pre><code data-trim data-noescape>		
+						type Person = {
+							name: string,
+							age: number
+						} 
+						
+						type TypescriptMaster = { typescriptMaster: boolean }
+
+						type Asaf = Person | TypescriptMaster 
+						
+						const me: Asaf = {
+							name: 'Asaf',
+							age: 32,
+						}
+
+						// or 
+						const me: Asaf = {
+							typescriptMaster: true;
+						}
+
+						// or
+						const me: Asaf = {
+							name: 'Asaf',
+							age: 32,
+							typescriptMaster: true;
+						}
+					</code></pre>
+          </section>
+        </section>
+        <section>
+          <section>never & unknown</section>
+          <section>
+            <p>never</p>
+            <p>
+              The never type represents the type of values that never occur. For
+              instance, never is the return type for a function expression or an
+              arrow function expression that always throws an exception or one
+              that never returns. Variables also acquire the type never when
+              narrowed by any type guards that can never be true. The never type
+              is a subtype of, and assignable to, every type; however, no type
+              is a subtype of, or assignable to, never (except never itself).
+              Even any isn’t assignable to never.
+            </p>
+          </section>
+          <section>
+            <pre><code data-trim data-noescape>		
+				// Function returning never must not have a reachable end point
+				function error(message: string): never {
+				  throw new Error(message);
+				}
+				 
+				// Inferred return type is never
+				function fail() {
+				  return error("Something failed");
+				}
+				 
+				// Function returning never must not have a reachable end point
+				function infiniteLoop(): never {
+				  while (true) {}
+				}
+			</code></pre>
+          </section>
+          <section>
+            <p>unknown</p>
+            <p>
+              the unknown type is simmilar to the any type, howwever you can't
+              assign a value of type unknown to another value with different
+              type without type check (typeof) first.
+            </p>
+          </section>
+          <section>
+            <pre><code data-trim data-noescape>		
+			let unknownUserInput: unknown;
+			let anyUserInput: any;
+			let userName : string;
+
+			// valid 
+			unknownUserInput = 5
+			anyUserInput = 5 
+
+
+			// valid 
+			unknownUserInput = 'Asaf'
+			anyUserInput = 'Asaf'
+
+			// valid 
+			userName = anyUserInput;
+
+			// invalid 
+			userName = unknownUserInput;
+
+			//fix - valid
+			if(typeof unknownUserInput === string){
+				userName = unknownUserInput;
+			}
+
+		</code></pre>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="../../dist/reveal.js"></script>
+    <script src="../../plugin/notes/notes.js"></script>
+    <script src="../../plugin/markdown/markdown.js"></script>
+    <script src="../../plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
 </html>

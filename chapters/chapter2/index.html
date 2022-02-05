@@ -16,8 +16,137 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+			<section>
+				Advenced typing
+			</section>
+			<section>
+				<div style="display: flex; flex-direction: column; justify-content: center;">
+					<h4>Part 1: Utility Types</h4>
+					<p>TypeScript provides several utility types to facilitate common type transformations. These utilities are available globally.</p>
+				</div>
+			</section>
+				<section>
+					Partial Type
+					<p>Constructs a type with all properties of Type set to optional. This utility will return a type that represents all subsets of a given type.</p>
+				</section>
+				<section>Demo</section>
+					<section>
+					Required Type
+					<p>Constructs a type consisting of all properties of Type set to required. The opposite of Partial.</p>
+				</section>
+				<section>Demo</section>
+				<section>
+					Readonly Type
+					<p>Constructs a type with all properties of Type set to readonly, meaning the properties of the constructed type cannot be reassigned.</p>
+					<p>This utility is useful for representing assignment expressions that will fail at runtime (i.e. when attempting to reassign properties of a frozen object).</p>
+				</section>
+				<section>Demo</section>
+				<section>
+
+					<section>
+						Record
+						<p>Constructs an object type whose property keys are Keys and whose property values are Type. This utility can be used to map the properties of a type to another type.</p>
+						<p> the Record type is not identical to the index signature <pre><code class="typescript-language" data-trim data-noescape> [name: string]: number; </code></pre>
+					</section>
+					<section>
+						<p>we can not use a Union type to describe an index signature key </p>
+							<pre><code class="typescript-language" data-trim data-noescape> 
+								[name: string | number]: number;
+								[name: "key1" | "key2"]: number;
+							</code></pre>
+							<p>howerver we can do it in Recored Type</p>
+					</section>
+				</section>
+				<section>Demo</section>
+				<section>
+					Pick
+					<p>Constructs a type by picking the set of properties Keys (string literal or union of string literals) from Type.</p>
+				</section>
+				<section>Demo</section>
+				<section>
+					Omit
+					<p>Constructs a type by picking all properties from Type and then removing Keys (string literal or union of string literals).</p>
+				</section>
+				<section>Demo</section>
+
+				<section>
+					Exclude
+					<p>Constructs a type by excluding from UnionType all union members that are assignable to ExcludedMembers.</p>
+				</section>
+				<section>Demo</section>
+				<section>
+					Extract
+					<p>Constructs a type by extracting from Type all union members that are assignable to Union.</p>
+				</section>
+				<section>Demo</section>
+				<section>
+					NonNullable
+					<p>Constructs a type by excluding null and undefined from Type.</p>
+				</section>
+				<section>Demo</section>
+				<section>
+					Parameters
+					<p>Constructs a tuple type from the types used in the parameters of a function type Type.</p>
+				</section>
+				<section>Demo</section>
+				<section>
+					ConstructorParameters
+					<p>Constructs a tuple or array type from the types of a constructor function type. It produces a tuple type with all the parameter types (or the type never if Type is not a function).</p>
+				</section>
+					<section>Demo</section>
+					<section>
+					ReturnType					
+					<p>Constructs a type consisting of the return type of function Type.</p>
+				</section>
+				<section>Demo</section>
+				<section>
+					InstanceType
+					<p>Constructs a type consisting of the instance type of a constructor function in Type.</p>
+				</section>
+				<section>Demo</section>
+				<section>
+					ThisParameterType
+					<p>Extracts the type of the this parameter for a function type, or unknown if the function type has no this parameter.</p>
+				</section>
+				<section>Demo</section>
+			</section>
+			<section>
+				<div style="display: flex; flex-direction: column; justify-content: center;">
+					<h4>Part 2: Creating Types from Types</h4>
+					<p>TypeScript’s type system is very powerful because it allows expressing types in terms of other types.</p>
+					<p>we alredy learned about generics, lets dive in into some more conceps</p>
+				</div>
+			</section>
+			<section>
+				<ul>
+					<li>1. Keyof Type Operator - Using the keyof operator to create new types</li>
+					<li>2. Typeof Type Operator - Using the typeof operator to create new types</li>
+					<li>3. Indexed Access Types - Using Type['a'] syntax to access a subset of a type</li>
+					<li>4. Conditional Types - Types which act like if statements in the type system</li>
+					<li>5. Mapped Types - Creating types by mapping each property in an existing type</li>
+					<li>6. Template Literal Types - Mapped types which change properties via template literal strings</li>
+				</ul>
+			</section>
+			<section>
+				<section>Keyof Type Operator </section>
+			</section>
+			<section>
+			<section>Typeof Type Operator </section>
+			</section>
+			<section>
+			<section>Indexed Access Types </section>
+			</section>
+			<section>
+				<section>Conditional Types </section>
+			</section>
+			<section>
+				<section>Mapped Types </section>
+				<section> 1 </section>
+				<section> 2 </section>
+			</section>
+			<section>
+			<section>Template Literal Types </section>
+			</section>
 			</div>
 		</div>
 

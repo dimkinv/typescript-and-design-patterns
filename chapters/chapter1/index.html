@@ -22,34 +22,38 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <section>
+        <section data-background="#007acc">
           <h4>
             First Module - Things you should have known in TypeScript but you
             probably don't
           </h4>
         </section>
-        <section>
-          <section>string, number or boolean literal as a type</section>
+        <section data-background="#007acc">
+          <section>
+            <h4>string, number or boolean literal as a type</h4> 
+          </section>
           <section>
             A literal is a more concrete sub-type of a collective type. What
             this means is that "Hello World" is a string, but a string is not
             "Hello World" inside the type system.
           </section>
-          <section>
+          <section >
             There are three sets of literal types available in TypeScript today:
             strings, numbers, and booleans; by using literal types you can allow
             an exact value which a string, number, or boolean
           </section>
-          <section>
-            for instance if a create a variable
-            <pre><code data-trim data-noescape>
+          <section id="fragments">
+           <p> for instance if a create a variable </p> 
+            <pre class="fragment"><code data-trim data-noescape>
 				const number = 23 
 			</code></pre>
-            TypeScript will infer the type of this const as 23 (and not a number
-            in general) since it is a const and it will never change!
+            <p class="fragment">
+              TypeScript will infer the type of this const as 23 (and not a number
+              in general) since it is a const and it will never change!
+            </p> 
           </section>
-          <section>
-            For example:
+          <section data-background="#007acc">
+            <h2 data-id="code-title">For example:</h2>
             <pre><code class="typescript-language" data-trim data-noescape>
 				type Asaf = 'Asaf';
 				
@@ -67,7 +71,7 @@
 			</code></pre>
           </section>
           <section>
-            For example: consider the next function:
+            <h2 data-id="code-title">For example - consider the next function:</h2>
             <pre><code data-trim data-noescape>
 			const combine = (
 				input1: number , 
@@ -102,7 +106,7 @@
 			</code></pre>
           </section>
           <section>
-            For example:
+            <h2 data-id="code-title">For example:</h2>
             <pre><code data-trim data-noescape data-line-numbers="1,5, 15, 17">
 			type ResultConversion =  'as-string' | 'as-number'
 			const combine = (
@@ -120,40 +124,40 @@
 			}
 			</code></pre>
           </section>
-          <section>
+          <section id="fragments">
             <p>
               in this way we can both prevent other people from sending
               unrealted strings to this function and prevent typos like
               "as-strnig".
             </p>
 
-            <p>any other string will not be alowed.</p>
+            <p class="fragment">any other string will not be alowed.</p>
 
-            <p>most of the time it will be used in a Union type</p>
+            <p class="fragment">most of the time it will be used in a Union type</p>
 
-            <pre><code data-trim data-noescape>
+            <pre class="fragment"><code data-trim data-noescape>
 				combine(1, 2, 'as-string') // 3 
 				combine(1, 2, 'as-strnig')
 			 // Argument of type '"as-strnig"' is not assignable to parameter oftype 'ResultConversion'.(2345)
 			</code></pre>
           </section>
         </section>
-        <section>
+        <section data-background="#007acc">
           <section>
             <h4>Rest params in function parameters and Tuples</h4>
           </section>
-          <section>
+          <section id="fragments">
             <p>
               A rest parameter allows you a function to accept zero or more
               arguments of the specified type. In TypeScript, rest parameters
               follow these rules:
             </p>
 
-            <p>1. A function has only one rest parameter.</p>
-            <p>2. The rest parameter appears last in the parameter list.</p>
-            <p>3. The type of the rest parameter is an array type.</p>
+            <p class="fragment">1. A function has only one rest parameter.</p>
+            <p class="fragment">2. The rest parameter appears last in the parameter list.</p>
+            <p class="fragment">3. The type of the rest parameter is an array type.</p>
 
-            <pre><code data-trim data-noescape>
+            <pre class="fragment"><code data-trim data-noescape>
 				function fn(...rest: type[]) {
 					//...
 				 }
@@ -175,14 +179,14 @@
 				console.log(getTotal(10, 20, 30)); // 60
 			</code></pre>
           </section>
-          <section>
+          <section id="fragments">
             <p>Rest params can be used an Tuples as well</p>
-            <p>
+            <p class="fragment">
               Tuple types allow you to express an array with a fixed number of
               elements whose types are known, but need not be the same.
             </p>
 
-            <pre><code data-trim data-noescape>
+            <pre class="fragment"><code data-trim data-noescape>
 				// Declare a tuple type
 				let x: [string, number];
 				// Initialize it
@@ -191,13 +195,13 @@
 				x = [10, "hello"]; // Error
 			</code></pre>
           </section>
-          <section>
+          <section id="fragments">
             <p>
               In TypeScript 4.2, rest elements specifically been expanded in how
               they can be used. In prior versions, TypeScript only allowed
               ...rest elements at the very last position of a tuple type.
             </p>
-            <p>
+            <p class="fragment">
               However, now rest elements can occur anywhere within a tuple -
               with only a few restrictions.
             </p>
@@ -217,18 +221,18 @@
 				bar = [true, "some", "separated", "text", false];
 				</code></pre>
           </section>
-          <section>
+          <section id="fragments">
             <p>
               The only restriction is that a rest element can be placed anywhere
               in a tuple, so long as it’s not followed by another optional
               element or rest element.
             </p>
-            <p>
+            <p class="fragment">
               In other words, only one rest element per tuple, and no optional
               elements after rest elements.
             </p>
 
-            <pre><code data-trim data-noescape>		
+            <pre class="fragment"><code data-trim data-noescape>		
 				interface Clown {
 					/*...*/
 				  }
@@ -243,13 +247,13 @@
 				  // An optional element cannot follow a rest element.	
 			</code></pre>
           </section>
-          <section>
+          <section id="fragments">
             <p>
               These non-trailing rest elements can be used to model functions
               that take any number of leading arguments, followed by a few fixed
               ones.
             </p>
-            <pre><code data-trim data-noescape>		
+            <pre class="fragments"><code data-trim data-noescape>		
 				const doStuff = (
 					...args: [...names: string[], 
 					shouldCapitalize: boolean]
@@ -262,7 +266,7 @@
 			</code></pre>
           </section>
         </section>
-        <section>
+        <section data-background="#007acc">
           <section>
             <h4>Union types</h4>
             <p>
@@ -315,8 +319,8 @@
               create a union of three types which have a single shared field.
             </p>
           </section>
-          <section>
-            <pre><code data-trim data-noescape>		
+          <section data-auto-animate>
+            <pre data-id="code-animation" ><code class="hljs" data-trim data-line-numbers="|1-15|16,17|18-21">	<script type="text/template">
 				type NetworkLoadingState = {
 					state: "loading";
 				  };
@@ -338,37 +342,28 @@
 					| NetworkLoadingState
 					| NetworkFailedState
 					| NetworkSuccessState;
-				</code></pre>
+				</script></code></pre>
           </section>
-          <section>
+          <section id="fragments">
             <p>
               In this case, you can use a switch statement to narrow down which
               type is represented at runtime:
             </p>
-            <pre><code data-trim data-noescape>		
+            <p class="fragments"> By switching on state, TypeScript can narrow the union down in code flow analysis</p>
+
+            <pre class="fragments"><code class="hljs" data-trim data-line-numbers="|1-4|6,7|8-16|13">		
 				type NetworkState =
 					| NetworkLoadingState
 					| NetworkFailedState
 					| NetworkSuccessState;
 
 					function logger(state: NetworkState): string {
-					// Right now TypeScript does not know which of the three
-					// potential types state could be.
-
-					// Trying to access a property which isn't shared
-					// across all types will raise an error
 					state.code;
-					Property 'code' does not exist on type 'NetworkState'.
-					Property 'code' does not exist on type 'NetworkLoadingState'.
 
-					// By switching on state, TypeScript can narrow the union
-					// down in code flow analysis
 					switch (state.state) {
 					case "loading":
 						return "Downloading...";
 					case "failed":
-						// The type must be NetworkFailedState here,
-						// so accessing the `code` field is safe
 						return `Error ${state.code} downloading`;
 					case "success":
 						return `Downloaded ${state.response.title} - ${state.response.summary}`;
@@ -377,7 +372,7 @@
 				</code></pre>
           </section>
         </section>
-        <section>
+        <section data-background="#007acc">
           <section>
             <h4>Type vs Interface</h4>
           </section>
@@ -490,8 +485,10 @@
 					</code></pre>
           </section>
         </section>
-        <section>
-          <section>never & unknown</section>
+        <section data-background="#007acc">
+          <section >
+           <h4 >never & unknown</h4> 
+          </section>
           <section>
             <p>never</p>
             <p>

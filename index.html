@@ -1,26 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<style>
-			a{
-				font-size: 26px;
-				margin-bottom: 20px;
-			}
-		</style>
-	</head>
-	<body style="display:flex;justify-content: center;">
-		<div style="width:800px; display: flex; justify-content: center; flex-direction: column;">
-			<h1 style="text-align: center;">Typescript and Design Patters</h1>
-			<div style="display: flex; justify-content: center;flex-direction: column;">
-				<section data-background="assets/typescript-image.png">
-					<ul id="chapters">
-					<li><a href="chapters/chapter1/index.html">Chapter 1</a></li>
-					<li><a href="chapters/chapter2/index.html">Chapter 2</a></li>
-					<li><a href="chapters/chapter3/index.html">Chapter 3</a></li>
-					<li><a href="chapters/chapter4/index.html">Chapter 4</a></li>
-					</ul>
-				</section>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="../dist/reset.css" />
+	<link rel="stylesheet" href="../dist/reveal.css" />
+	<link rel="stylesheet" href="../dist/theme/black.css" />
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="../plugin/highlight/monokai.css" />
+</head>
+
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-background="./assets/typescript-image.png">
+				<h4 style="text-align: center;margin-top:120px;">Typescript and Design Patters</h4>
+				<div style="display: flex; align-items: center;justify-content: center; gap:30px;">
+				<a href="chapters/chapter0/index.html">Chapter 0</a>
+				<a href="chapters/chapter1/index.html">Chapter 1</a>
+				<a href="chapters/chapter2/index.html">Chapter 2</a>
+				<a href="chapters/chapter3/index.html">Chapter 3</a>
+				<a href="chapters/chapter4/index.html">Chapter 4</a>
 			</div>
+			</section>
 		</div>
-	</body>
+	</div>
+	<script src="../../dist/reveal.js"></script>
+	<script src="../../plugin/notes/notes.js"></script>
+	<script src="../../plugin/markdown/markdown.js"></script>
+	<script src="../../plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+		});
+	</script>
+</body>
+
 </html>

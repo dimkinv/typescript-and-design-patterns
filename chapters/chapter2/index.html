@@ -29,12 +29,10 @@
 					Partial Type
 					<p>Constructs a type with all properties of Type set to optional. This utility will return a type that represents all subsets of a given type.</p>
 				</section>
-				<section>Demo</section>
 					<section>
 					Required Type
 					<p>Constructs a type consisting of all properties of Type set to required. The opposite of Partial.</p>
 				</section>
-				<section>Demo</section>
 				<section>
 					Readonly Type
 					<p>Constructs a type with all properties of Type set to readonly, meaning the properties of the constructed type cannot be reassigned.</p>
@@ -42,7 +40,6 @@
 				</section>
 				<section>Demo</section>
 				<section>
-
 					<section>
 						Record
 						<p>Constructs an object type whose property keys are Keys and whose property values are Type. This utility can be used to map the properties of a type to another type.</p>
@@ -57,23 +54,19 @@
 							<p>howerver we can do it in Recored Type</p>
 					</section>
 				</section>
-				<section>Demo</section>
 				<section>
 					Pick
 					<p>Constructs a type by picking the set of properties Keys (string literal or union of string literals) from Type.</p>
 				</section>
-				<section>Demo</section>
 				<section>
 					Omit
 					<p>Constructs a type by picking all properties from Type and then removing Keys (string literal or union of string literals).</p>
 				</section>
-				<section>Demo</section>
 
 				<section>
 					Exclude
 					<p>Constructs a type by excluding from UnionType all union members that are assignable to ExcludedMembers.</p>
 				</section>
-				<section>Demo</section>
 				<section>
 					Extract
 					<p>Constructs a type by extracting from Type all union members that are assignable to Union.</p>
@@ -117,21 +110,51 @@
 					<p>we alredy learned about generics, lets dive in into some more conceps</p>
 				</div>
 			</section>
-			<section>
+			<section id="fragments">
 				<ul>
 					<li>1. Keyof Type Operator - Using the keyof operator to create new types</li>
-					<li>2. Typeof Type Operator - Using the typeof operator to create new types</li>
-					<li>3. Indexed Access Types - Using Type['a'] syntax to access a subset of a type</li>
-					<li>4. Conditional Types - Types which act like if statements in the type system</li>
-					<li>5. Mapped Types - Creating types by mapping each property in an existing type</li>
-					<li>6. Template Literal Types - Mapped types which change properties via template literal strings</li>
+					<li class="fragment">2. Typeof Type Operator - Using the typeof operator to create new types</li>
+					<li class="fragment">3. Indexed Access Types - Using Type['a'] syntax to access a subset of a type</li>
+					<li class="fragment">4. Conditional Types - Types which act like if statements in the type system</li>
+					<li class="fragment">5. Mapped Types - Creating types by mapping each property in an existing type</li>
+					<li class="fragment">6. Template Literal Types - Mapped types which change properties via template literal strings</li>
 				</ul>
 			</section>
 			<section>
-				<section>Keyof Type Operator </section>
+				<section>
+				<p> Keyof Type Operator </p>	
 			</section>
 			<section>
-			<section>Typeof Type Operator </section>
+				<p>The keyof operator takes an object type and produces a string or numeric literal union of its keys. The following type P is the same type as “x” | “y”</p>
+			</section>
+			<section>Demo</section>
+			</section>
+			<section>
+			<section>
+					<p>Typeof Type Operator</p>	
+				</section>
+				<section>
+					JavaScript already has a typeof operator you can use in an expression context:
+				</section>
+				<section>
+					<pre><code>
+						// Prints "string"
+						console.log(typeof "Hello world");
+					</code>
+					</pre>
+				</section>
+				<section>
+					TypeScript adds a typeof operator you can use in a type context to refer to the type of a variable or property:
+				</section>
+				<section>
+					<pre><code>
+						let s = "hello";
+						let n: typeof s;
+						   
+						let n: string
+					</code>
+					</pre>
+				</section>
 			</section>
 			<section>
 			<section>Indexed Access Types </section>

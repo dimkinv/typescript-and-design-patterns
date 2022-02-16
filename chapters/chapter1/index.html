@@ -141,6 +141,22 @@
 			 // Argument of type '"as-strnig"' is not assignable to parameter oftype 'ResultConversion'.(2345)
 			</code></pre>
           </section>
+          <section>
+            <h1>Quiz</h1>
+          </section>
+          <section>
+            <p> What can not be a literal type?</p>
+            <p>1. String </p>
+            <p>2. Number </p>
+            <p>3. Array </p>
+            <p>4. Boolean </p>
+          </section>
+          <section>
+            <p> Waht will be the type of this expression? </p>
+            <pre><code data-trim data-noescape>
+              const name = 'name'
+            </code></pre>
+          </section>
         </section>
         <section data-background="#007acc">
           <section>
@@ -265,6 +281,19 @@
 				doStuff("fee", "fi", "fo", "fum",true);
 			</code></pre>
           </section>
+          <section>
+            <h1>Quiz</h1>
+          </section>
+          <section>
+            <p> which of these is not correct? </p>
+            <pre class="fragment"><code data-trim data-noescape>let bar:[...number[], boolean]	</code></pre>
+            <pre class="fragment"><code data-trim data-noescape>	function foo(bool: boolean, num: number, ...rest: string[])</code></pre>
+            <pre class="fragment"><code data-trim data-noescape> let x:[...number, string?]	</code></pre></p>
+            <pre class="fragment"><code data-trim data-noescape>	
+              const func =
+               (...args:[...phoneNumbers :number[], shouldBeCalled:boolean])
+              :void => {}</code></pre>
+          </section>
         </section>
         <section data-background="#007acc">
           <section>
@@ -349,9 +378,9 @@
               In this case, you can use a switch statement to narrow down which
               type is represented at runtime:
             </p>
-            <p class="fragments"> By switching on state, TypeScript can narrow the union down in code flow analysis</p>
+            <p class="fragment"> By switching on state, TypeScript can narrow the union down in code flow analysis</p>
 
-            <pre class="fragments"><code class="hljs" data-trim data-line-numbers="|1-4|6,7|8-16|13">		
+            <pre class="fragment"><code class="hljs" data-trim data-line-numbers="|1-4|6,7|8-16|13">		
 				type NetworkState =
 					| NetworkLoadingState
 					| NetworkFailedState

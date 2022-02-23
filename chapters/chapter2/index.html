@@ -155,9 +155,90 @@
 					</code>
 					</pre>
 				</section>
+				<section>Demo</section>
 			</section>
 			<section>
-			<section>Indexed Access Types </section>
+			<section>
+			<p> Indexed Access Types </p>	
+			</section>
+			<section id="fragments">
+			<p>We can use an indexed access type to look up a specific property on another type:</p>
+			<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+			type Person = { age: number; name: string; alive: boolean };
+			type Age = Person["age"];
+			</script></code></pre>
+			<p class="fragment">
+				type Age = number
+			</p>
+			</section>
+			<section id="fragments">
+			<pre data-id="code-animation" ><code class="hljs">	<script type="text/template">
+				type I1 = Person["age" | "name"];
+			</script></code></pre>
+			<p class="fragment">
+				type I1 = string | number
+			</p>
+			<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+				type I2 = Person[keyof Person];
+			</script></code></pre>
+			<p class="fragment">
+				type I2 = string | number | boolean
+			</p>
+			<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+				type AliveOrName = "alive" | "name";
+				type I3 = Person[AliveOrName];
+			</script></code></pre>
+			<p class="fragment">
+				type I3 = string | boolean
+			</p>					 
+			</section>
+			<section id="fragments">
+				<p>Another example of indexing with an arbitrary type is using number to get the type of an array’s elements. We can combine this with typeof to conveniently capture the element type of an array literal:				</p>
+			<pre  class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+				const MyArray = [
+				{ name: "Alice", age: 15 },
+				{ name: "Bob", age: 23 },
+				{ name: "Eve", age: 38 },
+				];
+			</script></code></pre>
+			<pre  class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+				type Person = typeof MyArray[number];
+			</script></code></pre>
+			<p class="fragment"> 
+				type Person = {
+					name: string;
+					age: number;
+				}
+			</p>
+			</section>
+			<section id="fragments">
+			<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+				type Age = typeof MyArray[number]["age"];
+			</script></code></pre>
+			<p class="fragment">type Age = number</p>
+			<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+				type Age2 = Person["age"];
+			</script></code></pre>
+			<p class="fragment">type Age2 = number</p>
+			</section>
+			<section id="fragments">
+			<p>You can only use types when indexing, meaning you can’t use a const to make a variable reference:</p>
+			<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+				const key = "age";
+				type Age = Person[key];
+			</script></code></pre>
+			<p class="fragment">
+				Type 'key' cannot be used as an index type.
+				'key' refers to a value, but is being used as a type here. Did you mean 'typeof key'?
+			</p>
+			</section>
+			<section id="fragments"> 
+				<p>However, you can use a type alias for a similar style of refactor:				</p>
+			<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+				type key = "age";
+				type Age = Person[key];
+			</script></code></pre>
+			</section>
 			</section>
 			<section>
 				<section>Conditional Types </section>

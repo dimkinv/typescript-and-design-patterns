@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "test": "gulp test",
-    "start": "gulp serve",
+    "start": "http-server",
     "build": "gulp build"
   },
   "author": {
@@ -96,5 +96,10 @@
       "no-eq-null": 2,
       "no-unused-expressions": 0
     }
+  },
+  "dependencies": {
+    "http-server": "^14.1.0",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5"
   }
 }

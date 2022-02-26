@@ -72,6 +72,131 @@
                 <h2>Initial project initialization</h2>
                 <img src="../../assets/demo_teaser.png" />
             </section>
+            <section>
+                <h2>Decorators</h2>
+                <p>Generally follows decoration pattern</p>
+            </section>
+            <section>
+                <h2>Decoration Pattern</h2>
+                <img height="400" src="../../assets/decoration-pattern.png" />
+            </section>
+            <section>
+                <h2>Decoration Kurzgesagt</h2>
+                <h4 style="font-style: italic;">(In a Nutshell)</h4>
+                <ul>
+                    <li>Give execution of a component to another entity</li>
+                    <li>Another entity exutes additional code together with original one</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Activating Decorators</h2>
+                <pre><code class="language-bash">
+"experimentalDecorators": true,
+"emitDecoratorMetadata": true, 
+                </code></pre>
+                <small>In tsconfig.json</small>
+            </section>
+            <section>
+                <h2>Decorators in Typescript (Angular)</h2>
+                <pre><code class="language-typescript">
+@Injectable()
+class UsefulService {
+}
+
+@Injectable()
+class NeedsService {
+  constructor(public service: UsefulService) {}
+}
+                </code></pre>
+            </section>
+            <section>
+                <h2>Decorators in Typescript (Inversify)</h2>
+                <pre><code  class="language-typescript">
+@injectable()
+class Ninja implements Warrior {
+    @inject(TYPES.Weapon) private _katana: Weapon;
+    @inject(TYPES.ThrowableWeapon) private _shuriken: ThrowableWeapon;
+    public fight() { return this._katana.hit(); }
+    public sneak() { return this._shuriken.throw(); }
+}
+                </code></pre>
+            </section>
+            <section>
+                <h2>Decorators Types</h2>
+                <h4>(In Typescript)</h4>
+                <ul>
+                    <li>Class</li>
+                    <li>Property</li>
+                    <li>Accessor</li>
+                    <li>Method</li>
+                    <li>Patameter</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Decorator vs. Decorator Factory</h3>
+                <ul style="list-style: none;">
+                    <li>Decorator - creates direct decorator</li>
+                    <li>Factory - allows customization of decorators</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Class Decorators (implementation)</h2>
+                <pre><code class="language-typescript">
+function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
+    const start = new Date();
+    return class extends Constructor {
+        constructor(...args: any[]) {
+            const start = new Date();
+            super(args);
+            const end = new Date();
+            console.log(`took ${end.getTime() - start.getTime()}ms to finish construction`);
+        }
+    }
+}
+                </code></pre>
+            </section>
+            <section>
+                <h2>Class Decorators (Usage)</h2>
+                <pre><code class="language-typescript">
+@ConstructorPerformance
+class Test {
+    constructor(){
+        let result = 1
+        for (let index = 1; index < 10000; index++) {
+            result *= index;
+        }
+    }
+}
+const test = new Test();
+                </code></pre>
+                <pre><code class="language-bash">
+took 12ms to finish construction
+</code></pre>
+            </section>
+            <section>
+                <h2>Reflection and Metadata</h2>
+            </section>
+            <section>
+                <h2>Decorator Factory Example</h2>
+                <pre><code class="language-typescript">
+function color(value: string) {
+    // this is the decorator factory, it sets up
+    // the returned decorator function
+    return function (target) {
+        // this is the decorator
+        // do something with 'target' and 'value'...
+    };
+}                    
+                </code></pre>
+                <small>from: <a
+                        href="https://www.typescriptlang.org/docs/handbook/decorators.html">https://www.typescriptlang.org/docs/handbook/decorators.htm</a></small>
+            </section>
+            <section>
+                <h2>Wait... What about javascript?</h2>
+                <p>Javascript decorators are at <a href="https://github.com/tc39/proposal-decorators">stage2</a> </p>
+                <p>Which means: The committee expects the feature to be developed and eventually included in the
+                    standard</p>
+            </section>
         </div>
     </div>
 

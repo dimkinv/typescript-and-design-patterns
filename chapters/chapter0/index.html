@@ -140,6 +140,21 @@ class Ninja implements Warrior {
                 </ul>
             </section>
             <section>
+                <h2>Decorator Factory Example</h2>
+                <pre><code class="language-typescript">
+function color(value: string) {
+    // this is the decorator factory, it sets up
+    // the returned decorator function
+    return function (target) {
+        // this is the decorator
+        // do something with 'target' and 'value'...
+    };
+}                    
+                </code></pre>
+                <small>from: <a
+                        href="https://www.typescriptlang.org/docs/handbook/decorators.html">https://www.typescriptlang.org/docs/handbook/decorators.htm</a></small>
+            </section>
+            <section>
                 <h2>Class Decorators (implementation)</h2>
                 <pre><code class="language-typescript">
 function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
@@ -174,28 +189,94 @@ took 12ms to finish construction
 </code></pre>
             </section>
             <section>
-                <h2>Reflection and Metadata</h2>
+                <h2>Method Decorator (implementation)</h2>
+                <pre><code class="language-typescript">
+function ExceptionWrapper(target: any, propertyKey: string, descriptor: TypedPropertyDescriptor<(...args: any[]) => void>) {
+    const originalFunction  = target[propertyKey];
+    descriptor.value = (...args: any[]) => {
+        try{
+            originalFunction.apply(target, ...args);
+        } catch(error){
+            const typedError = error as Error
+            console.log(`caught exception in wrapper, ${typedError.message}`);
+        }
+    }
+
+}
+                </code></pre>
             </section>
             <section>
-                <h2>Decorator Factory Example</h2>
+                <h2>Method Decorator (usage)</h2>
                 <pre><code class="language-typescript">
-function color(value: string) {
-    // this is the decorator factory, it sets up
-    // the returned decorator function
-    return function (target) {
-        // this is the decorator
-        // do something with 'target' and 'value'...
-    };
-}                    
+export class Test {
+    @ExceptionWrapper
+    throwException(someValue: string) {
+        throw new Error(someValue);
+    }
+}
+
+
+const t = new Test();
+console.log(t.throwException('some string'));
                 </code></pre>
-                <small>from: <a
-                        href="https://www.typescriptlang.org/docs/handbook/decorators.html">https://www.typescriptlang.org/docs/handbook/decorators.htm</a></small>
+            </section>
+            <section>
+                <h2>Reflection and Metadata</h2>
+                <h4>Let's look at the code</h4>
+                <pre><code>
+__decorate([
+    ExceptionWrapper,
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], Test.prototype, "throwException", null);
+exports.Test = Test;
+const t = new Test();
+console.log(t.throwException('some string'));                    
+                </code></pre>
+                <small>Insufficient reflection</small>
+            </section>
+            <section>
+                <h2>reflect-metadta to the rescue</h2>
+                <ul>
+                    <li><a href="https://www.npmjs.com/package/reflect-metadata">https://www.npmjs.com/package/reflect-metadata</a></li>
+                    <li>~4M weekly downloads</li>
+                    <li><a href="https://rbuckton.github.io/reflect-metadata/">Detaied Proposal</a></li>
+                </ul>
+            </section>
+            <section>
+                <h2>Reflection with reflect-metadata</h2>
+                <pre><code>
+import 'reflect-metadata';
+function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
+    const start = new Date();
+    const metadataKeys = Reflect.getOwnMetadataKeys(Constructor); // ['design:paramtypes']
+    const metadataPatamtypes = Reflect.getMetadata('design:paramtypes', Constructor);
+    console.log(metadataPatamtypes.map((param:any) => param.name)); // [ 'String', 'Boolean' ]
+    return class extends Constructor {
+        constructor(...args: any[]) {
+            const start = new Date();
+            super(args);
+            const end = new Date();
+            console.log(`took ${end.getTime() - start.getTime()}ms to finish construction`);
+        }
+    }
+}
+                </code></pre>
             </section>
             <section>
                 <h2>Wait... What about javascript?</h2>
                 <p>Javascript decorators are at <a href="https://github.com/tc39/proposal-decorators">stage2</a> </p>
                 <p>Which means: The committee expects the feature to be developed and eventually included in the
                     standard</p>
+            </section>
+            <section>
+                <h2>DIY (decorators)</h2>
+                <ul>
+                    <li>Create an autologger decorator (method decorator)</li>
+                    <li>Should log once in a beginning of a function</li>
+                    <li>Should log all params with their values</li>
+                </ul>
             </section>
         </div>
     </div>

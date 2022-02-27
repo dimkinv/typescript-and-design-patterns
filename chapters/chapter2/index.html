@@ -25,21 +25,81 @@
 					<p>TypeScript provides several utility types to facilitate common type transformations. These utilities are available globally.</p>
 				</div>
 			</section>
-				<section>
-					Partial Type
-					<p>Constructs a type with all properties of Type set to optional. This utility will return a type that represents all subsets of a given type.</p>
-				</section>
+				<section id="fragments">
 					<section>
-					Required Type
-					<p>Constructs a type consisting of all properties of Type set to required. The opposite of Partial.</p>
+						Partial Type
+						<p>Constructs a type with all properties of Type set to optional. This utility will return a type that represents all subsets of a given type.</p>
+					</section>
+					<section>
+						<p>for example - consider this interface </p>
+						<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+							interface Todo {
+								title: string;
+								description: string;
+							  }
+						  </script></code></pre>
+					</section>
+					<section>
+						<p>Lets say I want to create a function that updates a todo  </p>
+						<p class="fragment">I can pass to this function also a partial type:</p>
+						<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+							const todo1 = {
+								title: "organize desk",
+								description: "clear clutter",
+							  };
+							   
+							  const todo2 = updateTodo(todo1, {
+								description: "throw out trash",
+							  });
+						  </script></code></pre>
+					</section>
 				</section>
-				<section>
-					Readonly Type
-					<p>Constructs a type with all properties of Type set to readonly, meaning the properties of the constructed type cannot be reassigned.</p>
-					<p>This utility is useful for representing assignment expressions that will fail at runtime (i.e. when attempting to reassign properties of a frozen object).</p>
+					<section id="fragments">
+					<section>
+						Required Type
+						<p>Constructs a type consisting of all properties of Type set to required. The opposite of Partial.</p>
+					</section>
+					<section>
+						<p>Consider the next example:</p>
+						<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+							interface Props {
+								a?: number;
+								b?: string;
+							  }
+						  </script></code></pre>
+					</section>
+					<section>
+						<pre  data-id="code-animation" ><code class="hljs">	<script type="text/template">
+							const obj: Props = { a: 5 };
+ 
+							const obj2: Required<Props> = { a: 5 };
+						  </script></code></pre>
+						  <p class="fragment"> This is an error!</p>
+					</section>
 				</section>
-				<section>Demo</section>
-				<section>
+				<section id="fragments">
+					<section>
+						Readonly Type
+						<p>Constructs a type with all properties of Type set to readonly, meaning the properties of the constructed type cannot be reassigned.</p>
+						<p>This utility is useful for representing assignment expressions that will fail at runtime (i.e. when attempting to reassign properties of a frozen object).</p>
+					</section>
+					<section id="fragments">
+						<p>Example:</p>
+						<pre data-id="code-animation" ><code class="hljs">	<script type="text/template">
+							interface Todo {
+								title: string;
+							  }
+							   
+							  const todo: Readonly<Todo> = {
+								title: "Delete inactive users",
+							  };
+							   
+							  todo.title = "Hello";
+						  </script></code></pre>
+						  <p class="fragment">Error: Cannot assign to 'title' because it is a read-only property.</p>
+					</section>
+				</section>
+				<section id="fragments">
 					<section>
 						Record
 						<p>Constructs an object type whose property keys are Keys and whose property values are Type. This utility can be used to map the properties of a type to another type.</p>
@@ -127,10 +187,25 @@
 			<section>
 				<p>The keyof operator takes an object type and produces a string or numeric literal union of its keys. The following type P is the same type as “x” | “y”</p>
 			</section>
-			<section>Demo</section>
+			<section id="fragments">
+				<pre data-id="code-animation" ><code class="hljs">	<script type="text/template">
+					type Point = { x: number; y: number };
+					type P = keyof Point;
+				  </script></code></pre>
+				  <p class="fragment"> type P = keyof Point </p>
+				  <p class="fragment"> type P = “x” | “y”: </p>
 			</section>
 			<section>
+				<pre data-id="code-animation" ><code class="hljs">	<script type="text/template">
+					type Mapish = { [k: string]: boolean };
+					type M = keyof Mapish;
+				  </script></code></pre>
+				  <p class="fragment"> type M = string | number </p>
+				  <p class="fragment">Note that in this example, M is string | number — this is because JavaScript object keys are always coerced to a string, so obj[0] is always the same as obj["0"].</p>
+			</section>
+			</section>
 			<section>
+			<section id="fragments">
 					<p>Typeof Type Operator</p>	
 				</section>
 				<section>
@@ -138,10 +213,9 @@
 				</section>
 				<section>
 					<pre><code>
-						// Prints "string"
 						console.log(typeof "Hello world");
-					</code>
-					</pre>
+					</code></pre>
+					<p class="fragment">What will be printed?</p>
 				</section>
 				<section>
 					TypeScript adds a typeof operator you can use in a type context to refer to the type of a variable or property:
@@ -155,7 +229,23 @@
 					</code>
 					</pre>
 				</section>
-				<section>Demo</section>
+				<section>
+					<pre data-id="code-animation" ><code class="hljs">	<script type="text/template">
+						function f() {
+							return { x: 10, y: 3 };
+						  }
+						  type P = ReturnType<typeof f>;
+					</script></code></pre>
+					<p class="fragment">What will be that type of P? </p>
+				</section>
+				<section>
+					<div>
+						type P = {
+							x: number;
+							y: number;
+						}
+					</div>
+				</section>
 			</section>
 			<section>
 			<section>
@@ -245,18 +335,81 @@
 					<p> Conditional Types </p>
 					<p> Conditional types help describe the relation between the types of inputs and outputs.</p>
 				</section>
+				<section id="fragments">
+					<p>Consider the next example: </p>
+					<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+						interface Animal {
+							live(): void;
+						  }
+						  interface Dog extends Animal {
+							woof(): void;
+						  }
+					</script></code></pre>
+				</section>
+				<section>
+					<pre data-id="code-animation" ><code class="hljs">	<script type="text/template">
+						type Example1 = Dog extends Animal ? number : string;
+					</script></code></pre>
+					<p class="fragment">type Example1 = number</p>
+				</section>
+				<section>
+					<pre data-id="code-animation" ><code class="hljs">	<script type="text/template">
+						type Example2 = RegExp extends Animal ? number : string;
+					</script></code></pre>
+					<p class="fragment">type Example2 = string</p>
+				</section>
+				<section>
+					<p>Conditional types take a form that looks a little like conditional expressions (condition ? trueExpression : falseExpression) in JavaScript:</p>
+					<p class="fragment">SomeType extends OtherType ? TrueType : FalseType;</p>
+				</section>
+				<section>
+					<p>Quiz: https://dd.engineering/quiz/FuLTCD8u-7X_</p>
+				</section>
 			</section>
 			<section>
 				<section>Mapped Types </section>
-				<section> 1 </section>
-				<section> 2 </section>
+				<section> 
+					<p> When you don’t want to repeat yourself, sometimes a type needs to be based on another type. </p>
+				</section>
+				<section> 
+					<p>A mapped type is a generic type which uses a union of PropertyKeys (frequently created via a keyof) to iterate through keys to create a type:</p>
+					<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+						type OptionsFlags<Type> = {
+							[Property in keyof Type]: boolean;
+						  };
+					</script></code></pre>
+					<p class="fragment"> In this example, OptionsFlags will take all the properties from the type Type and change their values to be a boolean.</p>
+				</section>
+				<section>
+					<p>for example: </p>
+					<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+					type FeatureFlags = {
+						darkMode: () => void;
+						newUserProfile: () => void;
+					  };
+					   
+					  type FeatureOptions = OptionsFlags<FeatureFlags>;
+					</script></code></pre>
+					<p class="fragment">What is the type of FeatureOptions?</p>
+					<div class="fragment">
+						type FeatureOptions = {
+							darkMode: boolean;
+							newUserProfile: boolean;
+						}
+					</div>
+				</section>
+				<section>
+				 <p> Assignment: </p>	
+				 <p> 1. Create a generic type that receives a type and returns the same type </p>	
+				 <p> 2. Create a generic type that receives a type and returns the same type but with all its keys as optional </p>	
+				 <p> 3. Create a generic type that receives a type and returns the same type but with all its keys as nullable </p>	
+				 <p> 5. Create a generic type that receives 2 types and returns only the keys that are in both </p>	
+				 <p> 6. Create a generic type that receives 2 types and returns the first type as the types keys and the second type as the types value</p>	
+					 
+				</section>
 			</section>
 			<section>
 			<section>Template Literal Types </section>
-			</section>
-			<section>
-			<section>The "is" key word </section>
-			</section>
 			</div>
 		</div>
 
@@ -277,3 +430,9 @@
 		</script>
 	</body>
 </html>
+
+
+
+<!-- <pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+				
+</script></code></pre> -->

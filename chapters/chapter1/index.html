@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="../../plugin/highlight/monokai.css" />
   </head>
   
-
   <body>
     <div class="reveal">
       <div class="slides">
@@ -31,26 +30,38 @@
         <section data-background="#007acc">
           <section>
             <h4>string, number or boolean literal as a type</h4> 
+            <aside class="notes">
+              A literal is a more concrete sub-type of a collective type. What
+              this means is that "Hello World" is a string, but a string is not
+              "Hello World" inside the type system.
+            </aside>
           </section>
-          <section>
-            A literal is a more concrete sub-type of a collective type. What
-            this means is that "Hello World" is a string, but a string is not
-            "Hello World" inside the type system.
-          </section>
-          <section >
+          <section id="fragments">
+            <p>
+              1. strings
+            </p>
+            <p class="fragment">
+
+              2. numbers
+            </p>
+            <p class="fragment">
+              3. booleans
+            </p>
+            <aside class="notes">
             There are three sets of literal types available in TypeScript today:
             strings, numbers, and booleans; by using literal types you can allow
             an exact value which a string, number, or boolean
+          </aside>
           </section>
           <section id="fragments">
            <p> for instance if a create a variable </p> 
             <pre class="fragment"><code data-trim data-noescape>
 				const number = 23 
 			</code></pre>
-            <p class="fragment">
+          <aside class="notes">
               TypeScript will infer the type of this const as 23 (and not a number
               in general) since it is a const and it will never change!
-            </p> 
+            </aside>
           </section>
           <section data-background="#007acc">
             <h2 data-id="code-title">For example:</h2>
@@ -162,12 +173,12 @@
           <section>
             <h4>Rest params in function parameters and Tuples</h4>
           </section>
-          <section id="fragments">
-            <p>
+          <section>
+            <aside class="notes"> 
               A rest parameter allows you a function to accept zero or more
               arguments of the specified type. In TypeScript, rest parameters
               follow these rules:
-            </p>
+            </aside>
 
             <p class="fragment">1. A function has only one rest parameter.</p>
             <p class="fragment">2. The rest parameter appears last in the parameter list.</p>
@@ -196,11 +207,13 @@
 			</code></pre>
           </section>
           <section id="fragments">
-            <p>Rest params can be used an Tuples as well</p>
-            <p class="fragment">
+            <aside class="notes"> 
+              Rest params can be used an Tuples as well
+              
               Tuple types allow you to express an array with a fixed number of
               elements whose types are known, but need not be the same.
-            </p>
+            </aside>
+           
 
             <pre class="fragment"><code data-trim data-noescape>
 				// Declare a tuple type
@@ -559,20 +572,17 @@
         </section>
         <section data-background="#007acc">
           <section >
-           <h4 >never & unknown</h4> 
-          </section>
-          <section>
-            <p>never</p>
-            <p>
-              The never type represents the type of values that never occur. For
-              instance, never is the return type for a function expression or an
-              arrow function expression that always throws an exception or one
-              that never returns. Variables also acquire the type never when
-              narrowed by any type guards that can never be true. The never type
-              is a subtype of, and assignable to, every type; however, no type
-              is a subtype of, or assignable to, never (except never itself).
-              Even any isn’t assignable to never.
-            </p>
+           <h4 > type never </h4> 
+           <aside class="notes">
+            The never type represents the type of values that never occur. For
+            instance, never is the return type for a function expression or an
+            arrow function expression that always throws an exception or one
+            that never returns. Variables also acquire the type never when
+            narrowed by any type guards that can never be true. The never type
+            is a subtype of, and assignable to, every type; however, no type
+            is a subtype of, or assignable to, never (except never itself).
+            Even any isn’t assignable to never.
+           </aside>
           </section>
           <section>
             <pre><code data-trim data-noescape>		
@@ -593,12 +603,12 @@
 			</code></pre>
           </section>
           <section>
-            <p>unknown</p>
-            <p>
+            <p> type unknown</p>
+            <aside class="notes"> 
               the unknown type is simmilar to the any type, howwever you can't
               assign a value of type unknown to another value with different
               type without type check (typeof) first.
-            </p>
+            </aside>
           </section>
           <section>
             <pre><code data-trim data-noescape>		
@@ -628,7 +638,6 @@
 
 		</code></pre>
           </section>
-          <section>The "is" key word </section>
         </section>
         </section>
       </div>

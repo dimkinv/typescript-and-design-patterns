@@ -20,12 +20,224 @@
 						OOP refresher
 				</section>
 					<section>
-						<section> The OOP principles </section> 
-						<section> Encapsulation </section>
-						<section> Abstraction </section>
-						<section> Inheritance </section>
-						<section> in react: https://reactjs.org/docs/composition-vs-inheritance.html </section>
-						<section> Polymorphism </section>
+							<section>
+								<p> The OOP principles </p>
+								<aside class="notes"> 
+									Class discussion
+								</aside>
+							</section>
+							<section>
+								<p>
+									Encapsulation 
+								</p>
+							</section>
+							<section>
+								<img src="https://m.media-amazon.com/images/I/71FN+ugi1gL._AC_SL1500_.jpg" width="450" height="300">
+								<aside class="notes"> 
+									Encapsulation is achieved when each object keeps its state private, inside a class. 
+									Other objects don’t have direct access to this state. Instead, 
+									they can only call a list of public functions — called methods.
+								</aside>
+							</section>
+							<section>
+								<p> In TypeScript</p>
+							</section>
+							<section>
+								access modifiers - public, private, and protected
+							</section>
+							<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+							class Person {
+								constructor(private name: string, private age: number){}
+							
+								talk() {
+									console.log('bla bla..')
+								}
+								move(){
+									if(this.age < 30) {
+										this.run()
+									}
+									else {
+										this.walk();
+									}
+								}
+							
+								private  walk () {
+									console.log('walking...')
+								}  
+								private  run () {
+									console.log('running...')
+								}  
+							}
+							</script></code></pre>
+							</section>
+							<section>
+								getters and setters
+							</section>
+							<section>
+								<pre><code class="typescript-language" data-trim data-noescape data-line-numbers="17-28">
+									class Person {
+										constructor(private _name: string, private _age: number){}
+									
+										talk() {
+											console.log('bla bla..')
+										}
+										move(){
+											if(this._age < 30) {
+												this.run()
+											}
+											else {
+												this.walk();
+											}
+										}
+									
+									
+									get age (){
+										if(this._age > 18){
+											return 'child';
+										}
+										else {
+											return 'adult'
+										}
+									}
+									
+									set name (name: string) {
+										this._name = name.toUpperCase()
+									}
+									
+									  private  walk () {
+										  console.log('walking...')
+									  }  
+									  private  run () {
+										  console.log('running...')
+									  }  
+									}
+								</script></code></pre>
+								</section>
+						<section> 
+						 <p>
+						 	Abstraction 
+						 </p>
+						</section>
+						<section>
+							<img src="https://m.media-amazon.com/images/I/71FN+ugi1gL._AC_SL1500_.jpg" width="450" height="300">
+							<aside class="notes"> 
+								In object-oriented design, programs are often extremely large. And separate objects communicate with each other a lot. 
+								So maintaining a large codebase like this for years — with changes along the way — is difficult.
+								Abstraction is a concept aiming to ease this problem.
+
+								Applying abstraction means that each object should only expose a high-level mechanism for using it.
+							</aside>
+						</section>
+						<section>
+							<p> In TypeScript</p>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape data-line-numbers="4-14">
+								class Person {
+									constructor(private name: string, private age: number){}
+								
+									talk() {
+										console.log('bla bla..')
+									}
+									move(){
+										if(this.age < 30) {
+											this.run()
+										}
+										else {
+											this.walk();
+										}
+									}
+								
+									private  walk () {
+										console.log('walking...')
+									}  
+									private  run () {
+										console.log('running...')
+									}  
+								}
+								</script></code></pre>
+						</section>
+						<section> 
+						 <p>
+						 	Inheritance 
+						 </p>
+						 <aside class="notes"> 
+							OK, we saw how encapsulation and abstraction can help us develop and maintain a big codebase.
+
+							But do you know what is another common problem in OOP design?
+							
+							Objects are often very similar. They share common logic. But they’re not entirely the same. Ugh…
+							
+							So how do we reuse the common logic and extract the unique logic into a separate class? One way to achieve this is inheritance.
+							
+							It means that you create a (child) class by deriving from another (parent) class. This way, we form a hierarchy.
+						</aside>
+						</section>
+						<section>
+							<p> In TypeScript</p>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								class Adult extends Person {
+									constructor(private adultName: string) {
+										super(adultName, 30);
+									}
+									work() {
+										console.log('working...')
+									}
+								}
+								
+								class Child extends Person {
+									constructor(private childName: string) {
+										super(childName, 10);
+									}
+									play() {
+										console.log('playing...')
+									}
+								}
+								</script></code></pre>
+						</section>
+						<section>
+							<p>Composition over inheritance</p>
+						</section>
+						<section  data-background-color="white" data-background-iframe="https://en.wikipedia.org/wiki/Composition_over_inheritance" data-background-interactive>
+						</section>
+						<aside class="notes"> 
+							1. The fact that JavaScript does not support multiple inheritances is one reason for favoring composition over inheritance in JavaScript. Since you can only extend one class in JavaScript, but if you need multiple features, such as reading and writing character data into a file, you need Reader and Writer functionality. It makes your job simple to have them as private members, and this is called Composition.
+							2. Composition offers better test-ability of a class than Inheritance. If one class consists of another class, you can easily construct a Mock Object representing a composed class for the sake of testing. This privilege is not given by inheritance.
+							3. Although both Composition and Inheritance allow you to reuse code, one of Inheritance’s disadvantages is that it breaks encapsulation. If the subclass depends on the action of the superclass for its function, it suddenly becomes fragile. When super-class behavior changes, sub-class functionality can be broken without any modification on its part.
+							4. In the timeless classic Design Patterns, several object-oriented design patterns listed by Gang of Four: Elements of Reusable Object-Oriented Software, favor Composition over Inheritance. Strategy design pattern, where composition and delegation are used to modify the behavior of Context without touching context code, is a classical example of this. Instead of getting it by inheritance, because Context uses composition to carry strategy, it is simple to have a new implementation of strategy at run-time.
+							5. Another reason why composition is preferred over inheritance is flexibility. If you use Composition, you are flexible enough to replace the better and updated version of the Composed class implementation. One example is the use of the comparator class, which provides features for comparison.
+						</aside>
+						<section  data-background-color="white" data-background-iframe="https://reactjs.org/docs/composition-vs-inheritance.html" data-background-interactive>
+						</section>
+						<section>
+							<p>Dependency injection</p>
+						</section>
+						<section>
+							<p>
+								Polymorphism 
+							</p>
+						</section>
+						 <aside class="notes"> 
+						 		Say we have a parent class and a few child classes which inherit from it. 
+								Sometimes we want to use a collection — for example a list — which contains a mix of all these classes. Or we have a method implemented for the parent class — but we’d like to use it for the children, too.
+								This can be solved by using polymorphism.
+								Simply put, polymorphism gives a way to use a class exactly like its parent so there’s no confusion with mixing types. But each child class keeps its own methods as they are.
+							</aside>
+						<section>
+							<p> In TypeScript </p>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								const person: Person  = new Adult('Asaf');
+							</script></code></pre>
+						</section>
+						<section>
+							<p>Duck typing?</p>
+						</section>
+						</section>
 					</section>
 					<section>
 					  <section> the SOLID principles </section>
@@ -64,7 +276,20 @@
 						</section>
 				 	</section>
 				<section>
-					<section> UML class diagram </section>
+					<section> 
+					 <p>
+						 UML class diagram 
+					</p>
+					</section>
+						 <section>
+							 <p>Visibility</p>
+							 <img src="../../assets/Visibility.png" width="1000" height="250">
+						 </section>
+						 <section>
+							 <p>UML relations notation</p>
+							 <img src="../../assets/Relations.png" width="1000" height="450">
+						 </section>
+					</section>
 				</section>
 			</div>
 		</div>

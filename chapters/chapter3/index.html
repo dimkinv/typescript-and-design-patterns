@@ -200,32 +200,39 @@
 						</section>
 						<section>
 							<p>Composition over inheritance</p>
+							<aside class="notes">
+								1. The fact that JavaScript does not support multiple inheritances is one reason for favoring composition over inheritance in JavaScript. Since you can only extend one class in JavaScript, but if you need multiple features, such as reading and writing character data into a file, you need Reader and Writer functionality. It makes your job simple to have them as private members, and this is called Composition.
+								2. Composition offers better test-ability of a class than Inheritance. If one class consists of another class, you can easily construct a Mock Object representing a composed class for the sake of testing. This privilege is not given by inheritance.
+								3. Although both Composition and Inheritance allow you to reuse code, one of Inheritance’s disadvantages is that it breaks encapsulation. If the subclass depends on the action of the superclass for its function, it suddenly becomes fragile. When super-class behavior changes, sub-class functionality can be broken without any modification on its part.
+								4. In the timeless classic Design Patterns, several object-oriented design patterns listed by Gang of Four: Elements of Reusable Object-Oriented Software, favor Composition over Inheritance. Strategy design pattern, where composition and delegation are used to modify the behavior of Context without touching context code, is a classical example of this. Instead of getting it by inheritance, because Context uses composition to carry strategy, it is simple to have a new implementation of strategy at run-time.
+								5. Another reason why composition is preferred over inheritance is flexibility. If you use Composition, you are flexible enough to replace the better and updated version of the Composed class implementation. One example is the use of the comparator class, which provides features for comparison.
+							</aside>
+						</section>
+						<section>
+							<p>Inheritance: describe what objects are - "Is a"</p>
+							<p>Composition: describe what objects do - "Has a"</p>
 						</section>
 						<section  data-background-color="white" data-background-iframe="https://en.wikipedia.org/wiki/Composition_over_inheritance" data-background-interactive>
 						</section>
-						<aside class="notes"> 
-							1. The fact that JavaScript does not support multiple inheritances is one reason for favoring composition over inheritance in JavaScript. Since you can only extend one class in JavaScript, but if you need multiple features, such as reading and writing character data into a file, you need Reader and Writer functionality. It makes your job simple to have them as private members, and this is called Composition.
-							2. Composition offers better test-ability of a class than Inheritance. If one class consists of another class, you can easily construct a Mock Object representing a composed class for the sake of testing. This privilege is not given by inheritance.
-							3. Although both Composition and Inheritance allow you to reuse code, one of Inheritance’s disadvantages is that it breaks encapsulation. If the subclass depends on the action of the superclass for its function, it suddenly becomes fragile. When super-class behavior changes, sub-class functionality can be broken without any modification on its part.
-							4. In the timeless classic Design Patterns, several object-oriented design patterns listed by Gang of Four: Elements of Reusable Object-Oriented Software, favor Composition over Inheritance. Strategy design pattern, where composition and delegation are used to modify the behavior of Context without touching context code, is a classical example of this. Instead of getting it by inheritance, because Context uses composition to carry strategy, it is simple to have a new implementation of strategy at run-time.
-							5. Another reason why composition is preferred over inheritance is flexibility. If you use Composition, you are flexible enough to replace the better and updated version of the Composed class implementation. One example is the use of the comparator class, which provides features for comparison.
-						</aside>
 						<section  data-background-color="white" data-background-iframe="https://reactjs.org/docs/composition-vs-inheritance.html" data-background-interactive>
 						</section>
 						<section>
 							<p>Dependency injection</p>
+						<aside class="notes">
+							Dependency injection implements inversion of control through composition, and is often similar to the strategy pattern. While the strategy pattern is intended for dependencies that are interchangeable throughout an object's lifetime, in dependency injection it may be that only a single instance of a dependency is used
+						</aside>
 						</section>
 						<section>
 							<p>
 								Polymorphism 
 							</p>
+							<aside class="notes"> 
+									Say we have a parent class and a few child classes which inherit from it. 
+								   Sometimes we want to use a collection — for example a list — which contains a mix of all these classes. Or we have a method implemented for the parent class — but we’d like to use it for the children, too.
+								   This can be solved by using polymorphism.
+								   Simply put, polymorphism gives a way to use a class exactly like its parent so there’s no confusion with mixing types. But each child class keeps its own methods as they are.
+							   </aside>
 						</section>
-						 <aside class="notes"> 
-						 		Say we have a parent class and a few child classes which inherit from it. 
-								Sometimes we want to use a collection — for example a list — which contains a mix of all these classes. Or we have a method implemented for the parent class — but we’d like to use it for the children, too.
-								This can be solved by using polymorphism.
-								Simply put, polymorphism gives a way to use a class exactly like its parent so there’s no confusion with mixing types. But each child class keeps its own methods as they are.
-							</aside>
 						<section>
 							<p> In TypeScript </p>
 						</section>
@@ -244,24 +251,315 @@
 					  <section> 
 						  <p> Single-responsibility </p> 
 						  <p>A class (or function ) should be responsible for a single part of the functionality </p>
+						  <img src="../../assets/Single-Responsibility-Principle.png" style="height: 500px; width: 650px;">
+						</section>
+
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								function filterEmployees(httpClient, filter){
+									// Get employees
+									// Apply filters 
+									// Display on the UI 
+									// send to BE and save 
+								}
+							</code></pre>
 						</section>
 					  <section> 
 							<p>	Open–closed </p>
 							<p> A class should be open to extensions but close to modifications </p>
+							<img src="../../assets/Open-Closed-Principle.png" style="height: 500px; width: 650px;">
+							<aside class="notes"> 
+								Once you are happy with a class and it passes all UT, it should be close to modifications
+								new fuctionality sould be added in a new class, and it should extend (or use conposition) the other class
+							</aside>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								export class ErrorHandler {
+									private messageBox: any;
+									private httpClient; 
+								
+									constructor(messageBox, httpClient) {
+										this.messageBox = messageBox;
+									}
+								
+									wrapError(err, publicResponse, severity) {
+										if(severity < 5) {
+											this.handleWarning("Warning", publicResponse);
+										}
+										else {
+											this.handleError("Critical Error", publicResponse);
+										}
+									}
+
+									private handleWarning(header, content) {
+										this.messageBox.show(header, content);
+									}
+									
+									private handleError(header, content) {
+										this.messageBox.show(header, content);
+									}
+								}
+							</code></pre>
+						</section>
+						<section>
+							New requirement: Every error should by logged via the Back-end (http request)
+							<aside class="notes"> 
+								Most of the people will go and modify the class without a second thought.
+
+								Open/closed principle is intended to mitigate risk when introducing new functionality. 
+								Since you don’t modify existing code you can be assured that it wouldn’t be broken. 
+								It reduces maintenance cost and increases product stability.
+							</aside>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								export class ErrorLogger {
+									private _endpoint: string = "api/log";
+									
+									constructor(private _httpClient) {
+								
+									}
+								
+									logError(errorObject): Promise<any> {
+										return this._httpClient.post(this._endpoint, errorObject);
+									}
+								}
+							</code></pre>
+							<aside class="notes"> 
+								In order to not violate the open-closed principle, we need to create a new class.
+							</aside>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								export class ErrorHandlerWithLogging extends ErrorHandler {
+									private _logger: ErrorLogger;
+									
+									constructor(messageBox, httpClient, logger: ErrorLogger) {
+										super(messageBox, httpClient);
+										this._logger = logger;
+									}
+								
+									wrapError(err, publicResponse, severity) {
+										return this._logger.logError(err).then(() => {
+											super.wrapError(err, publicResponse, severity);
+										});
+									}
+								}
+							</code></pre>
+							<aside class="notes"> 
+								Inhairitance
+							</aside>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								export class ErrorHandlerWithLogging {
+									private errorHandler;
+									private _logger: ErrorLogger;
+									
+									constructor(messageBox, httpClient, logger: ErrorLogger) {
+										this.errorHandler = new ErrorHandler(messageBox, httpClient);
+										this._logger = logger;
+									}
+								
+									wrapError(err, publicResponse, severity) {
+										return this._logger.logError(err).then(() => {
+											this.errorHandler.wrapError(err, publicResponse, severity);
+										});
+									}
+								}
+							</code></pre>
+							<aside class="notes"> 
+								Composition
+							</aside>
 						</section>
 					  <section> 
 						 <p> Liskov substitution (substituability)</p>
 						 <p> You should be able to use a subclass in place of its parant class</p>
+						 <img src="../../assets/Liskov-Substitution-Principle.png" style="height: 500px; width: 650px;">
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								class Rectangle {
+									constructor(private width: number, private length: number) {}
+								  
+									public setWidth(width: number) {
+									  this.width = width;
+									}
+								  
+									public setLength(length: number) {
+									  this.length = length;
+									}
+								  
+									public getArea() {
+									  return this.width * this.length;
+									}
+								  }
+							</code></pre>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+							class Square extends Rectangle {
+								constructor(side: number) {
+								  super(side, side);
+								}
+							  
+								public setWidth(width: number) {
+								  // A square must maintain equal sides
+								  super.setWidth(width);
+								  super.setLength(width);
+								}
+							  
+								public setLength(length: number) {
+								  super.setWidth(length);
+								  super.setLength(length);
+								}
+							  }
+							</code></pre>
+							<aside class="notes"> 
+								While this design is still serviceable, it fails the Liskov test and misses out on the benefits mentioned earlier. Moreover, clients of our code may have to adapt, like so:
+							</aside>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								const rect: Rectangle = new Square(10); // Can be either a Rectangle or a Square
+								rect.setWidth(20);
+								expect(rect.getArea()).toBe(200); // ❌ If rect is a Square, area is 400
+							</code></pre>
+						</section>
+						<section id="fragments">
+							<pre><code class="typescript-language" data-trim data-noescape>
+								const rect: Rectangle = new Square(10);
+								rect.setWidth(20);
+								if (rect instanceof Square) {
+								  // ...
+								} else {
+								  // ...
+								}
+							</code></pre>
+							<p class="fragment"> Type checking a polymorphic value is a good indicator of an LSP violation.</p>
 						</section>
 					  <section> 
 						 <p> Interface segregation </p>
 						 <p> A class should not depend on methods that is does not need to implement </p>
+						 <img src="../../assets/Interface-Segregation-Principle.png" style="height: 500px; width: 650px;">
+						</section>
+						<section id="fragments">
+							<p>How to recognize the issue?</p>
+							<p class="fragment">You dont know how to implement the interface method</p>
+							<p class="fragment">The interface method does not belong to the class</p>
+							<p class="fragment">You are forced to leave a method empty</p>
+							<p class="fragment">You are forced to throw a generic exeption</p>
+							<img class="fragment" src="../../assets/interface-bird.png" style="height: 200px;">
+							<img class="fragment" src="../../assets/class-penguin.png" style="height: 200px;">
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								export interface SmartDevice {
+									call(contact: string): void;
+									sendSms(contact: string, text: string): void;
+									openApp(path: string): void;
+									connectToWifi(ssid: string, password: string): void;
+								  }
+							</code></pre>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								export class SmartPhone implements SmartDevice {
+									call(contact: string): void {
+									  console.log("Calling " + contact);
+									}
+									sendSms(contact: string, text: string): void {
+									  console.log("Texting " + text + " to " + contact);
+									}
+									openApp(path: string): void {
+									  console.log("Opening App " + path);
+									}
+									connectToWifi(ssid: string, password: string): void {
+									  console.log("Connecting to Wifi " + ssid + " with password " + password);
+									}
+								  }
+							</code></pre>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								export class Tablet implements SmartDevice {
+									call(contact: string): void {
+									  throw new Error("can not place a call.");
+									}
+									sendSms(contact: string, text: string): void {
+									  throw new Error("can not send an sms message.");
+									}
+									openApp(path: string): void {
+									  console.log("Opening App " + path);
+									}
+									connectToWifi(ssid: string, password: string): void {
+									  console.log("Connecting to Wifi " + ssid + " with password " + password);
+									}
+								  }
+							</code></pre>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								export interface SmartDevice {
+									openApp(path: string): void;
+									connectToWifi(ssid: string, password: string): void;
+								  }
+								  
+								  export interface PhoneDevice {
+									call(contact: string): void;
+									sendSms(contact: string, text: string): void;
+								  }
+							</code></pre>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								export class SmartPhone implements SmartDevice, PhoneDevice {
+									call(contact: string): void {
+									  console.log("Calling " + contact);
+									}
+									sendSms(contact: string, text: string): void {
+									  console.log("Texting " + text + " to " + contact);
+									}
+									openApp(path: string): void {
+									  console.log("Opening App " + path);
+									}
+									connectToWifi(ssid: string, password: string): void {
+									  console.log("Connecting to Wifi " + ssid + " with password " + password);
+									}
+								  }
+							</code></pre>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								export class Tablet implements SmartDevice {
+									openApp(path: string): void {
+									  console.log("Opening App " + path);
+									}
+									connectToWifi(ssid: string, password: string): void {
+									  console.log("Connecting to Wifi " + ssid + " with password " + password);
+									}
+								  }
+							</code></pre>
 						</section>
 					  <section> 
 						 <p> Dependency inversion </p> 
 						 <p>Your classes and modules sould depend on abstractions instead of concrete implementations </p>
+						 <img src="../../assets/Dependency-Inversion-Principle.png" style="height: 500px; width: 650px;">
 						</section>
-						<section> Think of a mouse </section>
+						<section id="fragments">
+							<p>Abstractions = Interfaces</p>
+							<p class="fragment">Your classes should depend on interfaces and not concrete classes</p>
+						</section>
+						<section id="fragments"> 
+						 <p> Think of a computer mouse </p>
+						 <p class="fragment">wired</p>
+						 <p class="fragment">wireless</p>
+						 <p class="fragment">Touchpad</p>
+						 <p class="fragment">Laser</p>
+						 <p class="fragment">Optical</p>
+						 <p class="fragment">Trackball</p>
+						</section>
 						<section>
 							<pre><code data-trim data-noescape>
 								interface Mouse {
@@ -272,7 +570,119 @@
 							</code></pre>
 						</section>
 						<section>
-							Looose Coupling
+						<p> Loose Coupling </p>
+						<aside class="notes"> 
+							1. in which components are weakly associated (have breakable relationship) with each other, and so, changes in one component least affect existence or performance of another component.
+							2. in which each of its components has, or makes use of, little or no knowledge of the definitions of other separate components. Subareas include the coupling of classes, interfaces, data, and services.[1] Loose coupling is the opposite of tight coupling.	
+						</aside>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								export interface Post {
+									id: number;
+									title: string;
+									body: string;
+									postedBy: string;
+								}
+							</code></pre>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								export interface IPostsService {
+									getAll(): Promise<Post[]>;
+									save(post: Post): Promise<void>;
+								}
+							</code></pre>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								export class PostsService implements IPostsService {
+									private _fileName: string = "posts.json";
+									
+									constructor() {}
+									
+									getAll(): Promise<Post[]> {
+										return new Promise((resolve, reject) => {
+											fs.readFile(this._fileName, "utf8", (err, data) => {
+												if(err) {
+													reject(err);
+												}
+												resolve(JSON.parse(data));
+											});
+										});
+									}
+									save(post: Post): Promise<void> {
+										return new Promise((resolve, reject) => {
+											this.getAll().then(posts => {
+												posts.push(post);
+												fs.writeFile(this._fileName, posts, err => {
+													if(err) {
+														reject(err);
+													}
+													else {
+														resolve();
+													}
+												})
+											})
+										})
+									}
+								}
+							</code></pre>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								export class MockPostsService implements IPostsService {
+									posts: Post[] = [];
+									constructor() {
+										this.posts = [
+											{id: 1, title: 'Test Post 1', body: 'Test Post 1', postedBy: 'Me'},
+											{id: 2, title: 'Test Post 2', body: 'Test Post 2', postedBy: 'Me'},
+											{id: 3, title: 'Test Post 3', body: 'Test Post 3', postedBy: 'Me'},
+											{id: 4, title: 'Test Post 4', body: 'Test Post 4', postedBy: 'Me'},
+										]
+									}
+									
+									getAll(): Promise<Post[]> {
+										return Promise.resolve(this.posts);
+									}
+									save(post: Post): Promise<void> {
+										this.posts.push(post);
+										return Promise.resolve();
+									}
+								}
+							</code></pre>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								export class NewsFeed {
+									constructor(private _service: IPostsService) {
+								
+									}
+								
+									show() {
+										this._service.getAll().then(posts => {
+											posts.forEach(post => {
+												console.log(`${post.title} - ${post.body}`);
+											})
+										});
+									}
+								}
+							</code></pre>
+							<aside class="notes"> 
+								Now when I'll create this class, I can give to it either PostsService or MockPostsService
+							</aside>
+						</section>
+						<section id="fragments">
+							<p>But what if I'm not the one who is in charge of creating the class? Inversion of control</p>
+							<p class="fragment"> and acctually I don't really need the IPostsService interface, because every class is also a type</p>
+							<img class="fragment" src="../../assets/class-as-type.png" width="600" height="300">
+						</section>
+						<section>
+							<img src="../../assets/dependency-injection.png" width="1000" height="400">
+							<aside class="notes"> 
+								In this example nest echo system is in charge of creating the service class when the controller is created. 
+								the CatsService here, which is a class, is used here as a type. Any place else wihch I want to create a CatsController, I can inject a simmilar class and it will work (Like UT)
+							</aside>
 						</section>
 				 	</section>
 				<section>

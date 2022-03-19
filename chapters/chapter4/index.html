@@ -34,24 +34,87 @@
                               </aside>
                         </section>
                         <section>
-                            <img src="../../assets/strategy.png" alt="">
+                            <img src="../../assets/strategy-example.png" alt="">
+                            <aside class="notes"> 
+                                The Strategy pattern suggests that you take a class that does something specific in a lot of different ways and extract all of these algorithms into separate classes called strategies.							</aside>
                         </section>
                         <section>
                             <h4>Demo</h4>
                         </section>
+                        <section>
+                            <p>Pros and Cons</p>
+                        </section>
+                        <section id="fragments">
+                           <p> Pros </p>
+                           <ul>
+                               <li class="fragment"><p> You can swap algorithms used inside an object at runtime. </p></li>
+                               <li class="fragment"><p>You can isolate the implementation details of an algorithm from the code that uses it.</p></li>
+                               <li class="fragment"><p>You can replace inheritance with composition.</p></li>
+                               <li class="fragment"><p>Open/Closed Principle. You can introduce new strategies without having to change the context.</p></li>
+                           </ul>
+                        </section>
+                        <section id="fragments">
+                           <p> Cons </p>
+                           <ul>
+                               <li class="fragment"><p> If you only have a couple of algorithms and they rarely change, there’s no real reason to overcomplicate the program with new classes and interfaces that come along with the pattern. </p></li>
+                               <li class="fragment"><p> Clients must be aware of the differences between strategies to be able to select a proper one.</p></li>
+                           </ul>
+                        </section>
 						<section> 
-                          <h4> state  </h4>  
+                          <h4> State  </h4>  
                         </section>
                         <section>
                             <p > State is a behavioral design pattern that lets an object alter its behavior when its internal state changes. It appears as if the object changed its class. </p>
                         </section>
                         <section>
-                            <img src="../../assets/state.png" alt="">
+                            <img src="../../assets/state-example.png" alt="">
                         </section>
                         <section>
                             <h4>Demo</h4>
                         </section>
-						<section> Observer  </section>
+                        <section>
+                            <p> State vs Strategy</p>
+                                <aside class="notes"> 
+                                This structure may look similar to the Strategy pattern, but there’s one key difference. In the State pattern, the particular states may be aware of each other and initiate transitions from one state to another, whereas strategies almost never know about each other.
+                              </aside>
+                        </section>
+                        <section>
+                            <p>Pros and Cons</p>
+                        </section>
+                        <section id="fragments">
+                           <p> Pros </p>
+                           <ul>
+                               <li class="fragment"><p> Single Responsibility Principle. Organize the code related to particular states into separate classes. </p></li>
+                               <li class="fragment"><p> Open/Closed Principle. Introduce new states without changing existing state classes or the context.</p></li>
+                               <li class="fragment"><p>Simplify the code of the context by eliminating bulky state machine conditionals.</p></li>
+                           </ul>
+                        </section>
+                        <section id="fragments">
+                           <p> Cons </p>
+                           <ul>
+                               <li class="fragment"><p> Applying the pattern can be overkill if a state machine has only a few states or rarely changes. </p></li>
+                           </ul>
+                        </section>
+						<section> 
+                            <h4> Observer  </h4>
+                        </section>
+                        <section>
+                            <p>Observer is a behavioral design pattern that lets you define a subscription mechanism to notify multiple objects about any events that happen to the object they’re observing.</p>
+                        </section>
+                        <section>
+                            <img src="../../assets/observer-example.png" alt="">
+                        </section>
+                        <section>
+                            <h4>Demo</h4>
+                        </section>
+                        <section>
+                            <h3>
+                                Exercise
+                            </h3>
+                            <p>
+                                We’re building an application for watching the price of various stocks. There are two places in our application where we need to display the stocks:  -StatusBar: shows the popular stocks  -StockListView: shows the complete list of stocks When the price of a stock changes, the corresponding views (StatusBar and/or StockListView) need to be refreshed to reflect the latest price.  Our application currently does not have the ability to communicate the change in stock prices to the corresponding views.  Use the observer pattern to solve this problem. 
+                            </p>
+                        </section>
                     </section>
                     <section>
                             <section> 
@@ -62,7 +125,34 @@
 				 	</section>
 				<section>
 					<section> <h4> Structural </h4></section>
-                    <section>Adapter </section>
+                    <section> 
+                       <p> Adapter  </p>
+                    </section>
+                    <section>
+                        <p>Adapter is a structural design pattern that allows objects with incompatible interfaces to collaborate</p>
+                    </section>
+                    <section>
+                        <img src="../../assets/adapter-example.png" alt="">
+                    </section>
+                    <section>
+                        <p>Demo</p>
+                    </section>
+                    <section>
+                        <p>Pros and Cons</p>
+                    </section>
+                    <section id="fragments">
+                        <p> Pros </p>
+                        <ul>
+                            <li class="fragment"><p>  Single Responsibility Principle. You can separate the interface or data conversion code from the primary business logic of the program. </p></li>
+                            <li class="fragment"><p>  Open/Closed Principle. You can introduce new types of adapters into the program without breaking the existing client code, as long as they work with the adapters through the client interface.</p></li>
+                        </ul>
+                     </section>
+                     <section id="fragments">
+                        <p> Cons </p>
+                        <ul>
+                            <li class="fragment"><p> The overall complexity of the code increases because you need to introduce a set of new interfaces and classes. Sometimes it’s simpler just to change the service class so that it matches the rest of your code. </p></li>
+                        </ul>
+                     </section>
 				</section>
                 <section>
                     <h4>Dependency injection </h4>

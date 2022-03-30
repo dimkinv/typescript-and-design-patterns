@@ -155,7 +155,121 @@
                      </section>
 				</section>
                 <section>
-                    <h4>Dependency injection </h4>
+                    <h4>DI / IoC</h4>
+                    <p class="fragment">IoC - Inversion of Control, the ability to get dependencies from ourside source</p>
+                    <p class="fragment">DI - Dependency Injection - specific implmentation of IoC</p>
+                </section>
+                <section>
+                    <h4>Inversion of control</h4>
+                    <p>
+                        The art of not taking responsibility 😈
+                    </p>
+                    <p>Let someone else to give you dependencies</p>
+                </section>
+                <section>
+                    <h4>Dependency Injection</h4>
+                    <p>Specific implmenetation of IoC</p>
+                </section>
+                <section>
+                    <h4>The Problem:</h4>
+                    <pre><code class="language-typescript">
+    export class UserService{
+        private userPersistenceService: UserPersistenceService;
+        constructor(){
+            this.userPersistenceService = new UserPersistenceService();
+        }
+    
+        saveUser(user: User){
+            this.userPersistenceService.saveUser(user);
+        }
+    }                        
+    const userService = new UserService();
+    userService.saveUser({});
+                        </code></pre>
+                </section>
+                <section>
+                    <h4>The naive solution</h4>
+                    <pre><code class="language-typescript">
+    export class UserService{
+        constructor(private userPersistenceService: UserPersistenceService){}
+    
+        saveUser(user: User){
+            this.userPersistenceService.saveUser(user);
+        }
+    }
+    const userService = new UserService(new UserPersistenceService());
+    userService.saveUser({});
+                        </code></pre>
+                </section>
+                <section>
+                    <h4>Better solution</h4>
+                    <pre><code class="language-typescript">
+    export class UserService{
+        constructor(private userPersistenceService: UserPersistenceService){}
+    
+        saveUser(user: User){
+            this.userPersistenceService.saveUser(user);
+        }
+    }
+    const userPersistenceService = injector.get(UserPersistenceService);
+    const userService = new UserService(userPersistenceService);
+    userService.saveUser({});
+                        </code></pre>
+                </section>
+                <section>
+                    <h4>best solution</h4>
+                    <pre><code class="language-typescript">@injectable()
+    export class UserPersistenceService(){
+    }
+    
+    @injectable()
+    export class UserService {
+        constructor(@inject() private userPersistenceService: UserPersistenceService) { }
+    
+        saveUser(user: User) {
+            this.userPersistenceService.saveUser(user);
+        }
+    }
+    const userService = injector.get(UserService);
+    userService.saveUser({});
+                        </code></pre>
+                </section>
+                <section>
+                    <h4>Frameworks and libraries</h4>
+                    <ul style="list-style: none;">
+                        <li>Angular - client framework with DI</li>
+                        <li>Nest.js - backend framwork with DI</li>
+                        <li><a href="https://inversify.io/">Inversify</a> - IoC implementation for typescript</li>
+                    </ul>
+                </section>
+                <section data-transition="slide-in none">
+                    <h4>Factory Pattern</h4>
+                    <img src="../../assets/dirty-factory.jpeg" />
+                    
+                </section>
+                <section data-transition="none">
+                    <h4>factory pattern</h4>
+                    <img src="../../assets/clean-factory.jpeg" />
+                </section>
+                <section>
+                    <h4>What it is good for?</h4>
+                    <ul>
+                        <li class="fragment">Creating different objects instead of classes based on configurations</li>
+                        <li class="fragment">Addressing interface instead of concrete class</li>
+                        <li class="fragment">Hiding initialization which cannot go into constructor</li>
+                    </ul>
+                </section>
+                <section>
+                    <h4>Simplest example</h4>
+                    <pre><code  data-trim data-noescape class="language-typescript">function getHttpClient(){
+        const httpClient = new HttpClient()
+        return httpClient;
+    }
+    
+    class HttpClient{
+    
+    }
+                    </code></pre>
                 </section>
 			</div>
 		</div>

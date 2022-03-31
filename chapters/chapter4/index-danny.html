@@ -1,0 +1,351 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="../../dist/reset.css">
+    <link rel="stylesheet" href="../../dist/reveal.css">
+    <link rel="stylesheet" href="../../dist/theme/black.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../../plugin/highlight/monokai.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h4>Design Patterns</h4>
+            </section>
+            <section>
+                <section>
+                    <h4>Behavioural</h4>
+                </section>
+                <section>
+                    <h4> Strategy </h4>
+                </section>
+                <section>
+                    <p> Strategy is a behavioral design pattern that
+                        lets you define a family of algorithms, put each of them into a separate class, and make their
+                        objects interchangeable. </p>
+                    <aside class="notes">
+                        The strategy pattern brings the ability to bring the most appropriate algorithm, from a group of
+                        simmilar algorithms, at run time.
+                    </aside>
+                </section>
+                <section>
+                    <img src="../../assets/strategy-example.png" alt="">
+                    <aside class="notes">
+                        The Strategy pattern suggests that you take a class that does something specific in a lot of
+                        different ways and extract all of these algorithms into separate classes called strategies.
+                    </aside>
+                </section>
+                <section>
+                    <h4>Demo</h4>
+                </section>
+                <section>
+                    <p>Pros and Cons</p>
+                </section>
+                <section id="fragments">
+                    <p> Pros </p>
+                    <ul>
+                        <li class="fragment">
+                            <p> You can swap algorithms used inside an object at runtime. </p>
+                        </li>
+                        <li class="fragment">
+                            <p>You can isolate the implementation details of an algorithm from the code that uses it.
+                            </p>
+                        </li>
+                        <li class="fragment">
+                            <p>You can replace inheritance with composition.</p>
+                        </li>
+                        <li class="fragment">
+                            <p>Open/Closed Principle. You can introduce new strategies without having to change the
+                                context.</p>
+                        </li>
+                    </ul>
+                </section>
+                <section id="fragments">
+                    <p> Cons </p>
+                    <ul>
+                        <li class="fragment">
+                            <p> If you only have a couple of algorithms and they rarely change, there’s no real reason
+                                to overcomplicate the program with new classes and interfaces that come along with the
+                                pattern. </p>
+                        </li>
+                        <li class="fragment">
+                            <p> Clients must be aware of the differences between strategies to be able to select a
+                                proper one.</p>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h4> State </h4>
+                </section>
+                <section>
+                    <p> State is a behavioral design pattern that lets an object alter its behavior when its internal
+                        state changes. It appears as if the object changed its class. </p>
+                </section>
+                <section>
+                    <img src="../../assets/state-example.png" alt="">
+                </section>
+                <section>
+                    <h4>Demo</h4>
+                </section>
+                <section>
+                    <p> State vs Strategy</p>
+                    <aside class="notes">
+                        This structure may look similar to the Strategy pattern, but there’s one key difference. In the
+                        State pattern, the particular states may be aware of each other and initiate transitions from
+                        one state to another, whereas strategies almost never know about each other.
+                    </aside>
+                </section>
+                <section>
+                    <p>Pros and Cons</p>
+                </section>
+                <section id="fragments">
+                    <p> Pros </p>
+                    <ul>
+                        <li class="fragment">
+                            <p> Single Responsibility Principle. Organize the code related to particular states into
+                                separate classes. </p>
+                        </li>
+                        <li class="fragment">
+                            <p> Open/Closed Principle. Introduce new states without changing existing state classes or
+                                the context.</p>
+                        </li>
+                        <li class="fragment">
+                            <p>Simplify the code of the context by eliminating bulky state machine conditionals.</p>
+                        </li>
+                    </ul>
+                </section>
+                <section id="fragments">
+                    <p> Cons </p>
+                    <ul>
+                        <li class="fragment">
+                            <p> Applying the pattern can be overkill if a state machine has only a few states or rarely
+                                changes. </p>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h4> Observer </h4>
+                </section>
+                <section>
+                    <p>Observer is a behavioral design pattern that lets you define a subscription mechanism to notify
+                        multiple objects about any events that happen to the object they’re observing.</p>
+                </section>
+                <section>
+                    <img src="../../assets/observer-example.png" alt="">
+                </section>
+                <section>
+                    <h4>Demo</h4>
+                </section>
+                <section>
+                    <h3>
+                        Exercise
+                    </h3>
+                    <p>
+                        We’re building an application for watching the price of various stocks. There are two places in
+                        our application where we need to display the stocks: -StatusBar: shows the popular stocks
+                        -StockListView: shows the complete list of stocks When the price of a stock changes, the
+                        corresponding views (StatusBar and/or StockListView) need to be refreshed to reflect the latest
+                        price. Our application currently does not have the ability to communicate the change in stock
+                        prices to the corresponding views. Use the observer pattern to solve this problem.
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h4> Creational </h4>
+                </section>
+                <section> Factory </section>
+            </section>
+            </section>
+            <section>
+                <section>
+                    <h4> Structural </h4>
+                </section>
+                <section>
+                    <p> Adapter </p>
+                </section>
+                <section>
+                    <p>Adapter is a structural design pattern that allows objects with incompatible interfaces to
+                        collaborate</p>
+                </section>
+                <section>
+                    <img src="../../assets/adapter-example.png" alt="">
+                </section>
+                <section>
+                    <p>Demo</p>
+                </section>
+                <section>
+                    <p>Pros and Cons</p>
+                </section>
+                <section id="fragments">
+                    <p> Pros </p>
+                    <ul>
+                        <li class="fragment">
+                            <p> Single Responsibility Principle. You can separate the interface or data conversion code
+                                from the primary business logic of the program. </p>
+                        </li>
+                        <li class="fragment">
+                            <p> Open/Closed Principle. You can introduce new types of adapters into the program without
+                                breaking the existing client code, as long as they work with the adapters through the
+                                client interface.</p>
+                        </li>
+                    </ul>
+                </section>
+                <section id="fragments">
+                    <p> Cons </p>
+                    <ul>
+                        <li class="fragment">
+                            <p> The overall complexity of the code increases because you need to introduce a set of new
+                                interfaces and classes. Sometimes it’s simpler just to change the service class so that
+                                it matches the rest of your code. </p>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <h4>DI / IoC</h4>
+                <p class="fragment">IoC - Inversion of Control, the ability to get dependencies from ourside source</p>
+                <p class="fragment">DI - Dependency Injection - specific implmentation of IoC</p>
+            </section>
+            <section>
+                <h4>Inversion of control</h4>
+                <p>
+                    The art of not taking responsibility 😈
+                </p>
+                <p>Let someone else to give you dependencies</p>
+            </section>
+            <section>
+                <h4>Dependency Injection</h4>
+                <p>Specific implmenetation of IoC</p>
+            </section>
+            <section>
+                <h4>The Problem:</h4>
+                <pre><code class="language-typescript">
+export class UserService{
+    private userPersistenceService: UserPersistenceService;
+    constructor(){
+        this.userPersistenceService = new UserPersistenceService();
+    }
+
+    saveUser(user: User){
+        this.userPersistenceService.saveUser(user);
+    }
+}                        
+const userService = new UserService();
+userService.saveUser({});
+                    </code></pre>
+            </section>
+            <section>
+                <h4>The naive solution</h4>
+                <pre><code class="language-typescript">
+export class UserService{
+    constructor(private userPersistenceService: UserPersistenceService){}
+
+    saveUser(user: User){
+        this.userPersistenceService.saveUser(user);
+    }
+}
+const userService = new UserService(new UserPersistenceService());
+userService.saveUser({});
+                    </code></pre>
+            </section>
+            <section>
+                <h4>Better solution</h4>
+                <pre><code class="language-typescript">
+export class UserService{
+    constructor(private userPersistenceService: UserPersistenceService){}
+
+    saveUser(user: User){
+        this.userPersistenceService.saveUser(user);
+    }
+}
+const userPersistenceService = injector.get(UserPersistenceService);
+const userService = new UserService(userPersistenceService);
+userService.saveUser({});
+                    </code></pre>
+            </section>
+            <section>
+                <h4>best solution</h4>
+                <pre><code class="language-typescript">@injectable()
+export class UserPersistenceService(){
+}
+
+@injectable()
+export class UserService {
+    constructor(@inject() private userPersistenceService: UserPersistenceService) { }
+
+    saveUser(user: User) {
+        this.userPersistenceService.saveUser(user);
+    }
+}
+const userService = injector.get(UserService);
+userService.saveUser({});
+                    </code></pre>
+            </section>
+            <section>
+                <h4>Frameworks and libraries</h4>
+                <ul style="list-style: none;">
+                    <li>Angular - client framework with DI</li>
+                    <li>Nest.js - backend framwork with DI</li>
+                    <li><a href="https://inversify.io/">Inversify</a> - IoC implementation for typescript</li>
+                </ul>
+            </section>
+            <section data-transition="slide-in none">
+                <h4>Factory Pattern</h4>
+                <img src="../../assets/dirty-factory.jpeg" />
+                
+            </section>
+            <section data-transition="none">
+                <h4>factory pattern</h4>
+                <img src="../../assets/clean-factory.jpeg" />
+            </section>
+            <section>
+                <h4>What it is good for?</h4>
+                <ul>
+                    <li class="fragment">Creating different objects instead of classes based on configurations</li>
+                    <li class="fragment">Addressing interface instead of concrete class</li>
+                    <li class="fragment">Hiding initialization which cannot go into constructor</li>
+                </ul>
+            </section>
+            <section>
+                <h4>Simplest example</h4>
+                <pre><code  data-trim data-noescape class="language-typescript">function getHttpClient(){
+    const httpClient = new HttpClient()
+    return httpClient;
+}
+
+class HttpClient{
+
+}
+                </code></pre>
+            </section>
+        </div>
+    </div>
+
+    <script src="../../dist/reveal.js"></script>
+    <script src="../../plugin/notes/notes.js"></script>
+    <script src="../../plugin/markdown/markdown.js"></script>
+    <script src="../../plugin/highlight/highlight.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+</body>
+
+</html>

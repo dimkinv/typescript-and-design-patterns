@@ -17,7 +17,7 @@
 		<div class="reveal">
 			<div class="slides">
 			<section>
-				Advenced typing
+				Advanced typing
 			</section>
 			<section>
 				<div style="display: flex; flex-direction: column; justify-content: center;">
@@ -260,6 +260,9 @@
 						let n: string
 					</code>
 					</pre>
+					<aside class="notes"> 
+						How many types are in Javascript?
+					  </aside>
 				</section>
 				<section>
 					<pre data-id="code-animation" ><code class="hljs">	<script type="text/template">
@@ -572,6 +575,7 @@
 				 <p> 1. Create a generic type that receives a type and returns the same type </p>	
 				 <p> 2. Create a generic type that receives a type and returns the same type but with all its keys as optional </p>	
 				 <p> 3. Create a generic type that receives a type and returns the same type but with all its keys as nullable </p>	
+				 <p> 4. Create a generic type that receives a type and returns the same type but with all its keys as readonly (nested types too) </p>	
 				</section>
 				<section>
 					<p>Answer 1:</p>
@@ -600,7 +604,9 @@
 				<section>
 					<p>Answer 4:</p>
 					<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
-						type MyExclude<T,U> = T extends U ? T : never;
+						type DeepReadonly<T> = {
+							readonly [P in keyof T]: DeepReadonly<T[P]>;
+						};
 					</script></code></pre>
 				</section>
 			</section>

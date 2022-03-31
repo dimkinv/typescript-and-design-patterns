@@ -136,11 +136,11 @@
 			</code></pre>
           </section>
           <section id="fragments">
-            <p>
+            <aside class="notes"> 
               in this way we can both prevent other people from sending
               unrealted strings to this function and prevent typos like
               "as-strnig".
-            </p>
+            </aside>
 
             <p class="fragment">any other string will not be alowed.</p>
 
@@ -180,7 +180,7 @@
               follow these rules:
             </aside>
 
-            <p class="fragment">1. A function has only one rest parameter.</p>
+            <p >1. A function has only one rest parameter.</p>
             <p class="fragment">2. The rest parameter appears last in the parameter list.</p>
             <p class="fragment">3. The type of the rest parameter is an array type.</p>
 
@@ -201,11 +201,12 @@
           </section>
           <section>
             <pre><code data-trim data-noescape>
-				console.log(getTotal()); // 0
-				console.log(getTotal(10, 20)); // 30
-				console.log(getTotal(10, 20, 30)); // 60
-			</code></pre>
+            console.log(getTotal()); // 0
+            console.log(getTotal(10, 20)); // 30
+            console.log(getTotal(10, 20, 30)); // 60
+          </code></pre>
           </section>
+
           <section id="fragments">
             <aside class="notes"> 
               Rest params can be used an Tuples as well
@@ -213,29 +214,24 @@
               Tuple types allow you to express an array with a fixed number of
               elements whose types are known, but need not be the same.
             </aside>
-           
-
-            <pre class="fragment"><code data-trim data-noescape>
-				// Declare a tuple type
-				let x: [string, number];
-				// Initialize it
-				x = ["hello", 10]; // OK
-				// Initialize it incorrectly
-				x = [10, "hello"]; // Error
-			</code></pre>
-          </section>
-          <section id="fragments">
-            <p>
+              <pre><code data-trim data-noescape>
+                // Declare a tuple type
+                let x: [string, number];
+                // Initialize it
+                x = ["hello", 10]; // OK
+                // Initialize it incorrectly
+                x = [10, "hello"]; // Error
+              </code></pre>
+            </section>
+          <section>
+            <aside class="notes"> 
               In TypeScript 4.2, rest elements specifically been expanded in how
               they can be used. In prior versions, TypeScript only allowed
               ...rest elements at the very last position of a tuple type.
-            </p>
-            <p class="fragment">
+
               However, now rest elements can occur anywhere within a tuple -
               with only a few restrictions.
-            </p>
-          </section>
-          <section>
+              </aside>
             <pre><code data-trim data-noescape>			
 				let foo: [...string[], number];
 		
@@ -249,19 +245,17 @@
 				bar = [true, "some text", false];
 				bar = [true, "some", "separated", "text", false];
 				</code></pre>
-          </section>
-          <section id="fragments">
-            <p>
+        </section>
+        <section id="fragments">
+            <aside class="notes"> 
               The only restriction is that a rest element can be placed anywhere
               in a tuple, so long as it’s not followed by another optional
               element or rest element.
-            </p>
-            <p class="fragment">
+
               In other words, only one rest element per tuple, and no optional
               elements after rest elements.
-            </p>
-
-            <pre class="fragment"><code data-trim data-noescape>		
+              </aside>
+            <pre><code data-trim data-noescape>		
 				interface Clown {
 					/*...*/
 				  }
@@ -277,11 +271,11 @@
 			</code></pre>
           </section>
           <section id="fragments">
-            <p>
+            <aside class="notes"> 
               These non-trailing rest elements can be used to model functions
               that take any number of leading arguments, followed by a few fixed
               ones.
-            </p>
+            </aside>
             <pre class="fragments"><code data-trim data-noescape>		
 				const doStuff = (
 					...args: [...names: string[], 
@@ -311,12 +305,12 @@
         <section data-background="#007acc">
           <section>
             <h4>Union types</h4>
-            <p>
+            <aside class="notes"> 
               A union type describes a value that can be one of several types.
               We use the vertical bar (|) to separate each type, so number |
               string | boolean is the type of a value that can be a number, a
               string, or a boolean.
-            </p>
+           </aside>
           </section>
           <section>
             <pre><code data-trim data-noescape>		
@@ -340,26 +334,24 @@
 					  /* Property 'swim' does not exist on type 'Bird | Fish'.
 						roperty 'swim' does not exist on type 'Bird'.*/
 				</code></pre>
-          </section>
-          <section>
-            <p>
-              Union types can be a bit tricky here, but it just takes a bit of
-              intuition to get used to. If a value has the type A | B, we only
-              know for certain that it has members that both A and B have. In
-              this example, Bird has a member named fly. We can’t be sure
-              whether a variable typed as Bird | Fish has a fly method. If the
-              variable is really a Fish at runtime, then calling pet.fly() will
-              fail.
-            </p>
+        <aside class="notes"> 
+            Union types can be a bit tricky here, but it just takes a bit of
+            intuition to get used to. If a value has the type A | B, we only
+            know for certain that it has members that both A and B have. In
+            this example, Bird has a member named fly. We can’t be sure
+            whether a variable typed as Bird | Fish has a fly method. If the
+            variable is really a Fish at runtime, then calling pet.fly() will
+          fail.
+        </aside>
           </section>
           <section>
             <h4>Discriminating Unions</h4>
-            <p>
+            <aside class="notes"> 
               A common technique for working with unions is to have a single
               field which uses literal types which you can use to let TypeScript
               narrow down the possible current type. For example, we’re going to
               create a union of three types which have a single shared field.
-            </p>
+            </aside>
           </section>
           <section data-auto-animate>
             <pre data-id="code-animation" ><code class="hljs" data-trim data-line-numbers="|1-15|16,17|18-21">	<script type="text/template">
@@ -387,13 +379,13 @@
 				</script></code></pre>
           </section>
           <section id="fragments">
-            <p>
+            <aside class="notes"> 
               In this case, you can use a switch statement to narrow down which
               type is represented at runtime:
-            </p>
-            <p class="fragment"> By switching on state, TypeScript can narrow the union down in code flow analysis</p>
 
-            <pre class="fragment"><code class="hljs" data-trim data-line-numbers="|1-4|6|8-10|11-20">		
+              By switching on state, TypeScript can narrow the union down in code flow analysis
+            </aside>
+            <pre><code class="hljs" data-trim data-line-numbers="|1-4|6|8-10|11-20">		
 				type NetworkState =
 					| NetworkLoadingState
 					| NetworkFailedState
@@ -463,14 +455,14 @@
           </section>
           <section>
             <p>Interface</p>
-            <p>
+            <aside class="notes"> 
               One of TypeScript’s core principles is that type checking focuses
               on the shape that values have. This is sometimes called “duck
               typing” or “structural subtyping”. In TypeScript, interfaces fill
               the role of naming these types, and are a powerful way of defining
               contracts within your code as well as contracts with code outside
               of your project.
-            </p>
+            </aside>
           </section>
           <section>
             <p>1. Interfaces can be extended</p>
@@ -492,13 +484,13 @@
           </section>
           <section>
             <p>2. Declaration merging</p>
-            <p>
+            <aside class="notes"> 
               “declaration merging” means that the compiler merges two separate
               declarations declared with the same name into a single definition.
               This merged definition has the features of both of the original
               declarations. Any number of declarations can be merged; it’s not
               limited to just two declarations.
-            </p>
+            </aside>
           </section>
           <section>
             <pre><code data-trim data-noescape>		
@@ -516,15 +508,14 @@
           </section>
           <section>
             <p>Type alias</p>
-            <p>
+            <aside class="notes"> 
               it’s common to want to use the same type more than once and refer
               to it by a single name. A type alias is exactly that - a name for
               any type. The syntax for a type alias is:
-            </p>
+            </aside>
           </section>
           <section>
             <p>1. types can not be extended - types intersection</p>
-            <p></p>
             <pre><code data-trim data-noescape>		
 					type Person = {
 						name: string,
@@ -572,7 +563,7 @@
         </section>
         <section data-background="#007acc">
           <section >
-           <h4 > type never </h4> 
+           <h4> type never </h4> 
            <aside class="notes">
             The never type represents the type of values that never occur. For
             instance, never is the return type for a function expression or an
@@ -603,9 +594,9 @@
 			</code></pre>
           </section>
           <section>
-            <p> type unknown</p>
+            <h4> type unknown</h4>
             <aside class="notes"> 
-              the unknown type is simmilar to the any type, howwever you can't
+              the unknown type is simmilar to the any type, however you can't
               assign a value of type unknown to another value with different
               type without type check (typeof) first.
             </aside>

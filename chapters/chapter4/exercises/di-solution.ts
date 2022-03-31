@@ -1,5 +1,3 @@
-// the assumption in this tutorial is that the user will create the instances manually and thus no deep injections are possible
-// i.e. A --> B --> C
 type Constructor<T> = new (...args:any[]) => T;
 export class Injector {
     private static dpependencies = new Map<string, Constructor<unknown>>();

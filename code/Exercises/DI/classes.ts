@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { Inject, Injectable, Injector } from "./di-solution";
+import { Inject, Injectable, Injector } from "../../solutions/DI/di-solution";
 
 @Injectable('logic')
 class Logic {

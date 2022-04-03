@@ -663,6 +663,70 @@
 				<a href="https://github.com/ghoullier/awesome-template-literal-types">awesome-template-literal-types</a>
 			</section>
 			</section>
+			<section>
+				<h4>Typescript Tips and Tricks</h4>
+			</section>
+			<section>
+				<h4>Mutable vs. Immutable</h4>
+				<ul>
+					<li>Predictability</li>
+					<li>Performance</li>
+					<li>Mutation tracking</li>
+				</ul>
+			</section>
+			<section>
+				<pre><code class="language-typescript" data-noescape data-trim>
+					const user = {
+						firstnname: 'Hatul',
+						lastname: 'Hatuli'
+					}
+					function checkValidityAndFireRockets(u: typeof user){
+						if(u.firstnname && u.lastname){
+							u.firstnname = u.firstnname.toLowerCase();
+							return user;
+						}
+					
+						return null;
+					}
+					const validatedUser = checkValidityAndFireRockets(user);
+					console.log(user === validatedUser);
+					console.log(user.firstnname === 'Hatuli');
+				</code></pre>
+			</section>
+			<section>
+				<img src="../../assets/i-see.jpeg" />
+			</section>
+			<section>
+				<h2>Deep readonly! 🙌</h2>
+				<pre><code class="language-typescript" data-noescape data-trim>
+					type DeepReadonly<T> = {
+						readonly [P in keyof T]: DeepReadonly<T[P]>;
+					};
+				</code></pre>
+			</section>
+			<section>
+				<pre><code class="language-typescript" data-noescape data-trim>
+					const user = {
+						firstnname: 'Hatul',
+						lastname: 'Hatuli'
+					}
+					type ReadonlyUser = DeepReadonly&lt;typeof user>;
+					function checkValidityAndFireRockets(u: ReadonlyUser) {
+						if (u.firstnname && u.lastname) {
+							u.firstnname = u.firstnname.toLowerCase(); // Cannot assign to 'firstnname' because it is a read-only property.
+							return user;
+						}
+						return null;
+					}
+					const validatedUser = checkValidityAndFireRockets(user);
+					console.log(user === validatedUser);
+					console.log(user.firstnname === 'Hatuli');
+				</code></pre>
+			</section>
+			<section>
+				<h2>type narrowing</h2>
+				
+			</section>
 			</div>
 		</div>
 

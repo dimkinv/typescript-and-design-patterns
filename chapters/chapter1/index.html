@@ -436,7 +436,7 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
       </section>
         <section data-background="#007acc">
           <h4>
-            First Module - Things you should have known in TypeScript but you
+            Things you should have known in TypeScript but you
             probably don't
           </h4>
         </section>
@@ -878,21 +878,32 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
             </aside>
           </section>
           <section>
-            <p>1. Interfaces can be extended</p>
-            <pre><code data-trim data-noescape>		
-					interface Person {
-						name: string,
-						age: number
-					}
-					
-					interface Developer extends Person{
-						typescriptMaster: boolean
-					}
-					const me: Developer = {
-						name: 'Asaf',
-						age: 32,
-						typescriptMaster: true
-					}
+            <p>1. Interfaces can be extended and implemented</p>
+            <pre><code  class="hljs" data-trim data-line-numbers="|1-5|7-11|13|15-17|19-24">		
+              interface Person {
+                name: string,
+                age: number
+                sayHello:() => void
+              }
+              
+              class SomePerson implements Person {
+                name ='Asaf'
+                age = 32
+                sayHello () {console.log('Hello')}
+              }
+
+              const p = new SomePerson();
+              
+              interface Developer extends Person{
+                typescriptMaster: boolean
+              }
+              
+              const me: Developer = {
+                  name: 'Asaf',
+                  age: 32,
+                  typescriptMaster: true,
+                  sayHello: () => console.log('Hello')
+              }
 				</code></pre>
           </section>
           <section>

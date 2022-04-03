@@ -17,7 +17,9 @@
 		<div class="reveal">
 			<div class="slides">
 			<section>
-				Advanced typing
+				<h4>
+					Advanced typing
+				</h4>
 			</section>
 			<section>
 				<div style="display: flex; flex-direction: column; justify-content: center;">
@@ -382,13 +384,13 @@
 					</script></code></pre>
 				</section>
 				<section>
-					<pre data-id="code-animation" ><code class="hljs">	<script type="text/template">
+					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 						type Example1 = Dog extends Animal ? number : string;
 					</script></code></pre>
 					<p class="fragment">type Example1 = number</p>
 				</section>
 				<section>
-					<pre data-id="code-animation" ><code class="hljs">	<script type="text/template">
+					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 						type Example2 = RegExp extends Animal ? number : string;
 					</script></code></pre>
 					<p class="fragment">type Example2 = string</p>
@@ -402,7 +404,7 @@
 				</section>
 				<section id="fragments">
 					<p>When conditional types act on a generic type, they become distributive when given a union type. For example, take the following:</p>
-					<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+					<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 						type ToArray<Type> = Type extends any ? Type[] : never;
 					</script></code></pre>
 					<aside class="notes"> 
@@ -410,7 +412,7 @@
 					  </aside>
 				</section>
 				<section id="fragments">
-					<pre data-id="code-animation" ><code class="hljs">	<script type="text/template">
+					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 						type ToArray<Type> = Type extends any ? Type[] : never;
 							type StrArrOrNumArr = ToArray<string | number>;
 					</script></code></pre>
@@ -418,7 +420,7 @@
 				</section>
 				<section>
 					<p>Lets try to create a type that exclude from a type those types that are not assignable to another type: </p>
-					<pre  class="fragment data-id="code-animation" ><code class="hljs">	<script type="text/template">
+					<pre  class="fragment data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 						type MyExclude<T,U> = T extends U ? T : never;
 					</script></code></pre>
 					<aside class="notes"> 
@@ -430,7 +432,7 @@
 				</section>
 				<section> 
 					<p>How to make it [non-distributive]</p>
-					<pre  class="fragment data-id="code-animation" ><code class="hljs">	<script type="text/template">
+					<pre  class="fragment data-id="code-animation" ><code  data-trim data-noescape class="hljs">	<script type="text/template">
 						type MyExclude<T,U> = [T] extends [U] ? T : never;
 					</script></code></pre>
 					<aside class="notes"> 
@@ -452,7 +454,7 @@
 				</section>
 				<section id=fragments>
 					<p>Function’s first argument:</p>
-					<pre  class="fragment data-id="code-animation" ><code class="hljs">	<script type="text/template">
+					<pre  class="fragment data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 				type GetFirstArgumentOfAnyFunction<T> = T extends (
 					first: infer FirstArgument,
 					...args: any[]
@@ -467,7 +469,7 @@
 					</section>
 					<section>
 						<p>Function’s second argument:</p>
-						<pre  class="fragment data-id="code-animation" ><code class="hljs">	<script type="text/template">
+						<pre  class="fragment data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 					type GetSecondArgumentOfAnyFunction<T> = T extends (
 						first: any,
 						second: infer SecondArgument,
@@ -482,7 +484,7 @@
 						</section>
 					<section>
 						<p>Return type:</p>
-						<pre  class="fragment data-id="code-animation" ><code class="hljs">	<script type="text/template">
+						<pre  class="fragment data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 							type GetReturnType<Type> = 
 							Type extends (...args: never[]) => infer Return
 								? Return
@@ -498,7 +500,7 @@
 						</section>
 					<section>
 						<p>Promise return type:</p>
-						<pre  class="fragment data-id="code-animation" ><code class="hljs">	<script type="text/template">
+						<pre  class="fragment data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 						type PromiseReturnType<T> =
 							T extends Promise<infer Return> ? Return : T
 							</script></code></pre>
@@ -509,12 +511,12 @@
 					<section>
 						<p>Array type:</p>
 
-						<pre  class="fragment data-id="code-animation" ><code class="hljs">	<script type="text/template">
+						<pre  class="fragment data-id="code-animation" ><code  data-trim data-noescape class="hljs">	<script type="text/template">
 							type Flatten<T> = 
 								T extends any[] ? T[number] : T;
 							</script></code></pre>
 
-						<pre  class="fragment data-id="code-animation" ><code class="hljs">	<script type="text/template">
+						<pre  class="fragment data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 							type Flatten<Type> = 
 								Type extends Array<infer Item> ? Item : Type;
 							</script></code></pre>
@@ -543,7 +545,7 @@
 				</section>
 				<section> 
 					<p>A mapped type is a generic type which uses a union of PropertyKeys (frequently created via a keyof) to iterate through keys to create a type:</p>
-					<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+					<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 						type OptionsFlags<Type> = {
 							[Property in keyof Type]: boolean;
 						  };
@@ -554,7 +556,7 @@
 				</section>
 				<section>
 					<p>for example: </p>
-					<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+					<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 					type FeatureFlags = {
 						darkMode: () => void;
 						newUserProfile: () => void;
@@ -579,7 +581,7 @@
 				</section>
 				<section>
 					<p>Answer 1:</p>
-					<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+					<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 						type MyMappedType<T> = {
 							[P in keyof T]: T[P]	
 						}
@@ -587,7 +589,7 @@
 				</section>
 				<section>
 					<p>Answer 2:</p>
-					<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+					<pre class="fragment" data-id="code-animation" ><code  data-trim data-noescape class="hljs">	<script type="text/template">
 						type MyMappedType<T> = {
 							[P in keyof T]?: T[P]
 						}
@@ -595,7 +597,7 @@
 				</section>
 				<section>
 					<p>Answer 3:</p>
-					<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+					<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 						type MyMappedType<T> = {
 							[P in keyof T]: T[P] | null
 						}
@@ -603,7 +605,7 @@
 				</section>
 				<section>
 					<p>Answer 4:</p>
-					<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+					<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 						type DeepReadonly<T> = {
 							readonly [P in keyof T]: DeepReadonly<T[P]>;
 						};
@@ -620,7 +622,7 @@
 					They have the same syntax as template literal strings in JavaScript, but are used in type positions. 
 					When used with concrete literal types, a template literal produces a new string literal type by concatenating the contents.
 				</aside>
-				<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+				<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 					type World = "world";
 					
 					type Greeting = `hello ${World}`;
@@ -632,7 +634,7 @@
 			</section>
 			<section>
 				<p>When a union is used in the interpolated position, the type is the set of every possible string literal that could be represented by each union member:</p>
-				<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+				<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 					type EmailLocaleIDs = "welcome_email" | "email_heading";
 					type FooterLocaleIDs = "footer_title" | "footer_sendoff";
 					 
@@ -642,7 +644,7 @@
 			</section>
 			<section>
 				<p>For each interpolated position in the template literal, the unions are cross multiplied:</p>
-				<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+				<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 					type AllLocaleIDs = `${EmailLocaleIDs | FooterLocaleIDs}_id`;
 					type Lang = "en" | "ja" | "pt";
 					 

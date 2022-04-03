@@ -31,8 +31,8 @@
           <h3>Let's implement a map</h3>
           <pre><code class="language-typescript">
 interface Map {
-get(key: string): Object;
-set(key: string, value: Object): void;
+  get(key: string): Object;
+  set(key: string, value: Object): void;
 }
           </code></pre>
           <p class="fragment">What's the problem here?</p>
@@ -41,8 +41,8 @@ set(key: string, value: Object): void;
           <h2>Generics! 🙌</h2>
           <pre><code class="language-typescript">
 interface Map&lt;T> {
-get(key: string): T;
-set(key: string, value: T): void;
+  get(key: string): T;
+  set(key: string, value: T): void;
 }
       </code></pre>
       </section>
@@ -50,18 +50,18 @@ set(key: string, value: T): void;
           <h2>top level vs. function generics</h2>
           <pre><code class="language-typescript">
 interface Map {
-get&lt;T>(key: string): T;
-set&lt;T>(key: string, value: T): void;
+  get&lt;T>(key: string): T;
+  set&lt;T>(key: string, value: T): void;
 }
           </code></pre>
       </section>
       <section>
           <h2>Another example</h2>
           <pre><code class="language-typescript">class Engine&lt;T>{
-constructor(private runnable: T){}
-run(){
-  this.runnable.run();
-}
+  constructor(private runnable: T){}
+  run(){
+    this.runnable.run();
+  }
 }</code></pre>
           <div class="fragment">
               <p>Would it work?</p>
@@ -70,20 +70,21 @@ run(){
       </section>
       <section>
           <h2>Generic constrains 💪</h2>
-          <pre><code>interface Runnable {
-run(): void;
-}
-class Engine&lt;T extends Runnable>{
-constructor(private runnable: T) { }
-run() {
-  this.runnable.run();
-}
-}
+          <pre><code class="language-typescript" data-trim="" data-noescape="">
+          interface Runnable {
+              run(): void;
+          }
+          class Engine&lt;T extends Runnable>{
+              constructor(private runnable: T) { }
+              run() {
+                  this.runnable.run();
+              }
+          }
           </code></pre>
       </section>
       <section>
           <pre><code class="language-typescript">function fetchProperty&lt;T>(object: T, propertyName: string){
-return object[propertyName];
+  return object[propertyName];
 }</code></pre>
           <div>
               <p>Would it work?</p>
@@ -91,52 +92,54 @@ return object[propertyName];
           </div>
           <div class="fragment">
               <pre><code class="language-typescript">function fetchProperty&lt;T, PropName extends keyof T>(object: T, propertyName: PropName){
-return object[propertyName];
+  return object[propertyName];
 }</code></pre>
               <p>And now? 💪</p>
           </div>
       </section>
       <section>
           <pre><code class="language-typescript">function animalFactory&lt;T>(Animal: T,){
-return new Animal();
+  return new Animal();
 }</code></pre>
           <p>Ok, this deffinitely must work, right?</p>
           <img class="fragment" height="100" style="position: absolute; top:-130px;right:-100px"
               src="../../assets/error1.png" />
           <div class="fragment">
               <pre><code class="language-typescript">function animalFactory&lt;T>(Animal: { new(): T }) {
-return new Animal();
+  return new Animal();
 }</code></pre>
               <p>Now it works with class types 💪</p>
           </div>
       </section>
       <section>
           <h2>Lets combine everything</h2>
-          <pre><code class="language-typescript">class Animal { }
-interface Runnable {
-run(): void;
-}class Cat extends Animal implements Runnable {
-run() { }
-}
-class Dog extends Animal implements Runnable {
-run() { }
-}
-function animalFactory&lt;T extends Animal>(Animal: { new(): T }) {
-return new Animal();
-}
-function startRunning&lt;T extends Runnable>(runnable: T){
-runnable.run();
-}</code></pre>
+          <pre><code class="language-typescript" data-noescape="" data-trim="">
+          class Animal { }
+          interface Runnable {
+              run(): void;
+          }
+          class Cat extends Animal implements Runnable {
+              run() { }
+          }
+          class Dog extends Animal implements Runnable {
+              run() { }
+          }
+          function animalFactory&lt;T extends Animal>(Animal: { new(): T }) {
+              return new Animal();
+          }
+          function startRunning&lt;T extends Runnable>(runnable: T) {
+              runnable.run();
+          }</code></pre>
       </section>
       <section>
           <h2>Mixins</h2>
           <p>let's add a map</p>
           <pre><code>
-              const map = new Map<string, string>();
+const map = new Map&lt;string, string>();
 map.set('1', 'something');
 map.set('2', 'another thing');
           </code></pre>
-          <p>
+          <p class="fragment">
               now let's add a concatinate function to it.
           </p>
       </section>
@@ -144,14 +147,14 @@ map.set('2', 'another thing');
           <h2>take 1</h2>
           <pre><code class="language-typescript">
 class ConcatinateableMap extends Map{
-concatinate(): string {
-  let total = '';
-  for (const value of this.values()) {
-      total += value + '\n';
-  }
+  concatinate(): string {
+    let total = '';
+    for (const value of this.values()) {
+        total += value + '\n';
+    }
 
-  return total;
-}
+    return total;
+  }
 }
           </code></pre>
       </section>
@@ -170,15 +173,15 @@ concatinate(): string {
       <section>
           <h2>take 2</h2>
           <pre><code class="language-typescript">class ContainableMap {
-private map = new Map&lt;string, string>();
-concatinate(): string {
-  let total = '';
-  for (const value of this.map.values()) {
-      total += value + '\n';
-  }
+  private map = new Map&lt;string, string>();
+  concatinate(): string {
+    let total = '';
+    for (const value of this.map.values()) {
+        total += value + '\n';
+    }
 
-  return total;
-}
+    return total;
+  }
 }</code></pre>
       </section>
       <section>
@@ -198,7 +201,7 @@ concatinate(): string {
           <h2>take 3</h2>
           <pre><code class="language-typescript">type Constructor<T> = new (...args: any[]) => T;
 type ValuesConstructor&lt;ValuesType> = Constructor&lt;{ values: () => IterableIterator&lt;ValuesType> }>;
-function getConcatinatableMap&lt;T extends ValuesConstructor<string>>(Base: T) {
+function getConcatinatableMap&lt;T extends ValuesConstructor&lt;string>>(Base: T) {
 return class extends Base {
   concatinate(): string {
       let total = '';
@@ -255,7 +258,7 @@ class UsefulService {
 
 @Injectable()
 class NeedsService {
-constructor(public service: UsefulService) {}
+  constructor(public service: UsefulService) {}
 }
           </code></pre>
       </section>
@@ -295,10 +298,10 @@ public sneak() { return this._shuriken.throw(); }
 function color(value: string) {
 // this is the decorator factory, it sets up
 // the returned decorator function
-return function (target) {
-  // this is the decorator
-  // do something with 'target' and 'value'...
-};
+  return function (target) {
+    // this is the decorator
+    // do something with 'target' and 'value'...
+  };
 }                    
           </code></pre>
           <small>from: <a
@@ -308,14 +311,14 @@ return function (target) {
           <h2>Class Decorators (implementation)</h2>
           <pre><code class="language-typescript">
 function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
-return class extends Constructor {
-  constructor(...args: any[]) {
-      const start = new Date();
-      super(args);
-      const end = new Date();
-      console.log(`took ${end.getTime() - start.getTime()}ms to finish construction`);
+  return class extends Constructor {
+    constructor(...args: any[]) {
+        const start = new Date();
+        super(args);
+        const end = new Date();
+        console.log(`took ${end.getTime() - start.getTime()}ms to finish construction`);
+    }
   }
-}
 }
           </code></pre>
       </section>
@@ -324,12 +327,12 @@ return class extends Constructor {
           <pre><code class="language-typescript">
 @ConstructorPerformance
 class Test {
-constructor(){
-  let result = 1
-  for (let index = 1; index < 10000; index++) {
-      result *= index;
+  constructor(){
+    let result = 1
+    for (let index = 1; index < 10000; index++) {
+        result *= index;
+    }
   }
-}
 }
 const test = new Test();
           </code></pre>
@@ -341,16 +344,15 @@ took 12ms to finish construction
           <h2>Method Decorator (implementation)</h2>
           <pre><code class="language-typescript">
 function ExceptionWrapper(target: any, propertyKey: string, descriptor: TypedPropertyDescriptor<(...args: any[]) => void>) {
-const originalFunction  = target[propertyKey];
-descriptor.value = (...args: any[]) => {
-  try{
-      originalFunction.apply(target, ...args);
-  } catch(error){
-      const typedError = error as Error
-      console.log(`caught exception in wrapper, ${typedError.message}`);
+  const originalFunction  = target[propertyKey];
+  descriptor.value = (...args: any[]) => {
+    try{
+        originalFunction.apply(target, ...args);
+    } catch(error){
+        const typedError = error as Error
+        console.log(`caught exception in wrapper, ${typedError.message}`);
+    }
   }
-}
-
 }
           </code></pre>
       </section>
@@ -358,10 +360,10 @@ descriptor.value = (...args: any[]) => {
           <h2>Method Decorator (usage)</h2>
           <pre><code class="language-typescript">
 export class Test {
-@ExceptionWrapper
-throwException(someValue: string) {
-  throw new Error(someValue);
-}
+  @ExceptionWrapper
+  throwException(someValue: string) {
+    throw new Error(someValue);
+  }
 }
 
 
@@ -392,7 +394,7 @@ console.log(t.throwException('some string'));
                       href="https://www.npmjs.com/package/reflect-metadata">https://www.npmjs.com/package/reflect-metadata</a>
               </li>
               <li>~4M weekly downloads</li>
-              <li><a href="https://rbuckton.github.io/reflect-metadata/">Detaied Proposal</a></li>
+              <li><a href="https://rbuckton.github.io/reflect-metadata/">Detailed Proposal</a></li>
           </ul>
       </section>
       <section>
@@ -400,18 +402,18 @@ console.log(t.throwException('some string'));
           <pre><code>
 import 'reflect-metadata';
 function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
-const start = new Date();
-const metadataKeys = Reflect.getOwnMetadataKeys(Constructor); // ['design:paramtypes']
-const metadataPatamtypes = Reflect.getMetadata('design:paramtypes', Constructor);
-console.log(metadataPatamtypes.map((param:any) => param.name)); // [ 'String', 'Boolean' ]
-return class extends Constructor {
-  constructor(...args: any[]) {
-      const start = new Date();
-      super(args);
-      const end = new Date();
-      console.log(`took ${end.getTime() - start.getTime()}ms to finish construction`);
+  const start = new Date();
+  const metadataKeys = Reflect.getOwnMetadataKeys(Constructor); // ['design:paramtypes']
+  const metadataPatamtypes = Reflect.getMetadata('design:paramtypes', Constructor);
+  console.log(metadataPatamtypes.map((param:any) => param.name)); // [ 'String', 'Boolean' ]
+  return class extends Constructor {
+    constructor(...args: any[]) {
+        const start = new Date();
+        super(args);
+        const end = new Date();
+        console.log(`took ${end.getTime() - start.getTime()}ms to finish construction`);
+    }
   }
-}
 }
           </code></pre>
       </section>

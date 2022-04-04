@@ -634,6 +634,14 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
                 x = ["hello", 10]; // OK
                 // Initialize it incorrectly
                 x = [10, "hello"]; // Error
+                
+                // A tuple with a *rest element* - holds at least 2 strings at the front,
+                // and any number of booleans at the back.
+                let e: [string, string, ...boolean[]];
+                
+                e = ["hello", "world"];
+                e = ["hello", "world", false];
+                e = ["hello", "world", true, false, true];
               </code></pre>
             </section>
           <section>
@@ -983,6 +991,9 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
 							typescriptMaster: true;
 						}
 					</code></pre>
+          <aside class="notes"> 
+           We can not create an interface which is a union of other 2 interfaces or types
+          </aside>
           </section>
         </section>
         <section data-background="#007acc">
@@ -1023,35 +1034,101 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
               the unknown type is simmilar to the any type, however you can't
               assign a value of type unknown to another value with different
               type without type check (typeof) first.
+
+              Anything is assignable to unknown, 
+              but unknown isn’t assignable to anything but itself and any without a type assertion or a control flow based narrowing.
+              Likewise, no operations are permitted on an unknown without first asserting or narrowing to a more specific type.
             </aside>
           </section>
           <section>
+            <aside class="notes"> 
+              Here's a list of assignment examples we saw before, this time using a variable typed as unknown:
+            </aside>
             <pre><code data-trim data-noescape>		
-			let unknownUserInput: unknown;
-			let anyUserInput: any;
-			let userName : string;
+              let value: unknown;
 
-			// valid 
-			unknownUserInput = 5
-			anyUserInput = 5 
-
-
-			// valid 
-			unknownUserInput = 'Asaf'
-			anyUserInput = 'Asaf'
-
-			// valid 
-			userName = anyUserInput;
-
-			// invalid 
-			userName = unknownUserInput;
-
-			//fix - valid
-			if(typeof unknownUserInput === string){
-				userName = unknownUserInput;
-			}
-
+              value = true; // OK
+              value = 42; // OK
+              value = "Hello World"; // OK
+              value = []; // OK
+              value = {}; // OK
+              value = Math.random; // OK
+              value = null; // OK
+              value = undefined; // OK
+              value = new TypeError(); // OK
+              value = Symbol("type"); // OK
 		</code></pre>
+          </section>
+          <section>
+            <aside class="notes"> 
+              What happens though when we try to assign a value of type unknown to variables of other types?
+            </aside>
+            <pre><code data-trim data-noescape>	
+            let value: unknown;
+
+            let value1: unknown = value; // OK
+            let value2: any = value; // OK
+            let value3: boolean = value; // Error
+            let value4: number = value; // Error
+            let value5: string = value; // Error
+            let value6: object = value; // Error
+            let value7: any[] = value; // Error
+            let value8: Function = value; // Error
+            </code></pre>
+          </section>
+          <section>
+            <aside class="notes"> 
+              We can narrow the unknown type to a more specific type in different ways, including the typeof operator, 
+              the instanceof operator, and custom type guard functions. All of these narrowing techniques contribute to TypeScript's control flow based type analysis.
+
+              The following example illustrates how value has a more specific type within the two if statement branches:
+            </aside>
+            <pre><code data-trim data-noescape>	
+              function stringifyForLogging(value: unknown): string {
+                if (typeof value === "string") {
+                  return value
+                }
+                if (typeof value === "function") {
+                  // Within this branch, `value` has type `Function`,
+                  // so we can access the function's `name` property
+                  const functionName = value.name || "(anonymous)";
+                  return `[function ${functionName}]`;
+                }
+              
+                if (value instanceof Date) {
+                  // Within this branch, `value` has type `Date`,
+                  // so we can call the `toISOString` method
+                  return value.toISOString();
+                }
+              
+                return String(value);
+              }
+            </code></pre>
+          </section>
+          <section>
+            <p>If you want to force the compiler to trust you that a value of type unknown is of a given type, you can use a type assertion like this:</p>
+            <pre><code data-trim data-noescape>	
+              const value: unknown = "Hello World";
+              const someString: string = value as string;
+              const otherString = someString.toUpperCase(); // "HELLO WORLD"
+            </code></pre>
+            <p>This can easily lead to an error being thrown at runtime if you make a mistake and specify an incorrect type:</p>
+            <pre><code data-trim data-noescape>	
+              const value: unknown = 42;
+              const someString: string = value as string;
+              const otherString = someString.toUpperCase(); // BOOM
+            </code></pre>
+          </section>
+          <section>
+            <p>In a union type, unknown absorbs every type. This means that if any of the constituent types is unknown, the union type evaluates to unknown:</p>
+            <pre><code data-trim data-noescape>	
+              type UnionType1 = unknown | null; // unknown
+              type UnionType2 = unknown | undefined; // unknown
+              type UnionType3 = unknown | string; // unknown
+              type UnionType4 = unknown | number[]; // unknown
+
+              type UnionType5 = unknown | any; // any
+            </code></pre>
           </section>
         </section>
         </section>

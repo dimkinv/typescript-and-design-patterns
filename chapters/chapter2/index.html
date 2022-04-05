@@ -20,6 +20,14 @@
 				<h4>
 					Advanced typing
 				</h4>
+				<aside class="notes">
+					TypeScript’s type system is very powerful because it allows expressing types in terms of other types.
+
+					The simplest form of this idea is generics, we actually have a wide variety of type operators available to use. It’s also possible to express types in terms of values that we already have.
+
+					By combining various type operators, we can express complex operations and values in a succinct, maintainable way. In this section we’ll cover ways to express a new type in terms of an existing type or value.
+
+				</aside>
 			</section>
 			<section>
 				<div style="display: flex; flex-direction: column; justify-content: center;">
@@ -255,7 +263,7 @@
 					TypeScript adds a typeof operator you can use in a type context to refer to the type of a variable or property:
 				</section>
 				<section>
-					<pre><code>
+					<pre><code data-noescape>
 						let s = "hello";
 						let n: typeof s;
 						   
@@ -286,7 +294,7 @@
 			</section>
 			<section>
 			<section>
-			<p> Indexed Access Types </p>	
+			<p> Indexed Access Types (Lookup types) </p>	
 			</section>
 			<section id="fragments">
 			<p>We can use an indexed access type to look up a specific property on another type:</p>
@@ -365,6 +373,146 @@
 				type key = "age";
 				type Age = Person[key];
 			</script></code></pre>
+		</section>
+		<section>
+			<aside class="notes"> 
+				now let see how we can use index access type, the keyof operator and generics to create more complex types
+				lets say we want to create a generic function that recives any object (T) and any objects key and returns the propery in this key
+				describing access to any property in a given object
+			</aside>
+			<p> for example: </p>
+			<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+				function getProperty(obj, key){
+					return obj[key]
+				}
+			</script></code></pre>
+			</section>
+			<section>
+				<pre data-id="code-animation" ><code class="hljs">	<script type="text/template">
+					function getProperty<T>(obj:T , key: string){
+						return obj[key]
+					}
+				</script></code></pre>
+				<p>is that good enought? </p>
+			</section>
+			<section>
+				<img src="../../assets/keyof-error-T.png" />
+			</section>
+			<section>
+				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>	<script type="text/template">
+					function getProperty<T, K extends keyof T>(obj:T , key: K) {
+						return obj[key]
+					}
+				</script></code></pre>
+				<aside class="notes"> 
+					now I can make sure no one will send to my function any other string but the keys of this type
+				  </aside>
+			</section>
+			<section>
+				<aside class="notes"> 
+					inferring the type of a parameter based on another parameter in a function
+					this is somehow simmilar pattern but a little bit more complex. 
+					here we infer a type based on another value
+				</aside>
+				<p>Consider the next example: </p>
+				<img src="../../assets/addEventListener-infer.png" />
+				<img src="../../assets/addEventListener-infer-2.png" />
+				<aside class="notes"> 
+					how typescript knows how to infer this type? 
+					
+					it infered the type of the callback argument from the name of the event in the first argument
+				  </aside>
+			</section>
+			<section>
+				<p>Lets try to create it!</p>
+			</section>
+			<section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgLIE9UHsCuBnCAUQDcJxkBvAKAEgAPALmRBwFsAjaAblvSZY7QqAXyqhIsRCgwBpCOnZY4UACYkyYSrQDW8pnjBRQAcxFUx4aPCRp068AHl2AKwgJN1GggA2wBNqYMbHwiUnAeGl10AAcoCDw8QPQ5BSVVezAzKhgcEHdgLBBkAAs4EBVvUI0AHhlkCDpIcrxkKKwYWwynV3cAPmQACloIMLAAOThWCCYZABpaBDhvb3ZEAMHpztHutzAAbRkAXQBKZABefuIsYBVkGipjzwB6J-q6NxxIZDBilBy8sAFEAAOlByCyVFK5UqGQGAHIfH5tHDZhtjhcKMJjpCyhUquB4VFYvE8Ci0RisUA" data-background-interactive>
+			</section>
+			<section>
+				Quiz
+			</section>
+			<section id="fragments">
+				<p >Q: What is the other name for indexed access types? </p>
+				<p class="fragment">1. Lookout Types </p>
+				<p class="fragment">2. 1. Lookup Types</p>
+			</section>
+			<section id="fragments">
+				<p >Q: Given the following code:</p>
+				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>	<script type="text/template">
+					type Request = {
+						params: {
+						  [key: string]: string;
+						};
+					  };
+				</script></code></pre>
+				<p>Q: How do we reuse the type of the params property?</p>
+				<p class="fragment">1. type Params = Request['params'] </p>
+				<p class="fragment">2. type Params = Request.params </p>
+			</section>
+			<section id="fragments">
+				<p>Q: Can we access the types of nested properties?</p>
+				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>	<script type="text/template">
+					type Player = {
+						location: {
+						  x: number;
+						  y: number;
+						};
+					  };
+				</script></code></pre>
+				<p>Is Player['location']['x'] a valid expression?</p>
+				<p class="fragment">1. Yes </p>
+				<p class="fragment">2. No </p>
+			</section>
+			<section id="fragments">
+				<p>Q: What the keyof operator is used for?</p>
+				<p class="fragment">1. keyof is used for retrieving the names of the properties of a type</p>
+				<p class="fragment">2. keyof is used to determine if a given key belongs to a given type</p>
+			</section>
+			<section id="fragments">
+				<p>Q: We are given the following interface:</p>
+				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>	<script type="text/template">
+					interface User {
+						name: string;
+						age: number;
+					  }
+				</script></code></pre>
+				<p>what is the expression - "keyof User" resolves to?</p>
+				<p class="fragment">1. "name" | "age" </p>
+				<p class="fragment">2. string | number </p>
+			</section>
+			<section id="fragments">
+				<p>Q: We have the following interface. This is a map that maps event names to their corresponding event object types.</p>
+				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>	<script type="text/template">
+					interface MyEventsMap {
+						click: MyMouseEvent;
+						keypress: MyKeyboardEvent;
+					  }
+				</script></code></pre>
+				<p>What does the following expression resolve to:</p>
+				<p>type MyEvents = MyEventsMap[keyof MyEventsMap]</p>
+				<p class="fragment">1. MyMouseEvent | MyKeyboardEvent </p>
+				<p class="fragment">2. MyMouseEvent & MyKeyboardEvent</p>
+			</section>
+			<section id="fragments">
+				<p>Q: Given the following code: </p>
+				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>	<script type="text/template">
+					interface MyEventsMap {
+						click: MyMouseEvent;
+						keypress: MyKeyboardEvent;
+					  }
+					  
+					  function handleEvent<K extends keyof MyEventsMap>(
+						eventName: K,
+						callback: (myEventObject: MyEventsMap[K]) => void
+					  ) {
+						// ...
+					  }
+				</script></code></pre>
+				<p>What is the type of the myEventObject parameter?</p>
+				<p class="fragment">1. MyMouseEvent | MyKeyboardEvent </p>
+				<p class="fragment">2. MyEventsMap[K] which resolves to MyMouseEvent & MyKeyboardEvent</p>
+			</section>
+			</section>
 			</section>
 			</section>
 			<section>
@@ -398,6 +546,43 @@
 				<section>
 					<p>Conditional types take a form that looks a little like conditional expressions (condition ? trueExpression : falseExpression) in JavaScript:</p>
 					<p class="fragment">SomeType extends OtherType ? TrueType : FalseType;</p>
+				</section>
+				<section>
+					<p id="fragments"> Conditional types can be used before they are evaluated </p>
+					<aside class="notes"> 
+						"TYPE B"
+					  </aside>
+					<p>for example:</p>
+					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						function someFunction<T>(value:T){
+							const someOtherFucntion = (
+								someArg: T extends boolean ? "TYPE A" : "TYPE B" 
+							) => {}
+							return someOtherFucntion;
+						}
+					</script></code></pre>
+					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						const reslut = someFunction('a string')
+					</script></code></pre>
+					<p class="fragment">what would be the type of "reslut" ? </p>
+				</section>
+				<section>
+					<aside class="notes"> 
+						"TYPE A" | "TYPE B"
+					  </aside>
+					<p>for example:</p>
+					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						function someFunction<T>(value:T){
+							const someOtherFucntion = (
+								someArg: T extends boolean ? "TYPE A" : "TYPE B" 
+							) => {}
+							return someOtherFucntion;
+						}
+					</script></code></pre>
+					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						const reslut = someFunction('a string')
+					</script></code></pre>
+					<p class="fragment">what would be the type of "someArg" ? </p>
 				</section>
 				<section>
 					<p>Distributive Conditional Types</p>
@@ -444,13 +629,63 @@
 				</section>
 				<section>
 					<p>the infer keyword</p>
+					<p>Infer allows us to define a variable within our constraint to be referenced or returned.</p>
 					<aside class="notes"> 
 						The infer keyword compliments conditional types and cannot be used outside an extends clause. 
 						Infer allows us to define a variable within our constraint to be referenced or returned.
 					  </aside>
 				</section>
+				<section id="fragments">
+					<p>for example:</p>
+					<pre  data-id="code-animation" ><code  data-trim data-noescape class="hljs">	<script type="text/template">
+						type InferSomething<T> = T extends infer U ? U: any
+					</script></code></pre>
+					<pre  data-id="code-animation" ><code  data-trim data-noescape class="hljs">	<script type="text/template">
+						type Inffered = InferSomething<"I am a string">
+					</script></code></pre>
+					<p class="fragment"> In this example typescript will assign type T into type U and return it</p>
+					<p class="fragment" >what would be the type of Inffered?</p>
+				</section>
 				<section>
-					<p>Examples:</p>
+					<p>Infer a part of a type</p>
+					<pre  class="fragment data-id="code-animation" ><code  data-trim data-noescape class="hljs">	<script type="text/template">
+						type InferSomething<T> = T extends {a: infer A, b: number} ? A: any
+					</script></code></pre>
+					<pre  class="fragment data-id="code-animation" ><code  data-trim data-noescape class="hljs">	<script type="text/template">
+						type Inffered = InferSomething<{a: string, b: number}>
+					</script></code></pre>
+					<p class="fragment"> In this example if type T extends the object, typescript would assign the type of a into A and return it</p>
+				</section>
+				<section>
+					<pre  class="fragment data-id="code-animation" ><code  data-trim data-noescape class="hljs">	<script type="text/template">
+						type Inffered = InferSomething<{a: string}>
+					</script></code></pre>
+					<pre  class="fragment data-id="code-animation" ><code  data-trim data-noescape class="hljs">	<script type="text/template">
+						type Inffered = InferSomething<{a: string, b:boolean}>
+					</script></code></pre>
+					<p class="fragment">what about this?</p>
+					<p class="fragment">any</p>
+				</section>
+				<section>
+					<p>Infer a part of a type</p>
+					<pre  class="fragment data-id="code-animation" ><code  data-trim data-noescape class="hljs">	<script type="text/template">
+						type InferSomething<T> = T extends {a: infer A, b: infer B} ? A & B : any 
+					</script></code></pre>
+					<pre  class="fragment data-id="code-animation" ><code  data-trim data-noescape class="hljs">	<script type="text/template">
+						type Inffered = InferSomething<{a: string, b: boolean}>
+					</script></code></pre>
+					<p class="fragment" >what would be the type of Inffered?</p>
+					<p class="fragment" >never</p>
+				</section>
+				<section>
+					<pre  class="fragment data-id="code-animation" ><code  data-trim data-noescape class="hljs">	<script type="text/template">
+						type Inffered = InferSomething<{a: {a:string}, b: {b: boolean}}>
+					</script></code></pre>
+					<p class="fragment">what about this?</p>
+					<p class="fragment">{ a: string; } & {b: boolean;}</p>
+				</section>
+				<section>
+					<p>More examples:</p>
 				</section>
 				<section id=fragments>
 					<p>Function’s first argument:</p>
@@ -486,7 +721,7 @@
 						<p>Return type:</p>
 						<pre  class="fragment data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 							type GetReturnType<Type> = 
-							Type extends (...args: never[]) => infer Return
+							Type extends (...args: any[]) => infer Return
 								? Return
 								: never;
 							</script></code></pre>
@@ -510,7 +745,6 @@
 					</section>
 					<section>
 						<p>Array type:</p>
-
 						<pre  class="fragment data-id="code-animation" ><code  data-trim data-noescape class="hljs">	<script type="text/template">
 							type Flatten<T> = 
 								T extends any[] ? T[number] : T;
@@ -530,18 +764,60 @@
 							  </aside>
 						</section>
 				<section>
-					assinment: 
-					rewrite the Extract type
-					<p>Quiz: https://dd.engineering/quiz/FuLTCD8u-7X_</p>
+					<p> Assinment: </p>
+					<p>1. Rewrite the Extract type:  Constructs a type by extracting from Type all union members that are assignable to Union. </p>
+				 	<p>2. Rewrite the ReturnType type : Constructs a type consisting of the return type of function Type.</p>
 					<aside class="notes"> 
 						type Extract<T, U> = T extends U ? T : never
+						type ReturnType<Type> = Type extends (...args: any[]) => infer R ? R: any;
 					  </aside>
 				</section>
+				<section>
+					<p>Solutions: </p>
+					<p>Extract: </p>
+					<pre  data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						type Extract<T, U> = T extends U ? T : never
+					</script></code></pre>
+					<p>ReturnType: </p>
+					<pre  data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						type ReturnType<T> = Type extends (...args: any[]) => infer R ? R: any;
+					</script></code></pre>
+					<pre  class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						type ReturnType<T extends (...args: any) => any> = T extends (...args: any) => infer R ? R : any;
+					</script></code></pre>
+				</section>			
 			</section>
 			<section>
 				<section>Mapped Types </section>
 				<section> 
 					<p> When you don’t want to repeat yourself, sometimes a type needs to be based on another type. </p>
+				</section>
+				<section>
+					<p>Consider this example:</p>
+					<aside class="notes"> 
+						The in keyword is used there as part of the syntax to iterate over all the items in a union of keys.
+					  </aside>
+					<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						type Properties = "prop A" | "prop B"
+					</script></code></pre>
+					<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						type MyMappedType = {
+							[P in Properties] : boolean 
+						}
+					</script></code></pre>
+					<p class="fragment"> what would be the type of MyMappedType? </p>
+				</section>
+				<section>
+					<aside class="notes"> 
+						Well it doesnt make sence...
+						lets make it generic
+					  </aside>
+					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						type MyMappedType = {
+							"prop A": boolean;
+							"prop B": boolean;
+						}
+					</script></code></pre>
 				</section>
 				<section> 
 					<p>A mapped type is a generic type which uses a union of PropertyKeys (frequently created via a keyof) to iterate through keys to create a type:</p>
@@ -573,17 +849,48 @@
 					</div>
 				</section>
 				<section>
+					<pre  data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						type MyMappedType<T> = {
+							[P in keyof T]: T[P]
+						}
+						</script></code></pre>
+					<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+							type MyType = MyMappedType<{a:"a", b:"b"}>
+						</script></code></pre>
+						<p class="fragment"> what would be the value of MyType? </p>
+						<p class="fragment">{a:"a", b:"b"}</p>
+				</section>
+				<section id="fragments">
+					<p> lets try to create the Record type</p>
+					<p class="fragment"> Constructs an object type whose property keys are Keys and whose property values are Type. This utility can be used to map the properties of a type to another type.  </p>
+					<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						type Record<K extends keyof any, T> = {
+							[P in K]: T
+						}
+					</script></code></pre>
+				</section>
+				<section>
+					<p> FYI</p>
+					<p class="fragment"> Record type gives an ability to describe type that has some amount of keys with the same value type </p>
+					<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						Record<string, number>  ===  interface Record { [key:string: number] }
+					</script></code></pre>
+				</section>
+				<section>
 				 <p> Assignment: </p>	
-				 <p> 1. Create a generic type that receives a type and returns the same type </p>	
-				 <p> 2. Create a generic type that receives a type and returns the same type but with all its keys as optional </p>	
+				 <p> 1. Create a generic type that receives a type and returns the same type but with all its keys as optional (Partial) </p>	
+				 <p> 2. Create a generic type that receives a type and returns the same type but with all its keys as readonly (Readonly) </p>	
 				 <p> 3. Create a generic type that receives a type and returns the same type but with all its keys as nullable </p>	
-				 <p> 4. Create a generic type that receives a type and returns the same type but with all its keys as readonly (nested types too) </p>	
+				 <p> 4. Create a generic type gives the ability to create a new type by picking properties from the already existing model (Pick) </p>
+				</section>
+				<section>
+					Bonus: Create a generic type that receives a type and returns the same type but with all its keys as readonly (nested types too) 
 				</section>
 				<section>
 					<p>Answer 1:</p>
 					<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 						type MyMappedType<T> = {
-							[P in keyof T]: T[P]	
+							[P in keyof T]?: T[P]
 						}
 					</script></code></pre>
 				</section>
@@ -591,7 +898,7 @@
 					<p>Answer 2:</p>
 					<pre class="fragment" data-id="code-animation" ><code  data-trim data-noescape class="hljs">	<script type="text/template">
 						type MyMappedType<T> = {
-							[P in keyof T]?: T[P]
+							readonly[P in keyof T]: T[P]
 						}
 					</script></code></pre>
 				</section>
@@ -605,6 +912,14 @@
 				</section>
 				<section>
 					<p>Answer 4:</p>
+					<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						type Pick<T, K extends keyof T> = {
+							[P in K]: T[P];
+						};
+					</script></code></pre>
+				</section>
+				<section>
+					<p>Bonus:</p>
 					<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 						type DeepReadonly<T> = {
 							readonly [P in keyof T]: DeepReadonly<T[P]>;
@@ -633,6 +948,18 @@
 				  </aside>
 			</section>
 			<section>
+				<p>I can also: </p>
+				<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+					type Greeting = `hello ${string}`;
+				</script></code></pre>
+			</section>
+			<section>
+				<p> Another  example: </p>
+				<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+					type CSSValue = number | `${number}px` | ${number}em | ${number}rem
+				</script></code></pre>
+			</section>
+			<section>
 				<p>When a union is used in the interpolated position, the type is the set of every possible string literal that could be represented by each union member:</p>
 				<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 					type EmailLocaleIDs = "welcome_email" | "email_heading";
@@ -653,11 +980,6 @@
 				<p class="fragment">
 					type LocaleMessageIDs = "en_welcome_email_id" | "en_email_heading_id" | "en_footer_title_id" | "en_footer_sendoff_id" | "ja_welcome_email_id" | "ja_email_heading_id" | "ja_footer_title_id" | "ja_footer_sendoff_id" | "pt_welcome_email_id" | "pt_email_heading_id" | "pt_footer_title_id" | "pt_footer_sendoff_id"
 				</p>
-			</section>
-			<section>
-				<p>When to use?</p>
-			</section>
-			<section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/C4TwDgpgBACgTgezAUQG4QHbAMoIK5wDGEAPACrgQB8UAvFAN4BQUrUCGAFBOlgHIBDALYQAXFAAGAEgYBnYHACWGAOZQAZFADWEEAgBmUCpAC+AYQAWA1RAAmEgDRRCAgDauARgMJbxnDBAA7gBqbnhiUNYgAJR0NKgIirbR4glJANxMJplMAPT5UGZwEALA0AJQAESBpYQWduweAFYQhMCVUIGKwBaRGFAA5BwDUCI9CLZ5BbIIUD2lUHp4ztadtb36CHDOVjayc7NgiJBwwIoQsgB0TLatrgLFUPp4GG2KHKMCOgDq63YA8s1WsByJQqJwEM1xMYICkjJQNLBjmhMDh8ERSDCqOkgA" data-background-interactive>
 			</section>
 			<section>
 				<a href="https://github.com/ghoullier/awesome-template-literal-types">awesome-template-literal-types</a>

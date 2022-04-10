@@ -1,6 +1,1 @@
-export enum TravelMode {
-    DRIVING,
-    BICYCLING,
-    TRANSIT,
-    WALKING
-}
+export type TravelMode  =   "DRIVING"| "BICYCLING" | "TRANSIT" | "WALKING"

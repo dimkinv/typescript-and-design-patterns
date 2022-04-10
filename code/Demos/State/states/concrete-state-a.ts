@@ -1,5 +1,5 @@
+import { State } from "../state";
 import { ConcreteStateB } from "./concrete-state-b";
-import { State } from "./state";
 
 /**
  * Concrete States implement various behaviors, associated with a state of the

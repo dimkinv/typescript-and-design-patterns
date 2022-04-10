@@ -8,7 +8,6 @@ export class ChatClient {
   }
 
   send(message: string): void {
-
     const encryptMessage = this._encryptionAlgorithm.encrypt(message);
     console.log("Sending the encrypted message... ", encryptMessage);
   }

@@ -2,7 +2,6 @@ import { Observer } from "./interfaces/Observer";
 import { Stock } from "./stock";
 
 export class StatusBar implements Observer {
-  name = "StatusBar";
   private stocks: Stock[] = [];
 
   addStock(stock: Stock): void {
@@ -25,7 +24,7 @@ export class StatusBar implements Observer {
 
   update(stock: Stock): void {
     console.log(
-      `${this.name}: Stock with symbol ${stock.symbol} price has changed to ${stock.price}`
+      `${this.constructor.name}: Stock with symbol ${stock.symbol} price has changed to ${stock.price}`
     );
   }
 }

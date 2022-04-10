@@ -8,7 +8,7 @@ export class Stock implements Subject {
 
   public addObserver(observer: Observer): void {
     console.log(
-      `Subject: ${this._symbol} Attached an observer: ${observer.name}.`
+      `Subject: ${this._symbol} Attached an observer: ${observer.constructor.name}.`
     );
     this.observers.push(observer);
   }

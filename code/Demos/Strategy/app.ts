@@ -1,5 +1,5 @@
-import { ConcreteStrategyA } from "./concrete-strategy-a";
-import { ConcreteStrategyB } from "./concrete-strategy-b";
+import { ConcreteStrategyA } from "./strategies/concrete-strategy-a";
+import { ConcreteStrategyB } from "./strategies/concrete-strategy-b";
 import { Context } from "./context";
 
 /**

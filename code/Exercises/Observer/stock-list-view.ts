@@ -1,10 +1,16 @@
 import { Stock } from "./stock";
 
-class StockListView {
-  private stocks = [];
+export class StockListView {
+  private stocks: Stock[] = [];
 
-  addStocks(stock: Stock): void {
+  addStock(stock: Stock): void {
     this.stocks.push(stock);
+  }
+
+  removeStock(stock: Stock) {
+    this.stocks = this.stocks.filter(
+      (subscribedStock) => subscribedStock.symbol === stock.symbol
+    );
   }
 
   show(): void {

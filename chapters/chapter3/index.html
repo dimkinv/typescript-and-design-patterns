@@ -199,22 +199,38 @@
 								</script></code></pre>
 						</section>
 						<section>
-							<p>Composition over inheritance</p>
-							<aside class="notes">
-								1. The fact that JavaScript does not support multiple inheritances is one reason for favoring composition over inheritance in JavaScript. Since you can only extend one class in JavaScript, but if you need multiple features, such as reading and writing character data into a file, you need Reader and Writer functionality. It makes your job simple to have them as private members, and this is called Composition.
-								2. Composition offers better test-ability of a class than Inheritance. If one class consists of another class, you can easily construct a Mock Object representing a composed class for the sake of testing. This privilege is not given by inheritance.
-								3. Although both Composition and Inheritance allow you to reuse code, one of Inheritance’s disadvantages is that it breaks encapsulation. If the subclass depends on the action of the superclass for its function, it suddenly becomes fragile. When super-class behavior changes, sub-class functionality can be broken without any modification on its part.
-								4. In the timeless classic Design Patterns, several object-oriented design patterns listed by Gang of Four: Elements of Reusable Object-Oriented Software, favor Composition over Inheritance. Strategy design pattern, where composition and delegation are used to modify the behavior of Context without touching context code, is a classical example of this. Instead of getting it by inheritance, because Context uses composition to carry strategy, it is simple to have a new implementation of strategy at run-time.
-								5. Another reason why composition is preferred over inheritance is flexibility. If you use Composition, you are flexible enough to replace the better and updated version of the Composed class implementation. One example is the use of the comparator class, which provides features for comparison.
-							</aside>
+							<p>
+								The Gang of Four advice to “favor object composition over class inheritance” invites us to think of our objects as a composition of smaller, 
+								loosely coupled objects rather than wholesale inheritance from a monolithic base class.
+							</p>
 						</section>
 						<section>
+							<p>Composition over inheritance</p>
+							<aside class="notes">
+								<p> 1. The fact that JavaScript does not support multiple inheritances is one reason for favoring composition over inheritance in JavaScript. Since you can only extend one class in JavaScript, but if you need multiple features, such as reading and writing character data into a file, you need Reader and Writer functionality. It makes your job simple to have them as private members, and this is called Composition. </p>
+								<p> 2. Composition offers better test-ability of a class than Inheritance. If one class consists of another class, you can easily construct a Mock Object representing a composed class for the sake of testing. This privilege is not given by inheritance.</p>
+								<p>3. Although both Composition and Inheritance allow you to reuse code, one of Inheritance’s disadvantages is that it breaks encapsulation. If the subclass depends on the action of the superclass for its function, it suddenly becomes fragile. When super-class behavior changes, sub-class functionality can be broken without any modification on its part.</p>
+								<p> 4. In the timeless classic Design Patterns, several object-oriented design patterns listed by Gang of Four: Elements of Reusable Object-Oriented Software, favor Composition over Inheritance. Strategy design pattern, where composition and delegation are used to modify the behavior of Context without touching context code, is a classical example of this. Instead of getting it by inheritance, because Context uses composition to carry strategy, it is simple to have a new implementation of strategy at run-time.</p>
+								<p> 5. Another reason why composition is preferred over inheritance is flexibility. If you use Composition, you are flexible enough to replace the better and updated version of the Composed class implementation. One example is the use of the comparator class, which provides features for comparison.</p>
+							</aside>
+						</section>
+						<section id="fragments">
+							<aside class="notes">
+								<p>
+									well actually it is not. if I have a class Person and a class Dog inherit from a class Animal, that makes sence in the real world, but who said we have to develop things that make sense in the real world? 
+									if we create a prson and a dog that both are composed from the calss Animal, that doesnt make sense in the real world, but it can make great programme. 
+								</p>
+								<p>
+									1. great fexibility - can compose a class from more then one other class
+									2. Loose coupling - based on abstractions and not concrete class
+								</p>
+
+							</aside>
 							<p>Inheritance: describe what objects are - "Is a"</p>
 							<p>Composition: describe what objects do - "Has a"</p>
+							<p class="fragment"> is it? </p>
 						</section>
 						<section  data-background-color="white" data-background-iframe="https://en.wikipedia.org/wiki/Composition_over_inheritance" data-background-interactive>
-						</section>
-						<section  data-background-color="white" data-background-iframe="https://reactjs.org/docs/composition-vs-inheritance.html" data-background-interactive>
 						</section>
 						<section>
 							<p>Dependency injection</p>
@@ -227,7 +243,7 @@
 								Polymorphism 
 							</p>
 							<aside class="notes"> 
-									Say we have a parent class and a few child classes which inherit from it. 
+								   Say we have a parent class and a few child classes which inherit from it. 
 								   Sometimes we want to use a collection — for example a list — which contains a mix of all these classes. Or we have a method implemented for the parent class — but we’d like to use it for the children, too.
 								   This can be solved by using polymorphism.
 								   Simply put, polymorphism gives a way to use a class exactly like its parent so there’s no confusion with mixing types. But each child class keeps its own methods as they are.
@@ -237,6 +253,9 @@
 							<p> In TypeScript </p>
 						</section>
 						<section>
+							<aside class="notes"> 
+								the methods that can be used are only the methods on the parent type
+							</aside>
 							<pre><code class="typescript-language" data-trim data-noescape>
 								const person: Person  = new Adult('Asaf');
 							</script></code></pre>
@@ -247,20 +266,61 @@
 						</section>
 					</section>
 					<section>
-					  <section> the SOLID principles </section>
+					  <section> 
+						 <p>
+							 the SOLID principles 
+						 </p>
+						 <aside class="notes"> 
+							In software engineering, SOLID is a mnemonic acronym for five design principles intended to make software designs more understandable, flexible, and maintainable. The principles are a subset of many principles promoted by American software engineer and instructor Robert C. Martin (Uncle Bob) first introduced in his 2000 paper Design Principles and Design Patterns.
+						</aside>
+						</section>
 					  <section> 
 						  <p> Single-responsibility </p> 
-						  <p>A class (or function ) should be responsible for a single part of the functionality </p>
+						  <p>A class (or function ) should have only one reason to change </p>
 						  <img src="../../assets/Single-Responsibility-Principle.png" style="height: 500px; width: 650px;">
 						</section>
 
 						<section>
+							<aside class="notes"> 
+								<p>this class has 2 reason to change: </p>
+								<p>1. trackCalories has change it implementation</p>
+								<p>2. logMessage has change it implementation</p>
+							</aside>
 							<pre><code class="typescript-language" data-trim data-noescape>
-								function filterEmployees(httpClient, filter){
-									// Get employees
-									// Apply filters 
-									// Display on the UI 
-									// send to BE and save 
+								class CalorieTracker {
+									currentCalories = 0;
+									constractor(private maxCalories: number){}
+
+									trackCalories(calorieCount){
+										this.currentCalories += calorieCount;
+										if(this.currentCalories > this.maxCalories){
+											this.logMessage()
+										}
+									}
+									logMessage(){
+										console.log('max calories exceeded')
+									}
+								}
+							</code></pre>
+						</section>
+						<section>
+							<aside class="notes"> 
+								<p>now each one has one reason to change </p>
+								<p>things that are not directly realted should not be affected</p>
+							</aside>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								import logMesasge from './logger.js'
+
+								class CalorieTracker {
+									currentCalories = 0;
+									constractor(private maxCalories: number){}
+
+									trackCalories(calorieCount){
+										this.currentCalories += calorieCount;
+										if(this.currentCalories > this.maxCalories){
+											logMessage('max calories exceeded')
+										}
+									}
 								}
 							</code></pre>
 						</section>
@@ -375,8 +435,18 @@
 						</section>
 					  <section> 
 						 <p> Liskov substitution (substituability)</p>
+						 <aside class="notes"> 
+							<p>If we expect a certain behavior from a type, its subtypes should honor it.</p>
+							<p>Thus, a client can use any subtype confidently. This helps decouple the client from the code it uses and improves interoperability.</p>
+							<p>A client of a supertype shouldn't have to behave differently depending on which subtype it uses.</p>
+							<p>Also, considering the behavior of the subtypes becomes predictable, the LSP proves itself an instance of the principle of least astonishment.</p>
+							<p>It proposes that a component of a system should behave in a way that most users will expect it to behave</p>
+						</aside>
 						 <p> You should be able to use a subclass in place of its parant class</p>
 						 <img src="../../assets/Liskov-Substitution-Principle.png" style="height: 500px; width: 650px;">
+						</section>
+						<section>
+							<p>If S is a subtype of T, then objects of type T in a program may be replaced with objects of type S without altering any of the desirable properties of that program (e.g. correctness).</p>
 						</section>
 						<section>
 							<pre><code class="typescript-language" data-trim data-noescape>
@@ -502,6 +572,16 @@
 						<section>
 							<pre><code class="typescript-language" data-trim data-noescape>
 								export interface SmartDevice {
+									call?(contact: string): void;
+									sendSms?(contact: string, text: string): void;
+									openApp(path: string): void;
+									connectToWifi(ssid: string, password: string): void;
+								  }
+							</code></pre>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								export interface SmartDevice {
 									openApp(path: string): void;
 									connectToWifi(ssid: string, password: string): void;
 								  }
@@ -572,117 +652,122 @@
 						<section>
 						<p> Loose Coupling </p>
 						<aside class="notes"> 
+						<p>
 							1. in which components are weakly associated (have breakable relationship) with each other, and so, changes in one component least affect existence or performance of another component.
+						</p>	
+						<p>
 							2. in which each of its components has, or makes use of, little or no knowledge of the definitions of other separate components. Subareas include the coupling of classes, interfaces, data, and services.[1] Loose coupling is the opposite of tight coupling.	
+						</p>
 						</aside>
 						</section>
 						<section>
 							<pre><code class="typescript-language" data-trim data-noescape>
-								export interface Post {
-									id: number;
-									title: string;
-									body: string;
-									postedBy: string;
+								class Stripe {
+									constructor(private user: string){}
+							
+									makePayment(amountInCents: number){
+										console.log(`${this.user} made payment 
+										of $${amountInCents/100} with Stripe`)
+									}
 								}
 							</code></pre>
 						</section>
 						<section>
 							<pre><code class="typescript-language" data-trim data-noescape>
-								export interface IPostsService {
-									getAll(): Promise<Post[]>;
-									save(post: Post): Promise<void>;
+								class Store {
+									private stripe: Stripe;
+							
+									constructor(private user: string){
+										this.stripe = new Stripe(user)
+									}
+							
+									purchaseBike(quantity: number){
+										this.stripe.makePayment(200 * quantity * 100)
+									}
+									purchaseHelment(quantity: number){
+										this.stripe.makePayment(15 * quantity * 100)
+									}
 								}
 							</code></pre>
 						</section>
 						<section>
 							<pre><code class="typescript-language" data-trim data-noescape>
-								export class PostsService implements IPostsService {
-									private _fileName: string = "posts.json";
+								class PayPal {
+									makePayment(user:string, amountInDollars:number){
+										console.log(`${user} made payment 
+										of $${amountInDollars} with Paypal`)
+									}
+								}
+							</code></pre>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								class Store {
+									private paypal: PayPal;
+							
+									constructor(private user: string){
+										this.paypal = new PayPal()
+									}
+							
+									purchaseBike(quantity: number){
+										this.paypal.makePayment(this.user , 200 * quantity)
+									}
+									purchaseHelment(quantity: number){
+										this.paypal.makePayment(this.user, 15 * quantity)
+									}
+								}							
+							</code></pre>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								interface PaymnetProcessor{
+									pay(amountInDollars: number): void
+								}
+							</code></pre>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								class Store {
+									constructor(private paymnetProcessor: PaymnetProcessor){}
+							
+									purchaseBike(quantity: number){
+										this.paymnetProcessor.pay( 200 * quantity)
+									}
+									purchaseHelment(quantity: number){
+										this.paymnetProcessor.pay(15 * quantity)
+									}
+							
+								}
+							</code></pre>
+						</section>
+						<section>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								class PayPalPaymentProcessor implements PaymnetProcessor {
+									payPal: PayPal;
+									constructor(private user: string){
+										this.payPal = new PayPal();
+									}
 									
-									constructor() {}
-									
-									getAll(): Promise<Post[]> {
-										return new Promise((resolve, reject) => {
-											fs.readFile(this._fileName, "utf8", (err, data) => {
-												if(err) {
-													reject(err);
-												}
-												resolve(JSON.parse(data));
-											});
-										});
-									}
-									save(post: Post): Promise<void> {
-										return new Promise((resolve, reject) => {
-											this.getAll().then(posts => {
-												posts.push(post);
-												fs.writeFile(this._fileName, posts, err => {
-													if(err) {
-														reject(err);
-													}
-													else {
-														resolve();
-													}
-												})
-											})
-										})
+									pay(amountInDollars: number){
+										this.payPal.makePayment(this.user , amountInDollars)
 									}
 								}
 							</code></pre>
 						</section>
 						<section>
 							<pre><code class="typescript-language" data-trim data-noescape>
-								export class MockPostsService implements IPostsService {
-									posts: Post[] = [];
-									constructor() {
-										this.posts = [
-											{id: 1, title: 'Test Post 1', body: 'Test Post 1', postedBy: 'Me'},
-											{id: 2, title: 'Test Post 2', body: 'Test Post 2', postedBy: 'Me'},
-											{id: 3, title: 'Test Post 3', body: 'Test Post 3', postedBy: 'Me'},
-											{id: 4, title: 'Test Post 4', body: 'Test Post 4', postedBy: 'Me'},
-										]
-									}
-									
-									getAll(): Promise<Post[]> {
-										return Promise.resolve(this.posts);
-									}
-									save(post: Post): Promise<void> {
-										this.posts.push(post);
-										return Promise.resolve();
-									}
-								}
+								stripeStore.purchaseBike(2)
+								stripeStore.purchaseHelment(2)
+							</code></pre>
+							<pre><code class="typescript-language" data-trim data-noescape>
+								paypalStore.purchaseBike(2)
+								paypalStore.purchaseHelment(2)
 							</code></pre>
 						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								export class NewsFeed {
-									constructor(private _service: IPostsService) {
-								
-									}
-								
-									show() {
-										this._service.getAll().then(posts => {
-											posts.forEach(post => {
-												console.log(`${post.title} - ${post.body}`);
-											})
-										});
-									}
-								}
-							</code></pre>
-							<aside class="notes"> 
-								Now when I'll create this class, I can give to it either PostsService or MockPostsService
-							</aside>
+						<section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/MYGwhgzhAEDKAuB7ATgU2gbwFDV33wiAdhPMgK7BLIAUADsgJYBuY86dYAngLZGrwACskTBUUFAC5og7nwHDR4iCgCUGAL5Yc+PHXLJgAC0ioAQowDWqGgEdyYIvEbwu0ouR4AjVMnU7dXXgjRggAOk5efiERMQlkCO4aaAAmAAY06AAqaHtHZ1dVAN0tQNx9QxMIVAAJVBAeVCc7BycXN2gPb19-MqCQ8Mj5GKV4xK4aAEYAVmzc1oKuIr6tYtX8RidfADMwMRk5aMU4lWRsPsiaMB5EcicASSIAEUQQcGQId08fP2lmREYABM1tp8KBIDAEEw6KhZLwmiMTihoIweHQQKhGk4YHDhsdlMjMMV8KRoahpFDGDCANzEvCEEhkSjUehMVjsaDkarIaSkzYAc16fTwwVCYT5MOgAF5OqgAO5wMhUmxcnq0lZ03Ca6CXa63B7PV7vT6db49c7C3Ci8IS1BhHhgay4hFXG53eCPF5vMAfOaTDLLMqlMogsHgKAHLiyEDOpz4+IotEYrHwHGHBSxAnIIkXbjR6Rw6PqsoM0nMlCslhsdCqnnQPlEQUWy3W8bR6WyhWFsAgGiqYuBYOBbW6t0Gr3Gr7dPzN4WtyLR+2O2FyF2t2vQAA00D17s9Rp9EEDg5BxXBEcpktnYOIZaoFYYVY5td5Ssb6nWZQdTtXzV3BoAYQRE0uh+IVLVLV47RARB+RoAADAASDB125DRoAdQEOF-eBoEQbZoEQ5D-w9IggOxAB6f00nQuUXCMRUyXg48SlPMMIUjdtrzwb8V3hZoXwbfltxI-dvQ+SRQPNbUbxIKCwhguCkIwWt0Mw7D+Nw-DCOIsdSInQ9aPoyNOBAZjtSHaBPwIW9cNtBAUHQGV+AVBy0BoFzGOVWNESzGgAHIAEEIDAbZ-NUfsz1snVuFMtynM7RVHI8+VOJ7Hz41OALgtC8LIuKezqDtCpjFMCxrBoFIWMKxyIgMUrqjqBoXSq0E9Fint4rqyoyqsGxWvwSI4qK7qGtqeoU0q1QgA" data-background-interactive>
 						</section>
 						<section id="fragments">
 							<p>But what if I'm not the one who is in charge of creating the class? Inversion of control</p>
-							<p class="fragment"> and acctually I don't really need the IPostsService interface, because every class is also a type</p>
-							<img class="fragment" src="../../assets/class-as-type.png" width="600" height="300">
-						</section>
-						<section>
-							<img src="../../assets/dependency-injection.png" width="1000" height="400">
-							<aside class="notes"> 
-								In this example nest echo system is in charge of creating the service class when the controller is created. 
-								the CatsService here, which is a class, is used here as a type. Any place else wihch I want to create a CatsController, I can inject a simmilar class and it will work (Like UT)
-							</aside>
 						</section>
 				 	</section>
 				<section>

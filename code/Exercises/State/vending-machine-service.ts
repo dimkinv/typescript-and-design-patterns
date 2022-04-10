@@ -1,14 +1,14 @@
 import { TravelMode } from "./travel-mode";
 
-class DirectionService {
+export class DirectionService {
   constructor(private _travelMode: TravelMode) {}
 
   getEta() {
-    if (this._travelMode == TravelMode.DRIVING) {
+    if (this._travelMode == "DRIVING") {
       console.log("Calculating ETA (driving)");
-    } else if (this._travelMode == TravelMode.BICYCLING) {
+    } else if (this._travelMode == "BICYCLING") {
       console.log("Calculating ETA (bicycling)");
-    } else if (this._travelMode == TravelMode.TRANSIT) {
+    } else if (this._travelMode == "TRANSIT") {
       console.log("Calculating ETA (transit)");
     } else {
       console.log("Calculating ETA (walking)");
@@ -16,11 +16,11 @@ class DirectionService {
   }
 
   getDirection() {
-    if (this._travelMode == TravelMode.DRIVING) {
+    if (this._travelMode == "DRIVING") {
       console.log("Calculating Direction (driving)");
-    } else if (this._travelMode == TravelMode.BICYCLING) {
+    } else if (this._travelMode == "BICYCLING") {
       console.log("Calculating Direction (bicycling)");
-    } else if (this._travelMode == TravelMode.TRANSIT) {
+    } else if (this._travelMode == "TRANSIT") {
       console.log("Calculating Direction (transit)");
     } else {
       console.log("Calculating Direction (walking)");

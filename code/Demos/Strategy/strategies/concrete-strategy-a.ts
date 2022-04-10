@@ -1,4 +1,4 @@
-import { Strategy } from "./interfaces/strategy";
+import { Strategy } from "../interfaces/strategy";
 
 /**
  * Concrete Strategies implement the algorithm while following the base Strategy

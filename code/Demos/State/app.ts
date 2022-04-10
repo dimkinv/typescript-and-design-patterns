@@ -1,4 +1,4 @@
-import { ConcreteStateA } from "./concrete-state-a";
+import { ConcreteStateA } from "./states/concrete-state-a";
 import { Context } from "./context";
 
 /**

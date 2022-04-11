@@ -333,105 +333,47 @@
 								new fuctionality sould be added in a new class, and it should extend (or use conposition) the other class
 							</aside>
 						</section>
+						<section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/FASwdgLgpgTgZgQwMZQAQHMplggNgRQFcoBnCEAezFQG9hUHUIBPABygC5UAiAIwoq4oCMN1QAfHtAAeEbgBpU9RgBNSSGCFbkqXMprDpFwAL4BuUJFiIUqALaFc5VkIDCACwogURUjup0jExsnDwOTlpunt5QCkpBaiQaWv56EAZG8YwU2pRgJGkZANoAuqYWwMAs7Ki+ZHmoALwYWDgExPVUEvaOzlFePh3+lXCEYEj+qKwGEEQgAF4AFACOQ3kFtWtUpQCUtMoMq37rAHRwFDAAosjuiytbYDuNAHyBQYxIVCSCUCe4FOh7scqCdEslclQdgd3iQAO4gCBIW5HTpgE7VKA7N7vd5IBAkNB8ARCETcDjQnE4z75H5-AGLbjpYjcHYWSns1DU75COmA7iIXAEllsjkMXgwYQAaxForxBLCvUiUA8A1iXApotQKP8Jxy-hIZwu1yRdz1eUU4DU0iez32mo5XNp-0BAAMACQ0S1QaSoADUqAAjCYTqgPWaqCYXayNaKTFD7UFxVKZQ78YSZHJUOqEx8vk76dwAIL5WGwLgAfUrVerNeFMY5SYQ0vrJnrQUdPOdDLrQTjpkqXIgWoeGzq-lKTVQRWh2PeGK4RJ+pPk9bBmghYAXAEkSKgROhHAgYKhCATdxikuuhxRCNe4Ex3Gh+NIAPwKaEmFdBWdBedSb1yF+lJrikeQLgAIuomi8GgzA3seiAAG4XAiaAXuCQ5wMIECEBKb5AQwn4zvWf7cOEfTKtEKDvuyIEbguADq7gIEOIC7nBuGoEhKHQKguD7oQCCYPh9bhvkXBFNwABSCCIQgADKGFxNwAAKzAQFQykyXJymuL6vrcGUvYrmUwDTOAsyEAsQKoiQOxAA" data-background-interactive>
+						</section>
 						<section>
+							New requirement: add a range question to the quiz
 							<pre><code class="typescript-language" data-trim data-noescape>
-								export class ErrorHandler {
-									private messageBox: any;
-									private httpClient; 
-								
-									constructor(messageBox, httpClient) {
-										this.messageBox = messageBox;
-									}
-								
-									wrapError(err, publicResponse, severity) {
-										if(severity < 5) {
-											this.handleWarning("Warning", publicResponse);
-										}
-										else {
-											this.handleError("Critical Error", publicResponse);
-										}
-									}
+								{
+									type: "range",
+									description: "what is the speed limit in your city?"
+								}
+							</code></pre>
+							<aside class="notes"> 
+								<p>
+									Most of the people will go and modify the class without a second thought.
+								</p>
 
-									private handleWarning(header, content) {
-										this.messageBox.show(header, content);
-									}
-									
-									private handleError(header, content) {
-										this.messageBox.show(header, content);
-									}
-								}
-							</code></pre>
+								<p>
+									Since you don’t modify existing code you can be assured that it wouldn’t be broken. 
+									It reduces maintenance cost and increases product stability.
+									Open/closed principle is intended to mitigate risk when introducing new functionality. 
+								</p>
+								<p>
+									case "range" : 
+									console.log("Minimum: _______________");
+									console.log("Maximum: _______________");
+									break;
+								</p>
+							</aside>
 						</section>
 						<section>
-							New requirement: Every error should by logged via the Back-end (http request)
-							<aside class="notes"> 
-								Most of the people will go and modify the class without a second thought.
+								<aside class="notes"> 
+									<p>
+										Close - this class should be closed for modification, so we violated this principle when we changed it 
+									</p>
+	
+									<p>
+										Open -  however we should have the ability to add new things. we should have the ability to add new type.
+									</p>
 
-								Open/closed principle is intended to mitigate risk when introducing new functionality. 
-								Since you don’t modify existing code you can be assured that it wouldn’t be broken. 
-								It reduces maintenance cost and increases product stability.
-							</aside>
+								</aside>
 						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								export class ErrorLogger {
-									private _endpoint: string = "api/log";
-									
-									constructor(private _httpClient) {
-								
-									}
-								
-									logError(errorObject): Promise<any> {
-										return this._httpClient.post(this._endpoint, errorObject);
-									}
-								}
-							</code></pre>
-							<aside class="notes"> 
-								In order to not violate the open-closed principle, we need to create a new class.
-							</aside>
-						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								export class ErrorHandlerWithLogging extends ErrorHandler {
-									private _logger: ErrorLogger;
-									
-									constructor(messageBox, httpClient, logger: ErrorLogger) {
-										super(messageBox, httpClient);
-										this._logger = logger;
-									}
-								
-									wrapError(err, publicResponse, severity) {
-										return this._logger.logError(err).then(() => {
-											super.wrapError(err, publicResponse, severity);
-										});
-									}
-								}
-							</code></pre>
-							<aside class="notes"> 
-								Inhairitance
-							</aside>
-						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								export class ErrorHandlerWithLogging {
-									private errorHandler;
-									private _logger: ErrorLogger;
-									
-									constructor(messageBox, httpClient, logger: ErrorLogger) {
-										this.errorHandler = new ErrorHandler(messageBox, httpClient);
-										this._logger = logger;
-									}
-								
-									wrapError(err, publicResponse, severity) {
-										return this._logger.logError(err).then(() => {
-											this.errorHandler.wrapError(err, publicResponse, severity);
-										});
-									}
-								}
-							</code></pre>
-							<aside class="notes"> 
-								Composition
-							</aside>
+						<section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/MYGwhgzhAEBCD28QFMwDsCKBXZEAuAlvGtAN4BQ0V0wx+ATlsHvPQBQAOWARiAcNAAmuYPQIdCxAFzQGBNAHMAlKQC+lahzFo82XJLQBhABbx+uNio3VqtNBCTIAdCHgK2AIgCMT6ABVGZA8laxsaOkcXN08AJl8AMTAQCCCQm3V1clBIGABZLBBCDhQTM2BkPXwiEgobOwYmFnYuXn4hETEJapk5RQAaaC0CADcwPGRoeC66HrxtBQBtAF0VdRshnUqDUvMIS1qbPGMCCCcpg1OAM1YAUTBgYzY2c+qB+WEADyUAXgA+A7CtgiKCi7gABgASUjvZAfaAAamgXlUvihL2IqjBSgA3KFoKo0tQMuQsuAoP5YbocFViGRQvU5o1WJweHwBMIIKJxAZZvNVqENlT9NUduU9lZAVR6pFXO4PABBewAd2Q9BkAH1NVrtTrgriwsTSTloAAldAKCrUgx0up0RnMZktNntTmdHmyObyZRqAXaIU0oymXb7PFA+wy6IeXLyDU6uNavWhqXA5yyzy5MAfWPxuOJg3kTLycb0S73CZbaoAl1c6ZoXle31FivEUUWJQyYZmQQFknkS5YNDMaqDP3YAgALzYAEcrdUIDJm2hlkobdQZ8K6E5rvQ7g8nuuAz9-knwuGQWmDwYnByawYcSfL9UnILF63xfrJdLz5G80SQpkGWgR86Ggb5oAWUI0GQJU4EQFB0EXTwAEkYHNAowHoaAsBSGA8AATw4DpuUmLA8EmS5oCOCZuHgD4AH5gj6SDoOgfJCnEEog3KRCPAAdWMMZoBOaA8PgLBMNLTsxHGaBwEULAwAtBiBgWDwACkwFGABlW8PAGDwAAU8JYNA9OgdTNLAMyPEMeF4Q8FYmJsKCYL8SkeIAESI7gJlE8ToEk1gCBk-DCNdYjLlQPBxOQBilCc6gXNNc1LQ3NBPH4wThKo2RCOQQRZIIABbYKhJIPzMOAYK8Li8glnIF8sAnadZzoJQgA" data-background-interactive>
 						</section>
 					  <section> 
 						 <p> Liskov substitution (substituability)</p>

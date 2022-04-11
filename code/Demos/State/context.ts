@@ -18,7 +18,7 @@ import { State } from "./state";
      * The Context allows changing the State object at runtime.
      */
     public transitionTo(state: State): void {
-        console.log(`Context: Transition to ${(<any>state).constructor.name}.`);
+        console.log(`Context: Transition to ${state.constructor.name}.`);
         this.state = state;
         this.state.setContext(this);
     }

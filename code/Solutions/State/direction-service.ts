@@ -1,8 +1,9 @@
-import { TravelMode } from "./interfaces/travel-mode";
+import { TravelModeState } from "./interfaces/travel-mode";
 
 export class DirectionService {
-  constructor(private _travelMode: TravelMode) {}
-
+  constructor(private _travelMode: TravelModeState) {
+    this.transitionTo(_travelMode);
+}
   getEta(): void {
     return this._travelMode.getEta();
   }
@@ -10,12 +11,26 @@ export class DirectionService {
   getDirection(): void {
     return this._travelMode.getDirection();
   }
+  
+  switchPoint(): void {
+    this._travelMode.gotToSwitchPoint();
+  }
 
-  get travelMode(): TravelMode {
+  transitionTo(newTravelMode: TravelModeState) {
+    console.log(
+      `Travel Mode: Transition to ${newTravelMode.constructor.name}.`
+    );
+    this._travelMode = newTravelMode;
+    this._travelMode.setContext(this);
+  }
+
+
+
+  get travelMode(): TravelModeState {
     return this._travelMode;
   }
 
-  set travelMode(travelMode: TravelMode){
+  set travelMode(travelMode: TravelModeState) {
     this._travelMode = travelMode;
   }
 }

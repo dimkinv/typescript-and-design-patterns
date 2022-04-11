@@ -1,4 +1,4 @@
-import { Strategy } from "./interfaces/strategy";
+import { Strategy } from "../interfaces/strategy";
 
 /**
  * Concrete Strategies implement the algorithm while following the base Strategy
@@ -7,5 +7,6 @@ import { Strategy } from "./interfaces/strategy";
  export class ConcreteStrategyB implements Strategy {
     public doAlgorithm(data: string[]): string[] {
         return data.reverse();
+
     }
 }

@@ -1,7 +1,7 @@
 import { EmailProvider } from "./email-provider";
 
 export class EmailClient {
-    private  providers = [];
+    private  providers: EmailProvider[] = [];
   
      addProvider(provider: EmailProvider): void {
       this.providers.push(provider);

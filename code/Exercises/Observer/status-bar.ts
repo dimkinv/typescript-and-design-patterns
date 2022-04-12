@@ -9,7 +9,7 @@ export class StatusBar {
 
   removeStock(stock: Stock) {
     this.stocks = this.stocks.filter(
-      (subscribedStock) => subscribedStock.symbol === stock.symbol
+      (subscribedStock) => subscribedStock.symbol !== stock.symbol
     );
   }
   

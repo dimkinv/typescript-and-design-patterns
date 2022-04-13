@@ -149,13 +149,6 @@
                             </p>
                         </section>
                     </section>
-                    <section>
-                            <section> 
-                                <h4> Creational </h4> 
-                            </section>
-                            <section>  Factory </section>
-                        </section>
-				 	</section>
 				<section>
 					<section> <h4> Structural </h4></section>
                     <section> 
@@ -187,6 +180,89 @@
                         </ul>
                      </section>
 				</section>
+                <section>
+                    <h4>Creational</h4>
+                </section>
+                <section data-transition="slide-in none">
+                    <h4>Factory Pattern</h4>
+                    <img src="../../assets/dirty-factory.jpeg" />
+                    
+                </section>
+                <section data-transition="none">
+                    <h4>factory pattern</h4>
+                    <img src="../../assets/clean-factory.jpeg" />
+                </section>
+                <section>
+                    <h4>What it is good for?</h4>
+                    <ul>
+                        <li class="fragment">Creating different objects instead of classes based on configurations</li>
+                        <li class="fragment">Addressing interface instead of concrete class</li>
+                        <li class="fragment">Hiding initialization which cannot go into constructor</li>
+                    </ul>
+                </section>
+                <section>
+                    <h4>Simplest example</h4>
+                    <pre><code  data-trim data-noescape class="language-typescript">function getHttpClient(){
+    const httpClient = new HttpClient()
+    return httpClient;
+}
+
+class HttpClient{
+
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <h4>Configuraiton Based example</h4>
+                    <pre><code class="language-typescript" data-trim data-noescape >
+                        enum TransportClientType { HTTP, TCP }
+                        function getTransportClient(transportClientType: TransportClientType): TransportClient {
+                            switch (transportClientType){
+                                case TransportClientType.HTTP: return new HttpTransportClient();
+                                case TransportClientType.TCP: return new TcpTransportClient();
+                            }
+                        }
+                        
+                        interface TransportClient { send(): void }
+                        class HttpTransportClient implements TransportClient { send() { } }
+                        class TcpTransportClient implements TransportClient { send() { } }
+                    </code></pre>
+                </section>
+                <section>
+                    <h4>together with strategy pattern</h4>
+                    <pre><code class="language-typescript" data-trim data-noescape >
+                        interface TransportClient { send(): void }
+                        class HttpTransportClient implements TransportClient { send() { } }
+                        class TcpTransportClient implements TransportClient { send() { } }
+
+                        enum TransportClientType { HTTP, TCP }
+                        const transports = new Map<TransportClientType, Constructor<TransportClient>>();
+                        transports.set(TransportClientType.HTTP, HttpTransportClient);
+                        transports.set(TransportClientType.TCP, TcpTransportClient);
+
+                        function getTransportClient(transportClientType: TransportClientType): TransportClient | null {
+                            const TransportConstructor = transports.get(transportClientType);
+                            if(!TransportConstructor) {
+                                return null
+                            }
+                            
+                            const transport = new TransportConstructor();
+                            // add more configurations here
+                            return transport;
+                        }
+                    </code></pre>
+                </section>
+                <section>
+                    <h4>together with depedency injection (angular/nestjs)</h4>
+                    <img src="../../assets/factory-with-di.png"/>
+                </section>
+                <section>
+                    <h4>Notable factory pattern implementations</h4>
+                    <ul>
+                        <li><a href="https://expressjs.com/en/4x/api.html#router">Express router</a></li>
+                        <li><a href="https://github.com/winstonjs/winston">Winston logger</a></li>
+                    </ul>
+                </section>
                 <section>
                     <h4>DI / IoC</h4>
                     <p class="fragment">IoC - Inversion of Control, the ability to get dependencies from ourside source</p>
@@ -277,86 +353,6 @@
                 </section>
                 <section>
                     <h1>Exercise</h1>
-                </section>
-                <section data-transition="slide-in none">
-                    <h4>Factory Pattern</h4>
-                    <img src="../../assets/dirty-factory.jpeg" />
-                    
-                </section>
-                <section data-transition="none">
-                    <h4>factory pattern</h4>
-                    <img src="../../assets/clean-factory.jpeg" />
-                </section>
-                <section>
-                    <h4>What it is good for?</h4>
-                    <ul>
-                        <li class="fragment">Creating different objects instead of classes based on configurations</li>
-                        <li class="fragment">Addressing interface instead of concrete class</li>
-                        <li class="fragment">Hiding initialization which cannot go into constructor</li>
-                    </ul>
-                </section>
-                <section>
-                    <h4>Simplest example</h4>
-                    <pre><code  data-trim data-noescape class="language-typescript">function getHttpClient(){
-    const httpClient = new HttpClient()
-    return httpClient;
-}
-
-class HttpClient{
-
-}
-                    </code></pre>
-                </section>
-                <section>
-                    <h4>Configuraiton Based example</h4>
-                    <pre><code class="language-typescript" data-trim data-noescape >
-                        enum TransportClientType { HTTP, TCP }
-                        function getTransportClient(transportClientType: TransportClientType): TransportClient {
-                            switch (transportClientType){
-                                case TransportClientType.HTTP: return new HttpTransportClient();
-                                case TransportClientType.TCP: return new TcpTransportClient();
-                            }
-                        }
-                        
-                        interface TransportClient { send(): void }
-                        class HttpTransportClient implements TransportClient { send() { } }
-                        class TcpTransportClient implements TransportClient { send() { } }
-                    </code></pre>
-                </section>
-                <section>
-                    <h4>together with strategy pattern</h4>
-                    <pre><code class="language-typescript" data-trim data-noescape >
-                        interface TransportClient { send(): void }
-                        class HttpTransportClient implements TransportClient { send() { } }
-                        class TcpTransportClient implements TransportClient { send() { } }
-
-                        enum TransportClientType { HTTP, TCP }
-                        const transports = new Map<TransportClientType, Constructor<TransportClient>>();
-                        transports.set(TransportClientType.HTTP, HttpTransportClient);
-                        transports.set(TransportClientType.TCP, TcpTransportClient);
-
-                        function getTransportClient(transportClientType: TransportClientType): TransportClient | null {
-                            const TransportConstructor = transports.get(transportClientType);
-                            if(!TransportConstructor) {
-                                return null
-                            }
-                            
-                            const transport = new TransportConstructor();
-                            // add more configurations here
-                            return transport;
-                        }
-                    </code></pre>
-                </section>
-                <section>
-                    <h4>together with depedency injection (angular/nestjs)</h4>
-                    <img src="../../assets/factory-with-di.png"/>
-                </section>
-                <section>
-                    <h4>Notable factory pattern implementations</h4>
-                    <ul>
-                        <li><a href="https://expressjs.com/en/4x/api.html#router">Express router</a></li>
-                        <li><a href="https://github.com/winstonjs/winston">Winston logger</a></li>
-                    </ul>
                 </section>
 			</div>
 		</div>

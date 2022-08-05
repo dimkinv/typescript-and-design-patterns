@@ -434,11 +434,149 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
       <section>
           <h1>done!</h1>
       </section>
+      <section>
+        <section data-background="#007acc">
+          <h4>
+          Typescript Basics++
+          </h4>
+        </section>
+      </section>
+        <section>
+          <p>number 1,2,3</p>
+          <p>string 'Hi</p>
+          <p>boolean true false</p>
+          <p>objects {age:30}</p>
+          <p>Array [1,2,3]</p>
+        </section>
+        <section>
+          <section>
+            <h4>Tupels</h4>
+          </section>
+          <section>
+            <p>A tuple type is another sort of Array type that knows exactly how many elements it contains, and exactly which types it contains at specific positions.</p>
+            <pre><code data-trim data-noescape>
+              const role:[string, number]
+              </code></pre>
+          </section>
+					<section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTCMDoAJIdwCwIYBdYHsCuAbAJpJBPABwFMBnAYwCcBLQlagOwDNjKB+SAKBEk2JQC2+AJLNUkALyQA2gHIAgqQRNZAGgDM6gLqduwAExQ9vfpCGimqAFwzSSGgwDmqyA3QCARqy2SZCpSoa2ro86lAw1JiYeHDUpGiUANYcxuZi0gAMPlIARAAiCAwM+DmpIumg2ZD5hcWlxgAs4ZHRSLHxMKhJbGUWqOCE6KRwABSgGRkAlADcIcCQAKzNUTFxCclcPGmWvtI6xgBsy63t6ylb5TtScorKapou41lzkADsxzHIZ5vz5KgMdhkQgAcggBMQXAhHMQqgwwcR5AxsPJobMXgIusRVk54vgMJByIVINhxBE2pAEHh0IQ+FYXhAqTSyASiYgAG5Y1B0aj-BDRQiULmsJDUMgvAgkSAAUWobVY+mwAHlKOpcNc3J5WC4NV5KNr3Lq2FpZjw-gCUH8uth4td1BMXA0JjpTf9AZbKNbdnaMg77YsnSbfq6UNIAB4ufAuABeVXd2BehkgABVqXx4oSGBTMKRxOysZQyChiHxwQwkKQXPBqOQ4JA83hxF4KZmEJRKAh8MAkKmsRLiOBjAgBzw+5AAMr2RiOYEG1gAIVQqD4hRttknTn1mr1kHAu48i+XDD2xuMZsBCBsE4c09nlAXS+IK92OU6lBwORc6hc9nQEMgTD5Ug-x-P8AOzYDKF-E9jA8Yd5lHK8p3vQ9SBnLddjsa8XF3cB9wfQo9k3XUTxdc1IA8S910cZDHwBNDdWfV931UECXDAoDv0g0DAIg39P2g004LwIgsRoldEKcejWF2HC8MPQjIEwqciO8QMCWDAkbDEgEJJvdDrlY-8eM4vijPAky-xfLpmMgbQ0R4YhQzBJk6R4Jh0AYcgRX+SACwQbA53QJAkH+URBiQEYcNbRxSBsaQlI3Vxb2wvcD1o49JkgABvYxoDPEM4XBFwOUoUgeQYFLwEYcKqmi0g1OgHgcOMABfOYk1ONZECRfBYDgYhMzxdBYEKFAQrwBBEixSk2VbagEA8PgkvQ1AmApShHHcAby1gWVa0pAtAUIVt4SQLVm1wIbXGIYhcEpARGGoAR3GWhjVsgYtiFLcsXBgoLICukkGEATAIUBgUaG0gRh7FQbB0HILFodYcFsHms7IFmmgFrTAc5jCXzHyBzB8HFETIAAWUucQpD8oneviqiVMoEj5j4QQqZsSm+l2fw7k-OzenSLJfFkAoinwWRICAA" data-background-interactive>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h4>Enums</h4>
+          </section>
+          <section>
+            <p>Enums are one of the few features TypeScript has which is not a type-level extension of JavaScript.</p>
+            <p>Enums allow a developer to define a set of named constants. Using enums can make it easier to document intent, or create a set of distinct cases. TypeScript provides both numeric and string-based enums.</p>
+          </section>
+          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEFMA8EMFsAcA25QEYBcoBQJQGMB7AOwGcAXUAQQBEBZASQDlQBeUABhzENIoCUAojQD6AeUYAZAJqs0XfMXJUAqgBUAEqL6yATAG4s8nkviyA3vNBXQROOEwAiSiWgAzBwBpL16AHN7oADMgV641qAATgTImDQMjPIAvoa4AO4AloiIoGQAFtAUqQQRANYA-Ni48AB0UciyAKwpYFBwSCg6mIwArrDgEel4EES9JPLgI7CgfNEoFmHWcUyhYOGCIuLSK+EqGlpJzQq8oKZs86vWtn2Ozm6e3lZ+AcHb4XUBM8jVSwm4yWmZbJ5AqgIqlCryGrvRqGQ6tBD1QKYADKZAGRF8w1G40m01moHOOx+rCcdCY9wWVnW1DEkhkbAc1Np0gpFyslDUmj4DI5ez4DgOh2MFFOBIeNjsoHQDmgLncrx8-kwL3F70wn3A3zJvzAyXkGSyOXyhWK5UqYCh+LYTSqtStoActFEAGEANLCPiiCQCAW26E87W+i12+psDVa+JwmAIlAAFnQ8nSJCNIImvVAADdoIh0gATCG4NNTDViylUbWNBVUoQ0zZSKu7LmCwvR9qgBoJ3BJlMUIuZ7N5gstXElwnhYkB+KsnZMusN3lNv5Rtr1ABsmETyeBvdxWZz+fNWOL+LHiwr1obs7pslQ7HY885WlkTkf-Ob3EUIvM4quKGlsruBsnmVEJVVmdVZgjJh31BQEe1BU0hxOEMUGtSEUOfJ03Q9L0fXQ-0HR+INkII8MfiAA" data-background-interactive>
+          </section>
+          <section id="fragments">
+            <h4>Summary</h4>
+            <p class="fragment"> Numeric enums have auto-incrementing behavior</p>
+            <p class="fragment">string enums don’t have auto-incrementing behavior</p>
+            <p class="fragment">String enums allow you to give a meaningful and readable value when your code runs</p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h4>Union Types</h4>
+          </section>
+          <section id="fragments">
+            <p class="fragment">A union type is a type formed from two or more other types, representing values that may be any one of those types.</p>
+            <p class="fragment">We refer to each of these types as the union’s members.</p>
+          </section>
+          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTCmA8EMFsAcBtQAICMAuAUCJAzArgHYDGALgJYD2BSRF0ARmQaABROx4npIF4OgAnADRJ2nAExoefeoICUAbyzAkq1QNAk8A6mK5IA1KIIcS45UgC+ygO5l48JCQAWkEkhsUBAawD8F2gIAZ3daBiZQABMkAF4aOkZmFhQhcTkMZQgYBGRJC3xicip48KS9bhCBJgBzET1JJEqaxQs1JA0tHWNTFENuiQtrEDsHJ1d3Tx9-bECQksSo2PmIlgAiAEEgyBxVkVWAOUgvAE9V9MyoOEQkAGZMbBHHFzcPLz98wlJKajCFthNOBUSFUCNUAD7SfjCfpmKRNUEQ3hQlrYNodbS6AH6Iz1QYZbBZK7IAAsUg+hW+yzKWKBIPBkNk0PqcOBNURMnkSlRajIOBYJGOsFAFBwMN6MTiAHIkYzJUgAGTypyC4Wi+qxKUywRylEqNpozQYsV9XHc1RDPVqdFdcoAOhIFAAyqzQSw5CaseJ7U6XdU8cN7E9xq8pgEqHNfhFonFI0kUmkw8FQgko0tY6wNlsdntDiczviVISckgAKxkgOjZ4TN7TFQFL7FWAgkgASUibEiUi1AiQEPh1XdXMtswoiFt8Ao1Q73oAqrAhQIAMKQIKsORyADceIsReuADZy8BHmMXpN3th60VqE2mK322ROwzBL3Gr7B61RKL+SqRaJoxKkFWfsziQId9WwFtqBcMggiQegBEgYhnDqaIYKQX8BSFJBJX7SUP1UEcxwnKcH1nedBGXVc3U3D9LCQUB4FXUD8KQbAAAlBFAFDRFgjCVWw7s8LNeJglHUBx0nDsaO5C0rAyeSFMUpSlKAA" data-background-interactive>
+          </section>
+          <section id="fragments">
+            <h4>Summary</h4>
+            <p class="fragment">A union type is a type formed from two or more other types, representing values that may be any one of those types.</p>
+            <p class="fragment">TypeScript can deduce a more specific type for a value based on the structure of the code.</p>
+            <p class="fragment">this pattern is called "Narrowing".</p>
+            <p class="fragment">If there is a realationship between input and output, use function overloading.</p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h4> Literal Types</h4>
+          </section>
+          <section id="fragments">
+            <p class="fragment">In addition to the general types string and number, we can refer to specific strings and numbers in type positions.</p>
+            <p class="fragment">By themselves, literal types aren’t very valuable</p>
+            <p class="fragment">But by combining literals into unions, you can express a much more useful concept - for example, functions that only accept a certain set of known values</p>
+          </section>
+          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEFMA8EMFsAcA25QEYBcAoEoDuALaAF1AEsBnUI-FIgT3hQHsAzUAIwH5RNRkT2oALygA5O1EBuTNjBQ4SFACYsOAsTKVqtBszbRumAMZMAduRLRhY6FJk55CZKBWYWAV1NGipM6HgATqSmRAAqUEQAFOTooBZBpgDmADSg0Iikiaaw4CGxAETILET5oAA+oPlBifgl5ZVGuUTgAfkAlKAA3rygOAB0A5gAvrJ4pIiIVIQkuEwBANaco4HBYRGR+QAS4BNMqbMBiAAm+amF4MXt0qP4TLhp7EzuJNTESzgrIeGQUfkA4qIjtA6KlYMRwKcGk0AhC2tcHDAnCgAMygAC0oDoT1ARmgphxTFg7GCtBo5BQuFI1FApjMaIyzQC6SouhiMlWLRY0EaoAA8vAfGZKN1QGMjtRYqZ3ESWtIRh4vIL8SZTCxMu4YZFILF+UrKBV8tBnkx2l0ev1BiM1ONJq8ZnNFqMVWrEhrwJFOmKJWgAAw+0BDOH2MC3e7QR7PKZvJ1mF1ujZGogmoM3O4PJ4vabvMDO9Waw3GsE+IxXYMQRGKUAAFlio3ojHIRiCApxeIJSOamKeASoETwNHxWPcoHc5LIRDcnm8vmVhOJpndwXgzwwcSICUS9SlMoCqSXzxUa43W+l7BaqRh5HciCIAGEzAA3FrkGexUTQcho7dngKiervz9mh+UQOhFUUyBYSJ63AVgyFMZciFQYQRFEb8Wj-AAyDCWUYWD9yIJRkLENDf1ALDQEva870fZ8ZyIgCv1PdC2jA8DwJhIgNXxABqfCkO40BePgg8elFEY2I4ri4IQ1A+iTABlddgkSSIOgE-ClDkphFI3VThjLSkJije0Fmzdt53dVBUiUVIGLQkCZCAA" data-background-interactive>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h4>Union Types vs Enums</h4>
+          </section>
+          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEEYDpQdwQwBYBdYHsCuAbAJqBcAHAgUwDtQBLcgKzgDc4BnAYwCcKCkB+AKCQE8SoAGrEEFZpmIAVQcQCqpCqnIBeUAHIAyvOEbQAH01aAogBEAggDl9RjdIBK8gMIBpDQG4eZdAFsRYhJSsiQmpH6gAN48oKA6wgA0MXHm1kmxji6uSQC+PPkgoABMkDyFAJJmJnhMoHDoSKjMqL4EUkjEPABm6KTMSMrkXaio4KAAFL78znCs4ABcAeKSMnKKgwmgUzOsRYuiy8FyYX4AlNGxsRRdk9OzY6qPxqk253mXlDfbs0Wgj+oHIKrULhXyQUyWKxvHh5MrAADMpRAMAwOFASHwKBRrAA1rxCs1SIwUMx7qB9oEViFiCd-OoigAGLxwuCkXAYuDcOGgQnEnk-clLIHU9YqP6aDrEzwFMAAFlAjFQmAagy4XHm3lBQqpci0SHYpAA5rSosl4uLtLoNOkUpCLRDrNbkpk3BaXe5cvken0BmLhqhfrcdgttUcSHqDcbQedklcvnc5n8noCdeH9VQo35wS9obDCgBWaAwCgY0C9QaMUD8DD88joRjELaoViNgQkSsc8jEyOMbkorDszFoXH4sBtxvOADyABlJw4tBaHOZbJoAELT+QmFcMwygADaAF1mYVWYPOcO8dyfP4p7P56bCrEl2ZF8uko-QOvNxav1v32BYgsBwHAsABNcVD25PMwAANiLVEzyxZs8VAblhlYCZeRQcdKHIFMwxpaMHwAnkVEVKRIEwVBDXGcdTi8QpoNAScACNqGIfpIBxYh+EYcZ8OBQizkgdCTDgZgEHGcZuP4U4-gAPmIy5eSVYhKOo8YNBkzRNhk+ioNOGU6jZdFMVHUB0MwsjsLkXDQ0E0VSDk6IPxUiiqJouiGLAJjWPYziZL4gSRSUFRThE5sxIkqS9IUpTYjctSPM07TrVAPTvNAHJTiAA" data-background-interactive>
+          </section>
+          <section>
+            <h1>  narowing example - redux </h1>
+          </section>
+          <section id="fragments">
+            <h4>Summary</h4>
+            <p class="fragment">If you are looking to optimize your code and reduce the bundle size at the moment of compiling into JavaScript - union types</p>
+            <p class="fragment">If you will be needed to run iterations over a set of values, enums are the way to go</p>
+            <p class="fragment">If you have only 2 options, I think unions are better</p>
+            <p class="fragment">If you have more than 2-3 options, Enums are better</p>
+            <p class="fragment">If you don't have a very good reason not to, use string Enums</p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h4>Type Guards and Narrowing</h4>
+          </section>
+          <section id="fragments">
+            <p>what is narrowing?</p>
+            <p class="fragment">TypeScript follows possible paths of execution that our programs can take to analyze the most specific possible type of a value at a given position. It looks at these special checks (called type guards) and assignments, and the process of refining types to more specific types than declared is called narrowing</p>
+          </section>
+          <section id="fragments">
+            <p>1. The instanceof keyword</p>
+            <p class="fragment">2. The typeof keyword</p>
+            <p class="fragment">3. The in keyword</p>
+            <p class="fragment">4. Equality narrowing type guard</p>
+            <p class="fragment">5. Custom type guard with predicate</p>
+          </section>
+          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEEYDpQFQCwKagJYDsDOAXAhqgxggPYBmomAngA5IDmArtgE4AmAUHgDbbrqgCy5AMJceoAN6tQU0HkIZMjOnkyFGACkp0ARh2R5QqbAFsEALlBZGaGgBpQmnXtDYaZg3SNaEjAJRiAvqyB7HJYoCagALwGCADu-EIi6GoA5ACC6NjEKXYAzLk+ANysrCCgAOpw2JigsYR0HMygXmSIoPU1mpgA-KzEdPiYyHKgxISEoGom5gMA1qiEsag+4qzIxFNIaFi4BCQJwtzofpLSZ7IYhBwIkByENKnbOPhEpAKHPCk+p2dSZXUNJqYKo1OqMWbdUA-X5lC7oK43O4PcI3QwmOwmSAuBDfM6BM4IDjoJASX7SOEI273VILGpPXavA5JL7Qs7-eqNVrVWqqCFQsl-MAU65Uh6YtEIDE3bG46SBYJlABMoEg8CQFGo+w1tAYLD6A2Uw1QoAAypg6MwEKhMABJZhqAAe5ks1lAAB93J5vDYVqTpOtJtr9g6otEUi7UDQvqsBTJQpSkakzRarZgvsVY+y6MhOcDuWCIazpGUHZA0JwU+gi4KedncyCeeDepmwKW0JaHQB5YjQ-H+0hqIOkEORUegFKoDxeRjRv1k4WI6kpO3p6ugLP1-O85sCkuQFRmqyRtSyqTykplXLQNUoY3a0D0JhsNCYbzEbAEUAAEXuMekEudBRrBsaEtCYWZAKPGggjWa03w-JAABkjT-KQAIsIDIxAs5GEIJhIOsGCX3gz9BEWVCDGMNwI1saEjHGAjIxg-VBhQ3BkCMbAOD4bBZgQAA5QhkGJNR2M4jhzB-Gh3VAZCRg9MjYhOM51lSMDwRSW9nFQDiuOUgUF1FVJyhIUg6mIbJT1APspEJYkUA2FJcKYTS0G03SOH0+d4xFRMUgAJTwxhgsYABCUKWTxaE7K2Rz6MIVzjTEvS51+Qy-PiwhwsiuVmLKAAWaAAFEAEcGF0ChKOCxZXXvR89X6ViRgQB1jEoa5HUY6SPUnL1GDscgupkrRxmuXBfVOANHVDaJyAmtkwHKJA8FwAxyJWjgOG08hxxozSTGBQgmhGFIHU01Rx3IFJIGhaFSxUABVShqEYQRuAQE8M2LMBNkO5gVkPax90IJ6XrekSfC6koznIYHEMWbxwY+ooyWhMpfrgI6Acwmg4YR173pPKHTn8UAYoo9LqQdFHYykNGfsoJgqNfXxQCdDCoJk3rp2h8kfMXB45sKWm6YWyZGcYZnvBWQaOddD0RoRXBefPUpgAAVmgQQ6CwQgjDIKgdSfWpkGBexGAQZg9GqBBWHvAAxYS4CicQLFiDjzBPKIAD5QAANyEpp-GKe8ACFkBYF2xFGDhZa9yJfYD5Ag+KRrDRGVxMBNcSOAABQQTAT1SuEakl1BmD1l2eOBSAy4rowT2hVS68r32AAZIHVrzfgt81GGNMR0HdoxPZ8BPxEph5w2Hr5-Bs6zoV7uh+-EYhY9H8exEn1I16unw57ysBQ8IM2NqJMgJmnjjNNwJoUl3m+LbW+JCFmbBYdYa5OgLl3M+zri84F0+iES4vlqTUEwN8bewlHboDgBoAuPhvhrAHDAp2CDIHzXsAXSAQ8OLANJuTP0EDIC7wIWrWAbR7yUAtlbFar5sF0l4LA527tNrhF4kgGAhsTR4CsJQUulslDqioYbC+oAWG3iwAgbAx1SBL37q6AAVjrGo2BmijRkcaP2XE6A3BYunY0aC4EYPMJIj04cWCQ0YSgZhTs-wKONBg5wdi4E+FwcPUAoUxwDEtMQNAltij+CAA" data-background-interactive>
+          </section>
+          <section>
+            <p>what is the problem with this?</p>
+            <pre><code data-trim data-noescape>
+              catch (e) {
+                console.log((e as Error).message)
+              }
+            </code></pre>
+          </section>
+          <section>
+            <p>Solutions</p>
+            <pre><code data-trim data-noescape>
+              catch (err) {
+                if (err instanceof Error) {
+                  console.log(err.message);
+                } else {
+                  console.log('Unexpected error', err);
+                }
+            </code></pre>
+            <pre><code data-trim data-noescape>
+              catch (err) {
+                if ("message" in err) {
+                  console.log(err.message);
+                } else {
+                  console.log('Unexpected error', err);
+                }
+            </code></pre>
+          </section>
+        </section>
         <section data-background="#007acc">
           <h4>
             Things you should have known in TypeScript but you
             probably don't
           </h4>
+          </section>
         </section>
         <section data-background="#007acc">
           <section>

@@ -584,6 +584,277 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
             </code></pre>
           </section>
         </section>
+          <section data-background="#007acc">
+            <section>
+              <h4>Type vs Interface</h4>
+            </section>
+            <section>
+              <p>Interface</p>
+              <aside class="notes"> 
+                One of TypeScript’s core principles is that type checking focuses
+                on the shape that values have. This is sometimes called “duck
+                typing” or “structural subtyping”. In TypeScript, interfaces fill
+                the role of naming these types, and are a powerful way of defining
+                contracts within your code as well as contracts with code outside
+                of your project.
+              </aside>
+            </section>
+            <section>
+              <p>1. Interfaces can be extended and implemented</p>
+              <pre><code  class="hljs" data-trim data-line-numbers="|1-5|7-11|13|15-17|19-24">		
+                interface Person {
+                  name: string,
+                  age: number
+                  sayHello:() => void
+                }
+                
+                class SomePerson implements Person {
+                  name ='Asaf'
+                  age = 32
+                  sayHello () {console.log('Hello')}
+                }
+  
+                const p = new SomePerson();
+                
+                interface Developer extends Person{
+                  typescriptMaster: boolean
+                }
+                
+                const me: Developer = {
+                    name: 'Asaf',
+                    age: 32,
+                    typescriptMaster: true,
+                    sayHello: () => console.log('Hello')
+                }
+          </code></pre>
+            </section>
+            <section>
+              <p>2. Declaration merging</p>
+              <aside class="notes"> 
+                “declaration merging” means that the compiler merges two separate
+                declarations declared with the same name into a single definition.
+                This merged definition has the features of both of the original
+                declarations. Any number of declarations can be merged; it’s not
+                limited to just two declarations.
+              </aside>
+            </section>
+            <section>
+              <pre><code data-trim data-noescape>		
+            interface Box {
+              height: number;
+              width: number;
+              }
+  
+              interface Box {
+              scale: number;
+              }
+  
+              let box: Box = { height: 5, width: 6, scale: 10 };
+          </code></pre>
+            </section>
+            <section>
+              <p>Type alias</p>
+              <aside class="notes"> 
+                it’s common to want to use the same type more than once and refer
+                to it by a single name. A type alias is exactly that - a name for
+                any type. The syntax for a type alias is:
+              </aside>
+            </section>
+            <section>
+              <p>1. types can not be extended - types intersection</p>
+              <pre><code data-trim data-noescape>		
+            type Person = {
+              name: string,
+              age: number
+            } &  { typescriptMaster: boolean }
+            
+            const me: Person = {
+              name: 'Asaf',
+              age: 32,
+              typescriptMaster: true
+            }
+          </code></pre>
+            </section>
+            <section>
+              <p>2. Union types</p>
+              <p></p>
+              <pre><code data-trim data-noescape>		
+              type Person = {
+                name: string,
+                age: number
+              } 
+              
+              type TypescriptMaster = { typescriptMaster: boolean }
+  
+              type Asaf = Person | TypescriptMaster 
+              
+              const me: Asaf = {
+                name: 'Asaf',
+                age: 32,
+              }
+  
+              // or 
+              const me: Asaf = {
+                typescriptMaster: true;
+              }
+  
+              // or
+              const me: Asaf = {
+                name: 'Asaf',
+                age: 32,
+                typescriptMaster: true;
+              }
+            </code></pre>
+            <aside class="notes"> 
+             We can not create an interface which is a union of other 2 interfaces or types
+            </aside>
+            </section>
+            <section id="fragments">
+              <h4>Summary</h4>
+              <p class="fragment">Interface and types are interchangeable sometimes</p>
+              <p class="fragment">Interfaces can be implemented and extended </p>
+              <p class="fragment">Interfaces have Declaration merging</p>
+              <p class="fragment">Types have types intersection which are close to interface extention</p>
+              <p class="fragment">Types can be used with Unions, interfaces can't</p>
+              <p class="fragment">Types can be used with Tuples, interfaces can't</p>
+            </section>
+          </section>
+          <section data-background="#007acc">
+            <section >
+             <h4> type never </h4> 
+             <aside class="notes">
+              The never type represents the type of values that never occur. For
+              instance, never is the return type for a function expression or an
+              arrow function expression that always throws an exception or one
+              that never returns. Variables also acquire the type never when
+              narrowed by any type guards that can never be true. The never type
+              is a subtype of, and assignable to, every type; however, no type
+              is a subtype of, or assignable to, never (except never itself).
+              Even any isn’t assignable to never.
+             </aside>
+            </section>
+            <section>
+              <pre><code data-trim data-noescape>		
+          // Function returning never must not have a reachable end point
+          function error(message: string): never {
+            throw new Error(message);
+          }
+           
+          // Inferred return type is never
+          function fail() {
+            return error("Something failed");
+          }
+           
+          // Function returning never must not have a reachable end point
+          function infiniteLoop(): never {
+            while (true) {}
+          }
+        </code></pre>
+            </section>
+            <section>
+              <h4> type unknown</h4>
+              <aside class="notes"> 
+                the unknown type is simmilar to the any type, however you can't
+                assign a value of type unknown to another value with different
+                type without type check (typeof) first.
+  
+                Anything is assignable to unknown, 
+                but unknown isn’t assignable to anything but itself and any without a type assertion or a control flow based narrowing.
+                Likewise, no operations are permitted on an unknown without first asserting or narrowing to a more specific type.
+              </aside>
+            </section>
+            <section>
+              <aside class="notes"> 
+                Here's a list of assignment examples we saw before, this time using a variable typed as unknown:
+              </aside>
+              <pre><code data-trim data-noescape>		
+                let value: unknown;
+  
+                value = true; // OK
+                value = 42; // OK
+                value = "Hello World"; // OK
+                value = []; // OK
+                value = {}; // OK
+                value = Math.random; // OK
+                value = null; // OK
+                value = undefined; // OK
+                value = new TypeError(); // OK
+                value = Symbol("type"); // OK
+      </code></pre>
+            </section>
+            <section>
+              <aside class="notes"> 
+                What happens though when we try to assign a value of type unknown to variables of other types?
+              </aside>
+              <pre><code data-trim data-noescape>	
+              let value: unknown;
+  
+              let value1: unknown = value; // OK
+              let value2: any = value; // OK
+              let value3: boolean = value; // Error
+              let value4: number = value; // Error
+              let value5: string = value; // Error
+              let value6: object = value; // Error
+              let value7: any[] = value; // Error
+              let value8: Function = value; // Error
+              </code></pre>
+            </section>
+            <section>
+              <aside class="notes"> 
+                We can narrow the unknown type to a more specific type in different ways, including the typeof operator, 
+                the instanceof operator, and custom type guard functions. All of these narrowing techniques contribute to TypeScript's control flow based type analysis.
+  
+                The following example illustrates how value has a more specific type within the two if statement branches:
+              </aside>
+              <pre><code data-trim data-noescape>	
+                function stringifyForLogging(value: unknown): string {
+                  if (typeof value === "string") {
+                    return value
+                  }
+                  if (typeof value === "function") {
+                    // Within this branch, `value` has type `Function`,
+                    // so we can access the function's `name` property
+                    const functionName = value.name || "(anonymous)";
+                    return `[function ${functionName}]`;
+                  }
+                
+                  if (value instanceof Date) {
+                    // Within this branch, `value` has type `Date`,
+                    // so we can call the `toISOString` method
+                    return value.toISOString();
+                  }
+                
+                  return String(value);
+                }
+              </code></pre>
+            </section>
+            <section>
+              <p>If you want to force the compiler to trust you that a value of type unknown is of a given type, you can use a type assertion like this:</p>
+              <pre><code data-trim data-noescape>	
+                const value: unknown = "Hello World";
+                const someString: string = value as string;
+                const otherString = someString.toUpperCase(); // "HELLO WORLD"
+              </code></pre>
+              <p>This can easily lead to an error being thrown at runtime if you make a mistake and specify an incorrect type:</p>
+              <pre><code data-trim data-noescape>	
+                const value: unknown = 42;
+                const someString: string = value as string;
+                const otherString = someString.toUpperCase(); // BOOM
+              </code></pre>
+            </section>
+            <section>
+              <p>In a union type, unknown absorbs every type. This means that if any of the constituent types is unknown, the union type evaluates to unknown:</p>
+              <pre><code data-trim data-noescape>	
+                type UnionType1 = unknown | null; // unknown
+                type UnionType2 = unknown | undefined; // unknown
+                type UnionType3 = unknown | string; // unknown
+                type UnionType4 = unknown | number[]; // unknown
+  
+                type UnionType5 = unknown | any; // any
+              </code></pre>
+            </section>
+          </section>
+          </section>
         <section data-background="#007acc">
           <h4>
             Things you should have known in TypeScript but you
@@ -1019,267 +1290,6 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
               }
             </script></code></pre>
             </section>
-          </section>
-        </section>
-        <section data-background="#007acc">
-          <section>
-            <h4>Type vs Interface</h4>
-          </section>
-          <section>
-            <p>Interface</p>
-            <aside class="notes"> 
-              One of TypeScript’s core principles is that type checking focuses
-              on the shape that values have. This is sometimes called “duck
-              typing” or “structural subtyping”. In TypeScript, interfaces fill
-              the role of naming these types, and are a powerful way of defining
-              contracts within your code as well as contracts with code outside
-              of your project.
-            </aside>
-          </section>
-          <section>
-            <p>1. Interfaces can be extended and implemented</p>
-            <pre><code  class="hljs" data-trim data-line-numbers="|1-5|7-11|13|15-17|19-24">		
-              interface Person {
-                name: string,
-                age: number
-                sayHello:() => void
-              }
-              
-              class SomePerson implements Person {
-                name ='Asaf'
-                age = 32
-                sayHello () {console.log('Hello')}
-              }
-
-              const p = new SomePerson();
-              
-              interface Developer extends Person{
-                typescriptMaster: boolean
-              }
-              
-              const me: Developer = {
-                  name: 'Asaf',
-                  age: 32,
-                  typescriptMaster: true,
-                  sayHello: () => console.log('Hello')
-              }
-				</code></pre>
-          </section>
-          <section>
-            <p>2. Declaration merging</p>
-            <aside class="notes"> 
-              “declaration merging” means that the compiler merges two separate
-              declarations declared with the same name into a single definition.
-              This merged definition has the features of both of the original
-              declarations. Any number of declarations can be merged; it’s not
-              limited to just two declarations.
-            </aside>
-          </section>
-          <section>
-            <pre><code data-trim data-noescape>		
-					interface Box {
-						height: number;
-						width: number;
-					  }
-
-					  interface Box {
-						scale: number;
-					  }
-
-					  let box: Box = { height: 5, width: 6, scale: 10 };
-				</code></pre>
-          </section>
-          <section>
-            <p>Type alias</p>
-            <aside class="notes"> 
-              it’s common to want to use the same type more than once and refer
-              to it by a single name. A type alias is exactly that - a name for
-              any type. The syntax for a type alias is:
-            </aside>
-          </section>
-          <section>
-            <p>1. types can not be extended - types intersection</p>
-            <pre><code data-trim data-noescape>		
-					type Person = {
-						name: string,
-						age: number
-					} &  { typescriptMaster: boolean }
-					
-					const me: Person = {
-						name: 'Asaf',
-						age: 32,
-						typescriptMaster: true
-					}
-				</code></pre>
-          </section>
-          <section>
-            <p>2. Union types</p>
-            <p></p>
-            <pre><code data-trim data-noescape>		
-						type Person = {
-							name: string,
-							age: number
-						} 
-						
-						type TypescriptMaster = { typescriptMaster: boolean }
-
-						type Asaf = Person | TypescriptMaster 
-						
-						const me: Asaf = {
-							name: 'Asaf',
-							age: 32,
-						}
-
-						// or 
-						const me: Asaf = {
-							typescriptMaster: true;
-						}
-
-						// or
-						const me: Asaf = {
-							name: 'Asaf',
-							age: 32,
-							typescriptMaster: true;
-						}
-					</code></pre>
-          <aside class="notes"> 
-           We can not create an interface which is a union of other 2 interfaces or types
-          </aside>
-          </section>
-        </section>
-        <section data-background="#007acc">
-          <section >
-           <h4> type never </h4> 
-           <aside class="notes">
-            The never type represents the type of values that never occur. For
-            instance, never is the return type for a function expression or an
-            arrow function expression that always throws an exception or one
-            that never returns. Variables also acquire the type never when
-            narrowed by any type guards that can never be true. The never type
-            is a subtype of, and assignable to, every type; however, no type
-            is a subtype of, or assignable to, never (except never itself).
-            Even any isn’t assignable to never.
-           </aside>
-          </section>
-          <section>
-            <pre><code data-trim data-noescape>		
-				// Function returning never must not have a reachable end point
-				function error(message: string): never {
-				  throw new Error(message);
-				}
-				 
-				// Inferred return type is never
-				function fail() {
-				  return error("Something failed");
-				}
-				 
-				// Function returning never must not have a reachable end point
-				function infiniteLoop(): never {
-				  while (true) {}
-				}
-			</code></pre>
-          </section>
-          <section>
-            <h4> type unknown</h4>
-            <aside class="notes"> 
-              the unknown type is simmilar to the any type, however you can't
-              assign a value of type unknown to another value with different
-              type without type check (typeof) first.
-
-              Anything is assignable to unknown, 
-              but unknown isn’t assignable to anything but itself and any without a type assertion or a control flow based narrowing.
-              Likewise, no operations are permitted on an unknown without first asserting or narrowing to a more specific type.
-            </aside>
-          </section>
-          <section>
-            <aside class="notes"> 
-              Here's a list of assignment examples we saw before, this time using a variable typed as unknown:
-            </aside>
-            <pre><code data-trim data-noescape>		
-              let value: unknown;
-
-              value = true; // OK
-              value = 42; // OK
-              value = "Hello World"; // OK
-              value = []; // OK
-              value = {}; // OK
-              value = Math.random; // OK
-              value = null; // OK
-              value = undefined; // OK
-              value = new TypeError(); // OK
-              value = Symbol("type"); // OK
-		</code></pre>
-          </section>
-          <section>
-            <aside class="notes"> 
-              What happens though when we try to assign a value of type unknown to variables of other types?
-            </aside>
-            <pre><code data-trim data-noescape>	
-            let value: unknown;
-
-            let value1: unknown = value; // OK
-            let value2: any = value; // OK
-            let value3: boolean = value; // Error
-            let value4: number = value; // Error
-            let value5: string = value; // Error
-            let value6: object = value; // Error
-            let value7: any[] = value; // Error
-            let value8: Function = value; // Error
-            </code></pre>
-          </section>
-          <section>
-            <aside class="notes"> 
-              We can narrow the unknown type to a more specific type in different ways, including the typeof operator, 
-              the instanceof operator, and custom type guard functions. All of these narrowing techniques contribute to TypeScript's control flow based type analysis.
-
-              The following example illustrates how value has a more specific type within the two if statement branches:
-            </aside>
-            <pre><code data-trim data-noescape>	
-              function stringifyForLogging(value: unknown): string {
-                if (typeof value === "string") {
-                  return value
-                }
-                if (typeof value === "function") {
-                  // Within this branch, `value` has type `Function`,
-                  // so we can access the function's `name` property
-                  const functionName = value.name || "(anonymous)";
-                  return `[function ${functionName}]`;
-                }
-              
-                if (value instanceof Date) {
-                  // Within this branch, `value` has type `Date`,
-                  // so we can call the `toISOString` method
-                  return value.toISOString();
-                }
-              
-                return String(value);
-              }
-            </code></pre>
-          </section>
-          <section>
-            <p>If you want to force the compiler to trust you that a value of type unknown is of a given type, you can use a type assertion like this:</p>
-            <pre><code data-trim data-noescape>	
-              const value: unknown = "Hello World";
-              const someString: string = value as string;
-              const otherString = someString.toUpperCase(); // "HELLO WORLD"
-            </code></pre>
-            <p>This can easily lead to an error being thrown at runtime if you make a mistake and specify an incorrect type:</p>
-            <pre><code data-trim data-noescape>	
-              const value: unknown = 42;
-              const someString: string = value as string;
-              const otherString = someString.toUpperCase(); // BOOM
-            </code></pre>
-          </section>
-          <section>
-            <p>In a union type, unknown absorbs every type. This means that if any of the constituent types is unknown, the union type evaluates to unknown:</p>
-            <pre><code data-trim data-noescape>	
-              type UnionType1 = unknown | null; // unknown
-              type UnionType2 = unknown | undefined; // unknown
-              type UnionType3 = unknown | string; // unknown
-              type UnionType4 = unknown | number[]; // unknown
-
-              type UnionType5 = unknown | any; // any
-            </code></pre>
           </section>
         </section>
         </section>

@@ -36,6 +36,32 @@
 				</aside>
 			</section>
 			<section>
+				<p>
+					TypeScript’s type system is very powerful because it allows expressing types in terms of other types.
+				</p>
+
+				<p>
+					The simplest form of this idea is generics, we actually have a wide variety of type operators available to use. It’s also possible to express types in terms of values that we already have.
+				</p>
+				<p>
+					By combining various type operators, we can express complex operations and values in a succinct, maintainable way. In this section we’ll cover ways to express a new type in terms of an existing type or value.
+				</p>
+			</section>
+			<section>
+				<p>
+					1. It is cool!
+				</p>
+				<p>
+					2. We can do things we have already done in another way, might be easier
+				</p>
+				<p>
+					3. Sometimes we dont have access to a type
+				</p>
+				<p>
+					4. sometimes we will have the almost the utility we want, so we know how to change it!
+				</p>
+			</section>
+			<section>
 				<div style="display: flex; flex-direction: column; justify-content: center;">
 					<h4>Part 1: Utility Types</h4>
 					<p>TypeScript provides several utility types to facilitate common type transformations. These utilities are available globally.</p>
@@ -672,7 +698,7 @@
 					<p class="fragment">what about this?</p>
 					<p class="fragment">any</p>
 				</section>
-				<section>
+				<!-- <section>
 					<p>Infer a part of a type</p>
 					<pre  class="fragment data-id="code-animation" ><code  data-trim data-noescape class="hljs">	<script type="text/template">
 						type InferSomething<T> = T extends {a: infer A, b: infer B} ? A & B : any 
@@ -689,7 +715,7 @@
 					</script></code></pre>
 					<p class="fragment">what about this?</p>
 					<p class="fragment">{ a: string; } & {b: boolean;}</p>
-				</section>
+				</section> -->
 				<section>
 					<p>More examples:</p>
 				</section>
@@ -879,7 +905,7 @@
 					<p> FYI</p>
 					<p class="fragment"> Record type gives an ability to describe type that has some amount of keys with the same value type </p>
 					<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
-						Record<string, number>  ===  interface Record { [key:string: number] }
+						Record<string, number>  ===  interface Record { [key:string]: number }
 					</script></code></pre>
 				</section>
 				<section>

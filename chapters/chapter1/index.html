@@ -450,7 +450,11 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
         </section>
         <section>
           <section>
-            Type Compatibility and Duck typeing
+            Type Compatibility and Duck typing
+          </section>
+          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEFEA8EMFsAcA2BTUBGUBaUAVAnvKgMID2C0ALgJYBGViVFeoAUFQHYXIBOAZtAGNUABR4BnEu2iIAku14kMAbxag1oKbGQAuUGIrcOAcwA0q9dCM6NAV1g0eZgL4s2nHvyGhR3CVNnyJFBc7AAmyKHK5mqa1vqG7KbRoJbW7HYO3GbqKaGh3MhiYrrxxiwuLLw27ALUkqDwCRRyChgAFBwKuj5+0i2KAJQqOQKSEigAdIgkRh2BAwDc5a5VNXXsDU39UMhhEe2dJN3ikn2BwbvhkUPJo+zjyFMzcwqLyyx3+qCHaMe+pwEFBc9pFQABeUDDdSxXQAIgAgmJoLxYdkLFZdABmTFotTQPIFIpwgDWlAAXuxkIg-KAABwAJlARioADdKNA8FRYLDlp8KN9AvS-r1AYpwZDkjDQAikSjcSkMaBsc5XCBQAB3Eg2RChUAUAAWlA1JG4xIA-Kw1Y0OM1zpBLvsXiR6QMWGr9SR1SkaFr+QbKBa3WBrZx+mgnWhXaqwFA4EhUIzsPhCKBSORqHQGExWG4uHxBCITv5+oyoWoqKESgYyjkpaVEvLUrp0vZHO8bR4C6AAPLsRB4GS6svfSt6auJdvufNeIjQbj9CU5CtVhJJEaSeDQdh4ABycDi47X6l2zMpyYPq-lsBI4UQAE1kHOV8ZWBVVrUqPUQ7aFIyncKARLUAAB8ez7AdQhudd7hISZplmQ43gqPkGiLM4um8NDRUZCFh2XaU0FRSV9zhRFkSInImyVTFeTGflJH7QddF7RjdVw5J8NhekiJcFCBDnBd2KXUdYUxCj1DuTdtz3LQ4QAIQAWQAdXEtQTw4ZBzzhdSzwIZBVNAa9bwfJ9pXpAAGCzYVfaNjW1XV-X5TVTUDK0tkFNpCH+Yt5iDTYbRLNoGIgqN3U9b1fT1Q0KDNPzv0C-j5182zYwQFAlSwUAPS9CgSD0WCWVQRgLSYFMjGgGxuFCMRMoAESoMQBEMWAOEoF8AFV2E-e4c1KwtvOkWr2XFJRQnZACfN-UAnFAAAySE+t0AByLyRUwQ5MCqRBEEwMaKGgJaZpAyE9ugZjwMHGb5qUPU9OWitMGCw6lkqaoPy-dyFExUB-0wgbECG-aoIksZYMeeCnSQ2zNXsqKjWc81LWDT6SExNpRvG1bAMCExbsIOEsf8dbAk27UdtO2EnFdNyAsCNGMf27RgsHXHFulB7gsp0KwGyiKbD9aLYpp0MPIZs7Ev6Vm7ulQnpGJhRSe23b2S5uKUfpdHTu0CWcbx6xYQ58DVaAA" data-background-interactive>
+          </section>
+          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEFEA8EMFsAcA2BTUBGUAoTBLAdgC7IBOAZtAMaoCCoA3pqE6HnMgFygDOBx+A5gBpGzaPw4sArrABGJTAF9chEuSqgAQvRFNWsCTz54hO0GIl5pc4ouwUA9nh6gZ7LQF5tzFm04Aiai5oUj9hb3NOAGZI20wQUAB3e0lEABNQAgALaAJE+2IAawB+OLAHJ1zoTlpPGQBubFKIGAQUUAAmLGUiMkpUAGEvZnhie3g0TkMBMOHR+HbJ3mnTEbHIxaMTb1X4ABYN5e25gFYD4xmmHYA2M63ZsYB2W4vQHYAOZ5W5gE5Po7G0AAGT5KfA9NSoAAiQ0ucwm3CW5y+YwWCM2Lx26zRh3uez+uNO2KR-3gNyJd1hj3xlPgH3JGJ+1NecOB9Ni5WcFE4g08DBJ8IA5Ds0AKGSjOEK5u1Rcj4FjJWsZST9qAFXslQSJTtjhqaWS1Vddcyqaqdg8je8tXM3hbGaafraAay1UCZUpMKRJHgKAQcI5mWCAPIyABWAAp7KHOJCAJR0LDeDn2FAAOkQ9n4EdDMdi8SSKXSWRyeUKJXiIyDobDFBjQA" data-background-interactive>
           </section>
         </section>
         <section>
@@ -861,26 +865,46 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
           </section>
           </section>
           <section>
-            <h1>Function overloads</h1>
+            <section>
+              <h4>Function overloads</h4>
+            </section>
+            <section>
+              <p>
+                TypeScript provides the concept of function overloading. You can have multiple functions with the same name but different parameter types and return type. However, the number of parameters should be the same.
+              </p>
+            </section>
+            <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEFEA8EMFsAcA2BTUBGAXKAUNkoB3AC2gBdQBLAZ1FKNXgCcB7AIxVlHseQH5sAZgFcAdgGNSFZiNABzHslJoAFPGSMq0rFVKMKI2aAA+oHXoMBtALoBKbbv2GTZx9dABvbKEoDQy0gCeasy+ahrSoAC80aAA5C4GsTYeXt6gPKRCjDIABgASyIiIzAA0oAAk7mGaIgC+AIQ5ANyptaCFVKgUvsoAgoyM0AEAdNT9gwGq6jU2yZ5p6YpZMtXSw7DQ8MoicKiRAHyg+YXFZZU7sMgNOTYt3rWpdCwEoCLIL+ADzIzKsQCqO3YqFIzDkClISRaDzwYGIZEoNDowKCqBCpl0vFAYmgMgo5B4RQCoFYqGg6PMsn4YmkOnJaCi3nkyEUKgssV6VGgAliZViABEcSIArFbE1QPg2QUiqVQByufUeXEpadQAKREKFVYYYRmEJEAATWgkcgEb4Aa34+DMwxBf3gYQAwtBOspbrh8HDyNQjci1KA0WZxpjsbj8SciSTQDiowMhlSaeRAwN6QymSzfgB1b4GyHisCxZUyrOMA31bWmvWGujw02MC3apOMdabZSug7uWo2d1gKBwJCoABMGG7oAA8gA3dTFaCGqgUWQ7TI8KiCUQSKQyNOkAdTcIiewUuzkxwtYTiSQRLc71YiKgH1y2e+WKx3bUASQQHGQIlIZA3pnnRcsmQVdz3-K9dxqLBRDNERmAIEQjxguCEJSbxuj8QJglCaYImiSI4gSWQkjQtIMmWI5CzOKpcLqRo7lANoOi6HpxiGUYqDYyYb1mUjvHI7JQBvZstguPZDmOaVqLE643XuR4iGeV53ggL4fn+QEUFoUEt0hbBoQ9Y0ER9WgUX9XxGwHTFsGpW9E10cYBwZMFmW3ZQ2TlbleTVIURTdEdPWMpFTL9ANdCsnBbNpMwnNTcEVFiYsc1uPMlROIts31MtcCixNmEuAA1aBECEZBoJEWD4JkAiNMqhDYhaD1dQNI0a3NS0wC3ZRNEK4rSpStJcCAA" data-background-interactive>
+            </section>
+            <section>
+              <section id="fragments">
+                <h4>Summary</h4>
+                <p class="fragment">Using function overloading you can be strict on the type return from the function</p>
+                <p class="fragment">Using function overloading you can declare more flexible functions</p>
+                <p class="fragment">When you have a function that receives union and returns union you should think about whether there is a relationship between input and output</p>
+              </section>
+            </section>
           </section>
           <section>
-            <h1>
-              Typescript patterns
-            </h1> 
+            <section>
+
+              <h4>
+                Typescript patterns
+              </h4> 
+            </section>
+            <section>
+              Mixins
+           </section>
+           <section>
+              Discriminating Unions
+           </section>
+           <section>
+             index signature
+           </section>
+           <section>
+             intersection Types
+           </section>
           </section>
-          <section>
-             Mixins
-          </section>
-          <section>
-             Discriminating Unions
-          </section>
-          <section>
-            index signature
-          </section>
-          <section>
-            intersection Types
-          </section>
-        <section data-background="#007acc">
+        <!-- <section data-background="#007acc">
           <h4>
             Things you should have known in TypeScript but you
             probably don't
@@ -1316,7 +1340,7 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
             </script></code></pre>
             </section>
           </section>
-        </section>
+        </section> -->
         </section>
       </div>
     </div>

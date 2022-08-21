@@ -31,7 +31,7 @@ export function Inject(dependencyName: string) {
     return function (constructor: new () => unknown, _: any, paramOrder: number) {
         const dep = Injector.get(dependencyName);
         const dependencies: unknown[] = Reflect.getOwnMetadata('__dependencies__', constructor) ?? [];
-        dependencies.push(dep);
+        dependencies[paramOrder] = dep;
 
         Reflect.defineMetadata('__dependencies__', dependencies, constructor);
     }

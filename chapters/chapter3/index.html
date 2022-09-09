@@ -260,9 +260,6 @@
 								const person: Person  = new Adult('Asaf');
 							</script></code></pre>
 						</section>
-						<section>
-							<p>Duck typing?</p>
-						</section>
 						</section>
 					</section>
 					<section>
@@ -279,51 +276,6 @@
 						  <p>A class (or function ) should have only one reason to change </p>
 						  <img src="../../assets/Single-Responsibility-Principle.png" style="height: 500px; width: 650px;">
 						</section>
-
-						<section>
-							<aside class="notes"> 
-								<p>this class has 2 reason to change: </p>
-								<p>1. trackCalories has change it implementation</p>
-								<p>2. logMessage has change it implementation</p>
-							</aside>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								class CalorieTracker {
-									currentCalories = 0;
-									constractor(private maxCalories: number){}
-
-									trackCalories(calorieCount){
-										this.currentCalories += calorieCount;
-										if(this.currentCalories > this.maxCalories){
-											this.logMessage()
-										}
-									}
-									logMessage(){
-										console.log('max calories exceeded')
-									}
-								}
-							</code></pre>
-						</section>
-						<section>
-							<aside class="notes"> 
-								<p>now each one has one reason to change </p>
-								<p>things that are not directly realted should not be affected</p>
-							</aside>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								import logMesasge from './logger.js'
-
-								class CalorieTracker {
-									currentCalories = 0;
-									constractor(private maxCalories: number){}
-
-									trackCalories(calorieCount){
-										this.currentCalories += calorieCount;
-										if(this.currentCalories > this.maxCalories){
-											logMessage('max calories exceeded')
-										}
-									}
-								}
-							</code></pre>
-						</section>
 					  <section> 
 							<p>	Open–closed </p>
 							<p> A class should be open to extensions but close to modifications </p>
@@ -332,48 +284,6 @@
 								Once you are happy with a class and it passes all UT, it should be close to modifications
 								new fuctionality sould be added in a new class, and it should extend (or use conposition) the other class
 							</aside>
-						</section>
-						<section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/FASwdgLgpgTgZgQwMZQAQHMplggNgRQFcoBnCEAezFQG9hUHUIBPABygC5UAiAIwoq4oCMN1QAfHtAAeEbgBpU9RgBNSSGCFbkqXMprDpFwAL4BuUJFiIUqALaFc5VkIDCACwogURUjup0jExsnDwOTlpunt5QCkpBaiQaWv56EAZG8YwU2pRgJGkZANoAuqYWwMAs7Ki+ZHmoALwYWDgExPVUEvaOzlFePh3+lXCEYEj+qKwGEEQgAF4AFACOQ3kFtWtUpQCUtMoMq37rAHRwFDAAosjuiytbYDuNAHyBQYxIVCSCUCe4FOh7scqCdEslclQdgd3iQAO4gCBIW5HTpgE7VKA7N7vd5IBAkNB8ARCETcDjQnE4z75H5-AGLbjpYjcHYWSns1DU75COmA7iIXAEllsjkMXgwYQAaxForxBLCvUiUA8A1iXApotQKP8Jxy-hIZwu1yRdz1eUU4DU0iez32mo5XNp-0BAAMACQ0S1QaSoADUqAAjCYTqgPWaqCYXayNaKTFD7UFxVKZQ78YSZHJUOqEx8vk76dwAIL5WGwLgAfUrVerNeFMY5SYQ0vrJnrQUdPOdDLrQTjpkqXIgWoeGzq-lKTVQRWh2PeGK4RJ+pPk9bBmghYAXAEkSKgROhHAgYKhCATdxikuuhxRCNe4Ex3Gh+NIAPwKaEmFdBWdBedSb1yF+lJrikeQLgAIuomi8GgzA3seiAAG4XAiaAXuCQ5wMIECEBKb5AQwn4zvWf7cOEfTKtEKDvuyIEbguADq7gIEOIC7nBuGoEhKHQKguD7oQCCYPh9bhvkXBFNwABSCCIQgADKGFxNwAAKzAQFQykyXJymuL6vrcGUvYrmUwDTOAsyEAsQKoiQOxAA" data-background-interactive>
-						</section>
-						<section>
-							New requirement: add a range question to the quiz
-							<pre><code class="typescript-language" data-trim data-noescape>
-								{
-									type: "range",
-									description: "what is the speed limit in your city?"
-								}
-							</code></pre>
-							<aside class="notes"> 
-								<p>
-									Most of the people will go and modify the class without a second thought.
-								</p>
-
-								<p>
-									Since you don’t modify existing code you can be assured that it wouldn’t be broken. 
-									It reduces maintenance cost and increases product stability.
-									Open/closed principle is intended to mitigate risk when introducing new functionality. 
-								</p>
-								<p>
-									case "range" : 
-									console.log("Minimum: _______________");
-									console.log("Maximum: _______________");
-									break;
-								</p>
-							</aside>
-						</section>
-						<section>
-								<aside class="notes"> 
-									<p>
-										Close - this class should be closed for modification, so we violated this principle when we changed it 
-									</p>
-	
-									<p>
-										Open -  however we should have the ability to add new things. we should have the ability to add new type.
-									</p>
-
-								</aside>
-						</section>
-						<section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/MYGwhgzhAEBCD28QFMwDsCKBXZEAuAlvGtAN4BQ0V0wx+ATlsHvPQBQAOWARiAcNAAmuYPQIdCxAFzQGBNAHMAlKQC+lahzFo82XJLQBhABbx+uNio3VqtNBCTIAdCHgK2AIgCMT6ABVGZA8laxsaOkcXN08AJl8AMTAQCCCQm3V1clBIGABZLBBCDhQTM2BkPXwiEgobOwYmFnYuXn4hETEJapk5RQAaaC0CADcwPGRoeC66HrxtBQBtAF0VdRshnUqDUvMIS1qbPGMCCCcpg1OAM1YAUTBgYzY2c+qB+WEADyUAXgA+A7CtgiKCi7gABgASUjvZAfaAAamgXlUvihL2IqjBSgA3KFoKo0tQMuQsuAoP5YbocFViGRQvU5o1WJweHwBMIIKJxAZZvNVqENlT9NUduU9lZAVR6pFXO4PABBewAd2Q9BkAH1NVrtTrgriwsTSTloAAldAKCrUgx0up0RnMZktNntTmdHmyObyZRqAXaIU0oymXb7PFA+wy6IeXLyDU6uNavWhqXA5yyzy5MAfWPxuOJg3kTLycb0S73CZbaoAl1c6ZoXle31FivEUUWJQyYZmQQFknkS5YNDMaqDP3YAgALzYAEcrdUIDJm2hlkobdQZ8K6E5rvQ7g8nuuAz9-knwuGQWmDwYnByawYcSfL9UnILF63xfrJdLz5G80SQpkGWgR86Ggb5oAWUI0GQJU4EQFB0EXTwAEkYHNAowHoaAsBSGA8AATw4DpuUmLA8EmS5oCOCZuHgD4AH5gj6SDoOgfJCnEEog3KRCPAAdWMMZoBOaA8PgLBMNLTsxHGaBwEULAwAtBiBgWDwACkwFGABlW8PAGDwAAU8JYNA9OgdTNLAMyPEMeF4Q8FYmJsKCYL8SkeIAESI7gJlE8ToEk1gCBk-DCNdYjLlQPBxOQBilCc6gXNNc1LQ3NBPH4wThKo2RCOQQRZIIABbYKhJIPzMOAYK8Li8glnIF8sAnadZzoJQgA" data-background-interactive>
 						</section>
 					  <section> 
 						 <p> Liskov substitution (substituability)</p>
@@ -390,67 +300,6 @@
 						<section>
 							<p>If S is a subtype of T, then objects of type T in a program may be replaced with objects of type S without altering any of the desirable properties of that program (e.g. correctness).</p>
 						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								class Rectangle {
-									constructor(private width: number, private length: number) {}
-								  
-									public setWidth(width: number) {
-									  this.width = width;
-									}
-								  
-									public setLength(length: number) {
-									  this.length = length;
-									}
-								  
-									public getArea() {
-									  return this.width * this.length;
-									}
-								  }
-							</code></pre>
-						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-							class Square extends Rectangle {
-								constructor(side: number) {
-								  super(side, side);
-								}
-							  
-								public setWidth(width: number) {
-								  // A square must maintain equal sides
-								  super.setWidth(width);
-								  super.setLength(width);
-								}
-							  
-								public setLength(length: number) {
-								  super.setWidth(length);
-								  super.setLength(length);
-								}
-							  }
-							</code></pre>
-							<aside class="notes"> 
-								While this design is still serviceable, it fails the Liskov test and misses out on the benefits mentioned earlier. Moreover, clients of our code may have to adapt, like so:
-							</aside>
-						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								const rect: Rectangle = new Square(10); // Can be either a Rectangle or a Square
-								rect.setWidth(20);
-								expect(rect.getArea()).toBe(200); // ❌ If rect is a Square, area is 400
-							</code></pre>
-						</section>
-						<section id="fragments">
-							<pre><code class="typescript-language" data-trim data-noescape>
-								const rect: Rectangle = new Square(10);
-								rect.setWidth(20);
-								if (rect instanceof Square) {
-								  // ...
-								} else {
-								  // ...
-								}
-							</code></pre>
-							<p class="fragment"> Type checking a polymorphic value is a good indicator of an LSP violation.</p>
-						</section>
 					  <section> 
 						 <p> Interface segregation </p>
 						 <p> A class should not depend on methods that is does not need to implement </p>
@@ -465,105 +314,6 @@
 							<img class="fragment" src="../../assets/interface-bird.png" style="height: 200px;">
 							<img class="fragment" src="../../assets/class-penguin.png" style="height: 200px;">
 						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								export interface SmartDevice {
-									call(contact: string): void;
-									sendSms(contact: string, text: string): void;
-									openApp(path: string): void;
-									connectToWifi(ssid: string, password: string): void;
-								  }
-							</code></pre>
-						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								export class SmartPhone implements SmartDevice {
-									call(contact: string): void {
-									  console.log("Calling " + contact);
-									}
-									sendSms(contact: string, text: string): void {
-									  console.log("Texting " + text + " to " + contact);
-									}
-									openApp(path: string): void {
-									  console.log("Opening App " + path);
-									}
-									connectToWifi(ssid: string, password: string): void {
-									  console.log("Connecting to Wifi " + ssid + " with password " + password);
-									}
-								  }
-							</code></pre>
-						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								export class Tablet implements SmartDevice {
-									call(contact: string): void {
-									  throw new Error("can not place a call.");
-									}
-									sendSms(contact: string, text: string): void {
-									  throw new Error("can not send an sms message.");
-									}
-									openApp(path: string): void {
-									  console.log("Opening App " + path);
-									}
-									connectToWifi(ssid: string, password: string): void {
-									  console.log("Connecting to Wifi " + ssid + " with password " + password);
-									}
-								  }
-							</code></pre>
-						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								export interface SmartDevice {
-									call?(contact: string): void;
-									sendSms?(contact: string, text: string): void;
-									openApp(path: string): void;
-									connectToWifi(ssid: string, password: string): void;
-								  }
-							</code></pre>
-						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								export interface SmartDevice {
-									openApp(path: string): void;
-									connectToWifi(ssid: string, password: string): void;
-								  }
-								  
-								  export interface PhoneDevice {
-									call(contact: string): void;
-									sendSms(contact: string, text: string): void;
-								  }
-							</code></pre>
-						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								export class SmartPhone implements SmartDevice, PhoneDevice {
-									call(contact: string): void {
-									  console.log("Calling " + contact);
-									}
-									sendSms(contact: string, text: string): void {
-									  console.log("Texting " + text + " to " + contact);
-									}
-									openApp(path: string): void {
-									  console.log("Opening App " + path);
-									}
-									connectToWifi(ssid: string, password: string): void {
-									  console.log("Connecting to Wifi " + ssid + " with password " + password);
-									}
-								  }
-							</code></pre>
-						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								export class Tablet implements SmartDevice {
-									openApp(path: string): void {
-									  console.log("Opening App " + path);
-									}
-									connectToWifi(ssid: string, password: string): void {
-									  console.log("Connecting to Wifi " + ssid + " with password " + password);
-									}
-								  }
-							</code></pre>
-						</section>
 					  <section> 
 						 <p> Dependency inversion </p> 
 						 <p>Your classes and modules sould depend on abstractions instead of concrete implementations </p>
@@ -572,24 +322,6 @@
 						<section id="fragments">
 							<p>Abstractions = Interfaces</p>
 							<p class="fragment">Your classes should depend on interfaces and not concrete classes</p>
-						</section>
-						<section id="fragments"> 
-						 <p> Think of a computer mouse </p>
-						 <p class="fragment">wired</p>
-						 <p class="fragment">wireless</p>
-						 <p class="fragment">Touchpad</p>
-						 <p class="fragment">Laser</p>
-						 <p class="fragment">Optical</p>
-						 <p class="fragment">Trackball</p>
-						</section>
-						<section>
-							<pre><code data-trim data-noescape>
-								interface Mouse {
-									onClickButtonOne:():void;
-									onClickButtonTwo:():void;
-									movePointer:() void;
-								}
-							</code></pre>
 						</section>
 						<section>
 						<p> Loose Coupling </p>
@@ -602,132 +334,7 @@
 						</p>
 						</aside>
 						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								class Stripe {
-									constructor(private user: string){}
-							
-									makePayment(amountInCents: number){
-										console.log(`${this.user} made payment 
-										of $${amountInCents/100} with Stripe`)
-									}
-								}
-							</code></pre>
-						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								class Store {
-									private stripe: Stripe;
-							
-									constructor(private user: string){
-										this.stripe = new Stripe(user)
-									}
-							
-									purchaseBike(quantity: number){
-										this.stripe.makePayment(200 * quantity * 100)
-									}
-									purchaseHelment(quantity: number){
-										this.stripe.makePayment(15 * quantity * 100)
-									}
-								}
-							</code></pre>
-						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								class PayPal {
-									makePayment(user:string, amountInDollars:number){
-										console.log(`${user} made payment 
-										of $${amountInDollars} with Paypal`)
-									}
-								}
-							</code></pre>
-						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								class Store {
-									private paypal: PayPal;
-							
-									constructor(private user: string){
-										this.paypal = new PayPal()
-									}
-							
-									purchaseBike(quantity: number){
-										this.paypal.makePayment(this.user , 200 * quantity)
-									}
-									purchaseHelment(quantity: number){
-										this.paypal.makePayment(this.user, 15 * quantity)
-									}
-								}							
-							</code></pre>
-						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								interface PaymnetProcessor{
-									pay(amountInDollars: number): void
-								}
-							</code></pre>
-						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								class Store {
-									constructor(private paymnetProcessor: PaymnetProcessor){}
-							
-									purchaseBike(quantity: number){
-										this.paymnetProcessor.pay( 200 * quantity)
-									}
-									purchaseHelment(quantity: number){
-										this.paymnetProcessor.pay(15 * quantity)
-									}
-							
-								}
-							</code></pre>
-						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								class PayPalPaymentProcessor implements PaymnetProcessor {
-									payPal: PayPal;
-									constructor(private user: string){
-										this.payPal = new PayPal();
-									}
-									
-									pay(amountInDollars: number){
-										this.payPal.makePayment(this.user , amountInDollars)
-									}
-								}
-							</code></pre>
-						</section>
-						<section>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								stripeStore.purchaseBike(2)
-								stripeStore.purchaseHelment(2)
-							</code></pre>
-							<pre><code class="typescript-language" data-trim data-noescape>
-								paypalStore.purchaseBike(2)
-								paypalStore.purchaseHelment(2)
-							</code></pre>
-						</section>
-						<section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/MYGwhgzhAEDKAuB7ATgU2gbwFDV33wiAdhPMgK7BLIAUADsgJYBuY86dYAngLZGrwACskTBUUFAC5og7nwHDR4iCgCUGAL5Yc+PHXLJgAC0ioAQowDWqGgEdyYIvEbwu0ouR4AjVMnU7dXXgjRggAOk5efiERMQlkCO4aaAAmAAY06AAqaHtHZ1dVAN0tQNx9QxMIVAAJVBAeVCc7BycXN2gPb19-MqCQ8Mj5GKV4xK4aAEYAVmzc1oKuIr6tYtX8RidfADMwMRk5aMU4lWRsPsiaMB5EcicASSIAEUQQcGQId08fP2lmREYABM1tp8KBIDAEEw6KhZLwmiMTihoIweHQQKhGk4YHDhsdlMjMMV8KRoahpFDGDCANzEvCEEhkSjUehMVjsaDkarIaSkzYAc16fTwwVCYT5MOgAF5OqgAO5wMhUmxcnq0lZ03Ca6CXa63B7PV7vT6db49c7C3Ci8IS1BhHhgay4hFXG53eCPF5vMAfOaTDLLMqlMogsHgKAHLiyEDOpz4+IotEYrHwHGHBSxAnIIkXbjR6Rw6PqsoM0nMlCslhsdCqnnQPlEQUWy3W8bR6WyhWFsAgGiqYuBYOBbW6t0Gr3Gr7dPzN4WtyLR+2O2FyF2t2vQAA00D17s9Rp9EEDg5BxXBEcpktnYOIZaoFYYVY5td5Ssb6nWZQdTtXzV3BoAYQRE0uh+IVLVLV47RARB+RoAADAASDB125DRoAdQEOF-eBoEQbZoEQ5D-w9IggOxAB6f00nQuUXCMRUyXg48SlPMMIUjdtrzwb8V3hZoXwbfltxI-dvQ+SRQPNbUbxIKCwhguCkIwWt0Mw7D+Nw-DCOIsdSInQ9aPoyNOBAZjtSHaBPwIW9cNtBAUHQGV+AVBy0BoFzGOVWNESzGgAHIAEEIDAbZ-NUfsz1snVuFMtynM7RVHI8+VOJ7Hz41OALgtC8LIuKezqDtCpjFMCxrBoFIWMKxyIgMUrqjqBoXSq0E9Fint4rqyoyqsGxWvwSI4qK7qGtqeoU0q1QgA" data-background-interactive>
-						</section>
-						<section id="fragments">
-							<p>But what if I'm not the one who is in charge of creating the class? Inversion of control</p>
-						</section>
-				 	</section>
-				<section>
-					<section> 
-					 <p>
-						 UML class diagram 
-					</p>
-					</section>
-						 <section>
-							 <p>Visibility</p>
-							 <img src="../../assets/Visibility.png" width="1000" height="250">
-						 </section>
-						 <section>
-							 <p>UML relations notation</p>
-							 <img src="../../assets/Relations.png" width="1000" height="450">
-						 </section>
-					</section>
-				</section>
+
 				<section>
 					<h2>Mixins</h2>
 					<p>let's add a map</p>

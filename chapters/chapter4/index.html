@@ -140,6 +140,15 @@
                         <section>
                             <h4>Demo</h4>
                         </section>
+                        <section id="fragments">
+                            <h4>pros</h4>
+                            <p class="fragment"> Open/Closed Principle. You can introduce new subscriber classes without having to change the publisher’s code (and vice versa if there’s a publisher interface). </p>
+                            <p class="fragment"> You can establish relations between objects at runtime.</p>
+                        </section>
+                        <section id="fragments">
+                            <h4>cons</h4>
+                            <p class="fragment">  Subscribers are notified in random order. </p>
+                        </section>
                         <section>
                             <h3>
                                 Exercise
@@ -148,6 +157,29 @@
                                 We’re building an application for watching the price of various stocks. There are two places in our application where we need to display the stocks:  -StatusBar: shows the popular stocks  -StockListView: shows the complete list of stocks When the price of a stock changes, the corresponding views (StatusBar and/or StockListView) need to be refreshed to reflect the latest price.  Our application currently does not have the ability to communicate the change in stock prices to the corresponding views.  Use the observer pattern to solve this problem. 
                             </p>
                         </section>
+                        <section>
+                            <h4>Chain of Responsibility </h4>
+                        </section>
+                        <section>
+                            <p>Chain of Responsibility is a behavioral design pattern that lets you pass requests along a chain of handlers. Upon receiving a request, each handler decides either to process the request or to pass it to the next handler in the chain.</p>
+                        </section>
+                        <section>
+                            <img src="../../assets/chain-of-responsibility.png" alt="">
+                        </section>
+                        <section>
+                            <h4>Demo</h4>
+                        </section>
+                        <section id="fragments">
+                            <h4>pros</h4>
+                            <p class="fragment">  You can control the order of request handling. </p>
+                            <p class="fragment"> Single Responsibility Principle. You can decouple classes that invoke operations from classes that perform operations.</p>
+                            <p class="fragment"> Open/Closed Principle. You can introduce new handlers into the app without breaking the existing client code.</p>
+                        </section>
+                        <section id="fragments">
+                            <h4>cons</h4>
+                            <p class="fragment"> Some requests may end up unhandled. </p>
+                        </section>
+                    
                     </section>
 				<section>
 					<section> <h4> Structural </h4></section>

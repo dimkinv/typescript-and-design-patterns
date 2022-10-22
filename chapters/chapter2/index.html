@@ -74,7 +74,7 @@
 					</section>
 					<section>
 						<p>for example - consider this interface </p>
-						<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+						<pre class="fragment" data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 							interface Todo {
 								title: string;
 								description: string;
@@ -84,7 +84,7 @@
 					<section>
 						<p>Lets say I want to create a function that updates a todo  </p>
 						<p class="fragment">I can pass to this function also a partial type:</p>
-						<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+						<pre class="fragment" data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 							const todo1 = {
 								title: "organize desk",
 								description: "clear clutter",
@@ -105,7 +105,7 @@
 					</section>
 					<section>
 						<p>Consider the next example:</p>
-						<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+						<pre class="fragment" data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 							interface Props {
 								a?: number;
 								b?: string;
@@ -113,7 +113,7 @@
 						  </script></code></pre>
 					</section>
 					<section>
-						<pre  data-id="code-animation" ><code class="hljs">	<script type="text/template">
+						<pre  data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 							const obj: Props = { a: 5 };
  
 							const obj2: Required<Props> = { a: 5 };
@@ -131,7 +131,7 @@
 					</section>
 					<section id="fragments">
 						<p>Example:</p>
-						<pre data-id="code-animation" ><code class="hljs">	<script type="text/template">
+						<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 							interface Todo {
 								title: string;
 							  }
@@ -262,7 +262,7 @@
 				<p>The keyof operator takes an object type and produces a string or numeric literal union of its keys. The following type P is the same type as “x” | “y”</p>
 			</section>
 			<section id="fragments">
-				<pre data-id="code-animation" ><code class="hljs">	<script type="text/template">
+				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 					type Point = { x: number; y: number };
 					type P = keyof Point;
 				  </script></code></pre>
@@ -270,17 +270,38 @@
 				  <p class="fragment"> type P = “x” | “y”: </p>
 			</section>
 			<section>
-				<pre data-id="code-animation" ><code class="hljs">	<script type="text/template">
+				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 					type Mapish = { [k: string]: boolean };
 					type M = keyof Mapish;
 				  </script></code></pre>
 				  <p class="fragment"> type M = string | number </p>
 				  <p class="fragment">Note that in this example, M is string | number — this is because JavaScript object keys are always coerced to a string, so obj[0] is always the same as obj["0"].</p>
 			</section>
+			<section>
+				<h4> practical examples:</h4>
+			</section>
+			<section>
+				<pre  class="fragment" data-id="code-animation" ><code class="hljs" data-trim data-noescape>	<script type="text/template">
+					function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
+						return obj[key];
+					  }
+				</script></code></pre>
+			</section>
+			<section data-background-iframe="https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABAcwKZQAoCc4AdVZQCeAPACoA0iA0oqgB5SpgAmAzogNapFzCJkAfAAo4AIwBWALgFVuRGdQCUMsgG1qAXUQBvAFCJEWdCCxJxEtfM0BuPQF89T4vkQBJMMDiIAvLr0AkGAAhgC2qDJsUFgwYMgUgWzBADbBWAqIYCChYgQOThAIUYgsqABuqMl4BDIeXr7+hiHhMgDkAILBbMCtCYZJqekyAIwADKNUDnZ6hWDFzahkRK5+aJg4+IREwqUVVZtUrQutSjaIAPTniFExcYhOl4gAwnChuDDJBHRYOFj3s8UBmkiEsVih0NhqlsduVKlDDrhgkQTmdLk9gmAwHAoIhgLEWJkwqhEK1EciAHTCABMAGZRgAWJRAA"></section>
+			<section>
+				<h4> In Record</h4>
+			</section>
+			<section data-background-iframe="https://www.typescriptlang.org/play?#code/C4TwDgpgBAYhCGwCuAnCMA28DmBnKAvFAN5QBQUUAJvCgNYCyA9lRAFxQAUAlIQHxQAbkwCWVANwUoAOwgB3AKq4IKAAoomAMxEZ2XXgQHCx48gF9JZUJFgJkaAPJhgIptPxEAShADGTFFQAPHQQIFq2iKjoWHgANFAARkxMuvDSfKZkQA"></section>
+			<section>
+				<p>We will soon see how the "keyof" operator can be useful with mapped types.</p>
+			</section>
 			</section>
 			<section>
 			<section id="fragments">
 					<p>Typeof Type Operator</p>	
+				</section>
+				<section>
+					<p>The Typeof Operator has already been used in type guards. Deriving a type into another type is another use of it.</p>
 				</section>
 				<section>
 					JavaScript already has a typeof operator you can use in an expression context:
@@ -307,7 +328,7 @@
 					  </aside>
 				</section>
 				<section>
-					<pre data-id="code-animation" ><code class="hljs">	<script type="text/template">
+					<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 						function f() {
 							return { x: 10, y: 3 };
 						  }
@@ -330,7 +351,7 @@
 			</section>
 			<section id="fragments">
 			<p>We can use an indexed access type to look up a specific property on another type:</p>
-			<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+			<pre class="fragment" data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 			type Person = { age: number; name: string; alive: boolean };
 			type Age = Person["age"];
 			</script></code></pre>
@@ -339,19 +360,19 @@
 			</p>
 			</section>
 			<section id="fragments">
-			<pre data-id="code-animation" ><code class="hljs">	<script type="text/template">
+			<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 				type I1 = Person["age" | "name"];
 			</script></code></pre>
 			<p class="fragment">
 				type I1 = string | number
 			</p>
-			<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+			<pre class="fragment" data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 				type I2 = Person[keyof Person];
 			</script></code></pre>
 			<p class="fragment">
 				type I2 = string | number | boolean
 			</p>
-			<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+			<pre class="fragment" data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 				type AliveOrName = "alive" | "name";
 				type I3 = Person[AliveOrName];
 			</script></code></pre>
@@ -361,14 +382,14 @@
 			</section>
 			<section id="fragments">
 				<p>Another example of indexing with an arbitrary type is using number to get the type of an array’s elements. We can combine this with typeof to conveniently capture the element type of an array literal:				</p>
-			<pre  class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+			<pre  class="fragment" data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 				const MyArray = [
 				{ name: "Alice", age: 15 },
 				{ name: "Bob", age: 23 },
 				{ name: "Eve", age: 38 },
 				];
 			</script></code></pre>
-			<pre  class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+			<pre  class="fragment" data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 				type Person = typeof MyArray[number];
 			</script></code></pre>
 			<p class="fragment"> 
@@ -379,18 +400,18 @@
 			</p>
 			</section>
 			<section id="fragments">
-			<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+			<pre class="fragment" data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 				type Age = typeof MyArray[number]["age"];
 			</script></code></pre>
 			<p class="fragment">type Age = number</p>
-			<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+			<pre class="fragment" data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 				type Age2 = Person["age"];
 			</script></code></pre>
 			<p class="fragment">type Age2 = number</p>
 			</section>
 			<section id="fragments">
 			<p>You can only use types when indexing, meaning you can’t use a const to make a variable reference:</p>
-			<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+			<pre class="fragment" data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 				const key = "age";
 				type Age = Person[key];
 			</script></code></pre>
@@ -401,7 +422,7 @@
 			</section>
 			<section id="fragments"> 
 				<p>However, you can use a type alias for a similar style of refactor:				</p>
-			<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+			<pre class="fragment" data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 				type key = "age";
 				type Age = Person[key];
 			</script></code></pre>
@@ -413,32 +434,43 @@
 				describing access to any property in a given object
 			</aside>
 			<p> for example: </p>
-			<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+			<pre class="fragment" data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 				function getProperty(obj, key){
 					return obj[key]
 				}
 			</script></code></pre>
 			</section>
 			<section>
-				<pre data-id="code-animation" ><code class="hljs">	<script type="text/template">
+				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 					function getProperty<T>(obj:T , key: string){
 						return obj[key]
 					}
 				</script></code></pre>
-				<p>is that good enought? </p>
+				<p>is that good enough? </p>
 			</section>
 			<section>
 				<img src="../../assets/keyof-error-T.png" />
 			</section>
 			<section>
-				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>	<script type="text/template">
+				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 					function getProperty<T, K extends keyof T>(obj:T , key: K) {
 						return obj[key]
 					}
 				</script></code></pre>
+				<p>the return type of this function is T[K]</p>
+				<p>this ability of typescript to infer using lookup types, could really help in some use cases - for example:</p>
 				<aside class="notes"> 
 					now I can make sure no one will send to my function any other string but the keys of this type
 				  </aside>
+			</section>
+			<section>
+				<p>TypeScript infers the return type of this function to be T[K] and when we will call this function TypeScript will infer the actual type of the property that we're going to read:</p>
+				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
+					let user = { name: 'John Doe', age: 25 };
+					let name = getProperty(user, 'name'); // string
+					let age = getProperty(user, 'age'); // number
+					let age = getProperty(user, 'nonexistentProperty'); // Error
+				</script></code></pre>
 			</section>
 			<section>
 				<aside class="notes"> 
@@ -470,7 +502,7 @@
 			</section>
 			<section id="fragments">
 				<p >Q: Given the following code:</p>
-				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>	<script type="text/template">
+				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape> data-trim data-noescape>	<script type="text/template">
 					type Request = {
 						params: {
 						  [key: string]: string;
@@ -483,7 +515,7 @@
 			</section>
 			<section id="fragments">
 				<p>Q: Can we access the types of nested properties?</p>
-				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>	<script type="text/template">
+				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape> data-trim data-noescape>	<script type="text/template">
 					type Player = {
 						location: {
 						  x: number;
@@ -502,7 +534,7 @@
 			</section>
 			<section id="fragments">
 				<p>Q: We are given the following interface:</p>
-				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>	<script type="text/template">
+				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape> data-trim data-noescape>	<script type="text/template">
 					interface User {
 						name: string;
 						age: number;
@@ -514,7 +546,7 @@
 			</section>
 			<section id="fragments">
 				<p>Q: We have the following interface. This is a map that maps event names to their corresponding event object types.</p>
-				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>	<script type="text/template">
+				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape> data-trim data-noescape>	<script type="text/template">
 					interface MyEventsMap {
 						click: MyMouseEvent;
 						keypress: MyKeyboardEvent;
@@ -527,7 +559,7 @@
 			</section>
 			<section id="fragments">
 				<p>Q: Given the following code: </p>
-				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>	<script type="text/template">
+				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape> data-trim data-noescape>	<script type="text/template">
 					interface MyEventsMap {
 						click: MyMouseEvent;
 						keypress: MyKeyboardEvent;
@@ -554,7 +586,7 @@
 				</section>
 				<section id="fragments">
 					<p>Consider the next example: </p>
-					<pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+					<pre class="fragment" data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 						interface Animal {
 							live(): void;
 						  }
@@ -587,16 +619,16 @@
 					<p>for example:</p>
 					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 						function someFunction<T>(value:T){
-							const someOtherFucntion = (
+							const someOtherFunction = (
 								someArg: T extends boolean ? "TYPE A" : "TYPE B" 
 							) => {}
-							return someOtherFucntion;
+							return someOtherFunction;
 						}
 					</script></code></pre>
 					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
-						const reslut = someFunction('a string')
+						const result = someFunction('a string')
 					</script></code></pre>
-					<p class="fragment">what would be the type of "reslut" ? </p>
+					<p class="fragment">what would be the type of "result" ? </p>
 				</section>
 				<section>
 					<aside class="notes"> 
@@ -605,16 +637,22 @@
 					<p>for example:</p>
 					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 						function someFunction<T>(value:T){
-							const someOtherFucntion = (
+							const someOtherFunction = (
 								someArg: T extends boolean ? "TYPE A" : "TYPE B" 
 							) => {}
-							return someOtherFucntion;
+							return someOtherFunction;
 						}
 					</script></code></pre>
 					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
-						const reslut = someFunction('a string')
+						const result = someFunction('a string')
 					</script></code></pre>
 					<p class="fragment">what would be the type of "someArg" ? </p>
+				</section>
+				<section>
+					<h4>Example:</h4>
+				</section>
+				<section>
+					<img src="../../assets/conditinal-types-example.png" style="height: 600px; width: 1000px;">
 				</section>
 				<!-- <section>
 					<p>Distributive Conditional Types</p>
@@ -909,11 +947,57 @@
 					</script></code></pre>
 				</section>
 				<section>
+					<h4>More Examples:</h4>
+				</section>
+				<section>
+					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						type Stringify<T> = {
+							[P in keyof T]: string;
+						  };
+					</script></code></pre>
+				</section>
+				<section>
+					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						type OptionsFlags<T> = {
+							[Property in keyof T]: T[Property] extends Function ? T[Property] : boolean 
+						};  
+					</script></code></pre>
+				</section>
+				<section>
+					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						type Features = {
+							darkMode: () => void;
+							newUserProfile: () => void;
+							userManagement: string;
+							resetPassword: string
+						};
+						
+					</script></code></pre>
+				</section>
+				<section>
+					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						type FeatureOptions = OptionsFlags<Features>;
+					</script></code></pre>
+					<p>what will that return?</p>
+				</section>
+				<section>
+					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						type FeatureOptions = {
+							darkMode: () => void;
+							newUserProfile: () => void;
+							userManagement: boolean;
+							resetPassword: boolean;
+						}
+					</script></code></pre>
+				</section>
+				<section>
 				 <p> Assignment: </p>	
 				 <p> 1. Create a generic type that receives a type and returns the same type but with all its keys as optional (Partial) </p>	
 				 <p> 2. Create a generic type that receives a type and returns the same type but with all its keys as readonly (Readonly) </p>	
-				 <p> 3. Create a generic type that receives a type and returns the same type but with all its keys as nullable </p>	
-				 <p> 4. Create a generic type gives the ability to create a new type by picking properties from the already existing model (Pick) </p>
+				</section>
+				<section>
+					<p> 3. Create a generic type that receives a type and returns the same type but with all its keys as nullable </p>	
+					<p> 4. Create a generic type gives the ability to create a new type by picking properties from the already existing model (Pick) </p>
 				</section>
 				<section>
 					Bonus: Create a generic type that receives a type and returns the same type but with all its keys as readonly (nested types too) 
@@ -991,6 +1075,18 @@
 					type CSSValue = number | `${number}px` | ${number}em | ${number}rem
 				</script></code></pre>
 			</section>
+			<section>
+				<h4> Template Literal Types with mapped types</h4>
+			</section>
+			<section>
+				<pre  data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+					type MappedTypeToString<T> = {
+						[K in keyof T as `string-${string & K}`]: string
+					}
+				</script></code></pre>
+			</section>
+			<section data-background-iframe="https://www.typescriptlang.org/play?#code/FAFwngDgpgBAsgQwtAJgFUlNB7AyiAJwEsA7AcwB40A+GAXhgG9gBIAbQGkZSYBrKMNgBmMNDAQBnGAAMJhUmQC0AEkZzi5GADIYHAL7SAugC4Y6hcD3BQmeGAzQAcgFcAtgCMoBKQ2YsJCAA2CARgpiRungQANKwIZFDhkV6xLAAWRGRpIEkeXpY20HYOUACCEvgaZPTwSKglOJUKFHD2mC553tTAQA">
+			</section>
 				<section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/C4TwDgpgBACgTgezAUQG4QHbAMoIK5wDGEAPACrgQB8UAvFAN4BQUrUCGJA0hCFBAA9gmACYBnKGOBwAlhgDmUAGRQA1rwQAzKBUhUWbQwAoI6LADkAhgFsIALigADACQMeIAL4BhABaWFECKOADRQhJYANhEARpaEqg5GGBAA7gBqkXj2OpQA2u4AugCUdDSoCDIiUEUO5ZUA3EwejUwiEIQRlnDQmngYhMAyHFDWluoA6pbAhD6BAPLRAFbtwOSUVEYISw66EDU5kMqwiChmOPhEpLtULYQcUlCQcGLD9KMTUzPzSytGzKyaGTPYBWWwOABE2EsFWeEHBwQMnSkoOy4IAShx-PCDJZ5NkAEwANiaRRaTxeGAAdBwjODAcCUb5-HiRPCoMkUijSowDKwAPR8wxC4Ui1gAPQA-LywvcEBEIJSIgh5EZHBz2TZoDIJK4OSjKcAEABVMBPLyWMQQIxFDyOUkkskQZ4cakYWm4iBMgKs0IcgCCeO5-zYAtFYagkulMm0SVSAegJCgAAYSsHhXcMC95ZSUl03eDc3AMHJ5ABCdkQeRTGToKAe8H2wweElAA" data-background-interactive></section>
 			<section>
 				<p>When a union is used in the interpolated position, the type is the set of every possible string literal that could be represented by each union member:</p>
@@ -1017,6 +1113,8 @@
 			<section>
 				<a href="https://github.com/ghoullier/awesome-template-literal-types">awesome-template-literal-types</a>
 			</section>
+			</section>
+			<section data-background-iframe="https://www.learningtypescript.com/articles/extreme-explorations-of-typescripts-type-system">
 			</section>
 			<section>
 				<h4>Typescript Tips and Tricks</h4>
@@ -1101,6 +1199,6 @@
 
 
 
-<!-- <pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
+<!-- <pre class="fragment" data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 				
 </script></code></pre> -->

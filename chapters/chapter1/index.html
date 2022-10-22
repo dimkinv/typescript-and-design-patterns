@@ -886,7 +886,8 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
               Discriminating Unions
            </section>
            <section>
-            <h2>Let's implement nework state log function</h2>
+            <h4>Let's implement network state log function</h4>
+            <p>A function that receives 3 types of NetworkState, and uses different logic on each one</p>
             <pre>
               <code data-trim="" data-noescape="" class="language-typescript">
                 function logger(state: NetworkState): string {
@@ -894,11 +895,16 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
               </code>
             </pre>
             <p>
-              How would we implmement it?
+              How would we implement it?
             </p>
            </section>
            <section data-background-iframe="https://www.typescriptlang.org/play#code/PTAEAEFMCdoe2gZwFygEwGYME4BQAXATwAdJQA5SfAdwQGsAZOAQwBMBLAOwHMBlfZvjIBeUAG9coUIgFDUAIgA2LDj3kBuXAF9NBEmUo16AMWbtFkVv0Ejxk6bMgKAZmYusN9gMZxWT0JwArgC2AEYwmjq4eqQUVLTQdLyBXl6QiIjWQqCiElIyNgqIKWkZnlLQ6cRwnIj+eVKg+Oz4Fqgy0Fzcmo2grIHQguw1qEFhEfb5IcHM0ITt+J08PaBRUSCgALTbXoH425sxBvH0WSL2AD5xRolMbF1nl9cJdKbmlo9SV4YvyanpmUcumcgU4XmaNVAym43BgAAoCnJnqdHABKBZLbh2KQbABK7G4AAt8AE4NRQAAVfS8LydYgk1hwdKkkl0Thk0DUQnsLyE0BwZxNQlkfCEyqQewbapCTjNZiKJr6RAOGygHyBRSsUDhAB00RxYApcy6TTgoGY-wy5tAxHgpGgRE53N5oHYiE4AHISYhCbNLJKwBb4Fb5QqiKRldRzArBm6yMxOKAYPBoPZEZAdT4-LoDaAAEKEaRR-C8k2Q9MAGkp1Np7HpaoTAVm8HJorIoOGnADfTJia4at8ZGcynJCflhEQbrTxZdCMcOvTqOxjS8zDqoCUKi68mQk0alXwA0T8gAIr3lPceDrr+UV2uyPJXO8PLvermKcLFbFgoEZNrjjcrxuB8jigMKlQVnuuaIGaFqlJOPBCmQAAGWaQMhoDOOwkCaq6yqIMwzgSm+oAHkeoDIQAorACCgAAJGI6aZoOWg9tQnAXqo3DISsUiruu8jFJaiA7lBpFUORyFnuxnGWPRjHzpUiDVLUGbNK0kCsZs8lMUpKl1Au0yzIQWg8fYWjaEAA">
            </section>
+           <section id="fragments">
+              <h4>Union Exhaustiveness checking</h4>
+              <p class="fragment"> Because the switch is no longer exhaustive, TypeScript is aware that the function could sometimes return undefined. </p>
+           </section>
+           <section data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEAEFMCdoe2gZwFygEwGYBsWBQAXATwAdJQA5SfAdwQGsAZOAQwBMBLAOwHMBlfZvjIBeUAG9QiAUNQAiADYsOPWaAC+AbgIkylGvQBizdvMit+gkeMnTIcgGbHTrWRtABjOKzuhOAVwBbACMYdS0iUgoqWmg6Xj93d0hERAshUFEJKUs5RASklNVNbUi9GLoDeACAYWZ3AAszNKss2wcqgH13OsairRLdaPpmjNxQUAAfKP1YpjYuPlsxyenyoxMmpfGpsuH85NStld3Yyrgans3LfpBQAFoH9z98B7vcez9Od3x2OE5QRTcbgwAAUKFWw1sAEpUFJoAtxMtENR2PgGqAwQA6bJCKGI8bjbqIMgKJQLWTIZYE0DQKh+aD-UnzHg0yAARz8yXwripHmYxNAskcGxclOp41p+Hp-wABsLnKAUfh6h4vGQACRiRCYzzeNQyrTUokkvKJA4U3kSukMwXcOD4VmIYh-Yk88ZqXBqIA">
           </section>
         <!-- <section data-background="#007acc">
           <h4>

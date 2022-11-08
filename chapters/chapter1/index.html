@@ -343,6 +343,10 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
           </code></pre>
       </section>
       <section>
+        <section id="fragments">
+          <p>what are the 8 types of javascript?</p>
+          <p class="fragment">undefined, null, boolean, number, bigint, string, symbol, and object.</p>
+        </section>
         <section data-background="#007acc">
           <h4>
           Typescript Basics++
@@ -360,7 +364,16 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
           <section>
             Type Compatibility and Duck typing
           </section>
-          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEFEA8EMFsAcA2BTUBGUBaUAVAnvKgMID2C0ALgJYBGViVFeoAUFQHYXIBOAZtAGNUABR4BnEu2iIAku14kMAbxag1oKbGQAuUGIrcOAcwA0q9dCM6NAV1g0eZgL4s2nHvyGhR3CVNnyJFBc7AAmyKHK5mqa1vqG7KbRoJbW7HYO3GbqKaGh3MhiYrrxxiwuLLw27ALUkqDwCRRyChgAFBwKuj5+0i2KAJQqOQKSEigAdIgkRh2BAwDc5a5VNXXsDU39UMhhEe2dJN3ikn2BwbvhkUPJo+zjyFMzcwqLyyx3+qCHaMe+pwEFBc9pFQABeUDDdSxXQAIgAgmJoLxYdkLFZdABmTFotTQPIFIpwgDWlAAXuxkIg-KAABwAJlARioADdKNA8FRYLDlp8KN9AvS-r1AYpwZDkjDQAikSjcSkMaBsc5XCBQAB3Eg2RChUAUAAWlA1JG4xIA-Kw1Y0OM1zpBLvsXiR6QMWGr9SR1SkaFr+QbKBa3WBrZx+mgnWhXaqwFA4EhUIzsPhCKBSORqHQGExWG4uHxBCITv5+oyoWoqKESgYyjkpaVEvLUrp0vZHO8bR4C6AAPLsRB4GS6svfSt6auJdvufNeIjQbj9CU5CtVhJJEaSeDQdh4ABycDi47X6l2zMpyYPq-lsBI4UQAE1kHOV8ZWBVVrUqPUQ7aFIyncKARLUAAB8ez7AdQhudd7hISZplmQ43gqPkGiLM4um8NDRUZCFh2XaU0FRSV9zhRFkSInImyVTFeTGflJH7QddF7RjdVw5J8NhekiJcFCBDnBd2KXUdYUxCj1DuTdtz3LQ4QAIQAWQAdXEtQTw4ZBzzhdSzwIZBVNAa9bwfJ9pXpAAGCzYVfaNjW1XV-X5TVTUDK0tkFNpCH+Yt5iDTYbRLNoGIgqN3U9b1fT1Q0KDNPzv0C-j5182zYwQFAlSwUAPS9CgSD0WCWVQRgLSYFMjGgGxuFCMRMoAESoMQBEMWAOEoF8AFV2E-e4c1KwtvOkWr2XFJRQnZACfN-UAnFAAAySE+t0AByLyRUwQ5MCqRBEEwMaKGgJaZpAyE9ugZjwMHGb5qUPU9OWitMGCw6lkqaoPy-dyFExUB-0wgbECG-aoIksZYMeeCnSQ2zNXsqKjWc81LWDT6SExNpRvG1bAMCExbsIOEsf8dbAk27UdtO2EnFdNyAsCNGMf27RgsHXHFulB7gsp0KwGyiKbD9aLYpp0MPIZs7Ev6Vm7ulQnpGJhRSe23b2S5uKUfpdHTu0CWcbx6xYQ58DVaAA" data-background-interactive>
+          <section>
+            <p>Type Compatibility</p>
+          </section>
+          <section id="fragments">
+            <p>The basic rule for TypeScript’s structural type system is that x is compatible with y if y has at least the same members as x</p>
+          </section>
+          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?strictPropertyInitialization=false#code/PTAEFEA8EMFsAcA2BTUBGUBaUAVAnvKgMID2C0ALgJYBGViVFeoAUFQHYXIBOAZtAGNUABR4BnEu2iIAku14kMAbxag1oKbGQAuUGIrcOAcwA0q9dCM6NAV1g0eZgL4s2nHvyGhR3CVNnyJFBc7AAmyKHK5mqa1vqG7KbRoJbW7HYO3GbqKaGh3MhiYrrxxiwuLLw27ALUkqDwCRRyChgAFBwKuj5+0i2KAJQqOQKSEigAdIgkRh2BAwDc5a5VNXXsDU39UMhhEe2dJN3ikn2BwbvhkUPJo+zjyFMzcwqLyyx3+qCHaMe+pwEFBc9pFQABeUDDdSxXQAIgAgmJoLxYdkLFZdABmTFotTQPIFIpwgDWlAAXuxkIg-KAABwAJlARioADdKNA8FRYLDlp8KN9AvS-r1AYpwZDkjDQAikSjcSkMaBsc5XCBQAB3Eg2RChUAUAAWlA1JG4xIA-Kw1Y0OM1zpBLvsXiR6QMWGr9SR1SkaFr+QbKBa3WBrZx+mgnWhXaqwFA4EhUIzsPhCKBSORqHQGExWG4uHxBCITv5+oyoWoqKESgYyjkpaVEvLUrp0vZHO8bR4C6AAPLsRB4GS6svfSt6auJdvufNeIjQbj9CU5CtVhJJEaSeDQdh4ABycDi47X6l2zMpyYPq-lsBI4UQAE1kHOV8ZWBVVrUqPUQ7aFIyncKARLUAAB8ez7AdQhudd7hISZplmQ43gqPkGiLM4um8NDRUZCFh2XaU0FRSV9zhRFkSInImyVTFeTGflJH7QddF7RjdVw5J8NhekiJcFCBDnBd2KXUdYUxCj1DuTdtz3LQ4QAIQAWQAdXEtQTw4ZBzzhdSzwIZBVNAa9bwfJ9pXpAAGCzYVfaNjW1XV-X5TVTUDK0tkFNpCH+Yt5iDTYbRLNoGIgqN3U9b1fT1Q0KDNPzv0C-j5182zYwQFAlSwUAPS9CgSD0WCWVQRgLSYFMjGgGxuFCMRMoAESoMQBEMWAOEoF8AFV2E-e4c1KwtvOkWr2XFJRQnZACfN-UAnFAAAySE+t0AByLyRUwQ5MCqRBEEwMaKGgJaZpAyE9ugZjwMHGb5qUPU9OWitMGCw6lkqaoPy-dyFExUB-0wgbECG-aoIksZYMeeCnSQ2zNXsqKjWc81LWDT6SExNpRvG1bAMCExbsIOEsf8dbAk27UdtO2EnFdNyAsCNGMf27RgsHXHFulB7gsp0KwGyiKbD9aLYpp0MPIZs7Ev6Vm7ulQnpGJhRSe23b2S5uKUfpdHTu0CWcbx6xYQ58DVdstNN1XPVNVAd91jEFgUH5SAMAhNoztsVtuAGcEAD5QHMpZ7dAPAnZ+mhmwyRw9GfRJPbBH2-ehrUdThpyTURlgg-FR2FiRrLwugH1+eToWwEd8Ug+z1w7eQB2cJ+12W0yXHQjNbR61MNQBBbsdVxjuP-erwPa7aUO3cbyPu+MXvfZesKvXzyL2E9YvB8z+kK78goKEqjY+ttquHe+52p-RjQSOleEGCEayqf7-k8EPn7j5uqUEUv-Tcemfj1jhABlR8KAoCga+bw1QwyTo5Y0Lkc6QAfvfCus8+YCwDH5e+mdMTrz8kpaKiDQC7DsGIQMLA8GwFAD-faW8apQgAEqPlCHgNESloCMGMCqYhqZYImkXKAGhoQ0RyUQDYZAaIADiBRdgqgDvoSgNgxDBzIdIsQEwaH4jwEsNUUiKHB1INMbgExRHIF2BgtUWCjTz0LgIRA0AiiFEIRYqxNV4RdVgNILhvADEUDDu7JYHc6LcBsLUE0bQ6yHlxi2AAYu4zxmRPZKBcMhSxRRSFUDJKgKEbjq5RJ4N40AfI-EBO4EEuwESMmjx4DEuJrgA6u0cVyaQt9x4-2ScgNRYBoDijENnNU3YADSfkaoQmgJ0sAPS-LyOoAIQyyB3Y1S3LqXJ-jcq+FAKEPKi9+TIjcbUHJZBNwZnoIwPAQA" data-background-interactive>
+          </section>
+          <section>
+            <p>Duck typing</p>
           </section>
           <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEFEA8EMFsAcA2BTUBGUAoTBLAdgC7IBOAZtAMaoCCoA3pqE6HnMgFygDOBx+A5gBpGzaPw4sArrABGJTAF9chEuSqgAQvRFNWsCTz54hO0GIl5pc4ouwUA9nh6gZ7LQF5tzFm04Aiai5oUj9hb3NOAGZI20wQUAB3e0lEABNQAgALaAJE+2IAawB+OLAHJ1zoTlpPGQBubFKIGAQUUAAmLGUiMkpUAGEvZnhie3g0TkMBMOHR+HbJ3mnTEbHIxaMTb1X4ABYN5e25gFYD4xmmHYA2M63ZsYB2W4vQHYAOZ5W5gE5Po7G0AAGT5KfA9NSoAAiQ0ucwm3CW5y+YwWCM2Lx26zRh3uez+uNO2KR-3gNyJd1hj3xlPgH3JGJ+1NecOB9Ni5WcFE4g08DBJ8IA5Ds0AKGSjOEK5u1Rcj4FjJWsZST9qAFXslQSJTtjhqaWS1Vddcyqaqdg8je8tXM3hbGaafraAay1UCZUpMKRJHgKAQcI5mWCAPIyABWAAp7KHOJCAJR0LDeDn2FAAOkQ9n4EdDMdi8SSKXSWRyeUKJXiIyDobDFBjQA" data-background-interactive>
           </section>
@@ -380,10 +393,10 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
             <section id="fragments">
             <h4>Summary</h4>
             <p class="fragment"> Tuples are not inferred by typescript they have to be declared.</p>
-            <p class="fragment">Event when a tuple is declared (with fixed length) it is still possible to push data to it.</p>
-            <p class="fragment">a tuple can have an optional value at the end</p>
-            <p class="fragment">a tuple can have a rest param at any place</p>
-            <p class="fragment">the last can be used in order to pass deferent types to one function as one parameter</p>
+            <p class="fragment">Even when a tuple is declared (with fixed length) it is still possible to push data to it.</p>
+            <p class="fragment">A tuple can have an optional value at the end</p>
+            <p class="fragment">A tuple can have a rest param at any place</p>
+            <p class="fragment">The last can be used in order to pass deferent types to one function as one parameter</p>
           </section>
         </section>
         <section>
@@ -411,7 +424,7 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
             <p class="fragment">A union type is a type formed from two or more other types, representing values that may be any one of those types.</p>
             <p class="fragment">We refer to each of these types as the union’s members.</p>
           </section>
-          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTCmA8EMFsAcBtQAICMAuAUCJAzArgHYDGALgJYD2BSRF0ARmQaABROx4npIF4OgAnADRJ2nAExoefeoICUAbyzAkq1QNAk8A6mK5IA1KIIcS45UgC+ygO4U88ACZISAC0gkkdgQGsA-Ba0BADOnrQMTKDOALw0dIzMLChC4nIYyhAwCMiSFvjE5FRxEYl63KECTADmInqSSBXVihZqSBpaOsamKIZdEhbWIHYOzm4eXhS+AdhBocUJUUix4QssAEQAgsGQOGsiawBykJMAnmtpGVBwiEgAzJjYw04u7p7e-nmEpJTUK5FsJk45RIlQIVQAPtJ+MI+mYpI0wZDeNDmthWu1tLpAfojHUBulsJlrsgACxST4FH7zf5leEg6pImSCWrY+oIiFQ2QCVEqVpkHAsEgnWCgCg4WE9aKxADkyK50qQADJFS5haLxXUljK5YIFTzWgaMZ0yr08Wi1INeWojVjugA6EgUADK9LBLDkptZDudrqq+KG9meYzekw+Myocz+zBi1MSyVSgQjYXikRjUdYm22u32R1O5wJKiJ2SQAFZyQGRi9xu9pip8t8irBQSQAJKONiOKQ6gRISHsj1Kc2zCiIO3wChVDvegCqsBFAgAwpBgqw5HIANz4ixFm4ANnLwCeo1eEymFIb1CbTFb7bInc5gl7DV9A5aonFgrVYtEMSlSDW7LnEgg5Wqo2AttQbhkMESD0AIkDEK4tTONBSDfkKIpINK7LSm+qjDqO46TneM5zoIS4ru6G5vpYSCgPAK7AXhSDYAAEoIoDIaIMHoWqWHdrh5r4RGI6gGOE4dtR5qWlY6RyfJCmKYpQA" data-background-interactive>
+          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTCmA8EMFsAcBtQAICMAuAUCJAzArgHYDGALgJYD2BSRF0ARmQaABROx4npIF4OgAnADRJ2nAExoefeoICUAbyzAkq1QNAk8A6mK5IA1KIIcS45UgC+ygO4U88ACZISAC0gkkdgQGsA-Ba0BADOnrQMTKDOALw0dIzMLChC4nIYyhAwCMiSFvjE5FRxEYl63KECTADmInqSSBXVihZqSBpaOsamKIZdEhbWIHYOzm4eXhS+AdhBocUJUUix4QssAEQAgsGQOGsiawBykJMAnmtpGVBwiEgAzJjYw04u7p7e-nmEpJTUK5FsJk45RIlQIVQAPtJ+MI+mYpI0wZDeNDmthWu1tLpAfojHUBulsJlrsgACxST4FH7zf5leEg6pImSCWrY+oIiFQ2QCVEqVpkHAsEgnWCgCg4WE9aKxADkyK50qQADJFS5haLxXUljK5YIFTzWgaMZ0yr08Wi1INeWojVjugA6EgUADK9LBLDkptZDudrqq+KG9meYzekw+Myocz+zBi1MSyVSgQjYXikRjUdYm22u32R1O5wJKiJ2SQAFZyQGRi9xu9pip8t8irBQSQAJKONiOKQ6gRISHsj1Kc2zCiIO3wChVDvegCqsBFAgAwpBgqw5HIANz4ixFm4ANnLwCeo1eEymFIb1CbTFb7bInc5gl7DV9A5aonFgrVYtEMSlSDW7LnEgg5Wqo2AttQbhkMESD0AIkDEK4tTONBSDfkKIpINK7LSm+qjDqO46TneM5zoIS4ru6G5vpYSCgPAK7AXhSDYAAEoIoDIaIMHoWqWHdrh5r4RGI6gGOE4dtR5qWlY6QYNegg4JARDIAAQmQAjOEoqg4PAJzulIABuFB3puqjwJAJwAKJVFUwQGUgxmmRg1hIPJBAkIpynIAAYtBrhMaowQ2GQ0AOU5jhmUgFnWbZ9lyEZJmRS56QYb5-kAPICOpmlLEgfnBAFkI5clGCOKARAWRouBfIU1BVJoTrQJA8DwAACpoDkFa4WUlRgbmIJ4IqeLEDUkE1LXtZ1UmHmQrVViGUxudgw1jpZNl2e6m4WK4FA2EgkD0PYnjBrWSCrcFoVbXJN23Xdt1AA" data-background-interactive>
           </section>
           <section id="fragments">
             <h4>Summary</h4>
@@ -430,12 +443,13 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
             <p class="fragment">By themselves, literal types aren’t very valuable</p>
             <p class="fragment">But by combining literals into unions, you can express a much more useful concept - for example, functions that only accept a certain set of known values</p>
           </section>
-          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEFMA8EMFsAcA25QEYBcAoEoDuALaAF1AEsBnUI-FIgT3hQHsAzUAIwH5RNRkT2oALygA5O1EBuTNjBQ4SFACYsOAsTKVqtBszbQANFVDQAdgBNQpgK6xumAMZNT5EtGFjoUx89fGRRABO1uDSTi4kNrAeqNKyEDAIyKAqmCzWpg5EpM6g8IGkpkQAKlBEABTk6KCuBaYA5kbQiKT1prDgRdUARMgsRN2gAD6g3QX1+APDow6dROCB3QCUoADevKA4AHQ7mAC+8bikiIhUhCS4TIEA1pzx+YUlZeXdABLgJ0xGl4GI5t1GXrgfrLOI4fBMXAmdhMawkajEO44B5FUqQCrdADionM0DoRlgxHAAJmc0CxKWYLkiUUoAAzKAALSgOiw0AOMzspiwdiFWg0cgoI7UKzORkteaBZpUXRVGSPBYsaCzUAAeXg2V8aw2R3M1GqUXYC2kB3SmU1pi5phYrWs5PKkGq6otlBG3WgcKYy21oE2YB2W32h2OpwRFyut3i4Rt9Tt4HKqzwpD1+GqqAADOnQHtKTJwZDobD4eckWBo7b7e7PaC82AIVDoDC4WdEVHnDG4y8PURucRSA4a-F5EkUAAWarxeiMcgOAoa9mcpwj+Ys2GBKhlPA0S2s6ygayCshENIZLI5S1L3mmeOFeBwjA1IKFerTQ0LIy3uEqR91F8jN+BEY5LkNYiBEAAws4ABuCzkOe1SiNA5CMgBojTIhyHzOiogrOsvq+qQLDlFO4CsGQph3kQqDCCIoioaAABkDEyowZGfkQSg0WI9FMaAwGgRB0GweeXEYShthGoEOF4fhsnkkQdqWgA1Ox1FKaAKkUV+Gy+gccngApgSWqpWw9gAyk+DTlCs6nsUoplMBZv7WUGwYnC24Y3KWXI8ny5SoEYShGGJb44TIQA" data-background-interactive>
+          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEFMA8EMFsAcA25QEYBcAoEoDuALaAF1AEsBnUI-FIgT3hQHsAzUAIwH5RNRkT2oALygA5O1EBuTNjBQ4SFACYsOAsTKVqtBszbQANFVDQAdgBNQpgK6xumAMZNT5EtGFjoUx89fGRRABO1uDSTi4kNrAeqNKyEDAIyKAqmCzWpg5EpM6g8IGkpkQAKlBEABTk6KCuBaYA5kbQiKT1prDgRdUARMgsRN2gAD6g3QX1+APDow6dROCB3QCUoADevKA4AHQ7mAC+8bikiIhUhCS4TIEA1pzx+YUlZeXdABLgJ0xGl4GI5t1GXrgfrLOI4fBMXAmdhMawkajEO44B5FUqQCrdADionM0DoRlgxHAAJmc0CxKWYLkiUUoAAzKAALSgOiw0AOMzspiwdiFWg0cgoI7UKzORkteaBZpUXRVGSPBYsaCzUAAeXg2V8aw2R3M1GqUXYC2kB3SmU1pi5phYrWs5PKkGq6otlBG3WgcKYy21oE2YB2W32h2OpwRFyut3i4Rt9Tt4HKqzwpD1+GqqAADOnQHtKTJwZDobD4eckWBo7b7e7PaC82AIVDoDC4WdEVHnDG4y8PURucRSA4a-F5EkUAAWarxeiMcgOAoa9mcpwj+Ys2GBKhlPA0S2s6ygayCshENIZLI5S1L3mmeOFeBwjA1IKFerTQ0LIy3uEqR91F8jN+BEY5LkNYiBEAAws4ABuCzkOe1SiNA5CMgBojTIhyHzOiogrOsvq+qQLDlFO4CsGQph3kQqDCCIoioaAABkDEyowZGfkQSg0WI9FMaAwGgRB0GweeXEYShthGoEOF4fhsnkkQdqWgA1Ox1FKaAKkUV+Gy+gccngApgSWqpWw9gAyk+DTlCs6nsUoplMBZv7WUGwYnC24Y3KWXI8ny5SoEYShGGJb44bWCQKMkACsE78KAsB0AAkuY1QAAYACSrABeyMsmqVUkc7lhngEbeQlyUeKIqBKHSuXmKItb1oWzZhmVSWWLRzgGZc1DkuAdWiEAA" data-background-interactive>
           </section>
             <section id="fragments">
             <h4>Summary</h4>
-            <p class="fragment"> Literal Types are inffered by TS when using const</p>
-            <p class="fragment"> TThey are valuable when using in Union Types</p>
+            <p class="fragment"> Literal Types are inferred by TS when using const</p>
+            <p class="fragment"> They are valuable when using in Union Types</p>
+            <p class="fragment"> They are also valuable in Discriminating Unions which we will see soon</p>
           </section>
         </section>
         <section>
@@ -444,9 +458,9 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
           </section>
           <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEEYDpQdwQwBYBdYHsCuAbAJqBcAHAgUwDtQBLcgKzgDc4BnAYwCcKCkB+AKCQE8SoAGrEEFZpmIAVQcQCqpCqnIBeUAHIAyvOEbQAH01aAogBEAggDl9RjdIBK8gMIBpDQG4eZdAFsRYhJSsiQmpH6gAN48oKA6wgA0MXHm1kmxji6uSQC+PPkgoABMkDyFAJJmJnhMoHDoSKjMqL4EUkjEPABm6KTMSMrkXaio4KAAFL78znCs4ABcAeKSMnKKgwmgUzOsRYuiy8FyYX4AlNGxsRRdk9OzY6qPxqk253mXlDfbs0Wgj+oHIKrULhXyQUyWKxvHh5MrAADMpRAMAwOFASHwKBRrAA1rxCs1SIwUMx7qB9oEViFiCd-OoigAGLxwuCkXAYuDcOGgQnEnk-clLIHU9YqP6aDrEzwFMAAFlAjFQmAagy4XHm3lBQqpci0SHYpAA5rSosl4uLtLoNOkUpCLRDrNbkpk3BaXe5cvken0BmLhqhfrcdgttUcSHqDcbQedklcvnc5n8noCdeH9VQo35wS9obDCgBWaAwCgY0C9QaMUD8DD88joRjELaoViNgQkSsc8jEyOMbkorDszFoXH4sBtxvOADyABlJw4tBaHOZbJoAELT+QmFcMwygADaAF1mYVWYPOcO8dyfP4p7P56bCrEl2ZF8uko-QOvNxav1v32BYgsBwHAsABNcVD25PMwAANiLVEzyxZs8VAblhlYCZeRQcdKHIFMwxpaMHwAnkVEVKRIEwVBDXGcdTi8QpoNAScACNqGIfpIBxYh+EYcZ8OBQizkgdCTDgZgEHGcZuP4U4-gAPmIy5eSVYhKOo8YNBkzRNhk+ioNOGU6jZdFMVHUB0MwsjsLkXDQ0E0VSDk6IPxUiiqJouiGLAJjWPYziZL4gSRSUFRThE5sxIkqS9IUpTYjctSPM07TrVAPTvNAHJTiAA" data-background-interactive>
           </section>
-          <section>
-            <h1>  narowing example - redux </h1>
-          </section>
+          <!-- <section>
+            <h1>  narrowing example - redux </h1>
+          </section> -->
           <section id="fragments">
             <h4>Summary</h4>
             <p class="fragment">If you are looking to optimize your code and reduce the bundle size at the moment of compiling into JavaScript - union types</p>
@@ -471,7 +485,7 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
             <p class="fragment">4. Equality narrowing type guard</p>
             <p class="fragment">5. Custom type guard with predicate</p>
           </section>
-          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEEYDpQFQCwKagJYDsDOAXAhqgxggPYBmomAngA5IDmArtgE4AmAUHgDbbrqgCy5AMJceoAN6tQU0HkIZMjOnkyFGACkp0ARh2R5QqbAFsEALlBZGaGgBpQmnXtDYaZg3SNaEjAJRiAvqyB7HJYoCagALwGCADu-EIi6GoA5ACC6NjEKXYAzLk+ANysrCCgAOpw2JigsYR0HMygXmSIoPU1mpgA-KzEdPiYyHKgxISEoGom5gMA1qiEsag+4qzIxFNIaFi4BCQJwtzofpLSZ7IYhBwIkByENKnbOPhEpAKHPCk+p2dSZXUNJqYKo1OqMWbdUA-X5lC7oK43O4PcI3QwmOwmSAuBDfM6BM4IDjoJASX7SOEI273VILGpPXavA5JL7Qs7-eqNVrVWqqCFQsl-MAU65Uh6YtEIDE3bG46SBYJlABMoEg8CQFGo+w1tAYLD6A2Uw1QoAAypg6MwEKhMABJZhqAAe5ks1lAAB93J5vDYVqTpOtJtr9g6otEUi7UDQvqsBTJQpSkakzRarZgvsVY+y6MhOcDuWCIazpGUHZA0JwU+gi4KedncyCeeDepmwKW0JaHQB5YjQ-H+0hqIOkEORUegFKoDxeRjRv1k4WI6kpO3p6ugLP1-O85sCkuQFRmqyRtSyqTykplXLQNUoY3a0D0JhsNCYbzEbAEUAAEXuMekEudBRrBsaEtCYWZAKPGggjWa03w-JAABkjT-KQAIsIDIxAs5GEIJhIOsGCX3gz9BEWVCDGMNwI1saEjHGAjIxg-VBhQ3BkCMbAOD4bBZgQAA5QhkGJNR2M4jhzB-Gh3VAZCRg9MjYhOM51lSMDwRSW9nFQDiuOUgUF1FVJyhIUg6mIbJT1APspEJYkUA2FJcKYTS0G03SOH0+d4xFRMUgAJTwxhgsYABCUKWTxaE7K2Rz6MIVzjTEvS51+Qy-PiwhwsiuVmLKAAWaAAFEAEcGF0ChKOCxZXXvR89X6ViRgQB1jEoa5HUY6SPUnL1GDscgupkrRxmuXBfVOANHVDaJyAmtkwHKJA8FwAxyJWjgOG08hxxozSTGBQgmhGFIHU01Rx3IFJIGhaFSxUABVShqEYQRuAQE8M2LMBNkO5gVkPax90IJ6XrekSfC6koznIYHEMWbxwY+ooyWhMpfrgI6Acwmg4YR173pPKHTn8UAYoo9LqQdFHYykNGfsoJgqNfXxQCdDCoJk3rp2h8kfMXB45sKWm6YWyZGcYZnvBWQaOddD0RoRXBefPUpgAAVmgQQ6CwQgjDIKgdSfWpkGBexGAQZg9GqBBWHvAAxYS4CicQLFiDjzBPKIAD5QAANyEpp-GKe8ACFkBYF2xFGDhZa9yJfYD5Ag+KRrDRGVxMBNcSOAABQQTAT1SuEakl1BmD1l2eOBSAy4rowT2hVS68r32AAZIHVrzfgt81GGNMR0HdoxPZ8BPxEph5w2Hr5-Bs6zoV7uh+-EYhY9H8exEn1I16unw57ysBQ8IM2NqJMgJmnjjNNwJoUl3m+LbW+JCFmbBYdYa5OgLl3M+zri84F0+iES4vlqTUEwN8bewlHboDgBoAuPhvhrAHDAp2CDIHzXsAXSAQ8OLANJuTP0EDIC7wIWrWAbR7yUAtlbFar5sF0l4LA527tNrhF4kgGAhsTR4CsJQUulslDqioYbC+oAWG3iwAgbAx1SBL37q6AAVjrGo2BmijRkcaP2XE6A3BYunY0aC4EYPMJIj04cWCQ0YSgZhTs-wKONBg5wdi4E+FwcPUAoUxwDEtMQNAltijBBLs4YKLsADa4YcbgByKAXxCB-GoEtnYFJoBUlRKgoqWJ8TEnJLSfkjJ1hcixJSQAXVTgaIYIwxiEEVIOIaHockBP+uYJhctIypUcWQLxPjy4JOaUEkBYR-EcBZpbF2TBGCkJzCzNQNTFRFBKNvEZYz-pAA" data-background-interactive>
+          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEEYDpQFQCwKagJYDsDOAXAhqgxggPYBmomAngA5IDmArtgE4AmAUHgDbbrqgCy5AMJceoAN6tQU0HkIZMjOnkyFGACkp0ARh2R5QqbAFsEALlBZGaGgBpQmnXtDYaZg3SNaEjAJRiAvqyB7HJYoCagALwGCADu-EIi6GoA5ACC6NjEKXYAzLk+ANysrCCgAOpw2JigsYR0HMygXmSIoPU1mpgA-KzEdPiYyHKgxISEoGom5gMA1qiEsag+4qzIxFNIaFi4BCQJwtzofpLSZ7IYhBwIkByENKnbOPhEpAKHPCk+p2dSZXUNJqYKo1OqMWbdUA-X5lC7oK43O4PcI3QwmOwmSAuBDfM6BM4IDjoJASX7SOEI273VILGpPXavA5JL7Qs7-eqNVrVWqqCFQsl-MAU65Uh6YtEIDE3bG46SBYJlABMoEg8CQFGo+w1tAYLD6A2Uw1QoAAypg6MwEKhMABJZhqAAe5ks1lAAB93J5vDYVqTpOtJtr9g6otEUi7UDQvqsBTJQpSkakzRarZgvsVY+y6MhOcDuWCIazpGUHZA0JwU+gi4KedncyCeeDepmwKW0JaHQB5YjQ-H+0hqIOkEORUegFKoDxeRjRv1k4WI6kpO3p6ugLP1-O85sCkuQFRmqyRtSyqTykplXLQNUoY3a0D0JhsNCYbzEbAEUAAEXuMekEudBRrBsaEtCYWZAKPGggjWa03w-JAABkjT-KQAIsIDIxAs5GEIJhIOsGCX3gz9BEWVCDGMNwI1saEjHGAjIxg-VBhQ3BkCMbAOD4bBZgQAA5QhkGJNR2M4jhzB-Gh3VAZCRg9MjYhOM51lSMDwRSW9nFQDiuOUgUF1FVJyhIUg6mIbJT1APspEJYkUA2FJcKYTS0G03SOH0+d4xFRMUgAJTwxhgsYABCUKWTxaE7K2Rz6MIVzjTEvS51+Qy-PiwhwsiuVmLKAAWaAAFEAEcGF0ChKOCxZXXvR89X6ViRgQB1jEoa5HUY6SPUnL1GDscgupkrRxmuXBfVOANHVDaJyAmtkwHKJA8FwAxyJWjgOG08hxxozSTGBQgmhGFIHU01Rx3IFJIGhaFSxUABVShqEYQRuAQE8M2LMBNkO5gVkPax90IJ6XrekSfC6koznIYHEMWbxwY+ooyWhMpfrgI6Acwmg4YR173pPKHTn8UAYoo9LqQdFHYykNGfsoJgqNfXxQCdDCoJk3rp2h8kfMXB45sKWm6YWyZGcYZnvBWQaOddD0RoRXBefPUpgAAVmgQQ6CwQgjDIKgdSfWpkGBexGAQZg9GqBBWHvAAxYS4CicQLFiDjzBPKIAD5QAANyEpp-GKe8ACFkBYF2xFGDhZa9yJfYD5Ag+KRrDRGVxMBNcSOAABQQTAidAR30Gdj1w5YVK4RqSXUGYPWXZ44FIFr+ujBPaFVNbhvfYABkgdWvN+C3zUYY0xHQd2jE9nwE-ESmHnDKevn8GzrOhEe6DH8RiFjme57EBfUl3q6fFXvKwFDwgzY2okyAmJeOM03AmhSE-n4ttb4kIWZsFh1hridALi7TO2cuJ5wLp9EIlxfLUmoJgb4R9hIlzgBoAuPhvhrAHMgp2aCEHzXsAXSAk8OJQNJuTP08DIAnzIWrWAbR7yUAtlbFar5CF0l4Cgk2m1wi8SQDAQ2Jo8BWEoDXS2Sh1QMMNvfYuTtbxYAQNgY6pBN5j1dAAKx1jUbAzRRqKONH7LidAbgsXTsaHBpc8HmC4eXCO-1zDwJQJwuRfpVHGjwc4ZxpcfDEKnqAUKY4BiWmIGgS2xRgjV2cMFF2ABtcMONwA5FAEEhAITUCWzsJk0AWT4lQUVEklJaSMnZJKbk6wuQkmZIALqpwNEMEYYxCCKkHEND0hTQn2LIE4uWkZUpuK6QE6I7T0nMHCdAsIISOAs0ti7JgjBqE5hZmoRpioiglCPpM6Z-0gA" data-background-interactive>
           </section>
           <section>
             <p>what is the problem with this?</p>
@@ -781,7 +795,7 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
                 TypeScript provides the concept of function overloading. You can have multiple functions with the same name but different parameter types and return type. However, the number of parameters should be the same.
               </p>
             </section>
-            <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEFEA8EMFsAcA2BTUBGAXKAUNkoB3AC2gBdQBLAZ1FKNXgCcB7AIxVlHseQH5sAZgFcAdgGNSFZiNABzHslJoAFPGSMq0rFVKMKI2aAA+oHXoMBtALoBKbbv2GTZx9dABvbKEoDQy0gCeasy+ahrSoAC80aAA5C4GsTYeXt6gPKRCjDIABgASyIiIzAA0oAAk7mGaIgC+AIQ5ANyptaCFVKgUvsoAgoyM0AEAdNT9gwGq6jU2yZ5p6YpZMtXSw7DQ8MoicKiRAHyg+YXFZZU7sMgNOTYt3rWpdCwEoCLIL+ADzIzKsQCqO3YqFIzDkClISRaDzwYGIZEoNDowKCqBCpl0vFAYmgMgo5B4RQCoFYqGg6PMsn4YmkOnJaCi3nkyEUKgssV6VGgAliZViABEcSIArFbE1QPg2QUiqVQByufUeXEpadQAKREKFVYYYRmEJEAATWgkcgEb4Aa34+DMwxBf3gYQAwtBOspbrh8HDyNQjci1KA0WZxpjsbj8SciSTQDiowMhlSaeRAwN6QymSzfgB1b4GyHisCxZUyrOMA31bWmvWGujw02MC3apOMdabZSug7uWo2d1gKBwJCoABMGG7oAA8gA3dTFaCGqgUWQ7TI8KiCUQSKQyNOkAdTcIiewUuzkxwtYTiSQRLc71YiKgH1y2e+WKx3bUASQQHGQIlIZA3pnnRcsmQVdz3-K9dxqLBRDNERmAIEQjxguCEJSbxuj8QJglCaYImiSI4gSWQkjQtIMmWI5CzOKpcLqRo7lANoOi6HpxiGUYqDYyYb1mUjvHI7JQBvZstguPZDmOaVqLE643XuR4iGeV53ggL4fn+QEUFoUEt0hbBoQ9Y0ER9WgUX9XxGwHTFsGpW9E10cYBwZMFmW3ZQ2TlbleTVIURTdEdPWMpFTL9ANdCsnBbNpMwnNTcEVFiYsc1uPMlROIts31MtcCixNmEuAA1aBECEZBoJEWD4JkAiNMqhDYhaD1dQNI0a3NS0wC3ZRNEK4rSpStJcG1Xo4KRRgIBgT8QP0Uh1AEaAxFQAAFWj5kWGdpEQIksLKuIbwa1IxKfWQoVwGa5oW1ARooDZEDWngNpELaQt22IcRu4qDu8FBZDvYlmGYFAcVO0D1wiAQAe6-LkGkXaVr3I9x2YCh9VPNcLxkCHmChy5Yawa7bsR5HUdwM8wcxyGepht4MHhmpjFlEQPsQGw1u6HHqeQG0zPwuJ3tupI1u8fBqX1LnhmGHB5IeIA" data-background-interactive>
+            <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEFEA8EMFsAcA2BTUBGAXKAUNkoB3AC2gBdQBLAZ1FKNXgCcB7AIxVlHseQH5sAZgFcAdgGNSFZiNABzHslJoAFPGSMq0rFVKMKI2aAA+oHXoMBtALoBKbbv2GTZx9dABvbKEoDQy0gCeasy+ahrSoAC80aAA5C4GsTYeXt6gPKRCjDIABgASyIiIzAA0oAAk7mGaIgC+AIQ5ANyptaCFVKgUvsoAgoyM0AEAdNT9gwGq6jU2yZ5p6YpZMtXSw7DQ8MoicKiRAHyg+YXFZZU7sMgNOTYt3rWpdCwEoCLIL+ADzIzKsQCqO3YqFIzDkClISRaDzwYGIZEoNDowKCqBCpl0vFAYmgMgo5B4RQCoFYqGg6PMsn4YmkOnJaCi3nkyEUKgssV6VGgAliZViABEcSIArFbE1QPg2QUiqVQByufUeXEpadQAKREKFVYYYRmEJEAATWgkcgEb4Aa34+DMaGGIL+8DCAGFoJ1lLdcPg4eRqEbkWpQGizONMdjcfiTkSSaAcdGBkMqTTyEGBvSGUyWb8AOrfA2Q8VgWLKmXZxgG+ra016w10eGmxgW7XJxg2jZbN0Hdy1GwesBQOBIVAAJgwPdAAHkAG7qYrQQ1UCiyHaZHhUQSiCRSGTp0iDqbhET2Cl2cmOFrCcSSCLb3erERUQ+uWwPyxWO7agCSCA4yBEpDIm9MBclyyZA1wvADrz3GosFEM0RGYAgRGPWD4MQlJvG6PxAmCUJpgiaJIjiBJZCSdC0gyZYjiLM4qjwupGjuUA2g6LoenGIZRiodjJlvWYyO8CjslAW91k2bZdiiQ5jmlGiLiuRp3XuR4iGeV53ggL4fn+QEUFoUFt0hbBoU9Y0EV9WgUQDXwm0HTFsGpO8k10cZBwZMFmR3ZQ2TlbleTVIURXdUcvTMpELP9QNdFsnAHNpMxXLTcFd1iEtc1ufMlROYsc31ctcFipNmEuAA1aBECEZAYJEOCEJkQjtJqxDYhaT1dQNI1a3NS0wG3ZRNBKsqKvStJcG1Xp4KRRgIBgL9QP0Uh1AEaAxFQAAFOj5kWWdpEQIlsMquJb2a1I5OfWQoVwebFuW1BxooDZEE2nhtpEXbwoO2IcXusrju8FBZHvYlmGYFAcQusCNwiARgb6orkGkA71v3Y8J2YCh9TPddLxkaHmFhy4EawO6HpRtGMdwc9IZxmH+vht4MCRmpjFlERvsQGxNu6fG6eQW1LIIuIvoepJNu8fBqX1XnhmGHAlIeIA" data-background-interactive>
             </section>
             <section>
               <section id="fragments">
@@ -799,6 +813,30 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
                 Typescript patterns
               </h4> 
             </section>
+            <section>
+              Discriminating Unions
+           </section>
+           <section>
+            <h4>Let's implement network state log function</h4>
+            <p>A function that receives 3 types of NetworkState, and uses different logic on each one</p>
+            <pre>
+              <code data-trim="" data-noescape="" class="language-typescript">
+                function logger(state: NetworkState): string {
+                }
+              </code>
+            </pre>
+            <p>
+              How would we implement it?
+            </p>
+           </section>
+           <section data-background-iframe="https://www.typescriptlang.org/play#code/PTAEAEFMCdoe2gZwFygEwGYME4BQAXATwAdJQA5SfAdwQGsAZOAQwBMBLAOwHMBlfZvjIBeUAG9coUIgFDUAIgA2LDj3kBuXAF9NBEmUo16AMWbtFkVv0Ejxk6bMgKAZmYusN9gMZxWT0JwArgC2AEYwmjq4eqQUVLTQdLyBXl6QiIjWQqCiElIyNgqIKWkZnlLQ6cRwnIj+eVKg+Oz4Fqgy0Fzcmo2grIHQguw1qEFhEfb5IcHM0ITt+J08PaBRUSCgALTbXoH425sxBvH0WSL2AD5xRolMbF1nl9cJdKbmlo9SV4YvyanpmUcumcgU4XmaNVAym43BgAAoCnJnqdHABKBZLbh2KQbABK7G4AAt8AE4NRQAAVfS8LydYgk1hwdKkkl0Thk0DUQnsLyE0BwZxNQlkfCEyqQewbapCTjNZiKJr6RAOGygHyBRSsUDhAB00RxYApcy6TTgoGY-wy5tAxHgpGgRE53N5oHYiE4AHISYhCbNLJKwBb4Fb5QqiKRldRzArBm6yMxOKAYPBoPZEZAdT4-LoDaAAEKEaRR-C8k2Q9MAGkp1Np7HpaoTAVm8HJorIoOGnADfTJia4at8ZGcynJCflhEQbrTxZdCMcOvTqOxjS8zDqoCUKi68mQk0alXwA0T8gAIr3lPceDrr+UV2uyPJXO8PLvermKcLFbFgoEZNrjjcrxuB8jigMKlQVnuuaIGaFqlJOPBCmQAAGWaQMhoDOOwkCaq6yqIMwzgSm+oAHkeoDIQAorACCgAAJGI6aZoOWg9tQnAXqo3DISsUiruu8jFJaiA7lBpFUORyFnuxnGWPRjHzpUiDVLUGbNK0kCsZs8lMUpKl1Au0yzIQWg8fYWjaEAA">
+           </section>
+           <section id="fragments">
+              <h4>Union Exhaustiveness checking</h4>
+              <p class="fragment"> Because the switch is no longer exhaustive, TypeScript is aware that the function could sometimes return undefined. </p>
+           </section>
+           <section data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEAEFMCdoe2gZwFygEwGYBsWBQAXATwAdJQA5SfAdwQGsAZOAQwBMBLAOwHMBlfZvjIBeUAG9QiAUNQAiADYsOPWaAC+AbgIkylGvQBizdvMit+gkeMnTIcgGbHTrWRtABjOKzuhOAVwBbACMYdS0iUgoqWmg6Xj93d0hERAshUFEJKUs5RASklNVNbUi9GLoDeACAYWZ3AAszNKss2wcqgH13OsairRLdaPpmjNxQUAAfKP1YpjYuPlsxyenyoxMmpfGpsuH85NStld3Yyrgans3LfpBQAFoH9z98B7vcez9Od3x2OE5QRTcbgwAAUKFWw1sAEpUFJoAtxMtENR2PgGqAwQA6bJCKGI8bjbqIMgKJQLWTIZYE0DQKh+aD-UnzHg0yAARz8yXwripHmYxNAskcGxclOp41p+Hp-wABsLnKAUfh6h4vGQACRiRCYzzeNQyrTUokkvKJA4U3kSukMwXcOD4VmIYh-Yk88ZqXBqIA">
+          </section>
             <section>
               Mixins
            </section>
@@ -887,467 +925,6 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
         const map = new ConcatinatableMap();
         map.concatinate() 🤯</code></pre>
           </section>
-           <section>
-              Discriminating Unions
-           </section>
-           <section>
-            <h4>Let's implement network state log function</h4>
-            <p>A function that receives 3 types of NetworkState, and uses different logic on each one</p>
-            <pre>
-              <code data-trim="" data-noescape="" class="language-typescript">
-                function logger(state: NetworkState): string {
-                }
-              </code>
-            </pre>
-            <p>
-              How would we implement it?
-            </p>
-           </section>
-           <section data-background-iframe="https://www.typescriptlang.org/play#code/PTAEAEFMCdoe2gZwFygEwGYME4BQAXATwAdJQA5SfAdwQGsAZOAQwBMBLAOwHMBlfZvjIBeUAG9coUIgFDUAIgA2LDj3kBuXAF9NBEmUo16AMWbtFkVv0Ejxk6bMgKAZmYusN9gMZxWT0JwArgC2AEYwmjq4eqQUVLTQdLyBXl6QiIjWQqCiElIyNgqIKWkZnlLQ6cRwnIj+eVKg+Oz4Fqgy0Fzcmo2grIHQguw1qEFhEfb5IcHM0ITt+J08PaBRUSCgALTbXoH425sxBvH0WSL2AD5xRolMbF1nl9cJdKbmlo9SV4YvyanpmUcumcgU4XmaNVAym43BgAAoCnJnqdHABKBZLbh2KQbABK7G4AAt8AE4NRQAAVfS8LydYgk1hwdKkkl0Thk0DUQnsLyE0BwZxNQlkfCEyqQewbapCTjNZiKJr6RAOGygHyBRSsUDhAB00RxYApcy6TTgoGY-wy5tAxHgpGgRE53N5oHYiE4AHISYhCbNLJKwBb4Fb5QqiKRldRzArBm6yMxOKAYPBoPZEZAdT4-LoDaAAEKEaRR-C8k2Q9MAGkp1Np7HpaoTAVm8HJorIoOGnADfTJia4at8ZGcynJCflhEQbrTxZdCMcOvTqOxjS8zDqoCUKi68mQk0alXwA0T8gAIr3lPceDrr+UV2uyPJXO8PLvermKcLFbFgoEZNrjjcrxuB8jigMKlQVnuuaIGaFqlJOPBCmQAAGWaQMhoDOOwkCaq6yqIMwzgSm+oAHkeoDIQAorACCgAAJGI6aZoOWg9tQnAXqo3DISsUiruu8jFJaiA7lBpFUORyFnuxnGWPRjHzpUiDVLUGbNK0kCsZs8lMUpKl1Au0yzIQWg8fYWjaEAA">
-           </section>
-           <section id="fragments">
-              <h4>Union Exhaustiveness checking</h4>
-              <p class="fragment"> Because the switch is no longer exhaustive, TypeScript is aware that the function could sometimes return undefined. </p>
-           </section>
-           <section data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEAEFMCdoe2gZwFygEwGYBsWBQAXATwAdJQA5SfAdwQGsAZOAQwBMBLAOwHMBlfZvjIBeUAG9QiAUNQAiADYsOPWaAC+AbgIkylGvQBizdvMit+gkeMnTIcgGbHTrWRtABjOKzuhOAVwBbACMYdS0iUgoqWmg6Xj93d0hERAshUFEJKUs5RASklNVNbUi9GLoDeACAYWZ3AAszNKss2wcqgH13OsairRLdaPpmjNxQUAAfKP1YpjYuPlsxyenyoxMmpfGpsuH85NStld3Yyrgans3LfpBQAFoH9z98B7vcez9Od3x2OE5QRTcbgwAAUKFWw1sAEpUFJoAtxMtENR2PgGqAwQA6bJCKGI8bjbqIMgKJQLWTIZYE0DQKh+aD-UnzHg0yAARz8yXwripHmYxNAskcGxclOp41p+Hp-wABsLnKAUfh6h4vGQACRiRCYzzeNQyrTUokkvKJA4U3kSukMwXcOD4VmIYh-Yk88ZqXBqIA">
-          </section>
-        <!-- <section data-background="#007acc">
-          <h4>
-            Things you should have known in TypeScript but you
-            probably don't
-          </h4>
-          </section>
-        </section>
-        <section data-background="#007acc">
-          <section>
-            <h4>string, number or boolean literal as a type</h4> 
-            <aside class="notes">
-              A literal is a more concrete sub-type of a collective type. What
-              this means is that "Hello World" is a string, but a string is not
-              "Hello World" inside the type system.
-            </aside>
-          </section>
-          <section id="fragments">
-            <p>
-              1. strings
-            </p>
-            <p class="fragment">
-
-              2. numbers
-            </p>
-            <p class="fragment">
-              3. booleans
-            </p>
-            <aside class="notes">
-            There are three sets of literal types available in TypeScript today:
-            strings, numbers, and booleans; by using literal types you can allow
-            an exact value which a string, number, or boolean
-          </aside>
-          </section>
-          <section id="fragments">
-           <p> for instance if a create a variable </p> 
-            <pre class="fragment"><code data-trim data-noescape>
-				const number = 23 
-			</code></pre>
-          <aside class="notes">
-              TypeScript will infer the type of this const as 23 (and not a number
-              in general) since it is a const and it will never change!
-            </aside>
-          </section>
-          <section data-background="#007acc">
-            <h2 data-id="code-title">For example:</h2>
-            <pre><code class="typescript-language" data-trim data-noescape>
-				type Asaf = 'Asaf';
-				
-				// no error
-				const name: Asaf = 'Asaf'
-				const age: 32 = 32
-		
-				// error
-				
-				// Type '"Niv"' is not assignable to type '"Asaf"'
-				const name: Asaf = 'Niv'
-				
-				// Type '40' is not assignable to type '32'
-				const age: 32 = 40
-			</code></pre>
-          </section>
-          <section>
-            <h2 data-id="code-title">For example - consider the next function:</h2>
-            <pre><code data-trim data-noescape>
-			const combine = (
-				input1: number , 
-				input2: number, 
-				resultConversion: string
-			) => {
-				if(resultConversion === "as-number"){
-					return input1 + input2;
-				}
-				else{
-					const res = input1 + input2;
-					return res.toString();
-				}
-			}
-			</code></pre>
-          </section>
-          <section>
-            <pre><code data-trim data-noescape data-line-numbers="4">
-			const combine = (
-				input1: number , 
-				input2: number, 
-				resultConversion: 'as-string' | 'as-number'
-			) => {
-				if(resultConversion === as-number){
-					return input1 + input2;
-				}
-				else{
-					const res = input1 + input2;
-					return res.toString();
-				}
-			}
-			</code></pre>
-          </section>
-          <section>
-            <h2 data-id="code-title">For example:</h2>
-            <pre><code data-trim data-noescape data-line-numbers="1,5, 15, 17">
-			type ResultConversion =  'as-string' | 'as-number'
-			const combine = (
-				input1: number , 
-				input2: number, 
-				resultConversion: ResultConversion
-			) => {
-				if(resultConversion === "as-number"){
-					return input1 + input2;
-				}
-				else{
-					const res = input1 + input2;
-					return res.toString();
-				}
-			}
-			</code></pre>
-          </section>
-          <section id="fragments">
-            <aside class="notes"> 
-              in this way we can both prevent other people from sending
-              unrealted strings to this function and prevent typos like
-              "as-strnig".
-            </aside>
-
-            <p class="fragment">any other string will not be alowed.</p>
-
-            <p class="fragment">most of the time it will be used in a Union type</p>
-
-            <pre class="fragment"><code data-trim data-noescape>
-				combine(1, 2, 'as-string') // 3 
-				combine(1, 2, 'as-strnig')
-			 // Argument of type '"as-strnig"' is not assignable to parameter oftype 'ResultConversion'.(2345)
-			</code></pre>
-          </section>
-          <section>
-            <h1>Quiz</h1>
-          </section>
-          <section>
-            <p> What can not be a literal type?</p>
-            <p>1. String </p>
-            <p>2. Number </p>
-            <p>3. Array </p>
-            <p>4. Boolean </p>
-          </section>
-          <section>
-            <p> What will be the type of this expression? </p>
-            <pre><code data-trim data-noescape>
-              const name = 'name'
-            </code></pre>
-          </section>
-        </section>
-        <section data-background="#007acc">
-          <section>
-            <h4>Rest params in function parameters and Tuples</h4>
-          </section>
-          <section>
-            <aside class="notes"> 
-              A rest parameter allows you a function to accept zero or more
-              arguments of the specified type. In TypeScript, rest parameters
-              follow these rules:
-            </aside>
-
-            <p >1. A function has only one rest parameter.</p>
-            <p class="fragment">2. The rest parameter appears last in the parameter list.</p>
-            <p class="fragment">3. The type of the rest parameter is an array type.</p>
-
-            <pre class="fragment"><code data-trim data-noescape>
-				function fn(...rest: type[]) {
-					//...
-				 }
-			</code></pre>
-          </section>
-          <section>
-            <pre><code data-trim data-noescape>
-				function getTotal(...numbers: number[]): number {
-					let total = 0;
-					numbers.forEach((num) => total += num);
-					return total;
-				}
-			</code></pre>
-          </section>
-          <section>
-            <pre><code data-trim data-noescape>
-            console.log(getTotal()); // 0
-            console.log(getTotal(10, 20)); // 30
-            console.log(getTotal(10, 20, 30)); // 60
-          </code></pre>
-          </section>
-
-          <section id="fragments">
-            <aside class="notes"> 
-              Rest params can be used an Tuples as well
-              
-              Tuple types allow you to express an array with a fixed number of
-              elements whose types are known, but need not be the same.
-            </aside>
-              <pre><code data-trim data-noescape>
-                // Declare a tuple type
-                let x: [string, number];
-                // Initialize it
-                x = ["hello", 10]; // OK
-                // Initialize it incorrectly
-                x = [10, "hello"]; // Error
-                
-                // A tuple with a *rest element* - holds at least 2 strings at the front,
-                // and any number of booleans at the back.
-                let e: [string, string, ...boolean[]];
-                
-                e = ["hello", "world"];
-                e = ["hello", "world", false];
-                e = ["hello", "world", true, false, true];
-              </code></pre>
-            </section>
-          <section>
-            <aside class="notes"> 
-              In TypeScript 4.2, rest elements specifically been expanded in how
-              they can be used. In prior versions, TypeScript only allowed
-              ...rest elements at the very last position of a tuple type.
-
-              However, now rest elements can occur anywhere within a tuple -
-              with only a few restrictions.
-              </aside>
-            <pre><code data-trim data-noescape>			
-				let foo: [...string[], number];
-		
-				foo = [123];
-				foo = ["hello", 123];
-				foo = ["hello!", "hello!", "hello!", 123];
-		
-				let bar: [boolean, ...string[], boolean];
-		
-				bar = [true, false];
-				bar = [true, "some text", false];
-				bar = [true, "some", "separated", "text", false];
-				</code></pre>
-        </section>
-        <section id="fragments">
-            <aside class="notes"> 
-              The only restriction is that a rest element can be placed anywhere
-              in a tuple, so long as it’s not followed by another optional
-              element or rest element.
-
-              In other words, only one rest element per tuple, and no optional
-              elements after rest elements.
-              </aside>
-            <pre><code data-trim data-noescape>		
-				interface Clown {
-					/*...*/
-				  }
-				  interface Joker {
-					/*...*/
-				  }
-				   
-				  let StealersWheel: [...Clown[], "me", ...Joker[]];
-				  // A rest element cannot follow another rest element.
-				   
-				  let StringsAndMaybeBoolean: [...string[], boolean?];
-				  // An optional element cannot follow a rest element.	
-			</code></pre>
-          </section>
-          <section id="fragments">
-            <aside class="notes"> 
-              These non-trailing rest elements can be used to model functions
-              that take any number of leading arguments, followed by a few fixed
-              ones.
-            </aside>
-            <pre class="fragments"><code data-trim data-noescape>		
-				const doStuff = (
-					...args: [...names: string[], 
-					shouldCapitalize: boolean]
-				) void => {
-					// do stuff...
-				}
- 
-				doStuff(false)
-				doStuff("fee", "fi", "fo", "fum",true);
-			</code></pre>
-          </section>
-          <section>
-            <h1>Quiz</h1>
-          </section>
-          <section>
-            <p> which of these is not correct? </p>
-            <pre class="fragment"><code data-trim data-noescape>let bar:[...number[], boolean]	</code></pre>
-            <pre class="fragment"><code data-trim data-noescape>	function foo(bool: boolean, num: number, ...rest: string[])</code></pre>
-            <pre class="fragment"><code data-trim data-noescape> let x:[...number, string?]	</code></pre></p>
-            <pre class="fragment"><code data-trim data-noescape>	
-              const func =
-               (...args:[...phoneNumbers :number[], shouldBeCalled:boolean])
-              :void => {}</code></pre>
-          </section>
-        </section>
-        <section data-background="#007acc">
-          <section>
-            <h4>Union types</h4>
-            <aside class="notes"> 
-              A union type describes a value that can be one of several types.
-              We use the vertical bar (|) to separate each type, so number |
-              string | boolean is the type of a value that can be a number, a
-              string, or a boolean.
-           </aside>
-          </section>
-          <section>
-            <pre><code data-trim data-noescape>		
-					interface Bird {
-						fly(): void;
-						layEggs(): void;
-					  }
-					   
-					  interface Fish {
-						swim(): void;
-						layEggs(): void;
-					  }
-					   
-					  declare function getSmallPet(): Fish | Bird;
-					   
-					  let pet = getSmallPet();
-					  pet.layEggs();
-					   
-					  // Only available in one of the two possible types
-					  pet.swim();
-					  /* Property 'swim' does not exist on type 'Bird | Fish'.
-						roperty 'swim' does not exist on type 'Bird'.*/
-				</code></pre>
-        <aside class="notes"> 
-            Union types can be a bit tricky here, but it just takes a bit of
-            intuition to get used to. If a value has the type A | B, we only
-            know for certain that it has members that both A and B have. In
-            this example, Bird has a member named fly. We can’t be sure
-            whether a variable typed as Bird | Fish has a fly method. If the
-            variable is really a Fish at runtime, then calling pet.fly() will
-          fail.
-        </aside>
-          </section>
-          <section>
-            <h4>Discriminating Unions</h4>
-            <aside class="notes"> 
-              A common technique for working with unions is to have a single
-              field which uses literal types which you can use to let TypeScript
-              narrow down the possible current type. For example, we’re going to
-              create a union of three types which have a single shared field.
-            </aside>
-          </section>
-          <section data-auto-animate>
-            <pre data-id="code-animation" ><code class="hljs" data-trim data-line-numbers="|1-15|16,17|18-21">	<script type="text/template">
-				type NetworkLoadingState = {
-					state: "loading";
-				  };
-				  type NetworkFailedState = {
-					state: "failed";
-					code: number;
-				  };
-				  type NetworkSuccessState = {
-					state: "success";
-					response: {
-					  title: string;
-					  duration: number;
-					  summary: string;
-					};
-				  };
-				  // Create a type which represents only one of the above types
-				  // but you aren't sure which it is yet.
-				  type NetworkState =
-					| NetworkLoadingState
-					| NetworkFailedState
-					| NetworkSuccessState;
-				</script></code></pre>
-          </section>
-          <section id="fragments">
-            <aside class="notes"> 
-              In this case, you can use a switch statement to narrow down which
-              type is represented at runtime:
-
-              By switching on state, TypeScript can narrow the union down in code flow analysis
-            </aside>
-            <pre><code class="hljs" data-trim data-line-numbers="|1-4|6|8-10|11-20">		
-				type NetworkState =
-					| NetworkLoadingState
-					| NetworkFailedState
-					| NetworkSuccessState;
-
-					function logger(state: NetworkState): string {
-
-            // Trying to access a property which isn't shared
-            // across all types will raise an error
-            state.code;
-
-					switch (state.state) {
-					case "loading":
-						return "Downloading...";
-					case "failed":
-						return `Error ${state.code} downloading`;
-					case "success":
-						return `Downloaded ${state.response.title} - ${state.response.summary}`;
-						}
-					}
-				</code></pre>
-          </section>
-          <section id="fragments">
-            <h1>Quiz</h1>
-            <p>consider the next types</p>
-            <pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
-              type TypeOne = {
-                name: 'one';
-                age: number;
-              }
-            </script></code></pre>
-            <pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
-              type TypeTwo = {
-                name: 'two';
-                address: string;
-              }
-            </script></code></pre>
-            </section>
-            <section>
-            <pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
-              type OneAndTwo = TypeOne | TypeTwo
-            </script></code></pre>
-            <pre class="fragment" data-id="code-animation" ><code class="hljs">	<script type="text/template">
-              function foo(bar: OneAndTwo): void {
-                // valid?
-                if(bar.name === 'one'){
-                  console.log(bar.age)
-                }
-
-                // valid?
-                if(bar.name === 'two'){
-                  console.log(bar.age)
-                }
-
-                // valid?
-                if(bar.name === 'two'){
-                  console.log(bar.address)
-                }
-              }
-            </script></code></pre>
-            </section>
-          </section>
-        </section> -->
         </section>
       </div>
     </div>

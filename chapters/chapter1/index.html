@@ -325,17 +325,22 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
       </section>
       <section>
           <h2>Wait... What about javascript?</h2>
-          <p>Javascript decorators are at <a href="https://github.com/tc39/proposal-decorators">stage2</a> </p>
-          <p>Which means: The committee expects the feature to be developed and eventually included in the
-              standard</p>
+          <p>Javascript decorators are at <a href="https://github.com/tc39/proposal-decorators">stage3</a> </p>
+          <p>Which means: The solution is complete and no further work is possible without implementation experience, significant usage and external feedback.</p>
       </section>
       <section>
           <h2>DIY (decorators)</h2>
+          <p>Create an autologger decorator <br/>(method decorator factory),<br/> should log the following:</p>
           <ul>
-              <li>Create an autologger decorator (method decorator)</li>
-              <li>Should log once in a beginning of a function</li>
-              <li>Should log all params with their values</li>
+              <li>number of parameters received</li>
+              <li>list paramerts</li>
+              <li>return value of the function</li>
           </ul>
+          <pre><code class="text-language" data-trim data-noescape>
+            function was called with 2 parameters
+            parameters: 1, 3
+            function result was: 4
+          </code></pre>
       </section>
       <section>
         <section data-background="#007acc">

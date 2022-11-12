@@ -20,45 +20,21 @@
 				<h4>
 					Advanced typing
 				</h4>
-				<aside class="notes">
-					TypeScript’s type system is very powerful because it allows expressing types in terms of other types.
-
-					The simplest form of this idea is generics, we actually have a wide variety of type operators available to use. It’s also possible to express types in terms of values that we already have.
-
-					By combining various type operators, we can express complex operations and values in a succinct, maintainable way. In this section we’ll cover ways to express a new type in terms of an existing type or value.
-
-					1. It is cool!
-					2. We can do things we have already done in another way, might be easier
-					3. Sometimes we dont have access to a type
-					4. sometimes we will have the almost the utility we want, so we know how to change it!
-
-
-				</aside>
 			</section>
 			<section>
 				<p>
 					TypeScript’s type system is very powerful because it allows expressing types in terms of other types.
 				</p>
-
 				<p>
-					The simplest form of this idea is generics, we actually have a wide variety of type operators available to use. It’s also possible to express types in terms of values that we already have.
-				</p>
-				<p>
-					By combining various type operators, we can express complex operations and values in a succinct, maintainable way. In this section we’ll cover ways to express a new type in terms of an existing type or value.
+					In this section we’ll cover ways to express a new type in terms of an existing type or value.
 				</p>
 			</section>
-			<section>
+			<section id="fragments">
 				<p>
-					1. It is cool!
+					1. DRY - Don't repeat yourself (related types)
 				</p>
-				<p>
-					2. We can do things we have already done in another way, might be easier
-				</p>
-				<p>
-					3. Sometimes we dont have access to a type
-				</p>
-				<p>
-					4. sometimes we will have the almost the utility we want, so we know how to change it!
+				<p class="fragment">
+					2. Sometimes we don't have access to a type
 				</p>
 			</section>
 			<section>
@@ -151,17 +127,8 @@
 					<section>
 						Record
 						<p>Constructs an object type whose property keys are Keys and whose property values are Type. This utility can be used to map the properties of a type to another type.</p>
-						<p> the Record type is not identical to the index signature <pre><code class="typescript-language" data-trim data-noescape> [name: string]: number; </code></pre>
 					</section>
-					<section>
-						<p>we can not use a Union type to describe an index signature key </p>
-							<pre><code class="typescript-language" data-trim data-noescape> 
-								[name: string | number]: number;
-								[name: "key1" | "key2"]: number;
-							</code></pre>
-							<p>howerver we can do it in Recored Type</p>
-					</section>
-					<section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgMJzASRDA9sgbwChlk4BzCALmRAFcBbAI2gG4TkmoIIATGgM5goocuwC+RImACeABxTowAOTgMUAXmQAiBsBgwZ25AB8dTXCIHGzuy7269t7IglwghyBBgE0AShBuULwAPEqq6gA0aBjYeAB8yFrEpHoGMjQEZJQ0AIwADNFcPPw6AArQAsBwIMbikRwWVpnZ1MgArEXcfDTaALJwoIq47nUNqfaOLRRtuQBsXSW9AEIiYMACABbIAMqblmCbg1BjROIu3mACAHRNG+wA9A-IAHoA-EA" data-background-interactive>
+					<section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgMJzASRDA9sgbwChlk4BzCALmRAFcBbAI2gG4TkmoIIATGgM5goocuwC+RImACeABxTowAOTgMUAXmQAiBsBgwZ25AB8dTXCIHGzuy7269t7IglwghyBBgE0AShBuULwAPEqq6gA0aBjYeAB8yFrEpHoGMjQEZJQ0AIwADNFcPPw6AArQAsBwIMbikRwWVpnZ1MgArEXcfDTaALJwoIq47nUNqfaOLRRtuQBsXSW9AEIiYMACABbIAMqblmCbg1BjROIuAPQXuVREV8gA7sAANs-IhxiPlgDWAPx3F2QoEgsEQKD6MgCQV4hABpGQAG1vhAMjEVGoIABdGhKOK4OGSAEAJlu9wAgiAgSBeBAAB7IKrkEAYOjcZByOBQDEg97yFAMOieFjIADkQhEIHIIuiIvozGg0tFAhkzFwz0VljI7wgDDkzwwKGewBBcDesgUADoABS5IlzAAcAEo4U9Xu8jmAvlA-nDgdB4EhkBCofZcrD7qQkSjBMJRGY5SwoKYGSqLM9sWi8QSpACAMykwGus0er0++5+0GB4OBexE8OAyPI1EAAwAJARxaJxABaYC8ZsZ3E4fH3QlXAAsBa8PgtTQ2QA" data-background-interactive>
 					</section>
 				</section>
 				<section>
@@ -232,9 +199,12 @@
 			<section>
 				<div style="display: flex; flex-direction: column; justify-content: center;">
 					<h4>Part 2: Creating Types from Types</h4>
-					<p>TypeScript’s type system is very powerful because it allows expressing types in terms of other types.</p>
-					<p>we alredy learned about generics, lets dive in into some more conceps</p>
 				</div>
+			</section>
+			<section>
+				<p>
+					Sometimes we will have the almost the utility we want, so we know how to change it!
+				</p>
 			</section>
 			<section id="fragments">
 				<aside class="notes">
@@ -409,19 +379,8 @@
 			</script></code></pre>
 			<p class="fragment">type Age2 = number</p>
 			</section>
-			<section id="fragments">
-			<p>You can only use types when indexing, meaning you can’t use a const to make a variable reference:</p>
-			<pre class="fragment" data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
-				const key = "age";
-				type Age = Person[key];
-			</script></code></pre>
-			<p class="fragment">
-				Type 'key' cannot be used as an index type.
-				'key' refers to a value, but is being used as a type here. Did you mean 'typeof key'?
-			</p>
-			</section>
 			<section id="fragments"> 
-				<p>However, you can use a type alias for a similar style of refactor:				</p>
+				<p>You can use a type literal in order to index access other types </p>
 			<pre class="fragment" data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 				type key = "age";
 				type Age = Person[key];
@@ -429,8 +388,8 @@
 		</section>
 		<section>
 			<aside class="notes"> 
-				now let see how we can use index access type, the keyof operator and generics to create more complex types
-				lets say we want to create a generic function that recives any object (T) and any objects key and returns the propery in this key
+				Now let see how we can use index access type, the keyof operator and generics to create more complex types
+				lets say we want to create a generic function that receives any object (T) and any objects key and returns the property in this key
 				describing access to any property in a given object
 			</aside>
 			<p> for example: </p>
@@ -451,14 +410,15 @@
 			<section>
 				<img src="../../assets/keyof-error-T.png" />
 			</section>
-			<section>
+			<section id="fragments">
 				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 					function getProperty<T, K extends keyof T>(obj:T , key: K) {
 						return obj[key]
 					}
 				</script></code></pre>
-				<p>the return type of this function is T[K]</p>
-				<p>this ability of typescript to infer using lookup types, could really help in some use cases - for example:</p>
+				<p class="fragment">what is the return type of this function?</p>
+				<p class="fragment">the return type is T[K]</p>
+				<p class="fragment">this ability of typescript to infer using lookup types, could really help in some use cases - for example:</p>
 				<aside class="notes"> 
 					now I can make sure no one will send to my function any other string but the keys of this type
 				  </aside>
@@ -473,9 +433,19 @@
 				</script></code></pre>
 			</section>
 			<section>
+				<p>what about set? </p>
+				<pre class="fragment" data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
+					function setProperty<T, K extends keyof T>(obj: T, key: K, value: T[K]) {
+						obj[key] = value;
+					  }
+				</script></code></pre>
+			</section>
+			<section data-background-iframe="https://www.typescriptlang.org/play?ssl=11&ssc=17&pln=11&pc=20#code/GYVwdgxgLglg9mABAcwKZQAoCc4AdVZQCeAPACoA0iA0oqgB5SpgAmAzogNapFzCJkAfAAo4AIwBWALgFVuRGdQCUiAN4AoRIizoQWJOIkBteQF0A3IgD0VxAEkwwAjpaJi+RDA5kj1U+oBfdVBIWARENnRsPAJicipaBiZWDnk+ARFDGUouHkUqADcAQwAbEFRs31MVDS1DEx5TRABeRGKy1HNA9RL0RHoWtURgODgZAEYABioxIqwZACIAC1QSkrgAQgXEAK7eqGHRwbRMHHxCImF6KgWRuAWlSxtEMBAAWzECHr7ZrGOos6xS7XRALX4PJ62NhQLAwMDIb4HUa4DitE7Rc7EK43ADuc2QczEJQh1lsAFEsDgsBtQXisASsETtl4XnADrdRtsAD6g8HqSKnGIXbGgu4LG7Q2HwknPClUjZUSVw5B0ej4aCoVyvD4EIA">
+			</section>
+			<section>
 				<aside class="notes"> 
 					inferring the type of a parameter based on another parameter in a function
-					this is somehow simmilar pattern but a little bit more complex. 
+					this is somehow similar pattern but a little bit more complex. 
 					here we infer a type based on another value
 				</aside>
 				<p>Consider the next example: </p>
@@ -484,15 +454,15 @@
 				<aside class="notes"> 
 					how typescript knows how to infer this type? 
 					
-					it infered the type of the callback argument from the name of the event in the first argument
+					it inferred the type of the callback argument from the name of the event in the first argument
 				  </aside>
 			</section>
 			<section>
-				<p>Lets try to create it!</p>
+				<p>Lets take a look!</p>
 			</section>
 			<section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgLIE9UHsCuBnCAUQDcJxkBvAKAEgAPALmRBwFsAjaAblvSZY7QqAXyqhIsRCgwBpCOnZY4UACYkyYSrQDW8pnjBRQAcxFUx4aPCRp068AHl2AKwgJN1GggA2wBNqYMbHwiUnAeGl10AAcoCDw8QPQ5BSVVezAzKhgcEHdgLBBkAAs4EBVvUI0AHhlkCDpIcrxkKKwYWwynV3cAPmQACloIMLAAOThWCCYZABpaBDhvb3ZEAMHpztHutzAAbRkAXQBKZABefuIsYBVkGipjzwB6J-q6NxxIZDBilBy8sAFEAAOlByCyVFK5UqGQGAHIfH5tHDZhtjhcKMJjpCyhUquB4VFYvE8Ci0RisUA" data-background-interactive>
 			</section>
-			<section>
+			<!-- <section>
 				Quiz
 			</section>
 			<section id="fragments">
@@ -577,7 +547,7 @@
 				<p class="fragment">2. MyEventsMap[K] which resolves to MyMouseEvent & MyKeyboardEvent</p>
 			</section>
 			</section>
-			</section>
+			</section> -->
 			</section>
 			<section>
 				<section>
@@ -613,40 +583,8 @@
 				</section>
 				<section>
 					<p id="fragments"> Conditional types can be used before they are evaluated </p>
-					<aside class="notes"> 
-						"TYPE B"
-					  </aside>
-					<p>for example:</p>
-					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
-						function someFunction<T>(value:T){
-							const someOtherFunction = (
-								someArg: T extends boolean ? "TYPE A" : "TYPE B" 
-							) => {}
-							return someOtherFunction;
-						}
-					</script></code></pre>
-					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
-						const result = someFunction('a string')
-					</script></code></pre>
-					<p class="fragment">what would be the type of "result" ? </p>
 				</section>
-				<section>
-					<aside class="notes"> 
-						"TYPE A" | "TYPE B"
-					  </aside>
-					<p>for example:</p>
-					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
-						function someFunction<T>(value:T){
-							const someOtherFunction = (
-								someArg: T extends boolean ? "TYPE A" : "TYPE B" 
-							) => {}
-							return someOtherFunction;
-						}
-					</script></code></pre>
-					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
-						const result = someFunction('a string')
-					</script></code></pre>
-					<p class="fragment">what would be the type of "someArg" ? </p>
+				<section data-background-iframe="https://www.typescriptlang.org/play?ssl=19&ssc=40&pln=1&pc=1#code/C4TwDgpgBAglC8UDeAoAkAQwFxQM7ACcBLAOwHMAadAIxxIFcBbaiAlAXxVEigCEFk6AMY58xcgG0AulTQATOkxYFpHFCgBm9EkOBEA9iTz7GEAGLbdBkgB4AKgD4AFADcMAG3oQsdgJSo0IUN8Y1MAeWAAC1YLHT1DASd0XBMIGAIyHDsoCAAPYAgSOVwoan19dwgMIwB+WCgcfnRfBAdBNDQAek6oEgwCAn0Ad1IyADoJqHROAghgegIjFPComMt4kgBuNRQgkhDZ3Hp3YAFQ83XrJwByMVHr322gA">
 				</section>
 				<section>
 					<h4>Example:</h4>
@@ -711,10 +649,10 @@
 						type InferSomething<T> = T extends infer U ? U: any
 					</script></code></pre>
 					<pre  data-id="code-animation" ><code  data-trim data-noescape class="hljs">	<script type="text/template">
-						type Inffered = InferSomething<"I am a string">
+						type Inferred = InferSomething<"I am a string">
 					</script></code></pre>
 					<p class="fragment"> In this example typescript will assign type T into type U and return it</p>
-					<p class="fragment" >what would be the type of Inffered?</p>
+					<p class="fragment" >what would be the type of Inferred?</p>
 				</section>
 				<section>
 					<p>Infer a part of a type</p>
@@ -1085,9 +1023,9 @@
 					}
 				</script></code></pre>
 			</section>
-			<section data-background-iframe="https://www.typescriptlang.org/play?#code/FAFwngDgpgBAsgQwtAJgFUlNB7AyiAJwEsA7AcwB40A+GAXhgG9gBIAbQGkZSYBrKMNgBmMNDAQBnGAAMJhUmQC0AEkZzi5GADIYHAL7SAugC4Y6hcD3BQmeGAzQAcgFcAtgCMoBKQ2YsJCAA2CARgpiRungQANKwIZFDhkV6xLAAWRGRpIEkeXpY20HYOUACCEvgaZPTwSKglOJUKFHD2mC553tTAQA">
+			<section data-background-iframe="https://www.typescriptlang.org/play?#code/C4TwDgpgBAYhCGwCuAnCBnKBeKBvKAUAJABmCyaAggFxQAUAlFgHwBuA9gJYAmxZiqCACFajFhx59yggMKimbLrwC+BAqEixpadABV2cAWhgAbeAHN0AHl3NseYgG0A0lE4A7KOmAoP5qABkUADWECDsJFC6UPCYAAYAJLjOyqYWcQC6tABG7OwmCO4Equrg0IYUEGmW9hWCegbaVWaWVnU6zEA">
 			</section>
-				<section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/C4TwDgpgBACgTgezAUQG4QHbAMoIK5wDGEAPACrgQB8UAvFAN4BQUrUCGJA0hCFBAA9gmACYBnKGOBwAlhgDmUAGRQA1rwQAzKBUhUWbQwAoI6LADkAhgFsIALigADACQMeIAL4BhABaWFECKOADRQhJYANhEARpaEqg5GGBAA7gBqkXj2OpQA2u4AugCUdDSoCDIiUEUO5ZUA3EwejUwiEIQRlnDQmngYhMAyHFDWluoA6pbAhD6BAPLRAFbtwOSUVEYISw66EDU5kMqwiChmOPhEpLtULYQcUlCQcGLD9KMTUzPzSytGzKyaGTPYBWWwOABE2EsFWeEHBwQMnSkoOy4IAShx-PCDJZ5NkAEwANiaRRaTxeGAAdBwjODAcCUb5-HiRPCoMkUijSowDKwAPR8wxC4Ui1gAPQA-LywvcEBEIJSIgh5EZHBz2TZoDIJK4OSjKcAEABVMBPLyWMQQIxFDyOUkkskQZ4cakYWm4iBMgKs0IcgCCeO5-zYAtFYagkulMm0SVSAegJCgAAYSsHhXcMC95ZSUl03eDc3AMHJ5ABCdkQeRTGToKAe8H2wweElAA" data-background-interactive></section>
+				
 			<section>
 				<p>When a union is used in the interpolated position, the type is the set of every possible string literal that could be represented by each union member:</p>
 				<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">

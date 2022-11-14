@@ -406,9 +406,9 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
           <section>
             <h4>Enums</h4>
           </section>
-          <section>
+          <section id="fragments">
             <p>Enums are one of the few features TypeScript has which is not a type-level extension of JavaScript.</p>
-            <p>Enums allow a developer to define a set of named constants. Using enums can make it easier to document intent, or create a set of distinct cases. TypeScript provides both numeric and string-based enums.</p>
+            <p class="fragment">Enums allow a developer to define a set of named constants. Using enums can make it easier to document intent, or create a set of distinct cases. TypeScript provides both numeric and string-based enums.</p>
           </section>
           <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEFMA8EMFsAcA25QEYBcoBQJQGMB7AOwGcAXUAQQBEBZASQDlQBeUABhzENIoCUAojQD6AeUYAZAJqs0XfMXJUAqgBUAEqL6yATAG4s8nkviyA3vNBXQROOEwAiSiWgAzBwBpL16AHN7oADMgV641qAATgTImDQMjPIAvoa4AO4AloiIoGQAFtAUqQQRANYA-Ni48AB0UciyAKwpYFBwSCg6mIwArrDgEel4EES9JPLgI7CgfNEoFmHWcUyhYOGCIuLSK+EqGlpJzQq8oKZs86vWtn2Ozm6e3lZ+AcHb4XUBM8jVSwm4yWmZbJ5AqgIqlCryGrvRqGQ6tBD1QKYADKZAGRF8w1G40m01moHOOx+rCcdCY9wWVnW1DEkhkbAc1Np0gpFyslDUmj4DI5ez4DgOh2MFFOBIeNjsoHQDmgLncrx8-kwL3F70wn3A3zJvzAyXkGSyOXyhWK5UqYCh+LYTSqtStoActFEAGEANLCPiiCQCAW26E87W+i12+psDVa+JwmAIlAAFnQ8nSJCNIImvVAADdoIh0gATCG4NNTDViylUbWNBVUoQ0zZSKu7LmCwvR9qgBoJ3BJlMUIuZ7N5gstXElwnhYkB+KsnZMusN3lNv5Rtr1ABsmETyeBvdxWZz+fNWOL+LHiwr1obs7pslQ7HY885WlkTkf-Ob3EUIvM4quKGlsruBsnmVEJVVmdVZgjJh31BQEe1BU0hxOEMUGtSEUOfJ03Q9L0fXQ-0HR+INkII8MfiAA" data-background-interactive>
           </section>
@@ -928,6 +928,16 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
         const map = new ConcatinatableMap();
         map.concatinate() 🤯</code></pre>
           </section>
+        </section>
+        <section>
+          <h4>Exercise</h4>
+        </section>
+        <section data-background-iframe="https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgCIHsDmyDeAoZZEOAWwgC5kBnMKUTAGgOQCM4oBrSgCgEpkAvAD5kAN3TAAJngC+ePKEixEKAMJwA7rmbEylGnRCNmJdOh79hYidLl4A9PeQBRABrOASgGUAkqufIAIzkDk4IUBBwkMhwyDAAriAIYMDoIMhgABZRyBEIwKIQVMgQwFnQGZkoGNhwIJLIquhaYACeAA5FyNyJqSC8ocjAMENguRD5hcWxklgMyAhwADZLlShsnHGJyX0x9eNg8VDpsaLswHAsSygwUOgkGR1qmvPo5VAawFQoiytryKZ0Fskik0nsGhFDsdCKdzpdrnE7g82p00FhBplFJR4t8YshMHAjg1uCQ4K0WChYgkQbssjlJMMYNAIOALtEKWANBAWf8UUUBnhqTswSRWgBBEDAUlLbh1KXLSh1VrIewAKkoAH4Nar7Pw1ZrtU58IRHDFJA1Wugjgt0JIIAA6R3IWTyPnIAByEE56E4ABl0HAGUZBNpCCkyAAxJEeCAAR3iRTAlBA8RIFKgsgA3K6nh6vRofRwI3BgNcGgJQza7cnU+nszJs3g3Z7vZwvPEEEgqMUK8aqxQiLXoNnCBEqO00t9KH2w2VrvpaPQR4RkJIjlE+jW08PmIQqKnSVBWgvDJhlw2s-JTeFItEqdtQek6WM8gUurFemD0CMAMyPTrFC2BZtmAUTvvsMA+iUiCZEQ+aFsg7SGGAxRlMUSHoJ0UApEUgyBPayA4igxB3J8RiDAATARRGrl84RSqAG7Bp+IBUIMP7UbiLKpjE0z-igSxlNAyxXk4mLgJQN5gXBLS5rc9yVF8-HFPIQqPnBrYcN0Y4TqxA5KiqqpajqvCUOIUiVqagYWlaUD9o6BGyEAA">
+        </section>
+        <section>
+          <h4>Solutions</h4>
+        </section>
+        <section data-background-iframe="https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgCIHsDmyDeAoZZEOAWwgC5kBnMKUTAGgOQCM4oBrSgCgEpkAvAD5kAN3TAAJngC+ePKEixEKAMJwA7rmbEylGnRCNmJdOh79hYidLl4A9PeQBRABrOASgGUAkqufIAIzkDk4IUBBwkMhwyDAAriAIYMDoIMhgABZRyBEIwKIQVMgQwFnQGZkoGNhwIJLIquhaYACeAA5FyNyJqSC8ocjAMENguRD5hcWxklgMyAhwADZLlShsnHGJyX0x9eNg8VDpsaLswHAsSygwUOgkGR1qmvPo5VAawFQoiytryKZ0Fskik0nsGhFDsdCKdzpdrnE7g82p00FhBvFvv8vsgOBBWhp0FAGvIEiDdiRWgBBEDAEjLbh1OnLZCUGr8SjqLR4Mk7MGUmnMpaM2n01aczQctHYHnbUHpAWihlMsWs6UAH0akrVNWQmq52kIw24XxqIqFvF4+EIMKVSwAdBsOHxmIQEGkaADWlyJVoBIabYRdBRkABySlc0NMQOEQEWQQia0xt0e9DXe1LLDccNmACEudDA2TckDJZtkKOCu9mmYZYgSyxSdtQvtgJdyfdIE9lJqbKwggDgeDlHDrRqUddNqd8asTZjnaoaYgGazocJMBG65g+cLk8IZf3k4r0J76MPdl58qGVDNKuWfcw+sllDvqxxuqTx-S5tVcGK7MddgOGQXMBH9RJJAgGBQAgWx5BRFAADkIDAQlOAAGXQOBJHoAckxSMgADEkQ8CAAEd4iKMBKBAeISBYaBZAAbngp5kGQ1CiQ4Qi4GAa4Gn9JN3Ugmi6IYqAWJkFi8AQ9iULQjgvHiBAkCoYpBOYYSQ1o+joBYwgIiodoPRDOcUjAa59Foeh9JtSQjiiPpRN0iTJyoOj6SgVorMMTBbKk5j5EcBYIiiFBYkvXYshyPICi6WJejBdARgAZkeTpig4hSvDAMLpn2GAiRKRBMiIeSuOQdpDDAYoymKKr0E6KAUiKQZAntZBMRQYg7k+IxBgAJg6rrkBwqhwjpUBHKMTraQ9QYUuGrEIB0mJpnSlAljKaBlnkFa6OQHK8oDLwAFVVH8LwvAHAAiM6LucK6bujZBCKpHx0OcVBbrej6vue5h0IAeSpVAfEQgBxW7gdB8GIZu2RWNRLKuMw7D6CO6J-RRjCsJwmaADJcBoMLKExop7RhsHIYC2Sce43j+PJgd6Z4vjYOQImcBJyAydyyAqHtX7PtQWm2PppSVKKKhmex8rOEl1Tii5nmQ3JwX7surwxeR+XFP5ro5c43H0aMZnNVZxnYPNuTjcU5SlfJ0k5V2EA9e6QzjK7EMJYNqheEocQpEHahPjABBMm4T2TPtVX+DnN0-xQdXKZB6mIZCDtU3TTNMCjoove+WODaLeds+XXP86MmOCIgYj7lIiiqNLwMWFCjhbMDRYsRTzXHq8TOy67JcVzz6PveLsKW5tBcR8r8ei4X5dzOuaeU2HnOsyX+1t-sqBHLSNeFnL0eq8L5dt-ckhPNaI+28iDu9wWJPDr9oX3pFweu5P+eC5juOn6z03mPP+E8tJ33bv5WQQA">
         </section>
       </div>
     </div>

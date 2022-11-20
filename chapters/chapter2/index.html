@@ -128,7 +128,7 @@
 						Record
 						<p>Constructs an object type whose property keys are Keys and whose property values are Type. This utility can be used to map the properties of a type to another type.</p>
 					</section>
-					<section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgMJzASRDA9sgbwChlk4BzCALmRAFcBbAI2gG4TkmoIIATGgM5goocuwC+RImACeABxTowAOTgMUAXmQAiBsBgwZ25AB8dTXCIHGzuy7269t7IglwghyBBgE0AShBuULwAPEqq6gA0aBjYeAB8yFrEpHoGMjQEZJQ0AIwADNFcPPw6AArQAsBwIMbikRwWVpnZ1MgArEXcfDTaALJwoIq47nUNqfaOLRRtuQBsXSW9AEIiYMACABbIAMqblmCbg1BjROIuAPQXuVREV8gA7sAANs-IhxiPlgDWAPx3F2QoEgsEQKD6MgCQV4hABpGQAG1vhAMjEVGoIABdGhKOK4OGSAEAJlu9wAgiAgSBeBAAB7IKrkEAYOjcZByOBQDEg97yFAMOieFjIADkQhEIHIIuiIvozGg0tFAhkzFwz0VljI7wgDDkzwwKGewBBcDesgUADoABS5IlzAAcAEo4U9Xu8jmAvlA-nDgdB4EhkBCofZcrD7qQkSjBMJRGY5SwoKYGSqLM9sWi8QSpACAMykwGus0er0++5+0GB4OBexE8OAyPI1EAAwAJARxaJxABaYC8ZsZ3E4fH3QlXAAsBa8PgtTQ2QA" data-background-interactive>
+					<section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?ssl=38&ssc=5&pln=30&pc=4#code/JYOwLgpgTgZghgYwgAgMJzASRDA9sgbwChlk4BzCALmRAFcBbAI2gG4TkmoIIATGgM5goocuwC+RImACeABxTowAOTgMUAXmQAiBsBgwZ25AB8dTXCIHGzuy7269t7IglwghyBBgE0AShBuULwAPEqq6gA0aBjYeAB8yFrEpHoGMjQEZJQ0AIwADNFcPPw6AArQAsBwIMbikRwWVpnZ1MgArEXcfDTaALJwoIq47nUNqfaOLRRtuQBsXSW9AEIiYMACABbIAMqblmCbg1BjROIuAPQXuVREV8gA7sAANs-IhxiPlgDWAPx3F2QoEgsEQKD6MgCQV4hABpGQAG1vhAMjEVGoIABdGhKOK4OGSAEAJlu9wAgiAgSBeBAAB7IKrkEAYOjcZByOBQDEg97yFAMOieFjIADkQhEIHIIuiIvozGg0tFAhkzFwz0VljI7wgDDkzwwKGewBBcDesgUADoABS5IlzAAcAEo4U9Xu8jmAvlA-nDgdB4EhkBCofZcrD7qQkSjBMJRGY5SwoKYGSqLM9sWi8QSpACAMykwGus0er0++5+0GB4OBexE8OAyPI1EAAwAJARxaJxABaYC8ZsZ3E4fH3Qn3NweT3eMACEnIEPBEJtjuxyXiTD96JDhJJYgR5BpQwb6Y5ZAFRY9cqVaq1ZD1OGkJobY+EVo0TqcbqlfqDEDDUZ3g0+4MJMfAvlkMx5Asn5LDoqzGhs2x7AcRzACcgEEkAA" data-background-interactive>
 					</section>
 				</section>
 				<section>
@@ -592,11 +592,11 @@
 				<section>
 					<img src="../../assets/conditinal-types-example.png" style="height: 600px; width: 1000px;">
 				</section>
-				<!-- <section>
+				<section>
 					<p>Distributive Conditional Types</p>
 				</section>
 				<section id="fragments">
-					<p>When conditional types act on a generic type, they become distributive when given a union type. For example, take the following:</p>
+					<p>When conditional types act on a generic type, they become distributive (like a loop) when given a union type. For example, take the following:</p>
 					<pre class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 						type ToArray<Type> = Type extends any ? Type[] : never;
 					</script></code></pre>
@@ -611,7 +611,18 @@
 					</script></code></pre>
 					<p class="fragment">  type StrArrOrNumArr = string[] | number[] </p>
 				</section>
+				<section class="fragments">
+					<p>in the case of conditional types the "never" has a different role.</p>
+					<p class="fragment">here, never means if the condition has met (or not met) don't return anything</p>
+				</section>
 				<section>
+					<h4>for example</h4>
+					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						type OnlyNumbers<T> = T extends number ? T : never;
+						type MyNumbers = OnlyNumbers<64 | 23 | 34 | 'hello' | 'world'>;
+					</script></code></pre>
+				</section>
+				<!-- <section>
 					<p>Lets try to create a type that exclude from a type those types that are not assignable to another type: </p>
 					<pre  class="fragment data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 						type MyExclude<T,U> = T extends U ? T : never;
@@ -660,16 +671,16 @@
 						type InferSomething<T> = T extends {a: infer A, b: number} ? A: any
 					</script></code></pre>
 					<pre  class="fragment data-id="code-animation" ><code  data-trim data-noescape class="hljs">	<script type="text/template">
-						type Inffered = InferSomething<{a: string, b: number}>
+						type Inferred = InferSomething<{a: string, b: number}>
 					</script></code></pre>
 					<p class="fragment"> In this example if type T extends the object, typescript would assign the type of a into A and return it</p>
 				</section>
 				<section>
 					<pre  class="fragment data-id="code-animation" ><code  data-trim data-noescape class="hljs">	<script type="text/template">
-						type Inffered = InferSomething<{a: string}>
+						type Inferred = InferSomething<{a: string}>
 					</script></code></pre>
 					<pre  class="fragment data-id="code-animation" ><code  data-trim data-noescape class="hljs">	<script type="text/template">
-						type Inffered = InferSomething<{a: string, b:boolean}>
+						type Inferred = InferSomething<{a: string, b:boolean}>
 					</script></code></pre>
 					<p class="fragment">what about this?</p>
 					<p class="fragment">any</p>
@@ -692,8 +703,7 @@
 					<p class="fragment">what about this?</p>
 					<p class="fragment">{ a: string; } & {b: boolean;}</p>
 				</section> -->
-				<section>
-					<p>More examples:</p>
+				<section data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEBcAsEsCcBNQAcCGtwE9QBtoCMAoAY2xQGczQAVGBABTU1AG8DR3QiB7AOzPFgBXIuC6wAFNx4AzaAHMA8knDReZAFws2HLstU8AjJv6xoPOQBpt7XSt4AmAPyaeggLZ4AprCsdQt-QBmZ1A8Li5sTxQeXx09XgAWEOYUYwEzS1DNAHIUbNAAH2y8fIBfa1BSgEpmcoqQTi54TwA6NoI6gga3LG5mggJMJE9QAHFPcAAxOH4AQVg5d08ecAVpWZ4MAGE1AWFRWAAeKgA+dgBealBPAA9wZfhKZh5PAHdQcTQ5TTNpb1BZhZQG0Wl8NKBohgANoAXSqmkhpUc7FmLk8ADdvIMMMNqLR4Ax0BglHY+KBLuMpjNwPNFm5lqt1psdnw9iIxIchp4uNI8XACYwMCdiLt-PE+JoaPzCZgSfpKJdmAFeEZQNkTBlskCAjx7JoDKUANwi1kQ8mgF7vKX0QXiZV8KpAA">
 				</section>
 				<section id=fragments>
 					<p>Function’s first argument:</p>
@@ -725,7 +735,7 @@
 								type t = GetSecondArgumentOfAnyFunction<(name: string, age: number) => void> // number
 							</p>
 						</section>
-					<section>
+					<!-- <section>
 						<p>Return type:</p>
 						<pre  class="fragment data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 							type GetReturnType<Type> = 
@@ -740,8 +750,8 @@
 								We can write some useful helper type aliases using the infer keyword. For example, for simple cases, 
 								we can extract the return type out from function types:
 							  </aside>
-						</section>
-					<section>
+						</section> -->
+					<!-- <section>
 						<p>Promise return type:</p>
 						<pre  class="fragment data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 						type PromiseReturnType<T> =
@@ -750,7 +760,7 @@
 							<p class="fragment">
 								type t = PromiseReturnType<Promise<string>> // string 
 							</p>
-					</section>
+					</section> -->
 					<section>
 						<p>Array type:</p>
 						<pre  class="fragment data-id="code-animation" ><code  data-trim data-noescape class="hljs">	<script type="text/template">
@@ -765,14 +775,23 @@
 							<p class="fragment">
 								type t = Flatten<[string, number]> // string | number
 							</p>
-
 							<aside class="notes"> 
 								Here, we used the infer keyword to declaratively introduce a new generic type variable named Item instead of specifying how to retrieve the element type of T within the true branch.
 								This frees us from having to think about how to dig through and probing apart the structure of the types we’re interested in.
 							  </aside>
 						</section>
-				<section>
-					<p> Assinment: </p>
+						<section>
+							<h4>Exercise</h4>
+						  </section>
+						  <section data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEEsFsAcBsFNLwHYBdSoBb1PAHgMawCuAJjsQM7jIDmoBA9sqeKuMwIawYCe08SgCgQuQiXKhKmRsVilQAJ3gFwANxwAmUMWQdklUAAoAKqE4tQAVQCUoRgDNzl5amKLk95LF4ZsoaEVGAUV2QQhPMywcTmVQZEZ0GmtQVKFUfhwAWV4AUXEyeAAeEwAaawA+UABeUGAAKgB+RvrgIREwKDhEFHRosVRFTgJ0Khp6JhY2fW4+AWFRfEHh9GlZeSUVdS0dPWZDU2cFW3snCwVXd09mHz8cQOD4UPBw5Kj-WJjYSkYIlNB0plQDl8ssRqASuUrFVag1mq12h0uggkGg7qAAErwNweOYUah0BjMVjsLg8DLzI7omgOJ6gADW8F4AHdGIpSICBMDeFiccgTECSjC6k0WsAgA">
+						  </section>
+						  <section>
+							<h4>Solutions</h4>
+						  </section>
+						  <section data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEEsFsAcBsFNLwHYBdSoBb1PAHgMawCuAJjsQM7jIDmoBA9sqeKuMwIawYCe08SgCgQuQiXKhKmRsVilQAJ3gFwANxwAmUMWQdklUAAoAKqE4tQAVQCUoRgDNzl5amKLk95LF4ZsoaEVGAUV2QQhPMywcTmVQZEZ0GmtQVKFUfhwAWV4AUXEyeAAeEwAaawA+UABeUDN8VBRSQysAfnj4DUVQAC469MzQAEEa0Bz8okKigHJOadAAH2mAI2mlgmny2fmKoREwKDhEFHRosVRFTgJ0Khp6JhY2fW4+AWFRBsvrqRk5BWVVBpQNpdPpDKZnApbPYnBZ-vA3B4vD4-DhAsF4KFwOFklF-LEYrBKIwIilQAMBGM8ngLld0CVylYqrV6jSmi1QO0zH1kJ1MRScAAhUbjGlfVAzOaLFZraYbLZS3b7Q4IJBoVGgABKCPcngylNudAYzFY7C4PH14ThGpoDkxoAA1vBeAB3RiKUgCqnaxHIEyDErMurndnGAB0EditEofQsvAA2gBdOzVKq2+2azla2PIXgAbiEDl01305lICiMyGIkAAjDzq8tMeUq5BNPXII3FDYAN5CVKpVy6+LVmugADUw9bBYAvntLcNyz7df6BKPajklx4V8VLY4y6RdvOhoudVvMtp17xN37MkUW52KkA">
+						  </section>
+				<!-- <section>
+					<p> Assignment: </p>
 					<p>1. Rewrite the Extract type:  Constructs a type by extracting from Type all union members that are assignable to Union. </p>
 				 	<p>2. Rewrite the ReturnType type : Constructs a type consisting of the return type of function Type.</p>
 					<aside class="notes"> 
@@ -793,7 +812,7 @@
 					<pre  class="fragment" data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
 						type ReturnType<T extends (...args: any) => any> = T extends (...args: any) => infer R ? R : any;
 					</script></code></pre>
-				</section>			
+				</section>			 -->
 			</section>
 			<section>
 				<section>Mapped Types </section>
@@ -817,7 +836,7 @@
 				</section>
 				<section>
 					<aside class="notes"> 
-						Well it doesnt make sence...
+						Well it doesn't make sense...
 						lets make it generic
 					  </aside>
 					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
@@ -885,50 +904,48 @@
 					</script></code></pre>
 				</section>
 				<section>
+					<h4>Mapped modifiers</h4>
+				</section>
+				<section id="fragments">
+					<h4>More examples:</h4>
+					<ul>
+						<li> there are 3 mapped modifiers</li>
+						<li class="fragment"> readonly: make the property readonly</li>
+						<li class="fragment"> ?: make the property optional </li>
+						<li class="fragment"> - : remove optional or readonly </li>
+					</ul>
+				</section>
+				<section>
 					<h4>More Examples:</h4>
 				</section>
 				<section>
 					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
-						type Stringify<T> = {
-							[P in keyof T]: string;
+						type Partial<T> = { [P in keyof T]?: T[P]; };
+					</script></code></pre>
+				</section>
+				<section>
+					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						type Readonly<T> = { readonly[P in keyof T]: T[P]; };
+					</script></code></pre>
+				</section>
+				<section>
+					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						type NotPartial<T> = { [P in keyof T]-?: T[P]; };
+					</script></code></pre>
+				</section>
+				<section>
+					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						type NotReadonly<T> = { -readonly[P in keyof T]: T[P]; };
+					</script></code></pre>
+				</section>
+				<section>
+					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
+						type Pick<T, K extends keyof T> = {
+							[P in K]: T[P];
 						  };
 					</script></code></pre>
 				</section>
-				<section>
-					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
-						type OptionsFlags<T> = {
-							[Property in keyof T]: T[Property] extends Function ? T[Property] : boolean 
-						};  
-					</script></code></pre>
-				</section>
-				<section>
-					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
-						type Features = {
-							darkMode: () => void;
-							newUserProfile: () => void;
-							userManagement: string;
-							resetPassword: string
-						};
-						
-					</script></code></pre>
-				</section>
-				<section>
-					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
-						type FeatureOptions = OptionsFlags<Features>;
-					</script></code></pre>
-					<p>what will that return?</p>
-				</section>
-				<section>
-					<pre data-id="code-animation" ><code data-trim data-noescape class="hljs">	<script type="text/template">
-						type FeatureOptions = {
-							darkMode: () => void;
-							newUserProfile: () => void;
-							userManagement: boolean;
-							resetPassword: boolean;
-						}
-					</script></code></pre>
-				</section>
-				<section>
+				<!-- <section>
 				 <p> Assignment: </p>	
 				 <p> 1. Create a generic type that receives a type and returns the same type but with all its keys as optional (Partial) </p>	
 				 <p> 2. Create a generic type that receives a type and returns the same type but with all its keys as readonly (Readonly) </p>	
@@ -979,6 +996,16 @@
 							readonly [P in keyof T]: DeepReadonly<T[P]>;
 						};
 					</script></code></pre>
+				</section> -->
+				<section>
+					<h4>Exercise</h4>
+				</section>
+				<section data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEGMCcFMEMBdqgAq0vAlrANqAUPAJ4AOSAsoaulrgLyggD8eeIEMCSASnACYD2AO2yECJcoR6wBwwqHpMWbKHEQoM4ANZjSoCsg2b5DYM1ZgAwhzWxQAc2iDokDaCK74ACwSgY4aBgAbtAAzqAAKqCwgry+0PAArpCCYV5IIbAAtkjuSABGCfCgAO4YXlHYuGVhmtCEYbBhggmVsHnY0DoSAHIt2G0dxormoABCQgkhAFygVqpItg5OLuBu4m7eRX4BwWGR0bEwicmpnulZOesFRaXlOFXwNXUNYfzEmEI4oAAUTiGIsVyqX4-AAlPhcqAACLQaDEKiYL4KUx4IA">
+				</section>
+				<section>
+					<h4>Solutions</h4>
+				</section>
+				<section data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEGMCcFMEMBdqgAq0vAlrANqAUPAJ4AOSAsoaultgDwAqAfKALygDeoA2sqBgHagA1tEIB7AGah6AXQD8ALmk8ZAblABfVXjwgIMBEgBKcACZj+2QgRLlCJ2OcuEGzNpwNOrPPoJHipWSV6FXUtHT0oOEQUDHAhG1JQCmQ4oQYAGlAAaVBoAA9EflMAZ2FRSWk3Dh8BHJlg0PDdMABhAxjYUABzaH5oSDjQIiT4AAsEUBhwaAwAN2gy+lBYYqnoeABXSH4y8aQS2ABbJBGkACNN+FAAdwxxlexce7L-Mtgy-k2n2HPsaESdgAct9sL9-q5WDVeHV-JUgspkDIAD6gL5PTTaFqgABCFk2JSU7WiSC6vX6g3Aw1swwm12mswWSxWaxgWx2ezGB2Opxpl2udweOGe8FeoneZTExEwFhwoAAFP0SohTNTSHsxGIAJT4M6gAAi0GgxComBwkLYywKRVKoDE5wAVtBwNc5NDfOUAtJ5EpDcbTTQGCpGKoNKBgtogA">
 				</section>
 			</section>
 			<section id="fragments">

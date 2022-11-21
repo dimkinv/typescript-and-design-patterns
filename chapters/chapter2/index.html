@@ -1121,7 +1121,7 @@
 			</section>
 			<section>
 				<h4>Mutable vs. Immutable</h4>
-				<ul>
+				<ul class="fragment">
 					<li>Predictability</li>
 					<li>Performance</li>
 					<li>Mutation tracking</li>
@@ -1175,6 +1175,42 @@
 					console.log(user === validatedUser);
 					console.log(user.firstnname === 'Hatuli');
 				</code></pre>
+			</section>
+			<section>
+				<h3>Exceptionless Programming</h3>
+				<a href="https://medium.com/att-israel/exceptionless-programming-80b3e06b1f4e">https://medium.com/att-israel/exceptionless-programming-80b3e06b1f4e</a>
+			</section>
+			<section>
+				<h2>Using Unions</h2>
+				<pre><code class="language-typescript" data-noescape data-trim>
+					class Actor{
+						async onMessageReceived(message: Message){
+						  const [error, status] = await handleMessage(mesaage);
+						  if(error){
+							// do something with the error
+							return;
+						  }
+						  
+						  // do something with the result
+						}
+					}
+					
+					async function handleMessage(message: Message): Promise<[Error | null, Status | null]> {
+					  switch(message.name){
+						case 'create-user':
+						  // do some work 
+						  return [null, Status.Handled];
+						default:
+						  return [new Error('unkown message name'), null];
+					  }
+					}
+				</code></pre>
+			</section>
+			<section>
+				<h2>Using Narrowing</h2>
+				<p>Using union to differentiate between error and payload</p>
+			</section>
+			<section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/KYDwDg9gTgLgBASwHY2FAZgQwMbDgUSimgCVgBnSJcvAbwCg5FzDioAuOGKAV2AG5GcNG06to9AL716oSLEQo0WXHABqmADYIAJmUoRqwADwAVAHxwGTBCyLROWTTUFMwmAJ6aImHZ1OC0vToPEjYMAiGcNhQwJio4lAA8lD6VDRmcAC8cKEA1kgQAO5I5gAUItApaYY0YvZQcAA+cKYAlPVs1RTpJhZWQgjocBUN3QZGiuQwmGHAEMOJbQNMTLEwPFBIK6s2dqJcvMAANEK7lRzCY6k9tcBncNJMQWvAG1s7e4mOWjSnu+4vD4-FcujcJjQhNIgnJoPAYB4wHhEuNemZLDkNNo9LcjOjmgQGjUjIJgqFwpFtgBzN4AEXimDKHUJYOJGWmUGQVMs1kOHk+0Vq8FiELwORpMHpMwAYsQALYAZTQADc0EzXKt1pttjE4glrmzgGURb02hrJNF4tgABYjC7LXlMbBC4TZUHQOCYcgs6Aa17vHWxeLAFHgtEcrnlYBtKFSGRksIRKISqWYWUQRUqtUOoRaj4Ach0DPzgXjIUTlLgcswyCZO2d1GFuJobpTDPVg2GxubwAAdLYlgKG+QIJo+94qd3Rb37ebhM46A9h6PxxBJya7r3Ad5fGbY1IgA" data-background-interactive>
 			</section>
 			</div>
 		</div>

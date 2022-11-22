@@ -201,9 +201,12 @@
 					<h4>Part 2: Creating Types from Types</h4>
 				</div>
 			</section>
-			<section>
+			<section id="fragments">
 				<p>
-					Sometimes we will have the almost the utility we want, so we know how to change it!
+					1. Sometimes we don't have access to a type and we want to make sure we send the correct value 
+				</p>
+				<p class="fragment">
+					2. Sometimes we want to create our own utility types
 				</p>
 			</section>
 			<section id="fragments">
@@ -239,14 +242,14 @@
 				  <p class="fragment"> type P = keyof Point </p>
 				  <p class="fragment"> type P = “x” | “y”: </p>
 			</section>
-			<section>
+			<!-- <section>
 				<pre data-id="code-animation" ><code class="hljs" data-trim data-noescape>>	<script type="text/template">
 					type Mapish = { [k: string]: boolean };
 					type M = keyof Mapish;
 				  </script></code></pre>
 				  <p class="fragment"> type M = string | number </p>
 				  <p class="fragment">Note that in this example, M is string | number — this is because JavaScript object keys are always coerced to a string, so obj[0] is always the same as obj["0"].</p>
-			</section>
+			</section> -->
 			<section>
 				<h4> practical examples:</h4>
 			</section>
@@ -1074,6 +1077,8 @@
 				<p class="fragment">
 					type LocaleMessageIDs = "en_welcome_email_id" | "en_email_heading_id" | "en_footer_title_id" | "en_footer_sendoff_id" | "ja_welcome_email_id" | "ja_email_heading_id" | "ja_footer_title_id" | "ja_footer_sendoff_id" | "pt_welcome_email_id" | "pt_email_heading_id" | "pt_footer_title_id" | "pt_footer_sendoff_id"
 				</p>
+			</section>
+			<section data-background-iframe="https://www.typescriptlang.org/play?ssl=6&ssc=6&pln=6&pc=14#code/C4TwDgpgBAwg9gGzgJwM5QLxSgIgEYICuEOUAPrgObIQQB2pFuNAJqQFCiRQDqAFhBqZceAIYBjANbU4hOm3K5gEAB7Ac7TuGgBBBAgAyccaIQQAkgBF0WAAYASAN7wkaAL4B9J-0EQ3tgG5NLmgAWRAXFBsoRwBtAAUoAEs6KD1DY1MLawBdAC4oVGBkFMo3IA">
 			</section>
 			</section>
 			<section data-background-iframe="https://github.com/mike-north/types">

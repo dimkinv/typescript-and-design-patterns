@@ -8,5 +8,5 @@ client.addProvider(new YahooClient());
 client.downloadEmails();
 
 //this will not work! 
-// you need to create an adapter that will impletment the EmailProvider interface and will call the GmailClient methods.
+// you need to create an adapter that will implement the EmailProvider interface and will call the GmailClient methods.
 // client.addProvider(new GmailClient());

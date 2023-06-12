@@ -350,11 +350,6 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
           <p>what are the 8 types of javascript?</p>
           <p class="fragment">undefined, null, boolean, number, bigint, string, symbol, and object.</p>
         </section>
-        <section data-background="#007acc">
-          <h4>
-          Typescript Basics++
-          </h4>
-        </section>
       </section>
         <section>
           <p>number 1,2,3</p>
@@ -365,22 +360,27 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
         </section>
         <section>
           <section>
-            Type Compatibility and Duck typing
+            Typescript's type system
           </section>
           <section>
             <p>Type Compatibility</p>
           </section>
-          <section id="fragments">
-            <p>The basic rule for TypeScript’s structural type system is that x is compatible with y if y has at least the same members as x</p>
-          </section>
-          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?strictPropertyInitialization=false#code/PTAEFEA8EMFsAcA2BTUBGUBaUAVAnvKgMID2C0ALgJYBGViVFeoAUFQHYXIBOAZtAGNUABR4BnEu2iIAku14kMAbxag1oKbGQAuUGIrcOAcwA0q9dCM6NAV1g0eZgL4s2nHvyGhR3CVNnyJFBc7AAmyKHK5mqa1vqG7KbRoJbW7HYO3GbqKaGh3MhiYrrxxiwuLLw27ALUkqDwCRRyChgAFBwKuj5+0i2KAJQqOQKSEigAdIgkRh2BAwDc5a5VNXXsDU39UMhhEe2dJN3ikn2BwbvhkUPJo+zjyFMzcwqLyyx3+qCHaMe+pwEFBc9pFQABeUDDdSxXQAIgAgmJoLxYdkLFZdABmTFotTQPIFIpwgDWlAAXuxkIg-KAABwAJlARioADdKNA8FRYLDlp8KN9AvS-r1AYpwZDkjDQAikSjcSkMaBsc5XCBQAB3Eg2RChUAUAAWlA1JG4xIA-Kw1Y0OM1zpBLvsXiR6QMWGr9SR1SkaFr+QbKBa3WBrZx+mgnWhXaqwFA4EhUIzsPhCKBSORqHQGExWG4uHxBCITv5+oyoWoqKESgYyjkpaVEvLUrp0vZHO8bR4C6AAPLsRB4GS6svfSt6auJdvufNeIjQbj9CU5CtVhJJEaSeDQdh4ABycDi47X6l2zMpyYPq-lsBI4UQAE1kHOV8ZWBVVrUqPUQ7aFIyncKARLUAAB8ez7AdQhudd7hISZplmQ43gqPkGiLM4um8NDRUZCFh2XaU0FRSV9zhRFkSInImyVTFeTGflJH7QddF7RjdVw5J8NhekiJcFCBDnBd2KXUdYUxCj1DuTdtz3LQ4QAIQAWQAdXEtQTw4ZBzzhdSzwIZBVNAa9bwfJ9pXpAAGCzYVfaNjW1XV-X5TVTUDK0tkFNpCH+Yt5iDTYbRLNoGIgqN3U9b1fT1Q0KDNPzv0C-j5182zYwQFAlSwUAPS9CgSD0WCWVQRgLSYFMjGgGxuFCMRMoAESoMQBEMWAOEoF8AFV2E-e4c1KwtvOkWr2XFJRQnZACfN-UAnFAAAySE+t0AByLyRUwQ5MCqRBEEwMaKGgJaZpAyE9ugZjwMHGb5qUPU9OWitMGCw6lkqaoPy-dyFExUB-0wgbECG-aoIksZYMeeCnSQ2zNXsqKjWc81LWDT6SExNpRvG1bAMCExbsIOEsf8dbAk27UdtO2EnFdNyAsCNGMf27RgsHXHFulB7gsp0KwGyiKbD9aLYpp0MPIZs7Ev6Vm7ulQnpGJhRSe23b2S5uKUfpdHTu0CWcbx6xYQ58DVdstNN1XPVNVAd91jEFgUH5SAMAhNoztsVtuAGcEAD5QHMpZ7dAPAnZ+mhmwyRw9GfRJPbBH2-ehrUdThpyTURlgg-FR2FiRrLwugH1+eToWwEd8Ug+z1w7eQB2cJ+12W0yXHQjNbR61MNQBBbsdVxjuP-erwPa7aUO3cbyPu+MXvfZesKvXzyL2E9YvB8z+kK78goKEqjY+ttquHe+52p-RjQSOleEGCEayqf7-k8EPn7j5uqUEUv-Tcemfj1jhABlR8KAoCga+bw1QwyTo5Y0Lkc6QAfvfCus8+YCwDH5e+mdMTrz8kpaKiDQC7DsGIQMLA8GwFAD-faW8apQgAEqPlCHgNESloCMGMCqYhqZYImkXKAGhoQ0RyUQDYZAaIADiBRdgqgDvoSgNgxDBzIdIsQEwaH4jwEsNUUiKHB1INMbgExRHIF2BgtUWCjTz0LgIRA0AiiFEIRYqxNV4RdVgNILhvADEUDDu7JYHc6LcBsLUE0bQ6yHlxi2AAYu4zxmRPZKBcMhSxRRSFUDJKgKEbjq5RJ4N40AfI-EBO4EEuwESMmjx4DEuJrgA6u0cVyaQt9x4-2ScgNRYBoDijENnNU3YADSfkaoQmgJ0sAPS-LyOoAIQyyB3Y1S3LqXJ-jcq+FAKEPKi9+TIjcbUHJZBNwZnoIwPAQA" data-background-interactive>
-          </section>
+          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?strictPropertyInitialization=false#code/PTAEGEHsBtoUwMYBcCWkB2BnUB5ARgFaJKYBcAUOSKAKIAeAhgLYAO8oAjKALS6HHYG6ACagAKgE8WcTJXhJQCBgCdSoAN7lQoJgwDWcNZiTKU6AOZadkYXGhGTZy9olwVa9AFcmeOMqvCpgBuhqAAFACUoAC8AHygQZAowgDc5AC+lEhScBAqXNEaVroGDqYWxTZ2ZU5Wru6gXj5+AcGhkTHxiclpmeRmSH4AZgwIueAqAEzamtolocblzta29qCLtS5uqo3evv7agSghah1xCUmpGZQI0AyY2BPKAMxF2ggYi57IkMphLJ48NAUAgdPpcjULAAaUAAoEglbVdaOaGwwHA0H1HZNfagCLqTLaQ5tSKzInkj5YGBwAB00Eg5jCAHIjkEnDSOUyIlZtJk+pRqHA6IMRNh+uhBsoRmNQAA1GCJLhCkXCR75N5EpTKAByez8Hj1-j6A2Go1y8ugiWmyrgoryymmZPeKl1zWxhuu5Fu92wFsSrxtdqerydik+Jm+SF+-3RCPmoEh5hhcIxiLWG1RKYRWINbqhWtd+1zuPxPPJ6080j+8xhTCq0BhWIiaXJfMoVDAKFY0CYtpIXruDzlCsgABZQF22HBexK1couKHKV8fn8s6D44nk7H1-XN2j4ZjtsW-HiCWXWXBSWWKZ9qXSGczWezOdzW57vUO-ZAAKwT7vTvs50dMslwjFcYwPMEDATZEli3SC61WPc11AHNdjdU9CSJC8r3LTVb3ge9GRZYJnxpLkyzbagAHcAAsGAUBg8EgTwFCQeikAAflADtFEHX0RwANj-KcZxIe0Q14m8sDAqNV23KCIVgpx4NTRCkQzJN91TNCcRPfFMmockcNLIy8LDKlCPpYinwsDlyO5MzeV4-lqEkaRsCCbAAEkJVNMZsDUXiOBpdzcgYYF7hkUAhFEE0pTNQRlFyEJlAkdYuxQO5lBhWKJ3QMF0HSpRMGiiQWMUIRFFoyBIFK0BfCQai4FtUB2OnUAhmSuwJBpXiAEEezqxjYE6twkE8ZLsEgIYYoK+LpXC5KYqCBgsqY9gzDanIYV49rQAMdLhBQYwzGQNB5uwdiGJi7bpEq9B0EgBRfFAZLuEgaR0DgUQoxi4RRG+6jYWUT6-FQaKvLm-LJUW0A6JBWiJ0EaBqIYCRsEDYQNrgXjJhpUAAFV0Auu6ZF454CYAEUQbKGNJgBZPxzFqAUwG81hfiQIQFDUGnvWUemMFAJnlBZipeIWs1QH6mZDM7PyEplWWNHlsnQAAIW0Qoz2obJ7q1mJVfbah6GYKdQGmXzbDoDLzHQBjJtx3jqBq4G-v13Jrq43jQNhGrvswAoijMmrezUdRKRMCQ1AAIgAag4WPcuShg48mDgk5hPSdiZDhJmeJl0ihKT4d+PQI6jtK48T5OYtTuPBIAdgABjrnO1CZUdv0EouS7MkY6ErjBo5rrP67cOPnkmSZ28NTum4ADgATj7ly2Ys4x-YwGRJgj0uAG1DsTABdfenIs0flNRFRJ+vrSO-v-uwF5HjqHSI2CTSF2wGoljoF+hxMuyg9CcR-tvQO+Mw60lvgwDefsWABxkM8c+L9QBHzgDHe+Z8Q5oPeCPauT8J5pyIY-TSz8iQfwAD6gE8CIOAQwzA-Rcp-dI39qA0X-oAm6f8QFgI4WARBO9MCU2gTSWB7ZeJm3-KAV4vAwoQEgKwemeAsooGyDxKWMoAAKfhMAYAir5IYkAFxlgduHJ+ZYGDmFCDnEuxpFZw10cofRDtoBGMgPQFUP1THknMQsFESYrE2OPDlECyVjpICeMIQs+pQAAAMAAk6gc7pG4Mk1J6SUmGjSRknJ8TPRDDoedYWLByhIA8VwMIZhjFqGca4wx6BjEcFLNJfRVkHw1MgM2QpxTUClPKR4+gtpbDCCqV0upeiDHuKaZ44UIyfGtPwpZWk1lqmzJ6X0P2WMfqVMmS46ZQz5n0LGZ-MxzBQix36pgBgQxk7BNCM8Z4JcKQRPUdE2JOxY752eKObgPy-kAv+QXUcsdrh+y6XvUA9TDmzODqGfxcdrm3PueSaxjznmek4Z4ABbUgG8NAW-QRgzZnDJORwdZxjJiOTAG7GKzFWJ4oYtxXiZSBiVLCDs4QlSaWgDpUxFibEOIsuoGyiUHL1DaERaAK5Ny7kULRSE2RmKL4IDeVElQMT54yqBbqkFwLflgvftyDe0iLbjnkTkRRyjUCqOBBoygWjcgwrcR44C5JkiJnORY8hDzQn2MdY46WOB0DQAkN5UQoZPX309E6+0HiNTaGjb66SLAhASG1BczcZZbTizgGFbN5J1LQAAJpHnvjxPoRT0AlIKmKipszpiUsgPshpMyqWgBoSGsNEaln4JWURZtmybjhlhFM11szW2wo7TrMs0bvmoqJNK2VKKXlEnRWoJ54LR0YB7cINQ3bw2iFnR6-dMrZ4Br9lqBNJ6iTzueIu-taaiqZosbHDWDMADqj7QC5qYQWmVf7vphR-cWstDRY6TBblB2OlaN5-xxdwhQBKRXEvZY2-447GnGN5fWt1YRd1HpNa7SAwMBWMu9vwtD4qMPXo2SbMAZr2ByL5aRtqkB1gKlyOo7intQDmAYJNVUPBQBUxOmqzKDtUAWCJiTT4mig06Kw+2yAn71G0QUaGbG3Mp0TqpWWT2ncqxtu4F07gRTYDcG0wwJksbFO5EPRGtT7FNPngYiQxzwgDM5E7skD6oaJC2f5Hxl1EUqbuaNqFlTzmNNWq7QFpz6mwqUGrbWkG6HjGvGbbpsL7m+2bzvGsrpw7eIIdxd7YBhLWUksy2EdQ1nSDGenZAGEhmZVNbcaZ2Z5mcXQCs+52O6RcM1cgM8OrDXCMRtaz5mVfnCODeI7Stj5GhXMuqxlyAkxxvudIHR4x03pBxw6xFLrxieuWeswt9bNGqXbZ03tlrZM45zYC1d3iUBlFLDan-TqfSLqyHkKAOgwcwgkJzlEc4Lc0iA4kCDvA-r1iJgh-EKH8GuFMuQ+XFlsOjbA5SES1jZGGWrZ9tQYHRtYf47kHABQdBpiFFBwj4QnFSDkPeCz++yPQCo5h-T8I8P0L7BhGQTnnRufsKW0TwVjRSNUdQnzunVPeLJQmsoAqntZDkEB3QV4DOud1caFmmVg0QRwFg0N6HNPUK6-CPryVy6TdjDrvSJQ-T0BxwAMrjSQPAc3PTsXlfxVjgnOuKfPHxy3SPvF+XE4x3LiQNuddU6AA" data-background-interactive></section>
+            <section id="fragments">
+              <p>The basic rule for TypeScript’s structural type system is that x is compatible with y if y has at least the same members as x</p>
+            </section>
           <section>
             <p>Duck typing</p>
           </section>
           <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEFEA8EMFsAcA2BTUBGUAoTBLAdgC7IBOAZtAMaoCCoA3pqE6HnMgFygDOBx+A5gBpGzaPw4sArrABGJTAF9chEuSqgAQvRFNWsCTz54hO0GIl5pc4ouwUA9nh6gZ7LQF5tzFm04Aiai5oUj9hb3NOAGZI20wQUAB3e0lEABNQAgALaAJE+2IAawB+OLAHJ1zoTlpPGQBubFKIGAQUUAAmLGUiMkpUAGEvZnhie3g0TkMBMOHR+HbJ3mnTEbHIxaMTb1X4ABYN5e25gFYD4xmmHYA2M63ZsYB2W4vQHYAOZ5W5gE5Po7G0AAGT5KfA9NSoAAiQ0ucwm3CW5y+YwWCM2Lx26zRh3uez+uNO2KR-3gNyJd1hj3xlPgH3JGJ+1NecOB9Ni5WcFE4g08DBJ8IA5Ds0AKGSjOEK5u1Rcj4FjJWsZST9qAFXslQSJTtjhqaWS1Vddcyqaqdg8je8tXM3hbGaafraAay1UCZUpMKRJHgKAQcI5mWCAPIyABWAAp7KHOJCAJR0LDeDn2FAAOkQ9n4EdDMdi8SSKXSWRyeUKJXiIyDobDFBjQA" data-background-interactive>
           </section>
+          <section id="fragments">
+            <h4>Summary</h4>
+            <p class="fragment"> you can use a variable as a type as long as it at least that type</p>
+            <p class="fragment">if it quacks like a duck and walks like a duck it is a duck</p>
+          </section>
         </section>
+      </section>
         <section>
           <section>
             <h4>Tupels</h4>
@@ -391,7 +391,7 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
               const role:[string, number]
               </code></pre>
           </section>
-					<section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTCMDoAJIdwCwIYBdYHsCuAbAJpJBPABwFMBnAYwCcBLQlagOwDNjKB+SAKBEk2JQC2+AJLNUkALyQA2gHIAgqQRNZAGgDM6gLoBuTt2AAmKAd79IQ0U1QAuGaSQ0GAc1WQG6AQCNWWyTIUlFQ1tfR51KBhqTEw8OGpSNEoAaw5TSzFpAAY-KQAiABEEBgZ8PPSRTNBcyELi0vLTABZI6NikeMSYVBS2CqtUcEJ0UjgAClAsrIBKPVMAVlaYuISk1K4eDOt-aS0w4EgANiX2zrW0zcrtqTlFZTVNN0mc-cgAdhO45HONg-JUBgOGRCAByCAExDcCGcxBqW1Qc3SPWIKxciXwGEg5GKkGw4iiHUgCDw6EIfBsrwgJLJZCxOMQADcUag6NQAQhYoRKCzWEhqGRXgQSJAAKLUDqsQzYADylHUuBuHm8rDcSp8lFVnnVbF0pn+gJQ-x62FIoB26imbiaUz2PH1QKNlBNhnNlsg1qybnmNr0doBQOkAA9QG58NV-I6TaA9f6UEHDKGE5AAF6GGqR0iGV7GSAAFVJfES2IYRMwpHEjJRlDIKGIfAhDCQpDc8Go5DgkEreHEPiJJYQlEoCHwwCQBZRQuI4FMCGnPEnkAAyo5GM4QVrWAAhVCoPjFRI3BxOVzuDcayDgS9eHd7hi7XV+g1EuzL4-r5WUbe74j7nZ5bqUDgeRuOobiOOgkKQEwHKkJB4GQdBZZwZQEG6qYXhzgcC6vquX63qQ77qjsR6rm4l7gNe37FLsmofg+fyxpAXgviuLh4T+gKEawf4AUBqjwW4iGwWBKEITByEQSBaF2pheBECi7H7jhLhcZQOzkZRt40ZAJEuLR6r0VijHkHYimAspa5njsAlQeJImSbZSH2ZB-49HxkDaHMPDEIG4I0hSPBMOgDDkHyAKQNWCDYJu6BIEgAKiMMSBjORA7OKQdjSLpJ5qiqF5XjeHH3tMkAAN6mNA9pxgw4KQUylCkGyDBkZejBJTUaWkL6BzQDw5GmAAvvs3RYLgHTfABqSmJF0WxfFDCJbFYyyDVEJqJASbwdMw0YDgXwoJNfQ8DNMVxQlDBJctq3EOtm2ifx914I9QnENtBgjXt40HT0U3HT+s1nQtF1LSttW3W9IAfWNiDfb003-ad82LcloNrRDwC5mcqyIAw2D4LAcDECWGLoLAxQoPFeAIMkKLEgyA7UAgXh8KeH6QKgTBEpQzieETTawOKHbEtWQKEAOtVIHlxS4CT7jEMQuDEgIjDUAInis0RHOQHWxANk2bjobFkCy3iDCAJgEB3k92kCMI4qDYOg5AorbrAQtgjOS5A9M0EzhbTvsEQRf9AKYPggryZAACyVziFIM0h-jWWsTlZ6GXwggx3Y0cDDsgT3CBnmmFD+3nP0mQ5P4shFCU+CyFw+wtJAAAKCCkI1LhEtSLOt53IsoGLQ4CNbxJBSFYUMAFDFPniy7oEwnNSGMpgAJCpdzGUyOR10b9l2kr6Mu3YAAwgghDihy1DJsQdiaRxtoHNMdgMqg1AKgAfGVK88HiOljvP-U8CGqYGef8mBjBettb+qBZ7zzGHkFgxBgK1CYNQJB8DUBoKCgIYCW09BAA" data-background-interactive>
+					<section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTCiA8EMFsAcBsCmACAjALgFAlQOmcgO4AWkALkQPYCu8AJsmQJ6yIDOAxgE4CWsFPAHYAzRFwD8ybMGRIK0JgEkRlZAF5kAbQDkAQTaRh2gDQBmUwF0A3JmkAmfNNmJ5Slei1syvQQHNjyILU0ABGYhbqWnoGRmaWtiDIpviEPPDwjMQ8bFRcANaSTgrKwpSaAAwRGgBEACKQgoJM1UVupZqoVch1DU0tTgAsKWkZZFk5hJT54q0llLiw1GzEABSo5eUAlDZOAKzD6ZnZuQVSicUqkZoWCTIAbAej4yeF522qGjr6hibmAeuVW7IADsj0y5BeZxkHEogi8WgUADkYIgApBfIguhdSjsQBAYAgUHYsIlmKxkABZJgAFWohKughRHi8Pn8yHRiA8QVCYgCiGgkDSzO8Ql81iBMLhrlphI8VJlSCu2gAUpRiIITMg7LsAtoAFZqwQAAUQUDgSFwMOg2nFTklbEoFvglF8KwUCsQFQs22QiQA8tQyIsyB4VYbtHbYQ6nS63TS6UgOt6rL6ZAGg4GPNrI3DHYhcM7Xe6E567MnU8h08HQwb1SazYTLZRrbYilMUGNRTkmDRkBwGsg6KpUmN2YwS1gnHhx4Scv3BMhSAA3FCUfg8WGQDKwLhrsRkHjsIFklCgHhjMR2Oh+rimBifblhLgBR+8wLBJ-icWJe0UGFTOg2FQK5TA2AIBg2G4fyjP9KAAtg7BAsDkAg8oAl2SCbGgqUtHAVAAiYTpIn-LhANQHN4U0cA7AImjkAALzLYi4NIhCgQcZAPTnActwdRdIBXZAuHYChECQaBEEEMg2ACEgeA4Yh+MEshVDCdkF0gLguEgJhgDIEtGBYfMnEgXAnBPZAAGURT8REPzEAAhOCkAaHJPhZUUX3s59kFwPyQmcxAGmub9oRg9kPGs1k7J5LgnLzVyrmqSYuHoaoAlMAJvGoVFkGEXjcuy3L8vgNhCq4HLbUSEIzNJIyrJs3x4pcuEYqfK4PL8AI-NwAKEsEa4vNi0K+3CkJIsa5qgta7ykpStLjCKgISrKrKKuKgq1pyjKquhWqZAsqbXKi0U2rEK4er6lrBuQTq2VfLgRt-PsPCOuETts2bPiWvLNsYdblr+n7kqmBakl25BTQJJASRkYRqEEDgD1hISgroBzAxUwRlGDFYes03w2A8TQ7qGp9uv8wLgosb1kAAbycAhns0RkJICFcuDYDdBAp3AhGDLoCbYLCZAIRIeqcABfW5JloBgxghFKCicYTIHRzHYRxwMVm0VnEE1Oiis2GWaHocEKCVmZElV9WyCxrWyB1vWDa21Efp+lbEGN6RZbNhWLamZXrbRjG7c1wRcd1lEDe9kBffl0gA+mFWQ417GI+1qOJO0WPgGpZ5jlIQQ6CYIhiEk5Ae2oIgGgoFTGEgPIUEgZAl00nhIBCRUHuQShhHZLhfGCSTpKIc9FJb4T4VgTSUTIN8GgYKvAkQRAGBb6AhB4aBgnfWLe-7sT+RHmSoWQEJA0r3sh0EQBMAgt2vGFUIRvEoOhqA4FAX7ECS6A7+fW7t07kgNgZlpDJFRmrWE8AmDHnqlSOYkQbbQNLiTRqZNwgi2cK4OYcp3hKm+LEJIlgsHx3Ni8WYKgvSRG0PURoTBtBSFuEMZAAAFSAbAuZ+DHPpekHCxxTwoDPbS0An5jnhojZGghYajRwkOay1BhD9w0CsJwABIfGg8iZaB6nrbRd0brqOWKbOgABhSAsBzxbh4PRTk58qaCCgjITYHglyUB4PeAAfPTdRiQhy3X0koiWiRpZOHkYE4QKxPbGz8ZQBRSiVjVFEIgdK3RhA8FSUkygmT4bQHSkbGwQA" data-background-interactive>
           </section>
             <section id="fragments">
             <h4>Summary</h4>
@@ -410,7 +410,7 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
             <p>Enums are one of the few features TypeScript has which is not a type-level extension of JavaScript.</p>
             <p class="fragment">Enums allow a developer to define a set of named constants. Using enums can make it easier to document intent, or create a set of distinct cases. TypeScript provides both numeric and string-based enums.</p>
           </section>
-          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEFMA8EMFsAcA25QEYBcoBQJQGMB7AOwGcAXUAQQBEBZASQDlQBeUABhzENIoCUAojQD6AeUYAZAJqs0XfMXJUAqgBUAEqL6yATAG4s8nkviyA3vNBXQROOEwAiSiWgAzBwBpL16AHN7oADMgV641qAATgTImDQMjPIAvoa4AO4AloiIoGQAFtAUqQQRANYA-Ni48AB0UciyAKwpYFBwSCg6mIwArrDgEel4EES9JPLgI7CgfNEoFmHWcUyhYOGCIuLSK+EqGlpJzQq8oKZs86vWtn2Ozm6e3lZ+AcHb4XUBM8jVSwm4yWmZbJ5AqgIqlCryGrvRqGQ6tBD1QKYADKZAGRF8w1G40m01moHOOx+rCcdCY9wWVnW1DEkhkbAc1Np0gpFyslDUmj4DI5ez4DgOh2MFFOBIeNjsoHQDmgLncrx8-kwL3F70wn3A3zJvzAyXkGSyOXyhWK5UqYCh+LYTSqtStoActFEAGEANLCPiiCQCAW26E87W+i12+psDVa+JwmAIlAAFnQ8nSJCNIImvVAADdoIh0gATCG4NNTDViylUbWNBVUoQ0zZSKu7LmCwvR9qgBoJ3BJlMUIuZ7N5gstXElwnhYkB+KsnZMusN3lNv5Rtr1ABsmETyeBvdxWZz+fNWOL+LHiwr1obs7pslQ7HY885WlkTkf-Ob3EUIvM4quKGlsruBsnmVEJVVmdVZgjJh31BQEe1BU0hxOEMUGtSEUOfJ03Q9L0fXQ-0HR+INkII8MfiAA" data-background-interactive>
+          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?ssl=47&ssc=23&pln=44&pc=1#code/PTAEFMA8EMFsAcA25QEYBcoBQJQGMB7AOwGcAXUAQQBEBZASQDlQBeUABhzENIoCUAojQD6AeUYAZAJqs0XfMXJUAqgBUAEqL6yATAG4s8nkviyA3vNBXQROOEwAiSiWgAzBwBpL16AHN7oADMgV641qAATgTImDQMjPIAvoa4AO4AloiIoGQAFtAUqQQRANYA-Ni48AB0UciyAKwpYFBwSCg6mIwArrDgEel4EES9JPLgI7CgfNEoFmHWcUyhYOGCIuLSK+EqGlpJzQq8oKZs86vWtn2Ozm6e3lZ+AcHb4XUBM8jVSwm4yWmZbJ5AqgIqlCryGrvRqHVoIeqBTAAZTIAyIvmGo3Gk2ms1A5x2P1YTjoTHuCys62oYkkMjYDipNOk5IuVkoak0fHp7L2fAcByMigop3xDxsdlA6Ac0Bc7lePn8mBeYvemE+4G+pN+YGS8gyWRy+UKxXKlTAULxbCaVVqltADloogAwgBpYR8UQSAT8m3Q7lan3m231NjqzXxWEweEoAAs6Hk6RIhpBE16oAAbtBEOkACYQ3Cpqbq0UUqhaxryylCambKSV3acg5AA" data-background-interactive>
           </section>
           <section id="fragments">
             <h4>Summary</h4>
@@ -421,20 +421,20 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
         </section>
         <section>
           <section>
-            <h4>Union Types</h4>
+            <h4>Union and intersection Types</h4>
           </section>
           <section id="fragments">
             <p class="fragment">A union type is a type formed from two or more other types, representing values that may be any one of those types.</p>
             <p class="fragment">We refer to each of these types as the union’s members.</p>
           </section>
-          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTCmA8EMFsAcBtQAICMAuAUCJAzArgHYDGALgJYD2BSRF0ARmQaABROx4npIF4OgAnADRJ2nAExoefeoICUAbyzAkq1QNAk8A6mK5IA1KIIcS45UgC+ygO4U88ACZISAC0gkkdgQGsA-Ba0BADOnrQMTKDOALw0dIzMLChC4nIYyhAwCMiSFvjE5FRxEYl63KECTADmInqSSBXVihZqSBpaOsamKIZdEhbWIHYOzm4eXhS+AdhBocUJUUix4QssAEQAgsGQOGsiawBykJMAnmtpGVBwiEgAzJjYw04u7p7e-nmEpJTUK5FsJk45RIlQIVQAPtJ+MI+mYpI0wZDeNDmthWu1tLpAfojHUBulsJlrsgACxST4FH7zf5leEg6pImSCWrY+oIiFQ2QCVEqVpkHAsEgnWCgCg4WE9aKxADkyK50qQADJFS5haLxXUljK5YIFTzWgaMZ0yr08Wi1INeWojVjugA6EgUADK9LBLDkptZDudrqq+KG9meYzekw+Myocz+zBi1MSyVSgQjYXikRjUdYm22u32R1O5wJKiJ2SQAFZyQGRi9xu9pip8t8irBQSQAJKONiOKQ6gRISHsj1Kc2zCiIO3wChVDvegCqsBFAgAwpBgqw5HIANz4ixFm4ANnLwCeo1eEymFIb1CbTFb7bInc5gl7DV9A5aonFgrVYtEMSlSDW7LnEgg5Wqo2AttQbhkMESD0AIkDEK4tTONBSDfkKIpINK7LSm+qjDqO46TneM5zoIS4ru6G5vpYSCgPAK7AXhSDYAAEoIoDIaIMHoWqWHdrh5r4RGI6gGOE4dtR5qWlY6QYNegg4JARDIAAQmQAjOEoqg4PAJzulIABuFB3puqjwJAJwAKJVFUwQGUgxmmRg1hIPJBAkIpynIAAYtBrhMaowQ2GQ0AOU5jhmUgFnWbZ9lyEZJmRS56QYb5-kAPICOpmlLEgfnBAFkI5clGCOKARAWRouBfIU1BVJoTrQJA8DwAACpoDkFa4WUlRgbmIJ4IqeLEDUkE1LXtZ1UmHmQrVViGUxudgw1jpZNl2e6m4WK4FA2EgkD0PYnjBrWSCrcFoVbXJN23Xdt1AA" data-background-interactive>
+          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEFUDsEsHtIFAgJKVAZwKYBdTYBaawBOAngDR6GgCuM8oAFACaaSzabOgBGpogKiIAlKFgAzUAENQAY1gAbeZhnY4acRhzpQ0bQUybcGyYtCYlAWzbZt0NPtkKlKtQDokwZLl2jIBjQ5idMySVpDYJqIADpjEkqrwevjEsDQA5vigAO740DKZWDaykmg8BnIWPHZcUpDcxObxNdiwZpL5ovrECD0goKicxFgu8B46SQaFjuGSdnZpUqbmmGFFGgCCVPGL6K1l8vALLaBjAEKixGYAjjTQAG4m1vIUi-JmltbaGucE2ya7vHMhzwrXW7jGAFEAB6hKJKbQIbCkGKgADKsCsUDUAEZQABeUCgADk6yJoAAPsTTmTKUSAMJEgDciORBnRmPokAATPjCSSaVSBUSACJMnpIlFY+C4gnszBSyC4ylyhVcxnMiUGAaxYYJRW8lWc3EAMjRGPlnLV4tZoAA8jwAFYy0AAb0kAC5iZIiZQeJ6iTwiQBfFko+0OnkE11+4mBygyf0yYPWlHaobKBLO8Mmu2Oq2aiCW3nZim5iPMhBySDoXCcGsAZk9ad1cGdbv93t9-rjskTyarNbwmBrABZPareS6YwGfb3iUmQ70wNDYUpC2oEEFICM0BUqn5GHYojRsNjPTXiPNKZAaJVYpQjyeuefsJfIGlr7eysQhC+3x-QBvO9iBdBBCUJaAxEYTUNEfU98QJIkgO-MljVNGCJDgyNEOQ2IySEUDwKI0AGmwGhiDQODcQAah0SBj2wLkwPAkMiNI8jKPok9sVcFpUVfeZGBEWisN42B+P-ISEEXPoB1wPdqm4AkFIPbFyC5IQxjkxxKkU3kVMwRgACJ1nQSQxCMygjIAOUkEhSCMzTIRhCw4QMBVNzoHdQAsSRSDKABxHBwCwYhUDEWAhPdZjKQAbSM2IUmISzQAhYgkoAXRi0B4vQGgZBkYd0BSl1ANCTA-3mRkzF86B5Eq99QCDDLXWYyCmAAWXifBXDiOoMSE0AAD5QAABlcABWERCPA9iKJy5iiKMvKCqKyzFvA0rIHKz0jI66AAGsDGskgCBSlZZnq0AjIsQ7MAAAUwFy3NcCojKa8gNqywkg3eLBWrYnAOIW4jrsSkh1tBvwslS9KSGMgAVag5DsUB5BKVhuAYBH1mQAAZVFQHdYyhE+ojvqa6SPDAABaOmZBPOmacrRIjBPCoDAJXz-MwILsBC2JwsipztNisRoCGbBKGGeBmBaglUmwDnNwlmsxgAPQAfgQGW6g17Wl1S5612bDMNzsQYxHaAw6QUEggjeGa5AOYgGrSZkQwt2IrcK0A6QlmQ1xmuJmGgGh0E9XDiA9sDQxtu3iAd-3iEDzm-YTh3QFNZPU4rTztz1UBmDiLJGBkAOlE9W2Xcz7OK8wabmIHBRMFcA40kYAADauSGySRtAAEhdcuU6UV6E6DTuhGZQlm7H9uu4AJUkUPw77wfh-r3qV7D9BJ+nqmTj6WADr8hBi8kUvSudkhdp4eQaEwFKQ93z0Rx5IMD48AB1Oq3mgXAWQSAHU1kfMAF8r6OBdrtBozBn6zGYOHN+H8v49DQegjBCAgA" data-background-interactive>
           </section>
           <section id="fragments">
             <h4>Summary</h4>
             <p class="fragment">A union type is a type formed from two or more other types, representing values that may be any one of those types.</p>
             <p class="fragment">TypeScript can deduce a more specific type for a value based on the structure of the code.</p>
             <p class="fragment">this pattern is called "Narrowing".</p>
-            <p class="fragment">If there is a realationship between input and output, use function overloading.</p>
+            <p class="fragment">If there is a relationship between input and output, use function overloading.</p>
           </section>
         </section>
         <section>
@@ -446,31 +446,13 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
             <p class="fragment">By themselves, literal types aren’t very valuable</p>
             <p class="fragment">But by combining literals into unions, you can express a much more useful concept - for example, functions that only accept a certain set of known values</p>
           </section>
-          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEFMA8EMFsAcA25QEYBcAoEoDuALaAF1AEsBnUI-FIgT3hQHsAzUAIwH5RNRkT2oALygA5O1EBuTNjBQ4SFACYsOAsTKVqtBszbQANFVDQAdgBNQpgK6xumAMZNT5EtGFjoUx89fGRRABO1uDSTi4kNrAeqNKyEDAIyKAqmCzWpg5EpM6g8IGkpkQAKlBEABTk6KCuBaYA5kbQiKT1prDgRdUARMgsRN2gAD6g3QX1+APDow6dROCB3QCUoADevKA4AHQ7mAC+8bikiIhUhCS4TIEA1pzx+YUlZeXdABLgJ0xGl4GI5t1GXrgfrLOI4fBMXAmdhMawkajEO44B5FUqQCrdADionM0DoRlgxHAAJmc0CxKWYLkiUUoAAzKAALSgOiw0AOMzspiwdiFWg0cgoI7UKzORkteaBZpUXRVGSPBYsaCzUAAeXg2V8aw2R3M1GqUXYC2kB3SmU1pi5phYrWs5PKkGq6otlBG3WgcKYy21oE2YB2W32h2OpwRFyut3i4Rt9Tt4HKqzwpD1+GqqAADOnQHtKTJwZDobD4eckWBo7b7e7PaC82AIVDoDC4WdEVHnDG4y8PURucRSA4a-F5EkUAAWarxeiMcgOAoa9mcpwj+Ys2GBKhlPA0S2s6ygayCshENIZLI5S1L3mmeOFeBwjA1IKFerTQ0LIy3uEqR91F8jN+BEY5LkNYiBEAAws4ABuCzkOe1SiNA5CMgBojTIhyHzOiogrOsvq+qQLDlFO4CsGQph3kQqDCCIoioaAABkDEyowZGfkQSg0WI9FMaAwGgRB0GweeXEYShthGoEOF4fhsnkkQdqWgA1Ox1FKaAKkUV+Gy+gccngApgSWqpWw9gAyk+DTlCs6nsUoplMBZv7WUGwYnC24Y3KWXI8ny5SoEYShGGJb44bWCQKMkACsE78KAsB0AAkuY1QAAYACSrABeyMsmqVUkc7lhngEbeQlyUeKIqBKHSuXmKItb1oWzZhmVSWWLRzgGZc1DkuAdWiEAA" data-background-interactive>
+          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEFMA8EMFsAcA25QEYBcAoEoDuALaAF1AEsBnUI-FIgT3hQHsAzUAIwH5RNRkT2oALygA5O1EBuTNjBQ4SFACYsOAsTKVqtBszbQANFVDQAdgBNQpgK6xumAMZNT5EtGFjoUx89fGRRABO1uDSTi4kNrAeqNKyEDAIyKAqmCzWpg5EpM6g8IGkpkQAKlBEABTk6KCuBaYA5kbQiKT1prDgRdUARMgsRN2gAD6g3QX1+APDow6dROCB3QCUoADevKA4AHQ7mAC+8bikiIhUhCS4TIEA1pzx+YUlZeXdABLgJ0xGl4GI5t1GXrgfrLOI4fBMXAmdhMawkajEO44B5FUqQCrdADionM0DoRlgxHAAJmc0CxKWYLkiUUoAAzKAALSgOiw0AOMzspiwdiFWg0cgoI7UKzORkteaBZpUXRVGSPBYsaCzUAAeXg2V8aw2R3M1GqUXYC2kB3SmU1pi5phYrWs5PKkGq6otlBG3WgcKYy21oE2YB2W32h2OpwRFyut3i4Rt9Tt4HKqzwpD1+GqqAADOnQHtKTJwZDobD4eckWBo7b7e7PaC82AIVDoDC4WdEVHnDG4y8PURucRSA4a-F5EkUAAWarxeiMcgOAoa9mcpwj+Ys2GBKhlPA0S2s6ygayCshENIZLI5S1L3mmeOFeBwjA1IKFerTQ0LIy3uEqR91F8jN+BEY5LkNYiBEAAws4ABuCzkOe1SiNA5CMgBojTIhyHzOiogrOsvq+qQLDlFO4CsGQph3kQqDCCIoioaAABkDEyowZGfkQSg0WI9FMaAwGgRB0GweeXEYShthGoEOF4fhsnkkQdqWgA1Ox1FKaAKkUV+Gy+gccngApgSWqpWw9gAyk+DTlCs6nsUoplMBZv7WUGwYnC24Y3KWXI8ny5SoEYShGGJb44bWCQKMkACsE78KAsB0AAkuY1QAAYACSrABeyMsmqVUkc7lhngEbeQlyUeKIqBKHSuXmKItb1oWzZhmVSWWLRzgGZc1DkuAdUNeFACiNLJLUz58KQkrShk56UEhEBROQMgkaAABq4D4P2yDFLoACqpgibRZl7WtaEjKIZlDQAIgAggAcudYjFAASnt4EANLeJ0tjrZt23gLtjBDVEPqgCda2VRDogGBsV13fdUM3Q9MMbK970fZV6OfajBzhfZ8SJddQ2gIQ82ekuijzCe5oiSwTBMNR5QJeB0CBA+G1bQ4O37YdzgEnQrOBN+nMA0D4Ag7YSwyQRREs2z1FCErYjwyj0t6fhhHM4LbOcUrIii9zgO6JLsBbKr93q0GQA" data-background-interactive>
           </section>
             <section id="fragments">
             <h4>Summary</h4>
             <p class="fragment"> Literal Types are inferred by TS when using const</p>
             <p class="fragment"> They are valuable when using in Union Types</p>
             <p class="fragment"> They are also valuable in Discriminating Unions which we will see soon</p>
-          </section>
-        </section>
-        <section>
-          <section>
-            <h4>Union Types vs Enums</h4>
-          </section>
-          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEEYDpQdwQwBYBdYHsCuAbAJqBcAHAgUwDtQBLcgKzgDc4BnAYwCcKCkB+AKCQE8SoAGrEEFZpmIAVQcQCqpCqnIBeUAHIAyvOEbQAH01aAogBEAggDl9RjdIBK8gMIBpDQG4eZdAFsRYhJSsiQmpH6gAN48oKA6wgA0MXHm1kmxji6uSQC+PPkgoABMkDyFAJJmJnhMoHDoSKjMqL4EUkjEPABm6KTMSMrkXaio4KAAFL78znCs4ABcAeKSMnKKgwmgUzOsRYuiy8FyYX4AlNGxsRRdk9OzY6qPxqk253mXlDfbs0Wgj+oHIKrULhXyQUyWKxvHh5MrAADMpRAMAwOFASHwKBRrAA1rxCs1SIwUMx7qB9oEViFiCd-OoigAGLxwuCkXAYuDcOGgQnEnk-clLIHU9YqP6aDrEzwFMAAFlAjFQmAagy4XHm3lBQqpci0SHYpAA5rSosl4uLtLoNOkUpCLRDrNbkpk3BaXe5cvken0BmLhqhfrcdgttUcSHqDcbQedklcvnc5n8noCdeH9VQo35wS9obDCgBWaAwCgY0C9QaMUD8DD88joRjELaoViNgQkSsc8jEyOMbkorDszFoXH4sBtxvOADyABlJw4tBaHOZbJoAELT+QmFcMwygADaAF1mYVWYPOcO8dyfP4p7P56bCrEl2ZF8uko-QOvNxav1v32BYgsBwHAsABNcVD25PMwAANiLVEzyxZs8VAblhlYCZeRQcdKHIFMwxpaMHwAnkVEVKRIEwVBDXGcdTi8QpoNAScACNqGIfpIBxYh+EYcZ8OBQizkgdCTDgZgEHGcZuP4U4-gAPmIy5eSVYhKOo8YNBkzRNhk+ioNOGU6jZdFMVHUB0MwsjsLkXDQ0E0VSDk6IPxUiiqJouiGLAJjWPYziZL4gSRSUFRThE5sxIkqS9IUpTYjctSPM07TrVAPTvNAHJTiAA" data-background-interactive>
-          </section>
-          <!-- <section>
-            <h1>  narrowing example - redux </h1>
-          </section> -->
-          <section id="fragments">
-            <h4>Summary</h4>
-            <p class="fragment">If you are looking to optimize your code and reduce the bundle size at the moment of compiling into JavaScript - union types</p>
-            <p class="fragment">If you will be needed to run iterations over a set of values, enums are the way to go</p>
-            <p class="fragment">If you have only 2 options, I think unions are better</p>
-            <p class="fragment">If you have more than 2-3 options, Enums are better</p>
-            <p class="fragment">If you don't have a very good reason not to, use string Enums</p>
           </section>
         </section>
         <section>
@@ -488,7 +470,7 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
             <p class="fragment">4. Equality narrowing type guard</p>
             <p class="fragment">5. Custom type guard with predicate</p>
           </section>
-          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEEYDpQFQCwKagJYDsDOAXAhqgxggPYBmomAngA5IDmArtgE4AmAUHgDbbrqgCy5AMJceoAN6tQU0HkIZMjOnkyFGACkp0ARh2R5QqbAFsEALlBZGaGgBpQmnXtDYaZg3SNaEjAJRiAvqyB7HJYoCagALwGCADu-EIi6GoA5ACC6NjEKXYAzLk+ANysrCCgAOpw2JigsYR0HMygXmSIoPU1mpgA-KzEdPiYyHKgxISEoGom5gMA1qiEsag+4qzIxFNIaFi4BCQJwtzofpLSZ7IYhBwIkByENKnbOPhEpAKHPCk+p2dSZXUNJqYKo1OqMWbdUA-X5lC7oK43O4PcI3QwmOwmSAuBDfM6BM4IDjoJASX7SOEI273VILGpPXavA5JL7Qs7-eqNVrVWqqCFQsl-MAU65Uh6YtEIDE3bG46SBYJlABMoEg8CQFGo+w1tAYLD6A2Uw1QoAAypg6MwEKhMABJZhqAAe5ks1lAAB93J5vDYVqTpOtJtr9g6otEUi7UDQvqsBTJQpSkakzRarZgvsVY+y6MhOcDuWCIazpGUHZA0JwU+gi4KedncyCeeDepmwKW0JaHQB5YjQ-H+0hqIOkEORUegFKoDxeRjRv1k4WI6kpO3p6ugLP1-O85sCkuQFRmqyRtSyqTykplXLQNUoY3a0D0JhsNCYbzEbAEUAAEXuMekEudBRrBsaEtCYWZAKPGggjWa03w-JAABkjT-KQAIsIDIxAs5GEIJhIOsGCX3gz9BEWVCDGMNwI1saEjHGAjIxg-VBhQ3BkCMbAOD4bBZgQAA5QhkGJNR2M4jhzB-Gh3VAZCRg9MjYhOM51lSMDwRSW9nFQDiuOUgUF1FVJyhIUg6mIbJT1APspEJYkUA2FJcKYTS0G03SOH0+d4xFRMUgAJTwxhgsYABCUKWTxaE7K2Rz6MIVzjTEvS51+Qy-PiwhwsiuVmLKAAWaAAFEAEcGF0ChKOCxZXXvR89X6ViRgQB1jEoa5HUY6SPUnL1GDscgupkrRxmuXBfVOANHVDaJyAmtkwHKJA8FwAxyJWjgOG08hxxozSTGBQgmhGFIHU01Rx3IFJIGhaFSxUABVShqEYQRuAQE8M2LMBNkO5gVkPax90IJ6XrekSfC6koznIYHEMWbxwY+ooyWhMpfrgI6Acwmg4YR173pPKHTn8UAYoo9LqQdFHYykNGfsoJgqNfXxQCdDCoJk3rp2h8kfMXB45sKWm6YWyZGcYZnvBWQaOddD0RoRXBefPUpgAAVmgQQ6CwQgjDIKgdSfWpkGBexGAQZg9GqBBWHvAAxYS4CicQLFiDjzBPKIAD5QAANyEpp-GKe8ACFkBYF2xFGDhZa9yJfYD5Ag+KNXQFDwgzY2okyAmcN3aMTTcCaFJiFjouLbW+JCFmbBYZYw0RmIJ3O0YcOWA0BBMHMR30Gdj12-+1KpuE3u4E7zAfHmgVqEwSB0ALz7ezJokSTXWfIDL8gl6ihUwBve9KAtq2Vtfewu5QXgx5Nzbwl4pAYENk08CsSgamPpR1Tae8VFAa+ngQNgY6pALbmkYDpSMoAABWOsajYGaKNQBxo-ZcToDcBuQwRijydhPHuTsZKD0hufOkV98F+lAXQcB4sL7cD-k7Hw88C6gFCmOAYlpm6oEtsUPeoAAAKddnCYFfNaI04Vwpp0ao3Y02C+64LoX3AhEd-rmFnpfeRzsJBlCkBQqhCg0Fp2CJIzBxo5CxzHnI6+A8lFeWcDwbwmB0A2mbugcxs8ijQg3gvDiS9DEGmMbY4kjAHFOJkePWeeCFFWJYEQo49jeCqOEuo1CU1QoT1seohhXj9YsOiGwhAHDLY2OBLheInD4hFWquoFIwJEmJNpM4dROVrLMRCPIZwwUXYAG1ww43ADkUAeSCnMDsCM0AoyelQUVP0wZaBLajLsBM6wuR+kjIALqpyMShMYhBFSDiGh6GZnDlFkDUTRVKOi7zMNYagdhszmDcNaWEZuHAWaWxdkwRgm8cwszUNsxU7jHkJmpM815-0gA" data-background-interactive>
+          <section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEBUE8AcFNQOIFcCGAnAJgZ1CgdhqAHLpoD2A7gJZ4DmAUIyKAIwB0oAxgBaycDWoKgDNQsAB5YqAF3rCkeTtKpk8oYWTIAKAEboAXKCzS0NWqAA+oPEgA2tgJSGAbmSqEA3vVBDhu9A5ePj56aGy2sHTS3ADc3qAAvvGwtljwHqDxPswUZHaE0SjSoLlo-AD8WaDMoWw86ACCsj5JSUxgAEwcNMb4nLBkwvSctihYOOCwxiygQVyqxmhISmRoWtBIOrZUnLiGi2YANKAbWzugOvsmZoGtcSNjE1PSHbPxnAsmy9Kr65vbu04V1MdGOpwBoAwwJuHjujA+eGMoGkzxmAF5rLAKBBUVoAOQoPHHPE6PEOe6fZHPV4YvBYnHGDr4zhE0B4jBkuJyBRKFRqKhYSbGfxoQxC6QzKzijqBeIiEVCRHSPoDUTiliy4LzRFkCLhMi0EVsFAOeJJHwpNJvLXarC62D6w21Timlr0Nr0ZgAZg40hgqu5imUqiM1zoAHk0EQkABbHSwNahaF0SzWWPxtCa3xaP1wQYXdCgNHFtkHOh40BZkLocKRWjRM3JVLpKq1H4AMSo4lgGC0rsS7sYnrAABZunh6Ln4ABFJDPPlF2YARznxj5ydoSSnoAaiIoCcXHnwWH3otDIM3jHkQYXY34kd3J4TOYk0kMs-nIasj9PWfleJXT88ArGgqXEaQq1te1HS0AADAASDwUXAhJylg-tzTEZs5h8BE7T1WwDRfcCMMHYdQAAVg4TgkGMMgY1AWhUEwRhtwAYULDE5hjFB+FgDc4h8GMyAwFIBPiSBYAMNM4wTQT5kIs8y1oeSYyoCIUFofiZIzeS0iKMwOOgFBOBkSBykMGxZLQeT5BSKA4As88zDiBIuSvHlgzUaAQWkDi0BYLROGkhR+DwSg8Aca1swFfygoCSCQFKfgsEqLVmDw6DCMNYKwn05Q6CMkyzLYH4AFFxGgVRImUFBHHkzDLXgeUBXbOxbDi3KHES4BktSqoMoWLKiNyth8sMlBjNMv1SrICqqrpPBavqxs2mvXkQx8mg-PQJlcsMULwooSLopEIgyB2tBwG4cgKHizN4iS1YUrS6owFGj5FLIwMNv5LA4p4yB438g68DCiKnFAQHgcLAVQH8nwcNANBYGkJA0DUKd82h2AEeLDE8TIHQACs+GkCsADIKcyLUc39fMtBxhGxnhgI2B4viixLPFlLJUAqZp4I6bzURGZQIHccLFn-IcdmRJSLmCd5qKqaqYXVVAMWJeZnAZbYSTOO5qyMz51Xaax0Wmal3W2c+1ZFdLMNaFNim1YtzWrbQXAbczdn1KkrSHbxY2E05Rg3I8m8QzOi7-Ou26tZhs9DohwxHgTaQcE9oQfcRqps3d7P8bZInSaUSnqbd+nLfFpPvdZ32OfgYueadl3BZ8dWGez6W2eE0TbCD5X+dd83q492vJa93vfYNr2W5DtAXarkWJ+162G9lu35+54ezaF93E6n+u9bUjTA4X9NQ+6pGfGiW7MWxMq0HINY8WiOG4fC4oUAbskqjaBHH6Xkc5tXsADSeINQAp2OpDbOcMABKsAVxUBRhgAAPP5AAfHnLUKM0YY2ROPIu3NS5kwrh3TWh8e4+1lk3IebcVaVzHqvI+OtN5ywHgwi8y8WEazYRvPWc8g6L14QfceAjp60LqLqe2Lc96j3EawmhHCz4B2bkbK+S8mEr34SovW41CqTWKn6ERWixGd2oZAwRbM7K2AchopWjDw5AA" data-background-interactive>
           </section>
           <section>
             <p>what is the problem with this?</p>
@@ -518,7 +500,7 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
             </code></pre>
           </section>
         </section>
-          <section data-background="#007acc">
+          <!-- <section data-background="#007acc">
             <section>
               <h4>Type vs Interface</h4>
             </section>
@@ -652,144 +634,12 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
               <p class="fragment">Types can be used with Unions, interfaces can't</p>
               <p class="fragment">Types can be used with Tuples, interfaces can't</p>
             </section>
-          </section>
+          </section> -->
           <section data-background="#007acc">
             <section >
-             <h4> type never </h4> 
-             <aside class="notes">
-              The never type represents the type of values that never occur. For
-              instance, never is the return type for a function expression or an
-              arrow function expression that always throws an exception or one
-              that never returns. Variables also acquire the type never when
-              narrowed by any type guards that can never be true. The never type
-              is a subtype of, and assignable to, every type; however, no type
-              is a subtype of, or assignable to, never (except never itself).
-              Even any isn’t assignable to never.
-             </aside>
+             <h4> Top and bottom level types  </h4> 
             </section>
-            <section>
-              <pre><code data-trim data-noescape>		
-          // Function returning never must not have a reachable end point
-          function error(message: string): never {
-            throw new Error(message);
-          }
-           
-          // Inferred return type is never
-          function fail() {
-            return error("Something failed");
-          }
-           
-          // Function returning never must not have a reachable end point
-          function infiniteLoop(): never {
-            while (true) {}
-          }
-        </code></pre>
-            </section>
-            <section data-background-iframe="https://www.typescriptlang.org/play?ssl=23&ssc=5&pln=19&pc=4#code/PTAEFMA8AsEMFcDOAXAlgN3KAxgewHYAmqaBsANogFDbmyKKgCq+ATuLNnAEbngCirVrlYRIycEUaDhrAN5VQOAilbxsyEQAp86VgC5Q+cJlYAaUAFtwDWAHNwh1anx2AlAqVLE8AA7hWLWtbBzdFUABfKiiaOgZQABU1bABrUE9QTQB3LQ9wpTx8RFw+ADpyXDstAHJslztSxuqwpSio2npGAGFYUQzCVgxwXIyClRLwcsqagYx6xtLm8LaqKhAcOMYAIVxYZHS1sG9YVHIRw68xoompqurEE-J5prD11ouY5ABPf1AANXA0FQ2AoWAAvIlkmkAD6gHqiECwnZ7VYAM3g+A0qAIoCQ4ABQJBfC0mEJoMMBOBoLySlQqJJgKpfFALhQsEx4FwqMh6hSNK8pKZk2yuWW4XAlCwdIZZOZrOQ7OwnO58P5SkFRMms0woveSgliCwo2URX2xlMfwo8EcRhMAVAEI1oIA3PlQOtkNBhFlbT6WOxODw+DJtE6+BYAAYYqD+DTgQigMNYb7+QxyJMRCMtSLRIA">
-            </section>
-            <section>
-              <h4> type unknown</h4>
-              <aside class="notes"> 
-                the unknown type is simmilar to the any type, however you can't
-                assign a value of type unknown to another value with different
-                type without type check (typeof) first.
-  
-                Anything is assignable to unknown, 
-                but unknown isn’t assignable to anything but itself and any without a type assertion or a control flow based narrowing.
-                Likewise, no operations are permitted on an unknown without first asserting or narrowing to a more specific type.
-              </aside>
-            </section>
-            <section>
-              <aside class="notes"> 
-                Here's a list of assignment examples we saw before, this time using a variable typed as unknown:
-              </aside>
-              <pre><code data-trim data-noescape>		
-                let value: unknown;
-  
-                value = true; // OK
-                value = 42; // OK
-                value = "Hello World"; // OK
-                value = []; // OK
-                value = {}; // OK
-                value = Math.random; // OK
-                value = null; // OK
-                value = undefined; // OK
-                value = new TypeError(); // OK
-                value = Symbol("type"); // OK
-      </code></pre>
-            </section>
-            <section>
-              <aside class="notes"> 
-                What happens though when we try to assign a value of type unknown to variables of other types?
-              </aside>
-              <pre><code data-trim data-noescape>	
-              let value: unknown;
-  
-              let value1: unknown = value; // OK
-              let value2: any = value; // OK
-              let value3: boolean = value; // Error
-              let value4: number = value; // Error
-              let value5: string = value; // Error
-              let value6: object = value; // Error
-              let value7: any[] = value; // Error
-              let value8: Function = value; // Error
-              </code></pre>
-            </section>
-            <section>
-              <aside class="notes"> 
-                We can narrow the unknown type to a more specific type in different ways, including the typeof operator, 
-                the instanceof operator, and custom type guard functions. All of these narrowing techniques contribute to TypeScript's control flow based type analysis.
-  
-                The following example illustrates how value has a more specific type within the two if statement branches:
-              </aside>
-              <pre><code data-trim data-noescape>	
-                function stringifyForLogging(value: unknown): string {
-                  if (typeof value === "string") {
-                    return value
-                  }
-                  if (typeof value === "function") {
-                    // Within this branch, `value` has type `Function`,
-                    // so we can access the function's `name` property
-                    const functionName = value.name || "(anonymous)";
-                    return `[function ${functionName}]`;
-                  }
-                
-                  if (value instanceof Date) {
-                    // Within this branch, `value` has type `Date`,
-                    // so we can call the `toISOString` method
-                    return value.toISOString();
-                  }
-                
-                  return String(value);
-                }
-              </code></pre>
-            </section>
-            <section>
-              <p>If you want to force the compiler to trust you that a value of type unknown is of a given type, you can use a type assertion like this:</p>
-              <pre><code data-trim data-noescape>	
-                const value: unknown = "Hello World";
-                const someString: string = value as string;
-                const otherString = someString.toUpperCase(); // "HELLO WORLD"
-              </code></pre>
-              <p>This can easily lead to an error being thrown at runtime if you make a mistake and specify an incorrect type:</p>
-              <pre><code data-trim data-noescape>	
-                const value: unknown = 42;
-                const someString: string = value as string;
-                const otherString = someString.toUpperCase(); // BOOM
-              </code></pre>
-            </section>
-            <section>
-              <p>In a union type, unknown absorbs every type. This means that if any of the constituent types is unknown, the union type evaluates to unknown:</p>
-              <pre><code data-trim data-noescape>	
-                type UnionType1 = unknown | null; // unknown
-                type UnionType2 = unknown | undefined; // unknown
-                type UnionType3 = unknown | string; // unknown
-                type UnionType4 = unknown | number[]; // unknown
-  
-                type UnionType5 = unknown | any; // any
-              </code></pre>
-            </section>
-          </section>
+            <section data-background-iframe="https://www.typescriptlang.org/play?#code/PTAEFEA8EMFsAcA2BTUBGAXAKBKAKgPbz4Ce8yAzljmAC5mp6W2gC8oA3tBqBbQE4BLAHYBzADSgARjz5CxAXxqgAxgWF9QtZjyab2XHgHJtfI5JmgARKdpWFAbmVqNLCgVjIAgsJI9ovmxazM7qmu6eAKrCANbCBADuwjwArrHxSUG21CAJBCmIACZaABbQLHn8MQD8yhHevgB0tk649dFxicLNzE7KCWUsghSlqPTkoAQAZqDItbgCJBw5YAoq5SolABTIAJTLuKBHsz18ykorqmEsASS0JSKiPMIpsFLI-KAAPqC3QUZyIytMAucIeZD3R4dDLJUAvN4fb6gNKdTLsAECIHUS5QOBIVBoZTDUb8VDQUDwfgEKQoWCgEofOZYKZpFS0QTqVTQRAqArlbyk6BoLYUMrkHgAZTFe2er3enx+ADcCIJistjqBBFMRdLGjERMVWEbQEYVIJ+CoUEZ9lgNXbSbQUvxhKAALLlEqNAAKAElQAAqXi6-jQQqCFIjQOi6DkRohsMRpwapQa5CICiodV2o4Op0u6Oxiiq5AAGWQYnuAaDMeQjSLhVL5dE9yTxyUFxxMAQKFAACZLuNUMJkIqPlgUCxYcPR59cOw0A5QNQWcI2RyXfcqQlwPwqfwtp4KBRoKJkLIBI9ds8R4is5vEnDkAkILuCPvD8fT7snBcV2vOSIUwiII2glgQRBbFej4zpwtqgAMgg9lsAgpHssEarghQELw4KQmImrCA2QHCCBaYkHB7bYsouLdqgADMy6suynLrDyfLaF4gq9jqNaStKUHwvKSLKqq6HHFqPGxvqhFsMaprmpayDWlm2agLmzpuh63p+lGwahuGkbVrG8YGa2RwpscaYZpqMySbW0mGnJFAAI4pNApLKUuqlqRCeZGbW9aNhWJRVgWAXFmWwVmaAFlHFZmZwdmoIsMgkBlBG7KjgAwgyKgxNeMHsGF0WUdRXb4qAAAsjGrsxLqsbyiD8pxyDQHRdl8TWAlyoiSoqmqiU2XZeoGrJ6JmhaVo2t5PmOhp7r3NpoV6QmhlhXG+mJoNsWzOmqBaqAw0OWNJouW5Hn7F5qnqfmuqBZFzYhbpNZ1hFTYtttg3xWJSXXLMaXQBlgjZbl+XQYiRXStFGr3s+w7PtEgqbNANLIDue47ADQMg8geWSAABtEqXkGyyDFFKNagAAJBwqXpXwwPIDluMxAo+O7J9HZUZa0BHqAiOtcjqPo2+-3aIRIwi58KlXK4-ApGyb5bAA+sIir8AVHySB+J5nrwF5iNNqkUCk5DvpQn57Jz2K4DRFUAKw1f+9Xco1zWCpVHWgBT5DdQiCqgCJA1HBQCQgZsh3rQ5uw-Vy1lWBNilWNg2Y3Zpi2+stL0mRGWfGZtFDRes8dne5yDJ4NOa+Rp633e9T3+a9DYPR9GpEYDiC0CndrJf99OZUzoOa58kM1tDxyw4+CPCEjZTC6++504DDM43joCE8OkAk9o5PStTtNYyvg8s2zHMUVgHaDt7e-sFlCk9j8EquWXoC4D8eBCAEogoE4IjaPwUxoAqFQHfSaCUjgOR4Ane+5dWw5woLKf2P5qB-w+IA4B3tn6kjEpA6wpdSRWFbHXYKiD5TIKwKggBQDGCfzED2LMuCbC0O-rAuCxDHqkI+OQqiPDeF8P4QIwRQjhFUSAA"> </section>
           </section>
           <section>
             <section>
@@ -934,14 +784,19 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
           </section>
         </section>
         <section>
-          <h4>Exercise</h4>
-        </section>
-        <section data-background-iframe="https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgCIHsDmyDeAoZZEOAWwgC5kBnMKUTAGgOQCM4oBrSgCgEpkAvAD5kAN3TAAJngC+ePKEixEKAMJwA7rmbEylGnRCNmJdOh79hYidLl4A9PeQBRABrOASqoCSAZWfIAIzkDk6qUBBwkMhwyDAAriAIYMDoIMhgABZRyBFIwKIQVBmZKBjYcCCSyKroWmAAngAORcjciakgvKHI3jDIwGC5EPmFxbGSWAzICHAANnMlKGyccYnJnTFVw2DxUOmxouzAcCxzKDBQ6CQZzWp10+hZ0BrAVBDTswtLyKboa0kUmkttUIrt9jExMdTuc4lcbo0WmgsD0ABKKSjxd6QzDxdjVbgkOANFgoWIJQGbLI5STAGAwaAQcAnSDFUlgDQQJk-RFFbp4CkbYEkBoAQRAwCJc24lUl80olQayHsACpKAB+dUq+z8VUarVOfCERwxSTVBroPYzdCSCAAOgdyFk8l5yAAchAOehOAAZdBwWlGQTaQgpMgAMXhHggAEd4kUwJQQPESKSoLIANwuu7uz0ab0ccNwYDnaoCEPW21JlNprMyLN4V0er2cXzxBBIKjFctGysUIg16BZwgRKhNNLvSi90ODc76Wj0YeEZCSPZRTrV1ND5iEKgpolQBrzwyYJf1zPyE3hSLRcnrIHpalDPIQAqtWIdYHofpZCIoZv5q2YBRCgvLjNsTSGGAxTPMgkHoC0UApK037IJECCZEQeYFj0gR2sgACq2LEFAVyvEYPQAEz4URKC0lQCB0CQoDrkGn4gFQPQAMw0dilRocmNxwOMtxInMgzQPMaIYjMEQgVh9Q5pc1xLNiYFOgK96bCA2GrNwo7jhx-aKsqKqatqvCUOIUgViaAbmpaUB9g6+GyEAA">
+          <section><h4>Does it compile?</h4></section>
+          <section data-background-iframe="https://www.typescriptlang.org/play?#code/PTAiHsFMGcAIEsAusDG4C2AHeAbSB+AKEJFgEYAuQtAO2mQDdIVFwAnS2AbRoFd0ARpDYAaWH0HCxEoWwC6sALzcAzGIAsYgKxySwWExbsyAOky9oACwAUANgCUxUqYCCVUrXoHmrNgCYKbktIHBxwQPo2eBoAczEAd3YcABMIxCjYhWUuACIACRCwnLEcgHUk5JzdD3A6ZC5EthSxYNDwLO8jfz1YeMsAQ2R4OERg2HBeRHNEIj0A4kQAT0xIWABhcDC2JVgAb0JYWDZIVPF+WQPYGOPIGkCZYUuBHF5Ie-PHgF8e6MRhADN+ihVhstnseod+jhMAN3pI2D1vk5gCoqP9eDQWPBarBMBlEKD2NY0FtAoS2PZwYdSCZabAQIRvqQ8b9ydZ9qRDsdTn4tFoRBCrjc7rAAAwCzmwZ6vQLiwVQmH9WUmTSIxx6dRUHqeZAk9hwZQc-Rck6BXn8wXXSC3WUS41Sl5vMV2w6wBWwsUql1I5n4tl6tjQdU9LRakBaEwuHq3fiwAAy-VivH6MVWRtdABVlpAAMooKKYZDKHIZnPFQUAKX6DH6eYLiG9yIjACFoxJYABRZJIdjgyU53jPeDoSAZyAADwbgoAajmNslVsWGNA0Avy6QfcAI2s27G479hH37R2c-uaFPJaWz0XYDlENAcL91-aK6ffjs1JWc3lfo3kbZ3GAWxI0CH5zwBIFVgAaUgRZpyhV4j1dLgAGtYMCAADAASXYAHI0MWAA5D42Fwz4cIeNhPgwhQ4QuDd-xMZtQJqOpYAI+DHUCGC4IQxdDnTV12Ng4j4U4Mg-E-SVDgI0TZACWB1C0WxvSAA">
+          </section>
         </section>
         <section>
-          <h4>Solutions</h4>
+          <h4>Exercise</h4>
         </section>
-        <section data-background-iframe="https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgCIHsDmyDeAoZZEOAWwgC5kBnMKUTAGgOQCM4oBrSgCgEpkAvAD5kAN3TAAJngC+ePKEixEKAMJwA7rmbEylGnRCNmJdOh79hYidLl4A9PeQBRABrOASqoCSAZWfIAIzkDk6qUBBwkMhwyDAAriAIYMDoIMhgABZRyBFIwKIQVBmZKBjYcCCSyKroWmAAngAORcjciakgvKHI3jDIwGC5EPmFxbGSWAzICHAANnMlKGyccYnJnTFVw2DxUOmxouzAcCxzKDBQ6CQZzWp10+hZ0BrAVBDTswtLyKboa0kUmkttUIrt9jExMdTuc4lcbo0WmgsD0ABKKSjxd6QzDxdjVbgkOANFgoWIJQGbLI5STAGAwaAQcAnSDFUlgDQQJk-RFFbp4CkbYEkBoAQRAwCJc24lUl82QlHK-Eo6i0AvWQPSIvFculsqlCpqmmVyOw6spwrFEqlMut8sVWAAPkaNCbyshnartIQ6dw3uVbbreLx8IRCPr5gA6FYcPjMQgINI0X4NVUqzSCb1hwi6CjIADkItV+aY2cIfwsghEobLCaT6HOkbmWG4hbMAEJ2-nurW5Nm+2GwXstanNMwBxA5tia+G7XNI3847XEyBkyLyg7sAIs9nc5RCw1yiX42GY5WrDOyyuqA2IE2W-mNOh6cgn-TO92T4QB9+T0OIeuKK-nYgqagMVABhGcybp6xqUFB4Gmlm-7pIGBpwMUSrRuwHDIO2AjbokkgQDAoAQLY8i8sgAByEAcugnAADLoHAtJGJmNYpGQABi8IeBAACO8RFGAlAgPEJCklAsgANyUXcNF0U+nDcXAwDnNU241omxFiRJUlyTIcl4FRtH0ZwvjxAgSBUMUWnMDpebiZJ0ByYQERUE0SZ5peKRgOc+i0PQblhpIexRJ0ekuVAIWEFQElElADSBYYmAhUZsnyI4NQRFEZIAkK6TUkMeQQAUrSxB0wLPiUEQoGZykcL4YB5bcLTjNsTSGGAxTPMgXXoC0UApK0NWRAgmREEpDEcD0gSRsgACq2LEFAVyvEYPQAEwLctKC0lQCB0CQoARexVWrj0ADMu3YpUyBMhJMTjG1KBzIM0DzGiGIzLl0QgBA9QKZc1xLNivLFPIj03M1eXFDWviLaoqjOL4viZgARIjyOo74GOlsg3Git4jHOKgmNEyTZP48wjEAPKiqg3jUQA4pj9OM8zLMY7I8lIg1M3Max9Cw9E24C0xLFsdgABkuA0HllCi0UkYc0zrMZaZ00qWpGnK5mEscKp6nkcgcs4ArkBKy1rKRpTpOoJrCmG5Z1lFFQ+vi9rTVWTZxTm5bebK1QkbYyjaNO-z3vBwb3tC9L+vOobxt6zbKBJ9Hvvu8r8igZsAPmbh3AeV5q55i7adULwlDiFIO7UK8YATcXRSl+8kaB-wl4JhhKDB6rDPqyzITLvWjbNpgLeed5Hdpz2V5j3eE9T23d5cRAvHXPxQkifP2YsLlHCxWGszYv3Ye4yPC+rre96TyXM+d1+MyL3fK8zw-ZeRn55x7yfr-L0-u3IBd4wpQAimkP+dYb7jxbCAyM8D4okESg0KBrBD7Hx7mfSudtiYOyvtma8t9AGt0fnPZ+RDYH31IV-RyaCD6RCPuOWQQA">
+        <section data-background-iframe="https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgCIHsDmyDeAoZZEOAWwgC5kBnMKUTAGgOQCM4oBrSgCgEpkAvAD5kAN3TAAJngC+ePKEixEKAMLoA7rmbEylGnRCNmJdOh79hYidLl4A9PeQBRABrOASqoCSAZWfIAIzkDk6qUBBwkMhwyDAAriAIYMDoIMhgABZRGXAcEFQxyAAO7KQQSsjoMBkAnsUoGNgAPsjqWtyJqSC8ocjeNcBgyBFIwKIFRZJYDMgIcAA2CxmZKGyccYnJ3QB0yADyWdAawFQQs-NLKyim6JtJKWk7fQASipQAqmdFYPUomPF2JJ7ts0hk7pJgDAYNAIOBgFE1hUNBA4dc6g0qM88AkHt1kCRagBBEDAEiLbhwUnkhaUKm1ZD2ABUlAA-KymfZ+My2RynPhCI4YpJgbV0PEoHN0JIIDs5chZPJfg1kAA5ZHoTgAGXQcEhRkE2kIKTIADEoOgSB4IABHeIFMCUEDxEgsaCyADcSr+ao1nFNcGACwgwIERqlMqdLrdUC9Mi9eGVKHVYA0mo4vniCCQVEKYYFEYoRGj0C9hAiVGKaTOlALxqGwf0tHoZcIyEkEqi3SjrtLzEIVBd5KgtSbhkwrfjnvkQvCkWisVxoPSWRyowg40msS6YOqKwiyb9GbAiIxW5AwOKhjAhSOJQtDSgKUme8iCEyRCPfUCey+KGIUAWicRh9AATL+3yQlQCB0CQoBdgaO4gFQfQAMwQSgVLIHCLoxIUsRJsgCxDNAiyvO8cwRKesQgBAWiETAFokNc3xJihOJbI86S0am6bINwFZVshRb0oyTLspyvCUOIUjhkKeqiuKkoINKsryrIQA">
+        </section>
+        <section>
+          <h4>Solution</h4>
+        </section>
+        <section data-background-iframe="https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgCIHsDmyDeAoZZEOAWwgC5kBnMKUTAGgOQCM4oBrSgCgEpkAvAD5kAN3TAAJngC+ePKEixEKAMLoA7rmbEylGnRCNmJdOh79hYidLl4A9PeQBRABrOASqoCSAZWfIAIzkDk6qUBBwkMhwyDAAriAIYMDoIMhgABZRGXAcEFQxyAAO7KQQSsjoMBkAnsUoGNgAPsjqWtyJqSC8ocjeNcBgyBFIwKIFRZJYDMgIcAA2CxmZKGyccYnJ3QB0yADyWdAawFQQs-NLKyim6JtJKWk7fQASipQAqmdFYPUomPF2JJ7ts0hk7pJgDAYNAIOBgFE1hUNBA4dc6g0qM88AkHt1kCRagBBEDAEiLbhwUnk5aUJr8SjiKTIHFbR7pQkkskUqnc2ltTQM6zM1l4sGc6k8yX8pqtdpCpnA-CEKHcU5NSnS3i8ZWEGLSnbrDh8ZhyQgQBbfXWEXk0na3E2EOR2XGg9LqrCavl0rBywWUW2LZCnNBYbSECJgeJQdJemkxQr0w3sDjIACEAgEyESkggMFAEFs8l+DWQADlkehOAAZdBwSFGQThjJkiAAMSg6BIHggAEd4gUwJQQPESCxoLIANzFv7lyucNtwYALQtN3UIdC54ej8dQacyad4EsoCtgDRVji+eIIJBUQpZ9ebihEHfQacRgrFNJnSjWltgFd9Foeh3z1SRoyibptzHN9mEIKhR3JKBaiAwxMFAg8p3kRw2giREilddkVhyUYIHGSZYi6MFqhWCIT3nS8wHw49CipYFikMMBCiOEpOwaKAUkmGjIgQTIiAYvpAj2L4UGIKBOxOIw+gAJmk75ISoBA6BIUBIMbKiQCoPoAGY1JQKlkDhUcEx+WcFiGaBFled45jw6JYhACAtGPOJOxIa5vhY+QrP83wmMgQpdV8D5VFUZxfF8JsACJoti+LfCSphCDbIlvGrZxUGSnK8oKzLmGrfYiVQbwywAcWSiqqpq2qktkGdS1Pc8azrBtMDC-Cs06i9a3rehkAAMlwGhEUofqIp2RrqrqzCfKGhclxXSQ5pQQaGMXZdV0mnBpsgWbwoKHZivy1AVtnNbL2vW8qG2pt7qvG8CkKI6TufbasVSuKEtujqGL+16GJG3qXtae79s26G5zPC93qe7b5EI-FPKRjZuAiKgv0M583vOqheEZGxm3gk4wFE3HP2-CAdh+-g-0IeZvj+hbKqW2qQj1PUN0M9AVx2BZPTxgmziZ87en5tnv2FxmxcwOn8YZnYUjIDsux7ftB1luWWDwjhQP59mUE5gH0r5uXBaoRXRfF+nCelxEDbNhWReV1XJcZiX1ZSACIHdgXPaVp21Zd-2XfAqBILSEP5aFr2I99nZo6lhCSCQ2pE9YY3TYFuAOZJy7cuum2PeT8OVYzxnmbg0Pq8d2vnaljdczzo3IhN01ZCAA">
         </section>
       </div>
     </div>

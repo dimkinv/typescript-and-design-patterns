@@ -132,220 +132,6 @@ interface Map {
           }</code></pre>
       </section>
       <section>
-          <h2>Decorators</h2>
-          <p>Generally follows decoration pattern</p>
-      </section>
-      <section>
-          <h2>Decoration Pattern</h2>
-          <img height="400" src="../../assets/decoration-pattern.png" />
-      </section>
-      <section>
-          <h2>Decoration Kurzgesagt</h2>
-          <h4 style="font-style: italic;">(In a Nutshell)</h4>
-          <ul>
-              <li>Give execution of a component to another entity</li>
-              <li>Another entity executes additional code together with original one</li>
-          </ul>
-      </section>
-      <section>
-          <h2>Activating Decorators</h2>
-          <pre><code class="language-bash">
-"experimentalDecorators": true,
-"emitDecoratorMetadata": true, 
-          </code></pre>
-          <small>In tsconfig.json</small>
-      </section>
-      <section>
-          <h2>Decorators in Typescript (Angular)</h2>
-          <pre><code class="language-typescript">
-@Injectable()
-class UsefulService {
-}
-
-@Injectable()
-class NeedsService {
-  constructor(public service: UsefulService) {}
-}
-          </code></pre>
-      </section>
-      <section>
-          <h2>Decorators in Typescript (Inversify)</h2>
-          <pre><code  class="language-typescript">
-@injectable()
-class Ninja implements Warrior {
-@inject(TYPES.Weapon) private _katana: Weapon;
-@inject(TYPES.ThrowableWeapon) private _shuriken: ThrowableWeapon;
-public fight() { return this._katana.hit(); }
-public sneak() { return this._shuriken.throw(); }
-}
-          </code></pre>
-      </section>
-      <section>
-          <h2>Decorators Types</h2>
-          <h4>(In Typescript)</h4>
-          <ul>
-              <li>Class</li>
-              <li>Property</li>
-              <li>Accessor</li>
-              <li>Method</li>
-              <li>Patameter</li>
-          </ul>
-      </section>
-      <section>
-          <h3>Decorator vs. Decorator Factory</h3>
-          <ul style="list-style: none;">
-              <li>Decorator - creates direct decorator</li>
-              <li>Factory - allows customization of decorators</li>
-          </ul>
-      </section>
-      <section>
-          <h2>Decorator Factory Example</h2>
-          <pre><code class="language-typescript">
-function color(value: string) {
-// this is the decorator factory, it sets up
-// the returned decorator function
-  return function (target) {
-    // this is the decorator
-    // do something with 'target' and 'value'...
-  };
-}                    
-          </code></pre>
-          <small>from: <a
-                  href="https://www.typescriptlang.org/docs/handbook/decorators.html">https://www.typescriptlang.org/docs/handbook/decorators.htm</a></small>
-      </section>
-      <section>
-          <h2>Class Decorators (implementation)</h2>
-          <pre><code class="language-typescript">
-function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
-  return class extends Constructor {
-    constructor(...args: any[]) {
-        const start = new Date();
-        super(args);
-        const end = new Date();
-        console.log(`took ${end.getTime() - start.getTime()}ms to finish construction`);
-    }
-  }
-}
-          </code></pre>
-      </section>
-      <section>
-          <h2>Class Decorators (Usage)</h2>
-          <pre><code class="language-typescript">
-@ConstructorPerformance
-class Test {
-  constructor(){
-    let result = 1
-    for (let index = 1; index < 10000; index++) {
-        result *= index;
-    }
-  }
-}
-const test = new Test();
-          </code></pre>
-          <pre><code class="language-bash">
-took 12ms to finish construction
-</code></pre>
-      </section>
-      <section>
-          <h2>Method Decorator (implementation)</h2>
-          <pre><code class="language-typescript">
-function ExceptionWrapper(target: any, propertyKey: string, descriptor: TypedPropertyDescriptor<(...args: any[]) => void>) {
-  const originalFunction  = target[propertyKey];
-  descriptor.value = (...args: any[]) => {
-    try{
-        originalFunction.apply(target, ...args);
-    } catch(error){
-        const typedError = error as Error
-        console.log(`caught exception in wrapper, ${typedError.message}`);
-    }
-  }
-}
-          </code></pre>
-      </section>
-      <section>
-          <h2>Method Decorator (usage)</h2>
-          <pre><code class="language-typescript">
-export class Test {
-  @ExceptionWrapper
-  throwException(someValue: string) {
-    throw new Error(someValue);
-  }
-}
-
-
-const t = new Test();
-console.log(t.throwException('some string'));
-          </code></pre>
-      </section>
-      <section>
-        <p>So what else can we do with decorators?</p>
-      </section>
-      <section>
-          <h2>Reflection and Metadata</h2>
-          <h4>Let's look at the code</h4>
-          <pre><code>
-__decorate([
-ExceptionWrapper,
-__metadata("design:type", Function),
-__metadata("design:paramtypes", [String]),
-__metadata("design:returntype", void 0)
-], Test.prototype, "throwException", null);
-exports.Test = Test;
-const t = new Test();
-console.log(t.throwException('some string'));                    
-          </code></pre>
-          <small>Insufficient reflection</small>
-      </section>
-      <section>
-          <h2>reflect-metadta to the rescue</h2>
-          <ul>
-              <li><a
-                      href="https://www.npmjs.com/package/reflect-metadata">https://www.npmjs.com/package/reflect-metadata</a>
-              </li>
-              <li>~4M weekly downloads</li>
-              <li><a href="https://rbuckton.github.io/reflect-metadata/">Detailed Proposal</a></li>
-          </ul>
-      </section>
-      <section>
-          <h2>Reflection with reflect-metadata</h2>
-          <pre><code>
-import 'reflect-metadata';
-function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
-  const start = new Date();
-  const metadataKeys = Reflect.getOwnMetadataKeys(Constructor); // ['design:paramtypes']
-  const metadataPatamtypes = Reflect.getMetadata('design:paramtypes', Constructor);
-  console.log(metadataPatamtypes.map((param:any) => param.name)); // [ 'String', 'Boolean' ]
-  return class extends Constructor {
-    constructor(...args: any[]) {
-        const start = new Date();
-        super(args);
-        const end = new Date();
-        console.log(`took ${end.getTime() - start.getTime()}ms to finish construction`);
-    }
-  }
-}
-          </code></pre>
-      </section>
-      <section>
-          <h2>Wait... What about javascript?</h2>
-          <p>Javascript decorators are at <a href="https://github.com/tc39/proposal-decorators">stage3</a> </p>
-          <p>Which means: The solution is complete and no further work is possible without implementation experience, significant usage and external feedback.</p>
-      </section>
-      <section>
-          <h2>DIY (decorators)</h2>
-          <p>Create an autologger decorator <br/>(method decorator factory),<br/> should log the following:</p>
-          <ul>
-              <li>number of parameters received</li>
-              <li>list paramerts</li>
-              <li>return value of the function</li>
-          </ul>
-          <pre><code class="text-language" data-trim data-noescape>
-            function was called with 2 parameters
-            parameters: 1, 3
-            function result was: 4
-          </code></pre>
-      </section>
-      <section>
         <section id="fragments">
           <p>what are the 8 types of javascript?</p>
           <p class="fragment">undefined, null, boolean, number, bigint, string, symbol, and object.</p>
@@ -799,6 +585,220 @@ function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
         </section>
         <section data-background-iframe="https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgCIHsDmyDeAoZZEOAWwgC5kBnMKUTAGgOQCM4oBrSgCgEpkAvAD5kAN3TAAJngC+ePKEixEKAMLoA7rmbEylGnRCNmJdOh79hYidLl4A9PeQBRABrOASqoCSAZWfIAIzkDk6qUBBwkMhwyDAAriAIYMDoIMhgABZRGXAcEFQxyAAO7KQQSsjoMBkAnsUoGNgAPsjqWtyJqSC8ocjeNcBgyBFIwKIFRZJYDMgIcAA2CxmZKGyccYnJ3QB0yADyWdAawFQQs-NLKyim6JtJKWk7fQASipQAqmdFYPUomPF2JJ7ts0hk7pJgDAYNAIOBgFE1hUNBA4dc6g0qM88AkHt1kCRagBBEDAEiLbhwUnk5aUJr8SjiKTIHFbR7pQkkskUqnc2ltTQM6zM1l4sGc6k8yX8pqtdpCpnA-CEKHcU5NSnS3i8ZWEGLSnbrDh8ZhyQgQBbfXWEXk0na3E2EOR2XGg9LqrCavl0rBywWUW2LZCnNBYbSECJgeJQdJemkxQr0w3sDjIACEAgEyESkggMFAEFs8l+DWQADlkehOAAZdBwSFGQThjJkiAAMSg6BIHggAEd4gUwJQQPESCxoLIANzFv7lyucNtwYALQtN3UIdC54ej8dQacyad4EsoCtgDRVji+eIIJBUQpZ9ebihEHfQacRgrFNJnSjWltgFd9Foeh3z1SRoyibptzHN9mEIKhR3JKBaiAwxMFAg8p3kRw2giREilddkVhyUYIHGSZYi6MFqhWCIT3nS8wHw49CipYFikMMBCiOEpOwaKAUkmGjIgQTIiAYvpAj2L4UGIKBOxOIw+gAJmk75ISoBA6BIUBIMbKiQCoPoAGY1JQKlkDhUcEx+WcFiGaBFled45jw6JYhACAtGPOJOxIa5vhY+QrP83wmMgQpdV8D5VFUZxfF8JsACJoti+LfCSphCDbIlvGrZxUGSnK8oKzLmGrfYiVQbwywAcWSiqqpq2qktkGdS1Pc8azrBtMDC-Cs06i9a3rehkAAMlwGhEUofqIp2RrqrqzCfKGhclxXSQ5pQQaGMXZdV0mnBpsgWbwoKHZivy1AVtnNbL2vW8qG2pt7qvG8CkKI6TufbasVSuKEtujqGL+16GJG3qXtae79s26G5zPC93qe7b5EI-FPKRjZuAiKgv0M583vOqheEZGxm3gk4wFE3HP2-CAdh+-g-0IeZvj+hbKqW2qQj1PUN0M9AVx2BZPTxgmziZ87en5tnv2FxmxcwOn8YZnYUjIDsux7ftB1luWWDwjhQP59mUE5gH0r5uXBaoRXRfF+nCelxEDbNhWReV1XJcZiX1ZSACIHdgXPaVp21Zd-2XfAqBILSEP5aFr2I99nZo6lhCSCQ2pE9YY3TYFuAOZJy7cuum2PeT8OVYzxnmbg0Pq8d2vnaljdczzo3IhN01ZCAA">
         </section>
+        <section>
+          <h2>Decorators</h2>
+          <p>Generally follows decoration pattern</p>
+      </section>
+      <section>
+          <h2>Decoration Pattern</h2>
+          <img height="400" src="../../assets/decoration-pattern.png" />
+      </section>
+      <section>
+          <h2>Decoration Kurzgesagt</h2>
+          <h4 style="font-style: italic;">(In a Nutshell)</h4>
+          <ul>
+              <li>Give execution of a component to another entity</li>
+              <li>Another entity executes additional code together with original one</li>
+          </ul>
+      </section>
+      <section>
+          <h2>Activating Decorators</h2>
+          <pre><code class="language-bash">
+"experimentalDecorators": true,
+"emitDecoratorMetadata": true, 
+          </code></pre>
+          <small>In tsconfig.json</small>
+      </section>
+      <section>
+          <h2>Decorators in Typescript (Angular)</h2>
+          <pre><code class="language-typescript">
+@Injectable()
+class UsefulService {
+}
+
+@Injectable()
+class NeedsService {
+  constructor(public service: UsefulService) {}
+}
+          </code></pre>
+      </section>
+      <section>
+          <h2>Decorators in Typescript (Inversify)</h2>
+          <pre><code  class="language-typescript">
+@injectable()
+class Ninja implements Warrior {
+@inject(TYPES.Weapon) private _katana: Weapon;
+@inject(TYPES.ThrowableWeapon) private _shuriken: ThrowableWeapon;
+public fight() { return this._katana.hit(); }
+public sneak() { return this._shuriken.throw(); }
+}
+          </code></pre>
+      </section>
+      <section>
+          <h2>Decorators Types</h2>
+          <h4>(In Typescript)</h4>
+          <ul>
+              <li>Class</li>
+              <li>Property</li>
+              <li>Accessor</li>
+              <li>Method</li>
+              <li>Patameter</li>
+          </ul>
+      </section>
+      <section>
+          <h3>Decorator vs. Decorator Factory</h3>
+          <ul style="list-style: none;">
+              <li>Decorator - creates direct decorator</li>
+              <li>Factory - allows customization of decorators</li>
+          </ul>
+      </section>
+      <section>
+          <h2>Decorator Factory Example</h2>
+          <pre><code class="language-typescript">
+function color(value: string) {
+// this is the decorator factory, it sets up
+// the returned decorator function
+  return function (target) {
+    // this is the decorator
+    // do something with 'target' and 'value'...
+  };
+}                    
+          </code></pre>
+          <small>from: <a
+                  href="https://www.typescriptlang.org/docs/handbook/decorators.html">https://www.typescriptlang.org/docs/handbook/decorators.htm</a></small>
+      </section>
+      <section>
+          <h2>Class Decorators (implementation)</h2>
+          <pre><code class="language-typescript">
+function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
+  return class extends Constructor {
+    constructor(...args: any[]) {
+        const start = new Date();
+        super(args);
+        const end = new Date();
+        console.log(`took ${end.getTime() - start.getTime()}ms to finish construction`);
+    }
+  }
+}
+          </code></pre>
+      </section>
+      <section>
+          <h2>Class Decorators (Usage)</h2>
+          <pre><code class="language-typescript">
+@ConstructorPerformance
+class Test {
+  constructor(){
+    let result = 1
+    for (let index = 1; index < 10000; index++) {
+        result *= index;
+    }
+  }
+}
+const test = new Test();
+          </code></pre>
+          <pre><code class="language-bash">
+took 12ms to finish construction
+</code></pre>
+      </section>
+      <section>
+          <h2>Method Decorator (implementation)</h2>
+          <pre><code class="language-typescript">
+function ExceptionWrapper(target: any, propertyKey: string, descriptor: TypedPropertyDescriptor<(...args: any[]) => void>) {
+  const originalFunction  = target[propertyKey];
+  descriptor.value = (...args: any[]) => {
+    try{
+        originalFunction.apply(target, ...args);
+    } catch(error){
+        const typedError = error as Error
+        console.log(`caught exception in wrapper, ${typedError.message}`);
+    }
+  }
+}
+          </code></pre>
+      </section>
+      <section>
+          <h2>Method Decorator (usage)</h2>
+          <pre><code class="language-typescript">
+export class Test {
+  @ExceptionWrapper
+  throwException(someValue: string) {
+    throw new Error(someValue);
+  }
+}
+
+
+const t = new Test();
+console.log(t.throwException('some string'));
+          </code></pre>
+      </section>
+      <section>
+        <p>So what else can we do with decorators?</p>
+      </section>
+      <section>
+          <h2>Reflection and Metadata</h2>
+          <h4>Let's look at the code</h4>
+          <pre><code>
+__decorate([
+ExceptionWrapper,
+__metadata("design:type", Function),
+__metadata("design:paramtypes", [String]),
+__metadata("design:returntype", void 0)
+], Test.prototype, "throwException", null);
+exports.Test = Test;
+const t = new Test();
+console.log(t.throwException('some string'));                    
+          </code></pre>
+          <small>Insufficient reflection</small>
+      </section>
+      <section>
+          <h2>reflect-metadata to the rescue</h2>
+          <ul>
+              <li><a
+                      href="https://www.npmjs.com/package/reflect-metadata">https://www.npmjs.com/package/reflect-metadata</a>
+              </li>
+              <li>~4M weekly downloads</li>
+              <li><a href="https://rbuckton.github.io/reflect-metadata/">Detailed Proposal</a></li>
+          </ul>
+      </section>
+      <section>
+          <h2>Reflection with reflect-metadata</h2>
+          <pre><code>
+import 'reflect-metadata';
+function ConstructorPerformance(Constructor: { new(...args: any[]): any }) {
+  const start = new Date();
+  const metadataKeys = Reflect.getOwnMetadataKeys(Constructor); // ['design:paramtypes']
+  const metadataPatamtypes = Reflect.getMetadata('design:paramtypes', Constructor);
+  console.log(metadataPatamtypes.map((param:any) => param.name)); // [ 'String', 'Boolean' ]
+  return class extends Constructor {
+    constructor(...args: any[]) {
+        const start = new Date();
+        super(args);
+        const end = new Date();
+        console.log(`took ${end.getTime() - start.getTime()}ms to finish construction`);
+    }
+  }
+}
+          </code></pre>
+      </section>
+      <section>
+          <h2>Wait... What about javascript?</h2>
+          <p>Javascript decorators are at <a href="https://github.com/tc39/proposal-decorators">stage3</a> </p>
+          <p>Which means: The solution is complete and no further work is possible without implementation experience, significant usage and external feedback.</p>
+      </section>
+      <section>
+          <h2>DIY (decorators)</h2>
+          <p>Create an autologger decorator <br/>(method decorator factory),<br/> should log the following:</p>
+          <ul>
+              <li>number of parameters received</li>
+              <li>list paramerts</li>
+              <li>return value of the function</li>
+          </ul>
+          <pre><code class="text-language" data-trim data-noescape>
+            function was called with 2 parameters
+            parameters: 1, 3
+            function result was: 4
+          </code></pre>
+      </section>
       </div>
     </div>
 

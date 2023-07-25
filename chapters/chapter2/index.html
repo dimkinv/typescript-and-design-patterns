@@ -880,24 +880,7 @@
 					<li>Mutation tracking</li>
 				</ul>
 			</section>
-			<section>
-				<pre><code class="language-typescript" data-noescape data-trim>
-					const user = {
-						firstnname: 'Hatul',
-						lastname: 'Hatuli'
-					}
-					function checkValidityAndFireRockets(u: typeof user){
-						if(u.firstnname && u.lastname){
-							u.firstnname = u.firstnname.toLowerCase();
-							return user;
-						}
-					
-						return null;
-					}
-					const validatedUser = checkValidityAndFireRockets(user);
-					console.log(user === validatedUser);
-					console.log(user.firstnname === 'Hatuli');
-				</code></pre>
+			<section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgKoGdoG8BQz-IzBTpgghwC2EAXMqVKAOYDceBANnKRdXQ8zYBfHDgD0Y5AFoZsufIVzRCAPYhSyAK6YoyALzJcASCIkyvWsgDkACThhNHKwBocRrjyqXb9x8Cs4IjCaIAhgwGrICAAWEAgA1gBqcBzAACbAYACeAIIgaQBixBAASioJEGDoABSadBjQAJTGwDC1AHSmPBbIAGS9Wu0eZF7NbkaancTdXvqDXeZe7WAqADIqAO7QAMLcENWNbEZGUJWaUCBaOkcibqcOF8ggjhzCOKrqYMgAbinp9hA0g1dAYYnEkn8Mtk8oVimUKlVajpDu81OgVBwIEMVEwkdB9HoDL9UmkAUDkWwPujMdjcdpoFMzORZoSDD4HKkrCjRDygA" data-background-interactive>
 			</section>
 			<section>
 				<img src="../../assets/i-see.jpeg" />
@@ -910,24 +893,7 @@
 					};
 				</code></pre>
 			</section>
-			<section>
-				<pre><code class="language-typescript" data-noescape data-trim>
-					const user = {
-						firstnname: 'Hatul',
-						lastname: 'Hatuli'
-					}
-					type ReadonlyUser = DeepReadonly&lt;typeof user>;
-					function checkValidityAndFireRockets(u: ReadonlyUser) {
-						if (u.firstnname && u.lastname) {
-							u.firstnname = u.firstnname.toLowerCase(); // Cannot assign to 'firstnname' because it is a read-only property.
-							return user;
-						}
-						return null;
-					}
-					const validatedUser = checkValidityAndFireRockets(user);
-					console.log(user === validatedUser);
-					console.log(user.firstnname === 'Hatuli');
-				</code></pre>
+			<section  id="fragments" data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgKoGdoG8BQz-IzBTpgghwC2EAXMqVKAOYDceBANnKRdXQ8zYBfHDgD0Y5ABEAojIAKyAEoyAglIDyAOQAyATQCEyQLwbgGT2cYAJ4AHFFIgRrSiHAAmAexAdLAHgAqAHzIALzIuPhQLh5elsgA2oqgyADWEJbuMMh+ALp09o7Obp7e-gnZAcJsogiepMgArphQdBjQIWHsRCRkvLTIAOQAEnBg9Rz9ADTsXDxUfUMjY8D9OCKiODD1IAhgwJ7ICAAWEAjJAGpwHMCuwFaqIK4AYsQQSu6nEGDoABT1eQ5OKLFXytKABACUHXwwEyvwAdF0eL1kAAyFENOEzMhzSHhAj1BHEJFzdoExE9OZwsDuHTuADu0AAwtwIN9wWwCMhIqMoCAGk0Ocg1hFPvVecgQGMOMIcDUQHUAG6Xa4jCCuUHtI4nc7Km53B7PSJvD5fX5Ndmy2ruDgQTHuJhmtrBZ3IJVXVyq9Xmthy9DW20ce2OqCE7rkEnO0ILUZXfoW9brIA" data-background-interactive>
 			</section>
 			<section>
 				<h3>Exceptionless Programming</h3>

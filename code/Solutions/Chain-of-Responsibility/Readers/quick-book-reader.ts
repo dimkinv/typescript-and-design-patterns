@@ -1,7 +1,7 @@
 import { DataReader } from "../data-reader";
 
 export class QuickBooksReader extends DataReader {
-    protected getExtention(): string {
+    protected getExtension(): string {
         return '.qbw';
     }
     protected doRead(fileName: string): void {

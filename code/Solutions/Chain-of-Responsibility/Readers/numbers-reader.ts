@@ -1,7 +1,7 @@
 import { DataReader } from "../data-reader";
 
 export class NumbersReader extends DataReader {
-    protected getExtention(): string {
+    protected getExtension(): string {
         return '.numbers';
     }
     protected doRead(fileName: string): void {

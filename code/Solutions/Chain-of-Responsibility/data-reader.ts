@@ -6,7 +6,7 @@ export abstract class DataReader {
     }
     
     read(fileName: string) {
-        if (fileName.endsWith(this.getExtention())) {
+        if (fileName.endsWith(this.getExtension())) {
             this.doRead(fileName);
             return;
         }
@@ -18,6 +18,6 @@ export abstract class DataReader {
         }
     }
 
-    protected abstract getExtention(): string;
+    protected abstract getExtension(): string;
     protected abstract doRead(fileName: string): void;
 }

@@ -1,7 +1,7 @@
 import { DataReader } from "../data-reader";
 
 export class ExcelReader extends DataReader {
-    protected getExtention(): string {
+    protected getExtension(): string {
         return '.xls';
     }
     protected doRead(fileName: string): void {

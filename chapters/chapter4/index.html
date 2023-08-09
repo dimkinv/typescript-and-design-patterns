@@ -262,7 +262,7 @@ class HttpClient{
                     </code></pre>
                 </section>
                 <section>
-                    <h4>Configuraiton Based example</h4>
+                    <h4>Configuration Based example</h4>
                     <pre><code class="language-typescript" data-trim data-noescape >
                         enum TransportClientType { HTTP, TCP }
                         function getTransportClient(transportClientType: TransportClientType): TransportClient {
@@ -277,32 +277,10 @@ class HttpClient{
                         class TcpTransportClient implements TransportClient { send() { } }
                     </code></pre>
                 </section>
-                <section>
-                    <h4>together with strategy pattern</h4>
-                    <pre><code class="language-typescript" data-trim data-noescape >
-                        interface TransportClient { send(): void }
-                        class HttpTransportClient implements TransportClient { send() { } }
-                        class TcpTransportClient implements TransportClient { send() { } }
-
-                        enum TransportClientType { HTTP, TCP }
-                        const transports = new Map<TransportClientType, Constructor<TransportClient>>();
-                        transports.set(TransportClientType.HTTP, HttpTransportClient);
-                        transports.set(TransportClientType.TCP, TcpTransportClient);
-
-                        function getTransportClient(transportClientType: TransportClientType): TransportClient | null {
-                            const TransportConstructor = transports.get(transportClientType);
-                            if(!TransportConstructor) {
-                                return null
-                            }
-                            
-                            const transport = new TransportConstructor();
-                            // add more configurations here
-                            return transport;
-                        }
-                    </code></pre>
+                <section  data-background-color="white" data-background-iframe="https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgCpTiAzgBwPZRgDCANsBOMgN7JYUAmAFAJQBcyAbnsPcgL4AoBCThYsyABJgwOdJlwFiZCmGTAAtjhIR1K8XOz5CpcpRp0QTZtX78hIsWgSyMhxSZVrN23eH2uFY2UzWgYWGz47AQoAV3U0AKMlUzBUAE8cFBoJVFQABQAaNCI8uwQ8bFUwRMVxAF5kEAgAd2QAWTgcAB4DQOSVdMyiogqsapiEMAIemqCUgD55lgBuAWr5JKwAOjowRl6kj3BBiC2c-KKpGQP3YLBmVfW3Qm3d-dn+44zT1BKi1GcNzmKgeAgEMBiIEmwAqyAA5hBUh8jnsnn0USd2EDPqlvmwEhtbilkAAfRoxEgkagCZDIcqVAnPYijcaTAjIBpozZbBGo5F3E6g2nAGDIRgAQmxI0qUAmUyg1ioNNpyCgiJiUBA5MpysEyvpY2QXMUHMaLUZ6JZsrZUBWyoA9PbkHB6Lx1AQUPSYMA4Rq4GAYdhkAALaAQZVqsAarXGwirPVgb7IaVja3ynrzU1UJqtRhbfNwKBwrDsSEAaxAeGaIAA2gBdfGoPjLIA" data-background-interactive>
                 </section>
                 <section>
-                    <h4>together with depedency injection (angular/nestjs)</h4>
+                    <h4>together with dependency injection (angular/nestjs)</h4>
                     <img src="../../assets/factory-with-di.png"/>
                 </section>
                 <section>
@@ -314,8 +292,8 @@ class HttpClient{
                 </section>
                 <section>
                     <h4>DI / IoC</h4>
-                    <p class="fragment">IoC - Inversion of Control, the ability to get dependencies from ourside source</p>
-                    <p class="fragment">DI - Dependency Injection - specific implmentation of IoC</p>
+                    <p class="fragment">IoC - Inversion of Control, the ability to get dependencies from outside source</p>
+                    <p class="fragment">DI - Dependency Injection - specific implementation of IoC</p>
                 </section>
                 <section>
                     <h4>Inversion of control</h4>
@@ -326,7 +304,7 @@ class HttpClient{
                 </section>
                 <section>
                     <h4>Dependency Injection</h4>
-                    <p>Specific implmenetation of IoC</p>
+                    <p>Specific implementation of IoC</p>
                 </section>
                 <section>
                     <h4>The Problem:</h4>
